@@ -1,0 +1,48 @@
+---
+- name: download mariadb jconnector
+  get_url:
+    url: '{{mariadb_jconnector_url}}'
+    dest: "/usr/share/logstash/logstash-core/lib/jars/mariadb-connector-java.jar"
+    force: yes # necessary for driver updates
+
+- name: Ensure config-directories exist
+  file: path={{ item }} state=directory
+  with_items:
+    - /etc/logstash/templates/
+    - /etc/logstash/pipelines/
+
+- name: Configure Logstash.
+  template:
+    src: "{{ item }}"
+    dest: "/etc/logstash/{{ item }}"
+    owner: root
+    group: root
+    mode: 0644
+  with_items:
+    - logstash.yml
+    - pipelines.yml
+  notify: restart logstash
+  
+- name: Configure Logstash mapping.
+  template:
+    src: "mapping.json"
+    dest: "/etc/logstash/templates/mapping.json"
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart logstash
+  
+- name: Configure Logstash pipelines.
+  template:
+    src: "{{ item }}"
+    dest: "/etc/logstash/pipelines/{{ item }}"
+    owner: root
+    group: root
+    mode: 0644
+  with_items:
+    - jdbc-input.conf
+    - elasticsearch-output.conf
+  notify: restart logstash
+  
+- name: Force a restart if configuration has changed.
+  meta: flush_handlers

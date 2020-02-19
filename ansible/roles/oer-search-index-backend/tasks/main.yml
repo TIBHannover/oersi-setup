@@ -1,0 +1,78 @@
+---
+- name: undeploy war-files from tomcat
+  file:
+    path: "{{item}}"
+    state: absent
+  with_items:
+    - "{{tomcat_home}}/webapps/oersi.war"
+
+- name: wait for war-file-undeployment
+  wait_for:
+    path: "{{item}}"
+    state: absent
+  with_items:
+    - "{{tomcat_home}}/webapps/oersi/"
+
+- name: stop tomcat
+  shell: '{{tomcat_stop_command}}'
+  
+- name: Ensures config-dir exists
+  file: path='{{ oerindex_backend_configdir }}' state=directory
+
+- name: copy config-files
+  template:
+    src: "{{ item }}"
+    dest: "{{ oerindex_backend_configdir }}/"
+  with_items:
+    - "logback.xml"
+    - "oersi.properties"
+
+- name: Ensures tomcat-config-dir exists
+  file: path='{{ tomcat_home }}/conf/Catalina/localhost' state=directory
+
+- name: copy context.xml.default
+  template:
+    src: "context.xml.default"
+    dest: "{{ tomcat_home }}/conf/Catalina/localhost/context.xml.default"
+
+- name: Ensures inst-dir exists
+  file: path='{{ oerindex_backend_downloaddir }}' state=directory
+
+- name: download OER search index backend
+  get_url:
+    url: "{{ oerindex_backend_artifact_url }}"
+    force: yes
+    dest: "{{ oerindex_backend_downloaddir }}/oersi-backend.zip"
+
+- name: Ensure unzip is present
+  package:
+    name: ["unzip"]
+  become: yes
+  tags:
+  - root-task
+
+- name: remove war-files from download dir
+  file:
+    path: "{{item}}"
+    state: absent
+  with_fileglob:
+    - "{{ oerindex_backend_downloaddir }}/oersi-backend*.war"
+
+- name: extract OER search index backend
+  unarchive:
+    remote_src: yes
+    src: '{{ oerindex_backend_downloaddir }}/oersi-backend.zip'
+    dest: "{{ oerindex_backend_downloaddir }}"
+    extra_opts:
+      - -j
+
+- name: copy war-files to tomcat
+  copy:
+    src: "{{ item }}"
+    dest: "{{tomcat_home}}/webapps/oersi.war"
+    remote_src: yes
+  with_fileglob:
+    - "{{ oerindex_backend_downloaddir }}/oersi-backend*.war"
+
+- name: start tomcat
+  shell: '{{tomcat_start_command}}'

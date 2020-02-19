@@ -1,0 +1,5 @@
+---
+- src: geerlingguy.elasticsearch
+  version: 4.1.0
+- src: geerlingguy.logstash
+  version: 5.0.2

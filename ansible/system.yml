@@ -1,0 +1,30 @@
+---
+- hosts: all
+  become: yes
+  roles:
+    - set-timezone
+  tags:
+    - root-task
+
+- hosts: oerindex
+  become: yes
+  roles:
+    - mariadb
+    - elasticsearch
+    - logstash
+  tags:
+    - root-task
+
+- hosts: oerindex
+  roles:
+    - tomcat
+    - oer-metadata-harvester
+    - oer-search-index-backend
+
+- hosts: oerindex
+  become: yes
+  roles:
+    - oer-search-index-frontend
+    - nginx
+  tags:
+    - root-task

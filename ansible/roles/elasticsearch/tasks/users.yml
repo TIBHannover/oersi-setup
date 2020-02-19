@@ -1,0 +1,95 @@
+---
+- name: Check if bootstrap password is set
+  command: "{{elasticsearch.home}}/bin/elasticsearch-keystore list"
+  register: list_keystore
+  changed_when: False
+
+- name: set fact update_bootstrap_password
+  set_fact:
+    update_bootstrap_password: "{{list_keystore is defined and 'bootstrap.password' not in list_keystore.stdout_lines}}"
+    
+- name: Create Bootstrap password for elastic user
+  shell: echo "{{elasticsearch.bootstrap_password}}" | {{elasticsearch.home}}/bin/elasticsearch-keystore add -x 'bootstrap.password'
+  notify: restart elasticsearch
+  when: update_bootstrap_password
+  no_log: true
+
+- name: Force a restart if configuration has changed.
+  meta: flush_handlers
+
+- name: Update elastic-user Bootstrap password
+  uri:
+    url: "{{elasticsearch_api_url}}/_security/user/{{elasticsearch.elastic_username}}/_password"
+    method: POST
+    body_format: json
+    body: '{ "password":"{{elasticsearch.elastic_password}}" }'
+    status_code: 200
+    user: "{{elasticsearch.elastic_username}}"
+    password: "{{elasticsearch.bootstrap_password}}"
+    force_basic_auth: yes
+  when: update_bootstrap_password
+  no_log: true
+  
+- name: Update builtin-user passwords
+  uri:
+    url: "{{elasticsearch_api_url}}/_security/user/{{item.name}}/_password"
+    method: POST
+    body_format: json
+    body: '{ "password":"{{item.password}}" }'
+    status_code: 200
+    user: "{{elasticsearch.elastic_username}}"
+    password: "{{elasticsearch.elastic_password}}"
+    force_basic_auth: yes
+  no_log: true
+  with_items: "{{elasticsearch.builtin_users}}"
+  
+- name: Create or update oer roles
+  uri:
+    url: "{{elasticsearch_api_url}}/_security/role/{{ item.name }}"
+    method: POST
+    body_format: json
+    body: '{{ item.role_definition | to_json }}'
+    status_code: 200
+    user: "{{elasticsearch.elastic_username}}"
+    password: "{{elasticsearch.elastic_password}}"
+    force_basic_auth: yes
+  with_items:
+    - name: oer_logstash_writer
+      role_definition:
+        cluster: [ "manage_index_templates", "monitor" ]
+        indices:
+          - names: "logstash-*"
+            privileges: [ "write","create","delete","create_index","manage" ]
+          - names: "{{ elasticsearch.oer_index_name }}"
+            privileges:
+              - all
+    - name: oer_readonly
+      role_definition:
+        indices:
+          - names: "{{ elasticsearch.oer_index_name }}"
+            privileges:
+              - read
+
+- name: Create or update oer users
+  uri:
+    url: "{{elasticsearch_api_url}}/_security/user/{{ item.name }}"
+    method: POST
+    body_format: json
+    body: '{
+      "password" : "{{ item.password }}",
+      "roles" : [ "{{ item.roles }}" ]
+    }'
+    status_code: 200
+    user: "{{elasticsearch.elastic_username}}"
+    password: "{{elasticsearch.elastic_password}}"
+    force_basic_auth: yes
+  no_log: true
+  with_items:
+    - name: "{{ elasticsearch.oersi_logstash_username }}"
+      password: "{{ elasticsearch.oersi_logstash_password }}"
+      roles: "oer_logstash_writer"
+    - name: "{{ elasticsearch.oersi_viewer_username }}"
+      password: "{{ elasticsearch.oersi_viewer_password }}"
+      roles: "oer_readonly"
+  
+  

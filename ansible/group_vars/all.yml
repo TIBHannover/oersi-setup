@@ -1,0 +1,72 @@
+---
+oerindex_host: 192.168.98.115
+
+mariadb_host: localhost
+mariadb_port: 3306
+mariadb_jconnector_url: https://repo1.maven.org/maven2/org/mariadb/jdbc/mariadb-java-client/2.5.3/mariadb-java-client-2.5.3.jar
+
+base_dir: "{{ansible_env.HOME}}"
+
+oerindex_db:
+  name: oerindex_db
+  user: oerindex
+  password: oerindexpw
+
+oerindex_frontend_instdir: "/var/www/oersi-frontend"
+oerindex_frontend_artifact_url: "https://gitlab.com/TIBHannover/oer/oersi-frontend/-/jobs/artifacts/master/download?job=build"
+
+oerindex_backend_downloaddir: "{{ base_dir }}/oersi-backend"
+oerindex_backend_configdir: "{{ base_dir }}/oersi-backend/config"
+oerindex_backend_artifact_url: 'https://gitlab.com/TIBHannover/oer/oersi-backend/-/jobs/artifacts/master/download?job=deploy'
+
+oerindex_harvester_instdir: "{{ base_dir }}/metadata_harvester"
+
+elasticsearch:
+  host: localhost
+  port: 9200
+  home: "/usr/share/elasticsearch"
+  elastic_username: elastic
+  bootstrap_password: bootstrap
+  elastic_password: changeme
+  builtin_users:
+    - name: apm_system
+      password: changeme
+    - name: beats_system
+      password: changeme
+    - name: logstash_system
+      password: changeme
+    - name: kibana
+      password: changeme
+    - name: remote_monitoring_user
+      password: changeme
+  oer_index_name: oer_data
+  # logstash-user that writes to the oer-index
+  oersi_logstash_username: oersi_logstash
+  oersi_logstash_password: ch@ngeMe
+  # user with read-only access to oer-index
+  oersi_viewer_username: oersi_viewer
+  oersi_viewer_password: ch@ngeMe
+
+elasticsearch_api_url: "http://{{elasticsearch.host}}:{{elasticsearch.port}}"
+
+#elasticsearch_network_host: "0.0.0.0"
+#elasticsearch_http_port: 9200
+#elasticsearch_heap_size_min: 1g
+#elasticsearch_heap_size_max: 2g
+
+logstash_monitor_local_syslog: false
+logstash_install_plugins:
+  - logstash-input-jdbc
+  
+  
+tomcat_name: apache-tomcat-9.0.31
+tomcat_archive_url: 'https://archive.apache.org/dist/tomcat/tomcat-9/v9.0.31/bin/{{tomcat_name}}.tar.gz'
+tomcat_port: 8080
+tomcat_shutdown_port: 8005
+tomcat_ssl_port: 8443
+tomcat_ajp_port: 8009
+tomcat_inst_dir: "{{base_dir}}"
+tomcat_bin: "{{tomcat_inst_dir}}/bin"
+tomcat_home: "{{tomcat_inst_dir}}/tomcat"
+tomcat_start_command: "nohup {{tomcat_bin}}/tomcat.sh start </dev/null >/dev/null 2>&1 &"
+tomcat_stop_command: "{{tomcat_bin}}/tomcat.sh stop"

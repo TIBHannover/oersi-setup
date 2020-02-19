@@ -1,0 +1,22 @@
+---
+- name: Ensures inst-dir exists
+  file: path='{{ oerindex_frontend_instdir }}' state=directory
+
+- name: download OER search index frontend
+  get_url:
+    url: "{{ oerindex_frontend_artifact_url }}"
+    force: yes
+    dest: "{{ oerindex_frontend_instdir }}.zip"
+
+- name: Ensure unzip is present
+  package:
+    name: ["unzip"]
+  become: yes
+  tags:
+  - root-task
+
+- name: extract OER search index frontend
+  unarchive:
+    remote_src: yes
+    src: '{{ oerindex_frontend_instdir }}.zip'
+    dest: "{{ oerindex_frontend_instdir }}"
