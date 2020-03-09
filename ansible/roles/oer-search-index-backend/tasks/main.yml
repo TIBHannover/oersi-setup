@@ -51,12 +51,18 @@
   tags:
   - root-task
 
+- name: find war-files in download directory
+  find:
+    paths: "{{ oerindex_backend_downloaddir }}"
+    patterns: oersi-backend*.war
+  register: oersi_existing_war_find_result
+
 - name: remove war-files from download dir
   file:
-    path: "{{item}}"
+    path: "{{ item.path }}"
     state: absent
-  with_fileglob:
-    - "{{ oerindex_backend_downloaddir }}/oersi-backend*.war"
+  with_items:
+    - "{{ oersi_existing_war_find_result.files }}"
 
 - name: extract OER search index backend
   unarchive:
@@ -66,13 +72,19 @@
     extra_opts:
       - -j
 
+- name: find war-files in download directory
+  find:
+    paths: "{{ oerindex_backend_downloaddir }}"
+    patterns: oersi-backend*.war
+  register: oersi_war_find_result
+
 - name: copy war-files to tomcat
   copy:
-    src: "{{ item }}"
+    src: "{{ item.path }}"
     dest: "{{tomcat_home}}/webapps/oersi.war"
     remote_src: yes
-  with_fileglob:
-    - "{{ oerindex_backend_downloaddir }}/oersi-backend*.war"
+  with_items:
+    - "{{ oersi_war_find_result.files }}"
 
 - name: start tomcat
   shell: '{{tomcat_start_command}}'
