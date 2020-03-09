@@ -52,9 +52,9 @@ vagrant reload --provision
 
 ## Technologies
 
-- **Scrapy**: First OER repositories are crawled using [Scrapy](http://scrapy.org/) -> just for the first prototype; a general, robust approach has to be developed (see https://gitlab.com/TIBHannover/oer/oersi-metadata-harvester)
+- **Scrapy**: First OER repositories are crawled using [Scrapy](http://scrapy.org/) -> just for the first prototype; a general, robust approach has to be developed (see https://gitlab.com/oersi/oersi-metadata-harvester)
 - **MariaDB**: Used to store the results of Scrapy.
 - **Logstash**: Logstash is regulary checking the MariaDB database, if any new items are added or changes are made to existing entries.
 - **Elasticsearch**: Elasticsearch is the search engine and indexes the input it gets from Logstash.
-- **Backend**: The backend is the interface for read/write access to the index, see https://gitlab.com/TIBHannover/oer/oersi-backend
-- **Frontend**: The frontend is used from https://gitlab.com/TIBHannover/oer/oer-search-index-frontend
+- **Backend**: The backend is the interface for read/write access to the index, see https://gitlab.com/oersi/oersi-backend
+- **Frontend**: The frontend is used from https://gitlab.com/oersi/oersi-frontend
