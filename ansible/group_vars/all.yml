@@ -70,3 +70,6 @@ tomcat_bin: "{{tomcat_inst_dir}}/bin"
 tomcat_home: "{{tomcat_inst_dir}}/tomcat"
 tomcat_start_command: "nohup {{tomcat_bin}}/tomcat.sh start </dev/null >/dev/null 2>&1 &"
 tomcat_stop_command: "{{tomcat_bin}}/tomcat.sh stop"
+
+oerindex_backend_oermetadata_manage_user: test
+oerindex_backend_oermetadata_manage_password: test

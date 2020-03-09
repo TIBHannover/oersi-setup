@@ -10,6 +10,14 @@ With this project you can set up all components that are necessary to run the in
 
 Currently some parts of this project are based on the prototypes [oerhoernchen20](https://github.com/programmieraffe/oerhoernchen20) made by [Matthias Andrasch](https://twitter.com/m_andrasch) and [Docker-Hoernchen 2.0](https://github.com/sroertgen/oerhoernchen20_docker) made by [Steffen Rörtgen (im Rahmen des Projektes JOINTLY)](https://github.com/sroertgen).
 
+## installation
+
+* install ansible galaxy roles:
+     * ```ansible-galaxy install geerlingguy.elasticsearch,4.1.0``` 
+     * ```ansible-galaxy install geerlingguy.logstash,5.0.2``` 
+* create config.yml (see config-example.yml)
+* ```ansible-playbook -v -i config.yml ansible/system.yml```
+
 ## Run it locally 
 
 Set up an oer-search-index in a virtual machine with minimal effort.
