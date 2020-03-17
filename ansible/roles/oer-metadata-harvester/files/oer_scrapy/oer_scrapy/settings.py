@@ -66,11 +66,11 @@ EXTENSIONS = {
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-    'oer_scrapy.pipelines.NormLicensePipeline': 200,
-    'oer_scrapy.pipelines.JoinLongWhiteSpaceStringsPipeline': 250,
-    # # 'oer_scrapy.pipelines.TagPipeline': 260,
-    'oer_scrapy.pipelines.NormLinksPipeline': 270,
-    'oer_scrapy.pipelines.MySqlPipeline': 300,
+    'oer_scrapy.pipeline-service.NormLicensePipeline': 200,
+    'oer_scrapy.pipeline-service.JoinLongWhiteSpaceStringsPipeline': 250,
+    'oer_scrapy.pipeline-service.NormLanguagePipeline': 270,
+    'oer_scrapy.pipeline-service.NormLinksPipeline': 290,
+    'oer_scrapy.pipeline-service.ServisePipeline': 350,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
