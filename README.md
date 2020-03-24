@@ -8,6 +8,8 @@ The search index offers the possibility to search quickly in various oer sources
 
 With this project you can set up all components that are necessary to run the index. The process uses [ansible](https://docs.ansible.com/) to install the components.
 
+You can find stable versions of the setup in the branches **_release/\*\*_**. Other branches (including _master_) are used for development.
+
 Currently some parts of this project are based on the prototypes [oerhoernchen20](https://github.com/programmieraffe/oerhoernchen20) made by [Matthias Andrasch](https://twitter.com/m_andrasch) and [Docker-Hoernchen 2.0](https://github.com/sroertgen/oerhoernchen20_docker) made by [Steffen Rörtgen (im Rahmen des Projektes JOINTLY)](https://github.com/sroertgen).
 
 ## Concept
