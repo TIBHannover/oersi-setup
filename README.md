@@ -12,12 +12,22 @@ Currently some parts of this project are based on the prototypes [oerhoernchen20
 
 ## Concept
 
+![Overview OERSI](doc/images/OER-Search-Index-Overview.png)
+
+### Central Index
+
+As a link between the individual OER repositories. The index harvests (e.g. daily) the repositories of the federal states, or generally data sources that provide metadata, such as the AV portal, SlideWiki etc.
+
+### Local Index
+
+The same index can also be reused at the level of a federal state (or generally distributed), assuming that no data storage is required, but only linking of content (e.g. from LMS or GitLab). Here the harvester can be used to read out e.g. the LMS of the universities or a state-wide GitLab instance. Alternatively, a user management system can be connected for this purpose, with which individual persons can insert, change or delete their own content.
+
 ### Components
 
 * **Harvester**: The harvester connects to the individual repositories and fetches metadata updates according to a configured schedule (e.g. daily).
 * **API / Backend**: Provides interfaces to retrieve data from the index (external) and to import / update data into the index (internal). A read-only user is used to retrieve data. When creating / updating the data, the data is first written into an SQL database and from there written into an elasticsearch index with the help of logstash.
 * **Frontend**: Website that displays the data from the index and offers the possibility to search
-* **User Management**: _Optional_ - only needed if the index is used as a standalone solution. So users can be given access to manually update the data via a UI.
+* **User Management**: _Optional_ - only needed if the index is used as a (local) standalone solution. So users can be given access to manually update the data via a UI.
 
 ![Components OERSI](doc/images/OER-Search-Index-Components.png)
 
