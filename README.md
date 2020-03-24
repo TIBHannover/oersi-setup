@@ -33,11 +33,17 @@ The same index can also be reused at the level of a federal state (or generally 
 
 ## Installation
 
+* requirements:
+     * [ansible](https://docs.ansible.com/) installed on the local computer
 * install ansible galaxy roles:
      * ```ansible-galaxy install geerlingguy.elasticsearch,4.1.0``` 
      * ```ansible-galaxy install geerlingguy.logstash,5.0.2``` 
-* create config.yml (see config-example.yml)
-* ```ansible-playbook -v -i config.yml ansible/system.yml```
+* create ansible inventory _config.yml_ (see [config-example.yml](config-example.yml)) and adjust all variables to your installation (see variables in _ansible/group_vars_)
+* run ```ansible-playbook -v -i config.yml ansible/system.yml```
+
+## Automatic installation via gitlab ci
+
+coming soon...
 
 ## Run it locally 
 
