@@ -40,8 +40,13 @@
     group: root
     mode: 0644
   with_items:
-    - jdbc-input.conf
-    - elasticsearch-output.conf
+    - jdbc_imput_metadata.conf
+    - jdb_streaming_authors.conf
+    - jdbc_streaming_didactic.conf
+    - jdbc_streaming_didactic.conf
+    - jdbc_streaming_institution.conf
+    - filter_mutate.conf
+    - output_elastic_search.conf
   notify: restart logstash
   
 - name: Force a restart if configuration has changed.
