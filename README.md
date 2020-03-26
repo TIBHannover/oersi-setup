@@ -8,15 +8,44 @@ The search index offers the possibility to search quickly in various oer sources
 
 With this project you can set up all components that are necessary to run the index. The process uses [ansible](https://docs.ansible.com/) to install the components.
 
+You can find stable versions of the setup in the branches **_release/\*\*_**. Other branches (including _master_) are used for development.
+
 Currently some parts of this project are based on the prototypes [oerhoernchen20](https://github.com/programmieraffe/oerhoernchen20) made by [Matthias Andrasch](https://twitter.com/m_andrasch) and [Docker-Hoernchen 2.0](https://github.com/sroertgen/oerhoernchen20_docker) made by [Steffen Rörtgen (im Rahmen des Projektes JOINTLY)](https://github.com/sroertgen).
 
-## installation
+## Concept
 
+![Overview OERSI](doc/images/OER-Search-Index-Overview.png)
+
+### Central Index
+
+As a link between the individual OER repositories. The index harvests (e.g. daily) the repositories of the federal states, or generally data sources that provide metadata, such as the AV portal, SlideWiki etc.
+
+### Local Index
+
+The same index can also be reused at the level of a federal state (or generally distributed), assuming that no data storage is required, but only linking of content (e.g. from LMS or GitLab). Here the harvester can be used to read out e.g. the LMS of the universities or a state-wide GitLab instance. Alternatively, a user management system can be connected for this purpose, with which individual persons can insert, change or delete their own content.
+
+### Components
+
+* **Harvester**: The harvester connects to the individual repositories and fetches metadata updates according to a configured schedule (e.g. daily).
+* **API / Backend**: Provides interfaces to retrieve data from the index (external) and to import / update data into the index (internal). A read-only user is used to retrieve data. When creating / updating the data, the data is first written into an SQL database and from there written into an elasticsearch index with the help of logstash.
+* **Frontend**: Website that displays the data from the index and offers the possibility to search
+* **User Management**: _Optional_ - only needed if the index is used as a (local) standalone solution. So users can be given access to manually update the data via a UI.
+
+![Components OERSI](doc/images/OER-Search-Index-Components.png)
+
+## Installation
+
+* requirements:
+     * [ansible](https://docs.ansible.com/) installed on the local computer
 * install ansible galaxy roles:
      * ```ansible-galaxy install geerlingguy.elasticsearch,4.1.0``` 
      * ```ansible-galaxy install geerlingguy.logstash,5.0.2``` 
-* create config.yml (see config-example.yml)
-* ```ansible-playbook -v -i config.yml ansible/system.yml```
+* create ansible inventory _config.yml_ (see [config-example.yml](config-example.yml)) and adjust all variables to your installation (see variables in _ansible/group_vars_)
+* run ```ansible-playbook -v -i config.yml ansible/system.yml```
+
+## Automatic installation via gitlab ci
+
+coming soon...
 
 ## Run it locally 
 
