@@ -18,7 +18,7 @@ Currently some parts of this project are based on the prototypes [oerhoernchen20
 
 ### Central Index
 
-As a link between the individual OER repositories. The index harvests (e.g. daily) the repositories of the federal states, or generally data sources that provide metadata, such as the AV portal, SlideWiki etc.
+As a link between the individual OER repositories, the index harvests (e.g. daily) the repositories of the federal states, or generally data sources that provide metadata, such as the AV portal, SlideWiki etc.
 
 ### Local Index
 
@@ -58,7 +58,7 @@ Prerequisites
 
 Perform the following steps in the terminal (Linux / macOS) or in the GitBash (Windows).
 ```
-git clone https://gitlab.com/TIBHannover/oer/oersi-setup.git
+git clone https://gitlab.com/oersi/oersi-setup.git
 cd oersi-setup
 vagrant up
 ```
