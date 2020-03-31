@@ -40,8 +40,9 @@
     group: root
     mode: 0644
   with_items:
-    - jdbc-input.conf
-    - elasticsearch-output.conf
+    - input_jdbc_metadata.conf
+    - filter_jdbc.conf
+    - output_elastic_search.conf
   notify: restart logstash
   
 - name: Force a restart if configuration has changed.

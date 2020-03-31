@@ -57,6 +57,7 @@ elasticsearch_api_url: "http://{{elasticsearch.host}}:{{elasticsearch.port}}"
 logstash_monitor_local_syslog: false
 logstash_install_plugins:
   - logstash-input-jdbc
+  - logstash-filter-jdbc_streaming
   
   
 tomcat_name: apache-tomcat-9.0.31
