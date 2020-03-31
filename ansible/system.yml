@@ -18,8 +18,8 @@
 - hosts: oerindex
   roles:
     - tomcat
-    - oer-search-index-backend
     - oer-metadata-harvester
+    - oer-search-index-backend
 
 - hosts: oerindex
   become: yes
