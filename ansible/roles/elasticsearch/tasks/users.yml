@@ -63,9 +63,6 @@
           - names: "{{ elasticsearch.oer_index_name }}"
             privileges:
               - all
-          - names: "oer_test"
-            privileges:
-              - all
     - name: oer_readonly
       role_definition:
         indices:
