@@ -28,6 +28,14 @@
               }
             }
           },
+          "fullname" : {
+            "type" : "text",
+            "fields" : {
+              "keyword" : {
+                "type" : "keyword"
+              }
+            }
+          },
           "firstname" : {
             "type" : "text",
             "fields" : {
