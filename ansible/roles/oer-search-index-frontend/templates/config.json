@@ -1,8 +1,7 @@
 {
-  "name": "Production",
   "ELASTIC_SEARCH": {
-    "URL": "http://192.168.98.115/es/",
+    "URL": "http://{{ oerindex_host }}/es/",
     "CREDENCIAL": "",
-    "APP_NAME": "oer_data"
+    "APP_NAME": "{{ elasticsearch.oer_index_name }}"
   }
 }
