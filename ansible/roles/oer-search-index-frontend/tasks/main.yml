@@ -20,3 +20,9 @@
     remote_src: yes
     src: '{{ oerindex_frontend_instdir }}.zip'
     dest: "{{ oerindex_frontend_instdir }}"
+
+- name: Add configuration file file.
+  become: yes
+  template:
+    src: "config.json"
+    dest: '{{ oerindex_frontend_instdir }}/build/config/config.json'
