@@ -88,3 +88,7 @@ vagrant reload --provision
 - **Elasticsearch**: Elasticsearch is the search engine and indexes the input it gets from Logstash.
 - **Backend**: The backend is the interface for read/write access to the index, see https://gitlab.com/oersi/oersi-backend
 - **Frontend**: The frontend is used from https://gitlab.com/oersi/oersi-frontend
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
