@@ -8,9 +8,7 @@ The search index offers the possibility to search quickly in various oer sources
 
 With this project you can set up all components that are necessary to run the index. The process uses [ansible](https://docs.ansible.com/) to install the components.
 
-You can find stable versions of the setup in the branches **_release/\*\*_**. Other branches (including _master_) are used for development.
-
-Currently some parts of this project are based on the prototypes [oerhoernchen20](https://github.com/programmieraffe/oerhoernchen20) made by [Matthias Andrasch](https://twitter.com/m_andrasch) and [Docker-Hoernchen 2.0](https://github.com/sroertgen/oerhoernchen20_docker) made by [Steffen Rörtgen (im Rahmen des Projektes JOINTLY)](https://github.com/sroertgen).
+You can find stable versions of the setup in the branch **_master_**.
 
 ## Concept
 
@@ -80,6 +78,10 @@ If you want to reload the configuration (including the import from the oer sourc
 vagrant reload --provision
 ```
 
+## Contributing
+
+Contributions are welcome. Please read [CONTRIBUTING.md](CONTRIBUTING.md) for further details.
+
 ## Technologies
 
 - **Scrapy**: First OER repositories are crawled using [Scrapy](http://scrapy.org/) -> just for the first prototype; a general, robust approach has to be developed (see https://gitlab.com/oersi/oersi-metadata-harvester)
@@ -92,3 +94,7 @@ vagrant reload --provision
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+Inspired by [OERhoernchen 2.0](https://github.com/programmieraffe/oerhoernchen20) (by [Matthias Andrasch](https://twitter.com/m_andrasch)) and [Docker-Hoernchen 2.0](https://github.com/sroertgen/oerhoernchen20_docker) (by [Steffen Rörtgen](https://github.com/sroertgen)).
