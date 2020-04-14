@@ -7,7 +7,7 @@ If you contribute to the OER search index repositories, please ensure that you c
 * Code Style: [Google Code Style](https://google.github.io/styleguide/)
 * no issues in [sonarlint](https://www.sonarlint.org/)
 * always add automated tests for new code
-* language: everything (source code, comments, variables, ...) in English
+* language: everything (source code, comments, documentation, ...) in English
 
 ## Definition of Done
 
