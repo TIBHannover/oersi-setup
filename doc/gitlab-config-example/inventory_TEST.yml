@@ -1,0 +1,34 @@
+oerindex:
+  hosts:
+    your.oersi.test.host:
+      ansible_ssh_user: your_user
+      ansible_become_password: changeme
+      
+      oersi_setup_branch: master
+
+      oerindex_host: your.oersi.test.host
+      oerindex_db:
+        name: oerindex_db
+        user: oerindex
+        password: oerindexpw
+      elasticsearch_elastic_password: changeme
+      elasticsearch_bootstrap_password: bootstrap
+      elasticsearch_builtin_users:
+        - name: apm_system
+          password: changeme
+        - name: beats_system
+          password: changeme
+        - name: logstash_system
+          password: changeme
+        - name: kibana
+          password: changeme
+        - name: remote_monitoring_user
+          password: changeme
+      # logstash-user that writes to the oer-index
+      elasticsearch_oersi_logstash_username: oersi_logstash
+      elasticsearch_oersi_logstash_password: ch@ngeMe
+      # user with read-only access to oer-index
+      elasticsearch_oersi_viewer_username: oersi_viewer
+      elasticsearch_oersi_viewer_password: ch@ngeMe
+      oerindex_backend_oermetadata_manage_user: test
+      oerindex_backend_oermetadata_manage_password: test
