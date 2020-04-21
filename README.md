@@ -45,7 +45,28 @@ The same index can also be reused at the level of a federal state (or generally 
 
 ## Automatic installation via gitlab ci
 
-coming soon...
+* Create a new private gitlab project that will contain the configuration for your oersi-systems
+* Assure your gitlab-project is able to connect to your oersi-systems via ssh
+     * Create an ssh-key for the automatic installation via gitlab
+     * Your public ssh-key needs to be added to the authorized_keys file on your oersi-systems
+     ```
+     vi ~/.ssh/authorized_keys
+     chmod 600 ~/.ssh/authorized_keys
+     ```
+     * go to **Settings** -> **CI / CD** -> **Variables** of your project in gitlab and add variables
+          * **SSH_KNOWN_HOSTS** - contains entries for your oersi-systems
+          * **SSH_PRIVATE_KEY** - your private ssh-key
+* Use _.gitlab-ci.yml_, _oersi-playbook.yml_ and _prerequisites.yml_ from the [gitlab-config-example](doc/gitlab-config-example)
+* Create your own inventory-files with help of _inventory_DEV.yml_ and _inventory_TEST.yml_
+     * When you adjust the filenames of your inventory-files, please assure to also adjust the filenames in _.gitlab-ci.yml_
+     * Assure root access via [ansible connection variables](https://docs.ansible.com/ansible/latest/user_guide/become.html#become-connection-variables) like _ansible_become_password_.
+     * **oersi_setup_branch** - _master_ for latest release version, _develop_ for latest stable development version
+* Now you should be able to update your systems via your gitlab-project
+     * Call: **CI / CD** -> **Pipelines** -> **Latest**
+     * Click the "Play"-Button for the system you want to update
+* Optionally you can activate Continuous Delivery
+     * Create a Gitlab-Schedule in your project **CI / CD** -> **Schedules**
+     * uncomment "scheduled deployment" section in _.gitlab-ci.yml_ and adjust to your inventory-filename
 
 ## Run it locally 
 
