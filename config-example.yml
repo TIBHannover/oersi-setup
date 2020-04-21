@@ -12,31 +12,25 @@ example:
         name: oerindex_db
         user: oerindex
         password: oerindexpw
-      elasticsearch:
-        host: localhost
-        port: 9200
-        home: "/usr/share/elasticsearch"
-        elastic_username: elastic
-        bootstrap_password: bootstrap
-        elastic_password: changeme
-        builtin_users:
-          - name: apm_system
-            password: changeme
-          - name: beats_system
-            password: changeme
-          - name: logstash_system
-            password: changeme
-          - name: kibana
-            password: changeme
-          - name: remote_monitoring_user
-            password: changeme
-        oer_index_name: oer_data
-        # logstash-user that writes to the oer-index
-        oersi_logstash_username: oersi_logstash
-        oersi_logstash_password: ch@ngeMe
-        # user with read-only access to oer-index
-        oersi_viewer_username: oersi_viewer
-        oersi_viewer_password: ch@ngeMe
+      elasticsearch_elastic_password: changeme
+      elasticsearch_bootstrap_password: bootstrap
+      elasticsearch_builtin_users:
+        - name: apm_system
+          password: changeme
+        - name: beats_system
+          password: changeme
+        - name: logstash_system
+          password: changeme
+        - name: kibana
+          password: changeme
+        - name: remote_monitoring_user
+          password: changeme
+      # logstash-user that writes to the oer-index
+      elasticsearch_oersi_logstash_username: oersi_logstash
+      elasticsearch_oersi_logstash_password: ch@ngeMe
+      # user with read-only access to oer-index
+      elasticsearch_oersi_viewer_username: oersi_viewer
+      elasticsearch_oersi_viewer_password: ch@ngeMe
       oerindex_backend_oermetadata_manage_user: test
       oerindex_backend_oermetadata_manage_password: test
 
