@@ -1,0 +1,27 @@
+---
+- name: Ensure mysql python packages are present
+  package:
+    name: python-mysqldb
+  become: yes
+  tags:
+  - root-task
+
+- name: Create a new database
+  mysql_db:
+    name: '{{ oerindex_db.name }}'
+    encoding: 'utf8'
+    collation: 'utf8_bin'
+    config_file: /etc/my.cnf.d/mysql.cnf
+    state: present
+  become: yes
+  tags:
+  - root-task
+
+- name: Create database user
+  mysql_user:
+    name: '{{oerindex_db.user}}'
+    password: '{{oerindex_db.password}}'
+    priv: '{{ oerindex_db.name }}.*:ALL'
+  become: yes
+  tags:
+  - root-task

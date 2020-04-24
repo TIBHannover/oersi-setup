@@ -1,0 +1,23 @@
+---
+- name: Install nginx
+  package:
+    name: [ "nginx" ]
+    state: present
+  tags:
+  - root-task
+
+- name: Configure nginx.
+  become: yes
+  template:
+    src: "nginx.conf"
+    dest: /etc/nginx/nginx.conf
+  tags:
+    - root-task
+
+- name: restart nginx
+  become: yes
+  service:
+    name: nginx
+    state: restarted
+  tags:
+  - root-task

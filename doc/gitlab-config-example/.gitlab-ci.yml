@@ -1,0 +1,40 @@
+stages:
+  - deploy
+
+.deploy_job:
+  image: mullnerz/ansible-playbook:2.9.1
+  stage: deploy
+  before_script:
+    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | base64 -d | tr -d '\r' | ssh-add -
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - echo "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
+  script:
+    - ansible-playbook -v -i ${INVENTORY_FILE} prerequisites.yml
+    - ansible-playbook -v -i ${INVENTORY_FILE} oersi-playbook.yml
+
+#scheduled deploy to Develop:
+#  variables:
+#    INVENTORY_FILE: inventory_DEV.yml
+#  extends: .deploy_job
+#  only:
+#    - schedules
+
+deploy to Develop:
+  variables:
+    INVENTORY_FILE: inventory_DEV.yml
+  extends: .deploy_job
+  only:
+    - master
+  when: manual
+
+deploy to Test:
+  variables:
+    INVENTORY_FILE: inventory_TEST.yml
+  extends: .deploy_job
+  only:
+    - master
+  when: manual
