@@ -5,21 +5,26 @@ If you contribute to the OER search index repositories, please ensure that you c
 ## Coding conventions
 
 * Code Style: [Google Code Style](https://google.github.io/styleguide/)
-* no issues in [sonarlint](https://www.sonarlint.org/)
-* [sonarcloud](https://sonarcloud.io/) Quality Gate passed for the merge request
-* always add automated tests for new code
-* language: everything (source code, comments, documentation, ...) in English
+* No issues in [sonarlint](https://www.sonarlint.org/).
+* [sonarcloud](https://sonarcloud.io/) Quality Gate passed for the merge request.
+* Automated tests for new code should always be added.
+* Language: everything (source code, comments, documentation, ...) in English.
+* Commit messages guidelines
+     * The commit subject must not contain more than 72 characters.
+     * The commit subject and body must be separated by a blank line.
+     * The issue or merge request should be added to the commit message.
+     * Use issues and merge requests' full URLs instead of short references.
 
 ## Definition of Done
 
 When can a task be marked as "finished"?
 
-* All requirements of the feature implemented / all acceptance criteria fulfilled
-* Documentation is completely finished and understandable
-* automated tests (e.g. unit tests) have been created, code coverage > 80%
-* no open bugs (testing with [sonarlint](https://www.sonarlint.org/) / [sonarcloud](https://sonarcloud.io/))
-* the code is finished and merged into the development branch
-* concluding short comment: what has been done / what is the current status?
+* All requirements of the feature implemented / all acceptance criteria fulfilled.
+* Documentation is completely finished and understandable.
+* Automated tests (e.g. unit tests) have been created, code coverage > 80%
+* No open bugs (testing with [sonarlint](https://www.sonarlint.org/) / [sonarcloud](https://sonarcloud.io/))
+* The code is finished and merged into the development branch.
+* Concluding short comment: what has been done / what is the current status?
 
 ## Branching Strategy
 
@@ -43,6 +48,6 @@ When can a task be marked as "finished"?
      
 ![Branching Strategy](doc/images/branching_strategy.png)
 
-### Workflow for external contributors
+### Branching Workflow for external contributors (fork)
 
-Any developer interested in collaborating should fork the repository and work on that local copy on a specific feature/topic. When the feature is fully implemented (see [Definition of Done](#definition-of-done)), a merge request can be opened to merge the changes into the development branch of the original repository.
+Any developer interested in collaborating should fork the repository and work on that local copy on a specific feature/topic. A feature branch should be created in the fork from the develop branch. When the feature is fully implemented (see [Definition of Done](#definition-of-done)), a merge request can be opened to merge the changes from the feature branch into the develop branch of the original repository.
