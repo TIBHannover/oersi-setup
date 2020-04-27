@@ -1,6 +1,17 @@
 # Contributing
 
-If you contribute to the OER search index repositories, please ensure that you comply with the coding conventions, definition of done and the workflow for submitting merge requests. 
+If you contribute to the OER search index repositories, please ensure that you comply with the license, coding conventions, definition of done and the workflow for submitting merge requests.
+
+## Workflow for external contributers
+
+* If you'd like to contribute, start by searching through the issues and merge requests to see whether someone else has raised a similar idea or question.
+* If you don't see your idea listed, do one of the following:
+     * If your contribution is minor, such as a typo fix, open a merge request.
+     * Otherwise open an issue first. That way, other people can weigh in on the discussion before you do any work.
+* Fork the project into your personal namespace (or group).
+* Create a feature branch in your fork from develop (don't work off develop or master).
+* Write tests, code and documentations that satisfy coding conventions.
+* Submit a merge request to the develop branch in the original GitLab project.
 
 ## Coding conventions
 
@@ -24,7 +35,7 @@ When can a task be marked as "finished"?
 * Automated tests (e.g. unit tests) have been created, code coverage > 80%
 * No open bugs (testing with [sonarlint](https://www.sonarlint.org/) / [sonarcloud](https://sonarcloud.io/))
 * The code is finished and merged into the development branch.
-* Concluding short comment: what has been done / what is the current status?
+* Concluding short comment in the issue: what has been done / what is the current status?
 
 ## Branching Strategy
 
