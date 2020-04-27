@@ -10,8 +10,8 @@ If you contribute to the OER search index repositories, please ensure that you c
      * Otherwise open an issue first. That way, other people can weigh in on the discussion before you do any work.
 * Fork the project into your personal namespace (or group).
 * Create a feature branch in your fork from develop (don't work off develop or master).
-* Write tests, code and documentations that satisfy coding conventions.
-* Submit a merge request to the develop branch in the original GitLab project.
+* Write tests, code and documentations that satisfy [coding conventions](#coding-conventions).
+* When the feature is fully implemented (see [Definition of Done](#definition-of-done)), submit a merge request to the develop branch in the original project.
 
 ## Coding conventions
 
