@@ -1,6 +1,6 @@
 ---
 - name: Check if bootstrap password is set
-  command: "{{elasticsearch.home}}/bin/elasticsearch-keystore list"
+  command: "{{elasticsearch_home}}/bin/elasticsearch-keystore list"
   register: list_keystore
   changed_when: False
 
@@ -9,7 +9,7 @@
     update_bootstrap_password: "{{list_keystore is defined and 'bootstrap.password' not in list_keystore.stdout_lines}}"
     
 - name: Create Bootstrap password for elastic user
-  shell: echo "{{elasticsearch.bootstrap_password}}" | {{elasticsearch.home}}/bin/elasticsearch-keystore add -x 'bootstrap.password'
+  shell: echo "{{elasticsearch_bootstrap_password}}" | {{elasticsearch_home}}/bin/elasticsearch-keystore add -x 'bootstrap.password'
   notify: restart elasticsearch
   when: update_bootstrap_password
   no_log: true
@@ -19,13 +19,13 @@
 
 - name: Update elastic-user Bootstrap password
   uri:
-    url: "{{elasticsearch_api_url}}/_security/user/{{elasticsearch.elastic_username}}/_password"
+    url: "{{elasticsearch_api_url}}/_security/user/{{elasticsearch_elastic_username}}/_password"
     method: POST
     body_format: json
-    body: '{ "password":"{{elasticsearch.elastic_password}}" }'
+    body: '{ "password":"{{elasticsearch_elastic_password}}" }'
     status_code: 200
-    user: "{{elasticsearch.elastic_username}}"
-    password: "{{elasticsearch.bootstrap_password}}"
+    user: "{{elasticsearch_elastic_username}}"
+    password: "{{elasticsearch_bootstrap_password}}"
     force_basic_auth: yes
   when: update_bootstrap_password
   no_log: true
@@ -37,11 +37,11 @@
     body_format: json
     body: '{ "password":"{{item.password}}" }'
     status_code: 200
-    user: "{{elasticsearch.elastic_username}}"
-    password: "{{elasticsearch.elastic_password}}"
+    user: "{{elasticsearch_elastic_username}}"
+    password: "{{elasticsearch_elastic_password}}"
     force_basic_auth: yes
   no_log: true
-  with_items: "{{elasticsearch.builtin_users}}"
+  with_items: "{{elasticsearch_builtin_users}}"
   
 - name: Create or update oer roles
   uri:
@@ -50,8 +50,8 @@
     body_format: json
     body: '{{ item.role_definition | to_json }}'
     status_code: 200
-    user: "{{elasticsearch.elastic_username}}"
-    password: "{{elasticsearch.elastic_password}}"
+    user: "{{elasticsearch_elastic_username}}"
+    password: "{{elasticsearch_elastic_password}}"
     force_basic_auth: yes
   with_items:
     - name: oer_logstash_writer
@@ -60,13 +60,13 @@
         indices:
           - names: "logstash-*"
             privileges: [ "write","create","delete","create_index","manage" ]
-          - names: "{{ elasticsearch.oer_index_name }}"
+          - names: "{{ elasticsearch_oer_index_name }}"
             privileges:
               - all
     - name: oer_readonly
       role_definition:
         indices:
-          - names: "{{ elasticsearch.oer_index_name }}"
+          - names: "{{ elasticsearch_oer_index_name }}"
             privileges:
               - read
 
@@ -80,16 +80,16 @@
       "roles" : [ "{{ item.roles }}" ]
     }'
     status_code: 200
-    user: "{{elasticsearch.elastic_username}}"
-    password: "{{elasticsearch.elastic_password}}"
+    user: "{{elasticsearch_elastic_username}}"
+    password: "{{elasticsearch_elastic_password}}"
     force_basic_auth: yes
   no_log: true
   with_items:
-    - name: "{{ elasticsearch.oersi_logstash_username }}"
-      password: "{{ elasticsearch.oersi_logstash_password }}"
+    - name: "{{ elasticsearch_oersi_logstash_username }}"
+      password: "{{ elasticsearch_oersi_logstash_password }}"
       roles: "oer_logstash_writer"
-    - name: "{{ elasticsearch.oersi_viewer_username }}"
-      password: "{{ elasticsearch.oersi_viewer_password }}"
+    - name: "{{ elasticsearch_oersi_viewer_username }}"
+      password: "{{ elasticsearch_oersi_viewer_password }}"
       roles: "oer_readonly"
   
   

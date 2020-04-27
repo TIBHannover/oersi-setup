@@ -1,13 +1,12 @@
 oerindex:
   hosts:
-    192.168.98.115:
-        ansible_ssh_user: vagrant
-        ansible_ssh_private_key_file: ~/.vagrant.d/insecure_private_key
-        
-example:
-  hosts:
-    192.168.98.115:
-      oerindex_host: 192.168.98.115
+    your.oersi.test.host:
+      ansible_ssh_user: your_user
+      ansible_become_password: changeme
+      
+      oersi_setup_branch: master
+
+      oerindex_host: your.oersi.test.host
       oerindex_db:
         name: oerindex_db
         user: oerindex
@@ -33,4 +32,3 @@ example:
       elasticsearch_oersi_viewer_password: ch@ngeMe
       oerindex_backend_oermetadata_manage_user: test
       oerindex_backend_oermetadata_manage_password: test
-
