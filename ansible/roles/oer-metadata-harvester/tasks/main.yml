@@ -41,5 +41,5 @@
     chdir: '{{ oerindex_harvester_instdir }}'
   with_items:
     - zoerr
-    - hoou
+    #- hoou
     - oernds
