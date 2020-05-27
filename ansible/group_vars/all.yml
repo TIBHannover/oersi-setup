@@ -19,6 +19,7 @@ oerindex_backend_downloaddir: "{{ base_dir }}/oersi-backend"
 oerindex_backend_configdir: "{{ base_dir }}/oersi-backend/config"
 oerindex_backend_artifact_url: 'https://gitlab.com/oersi/oersi-backend/-/jobs/artifacts/develop/download?job=deploy'
 oerindex_backend_searchapi_root_path: '/oersi/es/'
+oerindex_backend_url_scheme: 'http'
 
 oerindex_harvester_instdir: "{{ base_dir }}/metadata_harvester"
 
