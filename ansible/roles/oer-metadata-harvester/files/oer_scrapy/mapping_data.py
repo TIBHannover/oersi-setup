@@ -3,41 +3,26 @@ import json
 
 def populate_json(item):
     return {
-        "authors": [
+        "creator": [
             {
-                "familyName": item["author"].split()[1],
-                "givenName": item["author"].split()[0],
-                "gnd": " ",
-                "orcid": " "
+                "name": item["author"],
+                "type": "Person"
             }
         ],
-        "didactics": {
-            "audience": "",
-            "educationalUse": item["educationalUse"],
-            "interactivityType": item["interactivityType"],
-            "timeRequired": item["timeRequired"]
+        "dateCreated": item["date_published"][:10],
+        "datePublished": item["date_published"][:10],
+        "description": item["about"],
+        "id": item["url"],
+        "image": item["thumbnail"],
+        "inLanguage": item["inLanguage"],
+        "learningResourceType": {
+            "id": item["learningResourceType"]
         },
-        "educationalResource": {
-            "dateCreated": item["date_published"],
-            "dateLastUpdated": item["date_published"],
-            "datePublished": item["date_published"],
-            "description": item["about"],
-            "identifier": " ",
-            "inLanguage": item["inLanguage"],
-            "keywords": re.split("\s|(?<!\d)[,.](?!\d)", item["tags"]),
-            "learningResourceType": item["learningResourceType"],
-            "license": item["license"],
-            "name": item["name"],
-            "subject": "We don't have Subject now ",
-            "thumbnailUrl": item["thumbnail"],
-            "url": item["url"],
-            "version": "1"
+        "license": item["license"],
+        "mainEntityOfPage": {
+            "id": item["url"]
         },
-        "institution": {
-            "name": "OER ",
-            "ror": "TIB-Hannover"
-        },
-        "source": item["source"]
+        "name": item["name"]
     }
 
 

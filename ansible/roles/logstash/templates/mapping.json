@@ -20,39 +20,7 @@
       "authors" : {
         "type" : "nested",
         "properties" : {
-          "familyname" : {
-            "type" : "text",
-            "fields" : {
-              "keyword" : {
-                "type" : "keyword"
-              }
-            }
-          },
           "fullname" : {
-            "type" : "text",
-            "fields" : {
-              "keyword" : {
-                "type" : "keyword"
-              }
-            }
-          },
-          "firstname" : {
-            "type" : "text",
-            "fields" : {
-              "keyword" : {
-                "type" : "keyword"
-              }
-            }
-          },
-          "gnd" : {
-            "type" : "text",
-            "fields" : {
-              "keyword" : {
-                "type" : "keyword"
-              }
-            }
-          },
-          "orcid" : {
             "type" : "text",
             "fields" : {
               "keyword" : {
@@ -63,9 +31,6 @@
         }
       },
       "dateCreated" : {
-        "type" : "date"
-      },
-      "dateLastUpdated" : {
         "type" : "date"
       },
       "dateModifiedInternal" : {
@@ -90,23 +55,28 @@
           }
         }
       },
+      "institutions" : {
+        "type" : "nested",
+        "properties" : {
+          "name" : {
+            "type" : "text",
+            "fields" : {
+              "keyword" : {
+                "type" : "keyword"
+              }
+            }
+          }
+        }
+      },
+      "keywords" : {
+        "type" : "text",
+        "fields" : {
+          "keyword" : {
+            "type" : "keyword"
+          }
+        }
+      },
       "name" : {
-        "type" : "text",
-        "fields" : {
-          "keyword" : {
-            "type" : "keyword"
-          }
-        }
-      },
-      "version" : {
-        "type" : "text",
-        "fields" : {
-          "keyword" : {
-            "type" : "keyword"
-          }
-        }
-      },
-      "educationalUse" : {
         "type" : "text",
         "fields" : {
           "keyword" : {
@@ -118,38 +88,6 @@
         "type" : "long"
       },
       "inLanguage" : {
-        "type" : "text",
-        "fields" : {
-          "keyword" : {
-            "type" : "keyword"
-          }
-        }
-      },
-      "institutionName" : {
-        "type" : "text",
-        "fields" : {
-          "keyword" : {
-            "type" : "keyword"
-          }
-        }
-      },
-      "institutionRor" : {
-        "type" : "text",
-        "fields" : {
-          "keyword" : {
-            "type" : "keyword"
-          }
-        }
-      },
-      "interactivityType" : {
-        "type" : "text",
-        "fields" : {
-          "keyword" : {
-            "type" : "keyword"
-          }
-        }
-      },
-      "keywords" : {
         "type" : "text",
         "fields" : {
           "keyword" : {
@@ -181,23 +119,20 @@
           }
         }
       },
-      "subject" : {
-        "type" : "text",
-        "fields" : {
-          "keyword" : {
-            "type" : "keyword"
+      "subjects" : {
+        "type" : "nested",
+        "properties" : {
+          "identifier" : {
+            "type" : "text",
+            "fields" : {
+              "keyword" : {
+                "type" : "keyword"
+              }
+            }
           }
         }
       },
       "thumbnailUrl" : {
-        "type" : "text",
-        "fields" : {
-          "keyword" : {
-            "type" : "keyword"
-          }
-        }
-      },
-      "timeRequired" : {
         "type" : "text",
         "fields" : {
           "keyword" : {
