@@ -40,6 +40,7 @@ class JoinLongWhiteSpaceStringsPipeline(object):
             item['author'] = re.sub('  +', ', ', item['author'])
             item['tags'] = " ".join(item['tags'].split())
             return item
+        return item
 
 
 class TagPipeline(object):
@@ -47,6 +48,7 @@ class TagPipeline(object):
         if item['tags']:
             item['tags'] = item['tags'].replace(" ", ",")
             return item
+        return item
 
 
 class NormLinksPipeline(object):
@@ -115,6 +117,7 @@ class NormDatePipeline(object):
             print("=============== Invalid date -> clear date_published", item['date_published'])
             item['date_published'] = ""
             return item
+        return item
 
 
 class ServisePipeline(object):
