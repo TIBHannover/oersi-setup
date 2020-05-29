@@ -58,9 +58,10 @@ class NormLinksPipeline(object):
             return item
         elif item['url']:
             if not any(x in item['url'] for x in ["http://", "https://"]):
-                item['url'] = "https://" + item['url']
+                item['url'] = "https://" + item['url'].strip()
                 return item
             else:
+                item['url'] = item['url'].strip()
                 return item
 
 
@@ -99,11 +100,20 @@ class NormLanguagePipeline(object):
     def process_item(self, item, spider):
         if item['inLanguage']:
             print("=============== LanguagessIF", item['inLanguage'])
-            item['inLanguage'] = item['inLanguage'][:2]
+            item['inLanguage'] = item['inLanguage'][:2].lower()
             return item
         else:
             item['inLanguage'] = "de"
             print("=============== LanguagessELSE", item['inLanguage'])
+            return item
+
+
+class NormDatePipeline(object):
+
+    def process_item(self, item, spider):
+        if item['date_published'] and (not (re.match("[0-9]{4}-[0-9]{2}-[0-9]{2}", item['date_published'][:10]))):
+            print("=============== Invalid date -> clear date_published", item['date_published'])
+            item['date_published'] = ""
             return item
 
 
