@@ -32,3 +32,21 @@
   template:
     src: "style-override.css"
     dest: '{{ oerindex_frontend_instdir }}/build/css/style-override.css'
+
+- name: Ensures the folder {{ oerindex_frontend_instdir }}/build/locales/{{oerindex_frontend_lang}} exists 
+  file: path={{ oerindex_frontend_instdir }}/build/locales/{{oerindex_frontend_lang}} state=directory
+
+- name: Add translation file.
+  become: yes
+  template:
+    src: "translation.json"
+    dest: '{{ oerindex_frontend_instdir }}/build/locales/{{oerindex_frontend_lang}}/translation.json'
+
+- name: Ensures the folder {{ oerindex_frontend_instdir }}/footer exists 
+  file: path={{ oerindex_frontend_instdir }}/footer state=directory
+
+- name: Add footer.html file.
+  become: yes
+  template:
+    src: "footer.html"
+    dest: '{{ oerindex_frontend_instdir }}/footer/footer.html'

@@ -12,6 +12,7 @@ oerindex_db:
   user: oerindex
   password: oerindexpw
 
+oerindex_frontend_lang: en
 oerindex_frontend_instdir: "/var/www/oersi-frontend"
 oerindex_frontend_artifact_url: "https://gitlab.com/oersi/oersi-frontend/-/jobs/artifacts/development/download?job=build"
 
