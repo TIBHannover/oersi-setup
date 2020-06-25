@@ -1,11 +1,10 @@
 ---
-# protoyp von https://github.com/sroertgen/oerhoernchen20_docker bzw https://github.com/programmieraffe/oerhoernchen20
-# -> für erste Tests mit dem Prototyp ok, sollte später jedoch anders gelöst werden, siehe https://gitlab.com/TIBHannover/oer/oersi-metadata-harvester
+# Use oersi-etl as metadata harvester
 
-- name: Install Python3
+- name: Install git
   become: yes
   package:
-    name: [ "python3", "python3-venv" ]
+    name: [ "git" ]
     state: present
   tags:
   - root-task
@@ -14,9 +13,9 @@
 - name: Ensures inst-dir exists
   file: path='{{ oerindex_harvester_instdir }}' state=directory
 
-- name: Copy OER metadata harvester
+- name: Copy OER metadata harvester setup
   copy:
-    src: oer_scrapy/
+    src: oersi-etl/
     dest: "{{ oerindex_harvester_instdir }}/"
     mode: 'preserve'
 
@@ -30,16 +29,14 @@
     cmd: "sed -i 's/\r$//' import.sh"
     chdir: '{{ oerindex_harvester_instdir }}'
 
-- name: Install OER metadata harvester
+- name: Install oersi-etl dependencies
   command:
     cmd: '{{ oerindex_harvester_instdir }}/install.sh'
     chdir: '{{ oerindex_harvester_instdir }}'
 
-- name: just a prototype test - import some OER sources
+- name: Extract, transform, and load some OER sources
   command:
     cmd: '{{ oerindex_harvester_instdir }}/import.sh {{ item }}'
     chdir: '{{ oerindex_harvester_instdir }}'
   with_items:
-    - zoerr
-    #- hoou
-    #- oernds
+    - 'data/to-oersibackend'

@@ -20,6 +20,7 @@
     - tomcat
     - oer-search-index-backend
     - oer-metadata-harvester
+    - oer-search-index-etl
 
 - hosts: oerindex
   become: yes
