@@ -32,3 +32,5 @@ oerindex:
       elasticsearch_oersi_viewer_password: ch@ngeMe
       oerindex_backend_oermetadata_manage_user: test
       oerindex_backend_oermetadata_manage_password: test
+
+      oerindex_frontend_custom_style_css: '../../frontend/style-override.css'

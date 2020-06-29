@@ -34,3 +34,4 @@ example:
       oerindex_backend_oermetadata_manage_user: test
       oerindex_backend_oermetadata_manage_password: test
 
+      oerindex_frontend_custom_style_css: '../doc/gitlab-config-example/frontend/style-override.css'
