@@ -8,19 +8,19 @@
     },
     "RESILT_LIST": {
         "SORT_BY": "Sort by ",
-        "SHOW_RESULT_STATS":" _result_ results found in _ms_ ms"
+        "SHOW_RESULT_STATS": " _result_ results found in _ms_ ms"
     },
-    "FILTER":{
-      "SHOW_FILTERS":"🔬Show Filters",
-      "SHOW_RESULT":"📰 Show Results"
+    "FILTER": {
+        "SHOW_FILTERS": "🔬Show Filters",
+        "SHOW_RESULT": "📰 Show Results"
     },
     "CARD": {
-        "AUTHOR":"Authors",
-        "LICENSE":"License",
-        "DATE_MODIFIED":"Last update ",
-        "RESOURSE_TYPE":"Type ",
-        "LANGUAGE":"Language ",
-        "SOURCE":"Source "
+        "AUTHOR": "Authors",
+        "LICENSE": "License",
+        "DATE_MODIFIED": "Last update ",
+        "RESOURSE_TYPE": "Type ",
+        "LANGUAGE": "Language ",
+        "SOURCE": "Source "
     },
     "ERROR": {
         "TITLE": "Error",

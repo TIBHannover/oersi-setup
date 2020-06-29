@@ -12,9 +12,19 @@ oerindex_db:
   user: oerindex
   password: oerindexpw
 
-oerindex_frontend_lang: en
 oerindex_frontend_instdir: "/var/www/oersi-frontend"
 oerindex_frontend_artifact_url: "https://gitlab.com/oersi/oersi-frontend/-/jobs/artifacts/development/download?job=build"
+# Language  example en,de, etc.
+oerindex_frontend_lang: en 
+# path to a custom style-override.css file
+oerindex_frontend_custom_style_css: style-override.css
+# path to a custom footer.html file
+oerindex_frontend_custom_footer_file_path: footer.html
+# path to a custom translation.json file
+oerindex_frontend_custom_translation_file_path: translation.json
+# a list of custom images that should be copied into ../oersi-frontend/build; format of each entry: [<source-file-path>, <destination under oersi-frontend/build/<image>]
+# example: ['local/path/example.svg', 'example.svg']
+oerindex_frontend_custom_images:
 
 oerindex_backend_downloaddir: "{{ base_dir }}/oersi-backend"
 oerindex_backend_configdir: "{{ base_dir }}/oersi-backend/config"
