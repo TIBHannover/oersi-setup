@@ -27,8 +27,8 @@
     src: "config.json"
     dest: '{{ oerindex_frontend_instdir }}/build/config/config.json'
 
-- name: Add Css override file.
-  become: yes
-  template:
-    src: "style-override.css"
+- name: Copy custom style-override.css
+  copy:
+    src: '{{ oerindex_frontend_custom_style_css }}'
     dest: '{{ oerindex_frontend_instdir }}/build/css/style-override.css'
+  when: (oerindex_frontend_custom_style_css is defined) and (oerindex_frontend_custom_style_css != "") and (oerindex_frontend_custom_style_css is not none)

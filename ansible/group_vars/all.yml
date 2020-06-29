@@ -14,6 +14,8 @@ oerindex_db:
 
 oerindex_frontend_instdir: "/var/www/oersi-frontend"
 oerindex_frontend_artifact_url: "https://gitlab.com/oersi/oersi-frontend/-/jobs/artifacts/development/download?job=build"
+# path to a custom style-override.css file
+oerindex_frontend_custom_style_css:
 
 oerindex_backend_downloaddir: "{{ base_dir }}/oersi-backend"
 oerindex_backend_configdir: "{{ base_dir }}/oersi-backend/config"
