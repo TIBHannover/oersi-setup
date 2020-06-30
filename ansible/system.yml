@@ -12,6 +12,8 @@
     - mariadb
     - elasticsearch
     - logstash
+    - role: kibana
+      when: kibana_install
   tags:
     - root-task
 

@@ -57,6 +57,12 @@ elasticsearch_api_url: "http://{{ elasticsearch_host }}:{{ elasticsearch_port }}
 #elasticsearch_heap_size_min: 1g
 #elasticsearch_heap_size_max: 2g
 
+# install kibana true/false
+kibana_install: false
+# insternal geerlingguy.kibana properties
+kibana_elasticsearch_username: 'kibana'
+kibana_elasticsearch_password: '{{ (elasticsearch_builtin_users | selectattr("name", "equalto", "kibana")  | list)[0].password }}'
+
 logstash_monitor_local_syslog: false
 logstash_install_plugins:
   - logstash-input-jdbc
