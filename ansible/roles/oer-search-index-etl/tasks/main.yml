@@ -1,42 +1,40 @@
 ---
 # Use oersi-etl as metadata harvester
 
-- name: Install git
-  become: yes
+- name: Ensures inst-dir exists
+  file: path='{{ oerindex_etl_downloaddir }}' state=directory
+
+- name: Ensures output-dir exists
+  file: path='{{ oerindex_etl_outputdir }}' state=directory
+
+- name: Copy oersi-etl config files
+  copy:
+    src: oersi-etl/
+    dest: "{{ oerindex_etl_configdir }}/"
+    mode: 'preserve'
+
+- name: download OER search index ETL
+  get_url:
+    url: "{{ oerindex_etl_artifact_url }}"
+    force: yes
+    dest: "{{ oerindex_etl_downloaddir }}/oersi-etl.zip"
+
+- name: Ensure unzip is present
   package:
-    name: [ "git" ]
-    state: present
+    name: ["unzip"]
+  become: yes
   tags:
   - root-task
 
-# Problem with windows and copy-module -> use archive, should be moved to a separate project anyway
-- name: Ensures inst-dir exists
-  file: path='{{ oerindex_harvester_instdir }}' state=directory
-
-- name: Copy OER metadata harvester setup
-  copy:
-    src: oersi-etl/
-    dest: "{{ oerindex_harvester_instdir }}/"
-    mode: 'preserve'
-
-- name: Fix line endings for installer
-  command:
-    cmd: "sed -i 's/\r$//' install.sh"
-    chdir: '{{ oerindex_harvester_instdir }}'
-
-- name: Fix line endings for importer
-  command:
-    cmd: "sed -i 's/\r$//' import.sh"
-    chdir: '{{ oerindex_harvester_instdir }}'
-
-- name: Install oersi-etl dependencies
-  command:
-    cmd: '{{ oerindex_harvester_instdir }}/install.sh'
-    chdir: '{{ oerindex_harvester_instdir }}'
+- name: extract OER search index ETL
+  unarchive:
+    remote_src: yes
+    src: '{{ oerindex_etl_downloaddir }}/oersi-etl.zip'
+    dest: "{{ oerindex_etl_downloaddir }}"
 
 - name: Extract, transform, and load some OER sources
   command:
-    cmd: '{{ oerindex_harvester_instdir }}/import.sh {{ item }}'
-    chdir: '{{ oerindex_harvester_instdir }}'
+    cmd: './build/install/oersi-etl/bin/oersi-etl {{ item }}'
+    chdir: '{{ oerindex_etl_downloaddir }}'
   with_items:
-    - 'data/to-oersibackend'
+    - '{{ oerindex_etl_configdir }}'
