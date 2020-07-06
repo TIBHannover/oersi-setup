@@ -3,61 +3,31 @@
   "settings": {
     "index": {
       "number_of_shards": "1",
-      "number_of_replicas": "1"
+      "number_of_replicas": "0"
     }
   },
   "mappings" : {
     "dynamic": "strict",
     "properties" : {
+      "about" : {
+        "properties" : {
+          "id" : {
+            "type" : "keyword"
+          }
+        }
+      },
       "audience" : {
-        "type" : "text",
-        "fields" : {
-          "keyword" : {
-            "type" : "keyword"
-          }
-        }
-      },
-      "authors" : {
-        "type" : "nested",
         "properties" : {
-          "fullname" : {
-            "type" : "text",
-            "fields" : {
-              "keyword" : {
-                "type" : "keyword"
-              }
-            }
-          }
-        }
-      },
-      "dateCreated" : {
-        "type" : "date"
-      },
-      "dateModifiedInternal" : {
-        "type" : "date"
-      },
-      "datePublished" : {
-        "type" : "date"
-      },
-      "description" : {
-        "type" : "text",
-        "fields" : {
-          "keyword" : {
+          "id" : {
             "type" : "keyword"
           }
         }
       },
-      "identifier" : {
-        "type" : "text",
-        "fields" : {
-          "keyword" : {
-            "type" : "keyword"
-          }
-        }
-      },
-      "institutions" : {
-        "type" : "nested",
+      "creator" : {
         "properties" : {
+          "id" : {
+            "type" : "keyword"
+          },
           "name" : {
             "type" : "text",
             "fields" : {
@@ -65,86 +35,85 @@
                 "type" : "keyword"
               }
             }
-          }
-        }
-      },
-      "keywords" : {
-        "type" : "text",
-        "fields" : {
-          "keyword" : {
+          },
+          "type" : {
             "type" : "keyword"
           }
         }
       },
-      "name" : {
-        "type" : "text",
-        "fields" : {
-          "keyword" : {
-            "type" : "keyword"
-          }
-        }
+      "dateCreated" : {
+        "type" : "date",
+        "index" : false
+      },
+      "datePublished" : {
+        "type" : "date",
+        "index" : false
+      },
+      "description" : {
+        "type" : "text"
       },
       "id" : {
-        "type" : "long"
+        "type" : "keyword",
+        "index": false
+      },
+      "image" : {
+        "type" : "keyword",
+        "index": false
       },
       "inLanguage" : {
-        "type" : "text",
-        "fields" : {
-          "keyword" : {
-            "type" : "keyword"
-          }
-        }
+        "type" : "keyword"
       },
       "learningResourceType" : {
-        "type" : "text",
-        "fields" : {
-          "keyword" : {
+        "properties" : {
+          "id" : {
             "type" : "keyword"
           }
         }
       },
       "license" : {
-        "type" : "text",
-        "fields" : {
-          "keyword" : {
-            "type" : "keyword"
-          }
-        }
+        "type" : "keyword"
       },
-      "source" : {
-        "type" : "text",
-        "fields" : {
-          "keyword" : {
-            "type" : "keyword"
-          }
-        }
+      "name" : {
+        "type" : "text"
       },
-      "subjects" : {
-        "type" : "nested",
+      "mainEntityOfPage" : {
         "properties" : {
-          "identifier" : {
-            "type" : "text",
-            "fields" : {
-              "keyword" : {
+          "id" : {
+            "type" : "keyword",
+            "index": false
+          },
+          "type" : {
+            "type" : "keyword"
+          },
+          "dateCreated" : {
+            "type" : "date",
+            "index" : false
+          },
+          "dateModified" : {
+            "type" : "date",
+            "index" : false
+          },
+          "basedOn" : {
+            "properties" : {
+              "id" : {
+                "type" : "keyword",
+                "index": false
+              },
+              "type" : {
+                "type" : "keyword"
+              },
+              "dateCreated" : {
+                "type" : "date",
+                "index" : false
+              },
+              "dateModified" : {
+                "type" : "date",
+                "index" : false
+              },
+              "provider" : {
                 "type" : "keyword"
               }
             }
-          }
-        }
-      },
-      "thumbnailUrl" : {
-        "type" : "text",
-        "fields" : {
-          "keyword" : {
-            "type" : "keyword"
-          }
-        }
-      },
-      "url" : {
-        "type" : "text",
-        "fields" : {
-          "keyword" : {
-            "type" : "keyword"
           }
         }
       }
