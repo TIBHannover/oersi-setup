@@ -43,3 +43,4 @@
     - zoerr
     #- hoou
     - oernds
+  no_log: '{{ log_show }}'
