@@ -3,5 +3,6 @@
     "URL": "{{ oerindex_backend_url_scheme }}://{{ oerindex_host }}{{ oerindex_backend_searchapi_root_path }}",
     "CREDENCIAL": "",
     "APP_NAME": "{{ elasticsearch_oer_index_name }}"
-  }
+  },
+  "LANGUAGE":"{{ oerindex_frontend_lang }}"
 }
