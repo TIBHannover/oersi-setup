@@ -1,5 +1,5 @@
 {
-  "template": "oer*",
+  "index_patterns": "oer*",
   "settings": {
     "index": {
       "number_of_shards": "1",

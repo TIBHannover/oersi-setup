@@ -1,0 +1,29 @@
+{
+    "HEADER": {
+        "TITLE": "OERSI",
+        "SUBTITLE": "Open Educational Resources Search Index"
+    },
+    "SEARCH_COMPONENT": {
+        "PLACEHOLDER": "Search for name, subject , description"
+    },
+    "RESILT_LIST": {
+        "SORT_BY": "Sort by ",
+        "SHOW_RESULT_STATS": " _result_ results found in _ms_ ms"
+    },
+    "FILTER": {
+        "SHOW_FILTERS": "🔬Show Filters",
+        "SHOW_RESULT": "📰 Show Results"
+    },
+    "CARD": {
+        "AUTHOR": "Authors",
+        "LICENSE": "License",
+        "DATE_MODIFIED": "Last update ",
+        "RESOURSE_TYPE": "Type ",
+        "LANGUAGE": "Language ",
+        "SOURCE": "Source "
+    },
+    "ERROR": {
+        "TITLE": "Error",
+        "MESSAGE": "Something Was wrong and We can't load the page "
+    }
+}
