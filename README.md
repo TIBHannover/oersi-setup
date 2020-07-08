@@ -108,6 +108,7 @@ Contributions are welcome. Please read [CONTRIBUTING.md](CONTRIBUTING.md) for fu
 - **MariaDB**: Used to store the results of Scrapy.
 - **Logstash**: Logstash is regulary checking the MariaDB database, if any new items are added or changes are made to existing entries.
 - **Elasticsearch**: Elasticsearch is the search engine and indexes the input it gets from Logstash.
+- **Kibana**: For development or monitoring of Elasticsearch Kibana can be installed optionally (activate in _ansible/group_vars_ -> _kibana_install_)
 - **Backend**: The backend is the interface for read/write access to the index, see https://gitlab.com/oersi/oersi-backend
 - **Frontend**: The frontend is used from https://gitlab.com/oersi/oersi-frontend
 - **ETL**: The harvester component uses the oersi-etl (Extract, Transform, Load) project, see https://gitlab.com/oersi/oersi-etl
