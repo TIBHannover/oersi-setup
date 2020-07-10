@@ -39,6 +39,6 @@ map('@inLanguage', inLanguage)
 | object-tee | {
     write(FLUX_DIR + "oernds-metadata.json", header="[\n", footer="\n]", separator=",\n")
   }{
-    oersi.OersiWriter("http://192.168.98.115:8080/oersi/api/metadata",
-      user="test", pass="test", log=FLUX_DIR + "oernds-responses.json")
+    oersi.OersiWriter("{{ oerindex_backend_metadataapi_url }}",
+      user="{{ oerindex_backend_oermetadata_manage_user }}", pass="{{ oerindex_backend_oermetadata_manage_password }}", log=FLUX_DIR + "oernds-responses.json")
 };
