@@ -7,11 +7,15 @@
 - name: Ensures output-dir exists
   file: path='{{ oerindex_etl_outputdir }}' state=directory
 
+- name: Ensures config-dir exists
+  file: path='{{ oerindex_etl_configdir }}' state=directory
+
 - name: Copy oersi-etl config files
-  copy:
-    src: oersi-etl/
+  template:
+    src: "{{ item }}"
     dest: "{{ oerindex_etl_configdir }}/"
     mode: 'preserve'
+  loop: '{{ oerindex_etl_configfiles | default([], true) }}'
 
 - name: download OER search index ETL
   get_url:
