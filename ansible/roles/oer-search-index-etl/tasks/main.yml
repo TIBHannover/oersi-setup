@@ -17,6 +17,24 @@
     mode: 'preserve'
   loop: '{{ oerindex_etl_configfiles | default([], true) }}'
 
+- name: Ensures config-enabled-dir exists
+  file: path='{{ oerindex_etl_configdir }}-enabled' state=directory
+
+- name: Find current config enabled files
+  find: path='{{ oerindex_etl_configdir }}-enabled' file_type=link
+  register: oerindex_etl_config_enabled_files
+
+- name: Remove current config enabled files
+  file: state=absent path='{{ item.path }}'
+  with_items: '{{ oerindex_etl_config_enabled_files.files }}'
+
+- name: Create config enabled files
+  file:
+    state: link
+    src: '{{ oerindex_etl_configdir }}/{{ item | basename }}'
+    path: '{{ oerindex_etl_configdir }}-enabled/{{ item | basename }}'
+  loop: '{{ oerindex_etl_configfiles | default([], true) }}'
+
 - name: download OER search index ETL
   get_url:
     url: "{{ oerindex_etl_artifact_url }}"
@@ -38,5 +56,5 @@
 
 - name: Extract, transform, and load some OER sources
   command:
-    cmd: './build/install/oersi-etl/bin/oersi-etl {{ oerindex_etl_configdir }}'
+    cmd: './build/install/oersi-etl/bin/oersi-etl {{ oerindex_etl_configdir }}-enabled'
     chdir: '{{ oerindex_etl_downloaddir }}'
