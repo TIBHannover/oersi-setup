@@ -34,7 +34,5 @@
 
 - name: Extract, transform, and load some OER sources
   command:
-    cmd: './build/install/oersi-etl/bin/oersi-etl {{ item }}'
+    cmd: './build/install/oersi-etl/bin/oersi-etl {{ oerindex_etl_configdir }}'
     chdir: '{{ oerindex_etl_downloaddir }}'
-  with_items:
-    - '{{ oerindex_etl_configdir }}'
