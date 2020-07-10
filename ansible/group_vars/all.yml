@@ -33,6 +33,7 @@ oerindex_backend_artifact_url: 'https://gitlab.com/oersi/oersi-backend/-/jobs/ar
 oerindex_backend_searchapi_root_path: '/oersi/es/'
 oerindex_backend_url_scheme: 'http'
 oerindex_backend_metadataapi_url: 'http://localhost:8080/oersi/api/metadata'
+oerindex_backend_searchapi_url: "{{ oerindex_backend_url_scheme }}://{{ oerindex_host }}{{ oerindex_backend_searchapi_root_path }}"
 
 oerindex_harvester_instdir: "{{ base_dir }}/metadata_harvester"
 
