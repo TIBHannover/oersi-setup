@@ -42,5 +42,5 @@
   with_items:
     - zoerr
     #- hoou
-    - oernds
+    #- oernds
   no_log: '{{ log_show }}'
