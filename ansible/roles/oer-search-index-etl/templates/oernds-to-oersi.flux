@@ -18,8 +18,12 @@ map(url, id)
 map(url, mainEntityOfPage.id)
 map(thumbnailUrl, image)
 
-/* TODO: support `combine` in Fix for first and last name */
-map(creator.familyName,'creator[]..name')
+do combine('@fullName', '${first} ${last}')
+  map(creator.givenName,first)
+  map(creator.familyName,last)
+end
+
+map('@fullName','creator[]..name')
 map(creator.legalName,'creator[]..name')
 map('creator.@type','creator[]..type')
 
