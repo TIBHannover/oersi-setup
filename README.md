@@ -31,17 +31,17 @@ The same index can also be reused at the level of a federal state (or generally 
 
 ![Components OERSI](doc/images/OER-Search-Index-Components.png)
 
-## Installation
+## Installation / Update
 
-* requirements:
-     * [ansible](https://docs.ansible.com/) installed on the local computer
-* clone project
-* install ansible galaxy roles:
-     * ```ansible-galaxy install -r requirements.yml```
-* create ansible inventory _config.yml_ (see [config-example.yml](config-example.yml)) and adjust all variables to your installation (see variables in _ansible/group_vars_)
-* run ```ansible-playbook -v -i config.yml ansible/system.yml```
+The installation processes will install all components that are necessary to run _oersi_ (sql-db, elasticsearch, logstash, tomcat, nginx, etc). To avoid conflicts, it is recommended that no other applications / processes are running on the target system.
 
-## Automatic installation via gitlab ci
+Depending on the scenario, there are different possibilities to install _oersi_. To test the index a little bit with minimal effort, you can use a [local installation in the local VirtualBox VM](#run-it-locally-with-virtualbox) via vargant. The other installation methods are suitable for installing the index on an existing system that is accessible via ansible. Of these, the [installation via gitlab-ci](#automatic-installation-via-gitlab-ci) is clearly recommended.
+
+Note that all installations (especially the first one) will take some time (depending on your download speed), because all necessary components will be downloaded.
+
+### Automatic installation via gitlab ci
+
+Scenario: Install _oersi_ on an existing system. Can be controlled via the UI of gitlab and can even be started on a scheduled basis. In addition, the environment from which the installation is performed is always the same, since this is done via docker containers, and you don't run into conflicts due to different versions of Ansible on the installation host. This makes it more suitable for installations on production systems, as the installation becomes more stable. This process is the integration of the ["normal" installation process](#direct-installation) (via ansible-playbook) into the CI of gitlab.
 
 * Create a new private gitlab project that will contain the configuration for your oersi-systems
 * Assure your gitlab-project is able to connect to your oersi-systems via ssh
@@ -66,9 +66,9 @@ The same index can also be reused at the level of a federal state (or generally 
      * Create a Gitlab-Schedule in your project **CI / CD** -> **Schedules**
      * uncomment "scheduled deployment" section in _.gitlab-ci.yml_ and adjust to your inventory-filename
 
-## Run it locally 
+### Run it locally with VirtualBox
 
-Set up an oer-search-index in a virtual machine with minimal effort.
+Scenario: To test the index a little bit with minimal effort, you can use a local installation in the local VirtualBox VM via vargant. This is also suitable for developers to perform "system tests" for their changes.
 
 Prerequisites
 * [Git](https://git-scm.com/downloads) (tested with 2.17.1)
@@ -97,6 +97,20 @@ If you want to reload the configuration (including the import from the oer sourc
 ```
 vagrant reload --provision
 ```
+
+The VM can then simply be thrown away at any time with `vagrant destroy`.
+
+### Direct installation
+
+Scenario: Install _oersi_ on an existing system directly via the ansible-playbook. Can be used if installation via gitlab is not possible (e.g. because no internal gitlab instance exists and the oersi system is not accessible from gitlab.com). Note for developers: this method is also suitable for installations on the VirtualBox VM. Since you can work with your own inventory file, you can test the complete custumizations of your production environment on the VM without having to make changes in the _group_vars_ of the Vagrant Box.
+
+* requirements:
+     * [ansible](https://docs.ansible.com/) installed on the local computer
+* clone project
+* install ansible galaxy roles:
+     * ```ansible-galaxy install -r requirements.yml```
+* create ansible inventory _config.yml_ (see [config-example.yml](config-example.yml)) and adjust all variables to your installation (see variables in _ansible/group_vars_)
+* run ```ansible-playbook -v -i config.yml ansible/system.yml```
 
 ## Contributing
 
