@@ -37,7 +37,7 @@ The installation processes will install all components that are necessary to run
 
 Depending on the scenario, there are different possibilities to install _oersi_. To test the index a little bit with minimal effort, you can use a [local installation in the local VirtualBox VM](#run-it-locally-with-virtualbox) via vargant. The other installation methods are suitable for installing the index on an existing system that is accessible via ansible. Of these, the [installation via gitlab-ci](#automatic-installation-via-gitlab-ci) is clearly recommended.
 
-Note that all installations (especially the first one) will take some time (depending on your download speed), because all necessary components will be downloaded.
+Note that all installations (especially the initial one) will take some time (depending on your download speed), because all necessary components will be downloaded.
 
 ### Automatic installation via gitlab ci
 
