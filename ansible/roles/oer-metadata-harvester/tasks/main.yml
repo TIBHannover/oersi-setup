@@ -44,3 +44,4 @@
     #- hoou
     #- oernds
   no_log: '{{ log_show }}'
+  when: oerindex_import_sources_immediately

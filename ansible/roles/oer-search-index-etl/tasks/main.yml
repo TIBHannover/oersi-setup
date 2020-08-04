@@ -58,3 +58,4 @@
   command:
     cmd: './build/install/oersi-etl/bin/oersi-etl {{ oerindex_etl_configdir }}-enabled'
     chdir: '{{ oerindex_etl_downloaddir }}'
+  when: oerindex_import_sources_immediately
