@@ -46,6 +46,11 @@ oerindex_etl_outputdir: "{{ base_dir }}/oersi-etl/data/to-elasticsearch"
 # You can also insert your own flux-files like '../../../my-conf-dir/my-etl.flux'
 oerindex_etl_configfiles:
   - oernds-to-oersi.flux
+  
+oerindex_import_sources_immediately: true # import all configured sources immediately at the installation process (true|false)
+oerindex_import_sources_schedule_state: 'present' # import all configured sources scheduled (absent|present)
+oerindex_import_sources_schedule_hour: '0'  # Hour when the job should run - see https://docs.ansible.com/ansible/latest/modules/cron_module.html
+oerindex_import_sources_schedule_minute: '0' # Minute when the job should run - see https://docs.ansible.com/ansible/latest/modules/cron_module.html
 
 elasticsearch_host: localhost
 elasticsearch_port: 9200

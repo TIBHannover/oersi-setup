@@ -44,3 +44,12 @@
     #- hoou
     #- oernds
   no_log: '{{ log_show }}'
+  when: oerindex_import_sources_immediately
+
+- name: Configure cron schedule - scrapy import OER sources
+  cron:
+    name: "Scrapy Import OER sources"
+    hour: '{{ (oerindex_import_sources_schedule_hour | int) + 2 }}'
+    minute: '{{ oerindex_import_sources_schedule_minute }}'
+    job: 'cd {{ oerindex_harvester_instdir }} && {{ oerindex_harvester_instdir }}/import.sh digill hhu hoou oncampus zoerr oerinfo tibav &> {{ oerindex_harvester_instdir }}/scrapy.log'
+    state: '{{ oerindex_import_sources_schedule_state }}'
