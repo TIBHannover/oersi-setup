@@ -119,5 +119,7 @@
       }
     }
   },
-  "aliases": {}
+  "aliases": {
+    "{{ elasticsearch_oer_index_alias_name }}": { }
+  }
 }

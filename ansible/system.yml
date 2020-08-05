@@ -14,6 +14,8 @@
     - logstash
     - role: kibana
       when: kibana_install
+    - role: elasticsearch-updates
+      tags: elasticsearch-updates
   tags:
     - root-task
 
