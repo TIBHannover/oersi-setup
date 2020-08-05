@@ -2,7 +2,7 @@
   "ELASTIC_SEARCH": {
     "URL": "{{ oerindex_backend_searchapi_url }}",
     "CREDENCIAL": "",
-    "APP_NAME": "{{ elasticsearch_oer_index_name }}"
+    "APP_NAME": "{{ elasticsearch_oer_index_alias_name }}"
   },
   "LANGUAGE":"{{ oerindex_frontend_lang }}"
 }

@@ -69,7 +69,8 @@ elasticsearch_builtin_users:
     password: changeme
   - name: remote_monitoring_user
     password: changeme
-elasticsearch_oer_index_name: oer_data
+elasticsearch_oer_index_alias_name: oer_data # main alias; use external
+elasticsearch_oer_index_name: oer_data_1 # internal use
 # logstash-user that writes to the oer-index
 elasticsearch_oersi_logstash_username: oersi_logstash
 elasticsearch_oersi_logstash_password: ch@ngeMe
