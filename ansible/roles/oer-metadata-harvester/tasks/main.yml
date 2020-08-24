@@ -35,16 +35,16 @@
     cmd: '{{ oerindex_harvester_instdir }}/install.sh'
     chdir: '{{ oerindex_harvester_instdir }}'
 
-- name: just a prototype test - import some OER sources
-  command:
-    cmd: '{{ oerindex_harvester_instdir }}/import.sh {{ item }}'
-    chdir: '{{ oerindex_harvester_instdir }}'
-  with_items:
-    - zoerr
-    #- hoou
-    #- oernds
-  no_log: '{{ log_show }}'
-  when: oerindex_import_sources_immediately
+#- name: just a prototype test - import some OER sources
+#  command:
+#    cmd: '{{ oerindex_harvester_instdir }}/import.sh {{ item }}'
+#    chdir: '{{ oerindex_harvester_instdir }}'
+#   with_items:
+#     - zoerr
+#     - hoou
+#     - oernds
+#  no_log: '{{ log_show }}'
+#  when: oerindex_import_sources_immediately
 
 - name: Configure cron schedule - scrapy import OER sources
   cron:

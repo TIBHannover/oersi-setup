@@ -28,7 +28,10 @@ map(creator.legalName,'creator[]..name')
 map('creator.@type','creator[]..type')
 
 replace_all(license, '/deed.*$', '')
+map('@license', license)
+
 replace_all(inLanguage, 'unknown', 'de')
+map('@inLanguage', inLanguage)
 
 lookup(learningResourceType,
 /* TODO: support lookup in CSV file */
