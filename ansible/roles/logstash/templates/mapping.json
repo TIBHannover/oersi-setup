@@ -2,8 +2,8 @@
   "index_patterns": "oer*",
   "settings": {
     "index": {
-      "number_of_shards": "1",
-      "number_of_replicas": "0"
+      "number_of_shards": "{{ elasticsearch_oer_index_number_of_shards }}",
+      "number_of_replicas": "{{ elasticsearch_oer_index_number_of_replicas }}"
     }
   },
   "mappings" : {
