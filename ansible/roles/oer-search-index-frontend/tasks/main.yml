@@ -24,8 +24,8 @@
 - name: Add configuration file.
   become: yes
   template:
-    src: "config.json"
-    dest: '{{ oerindex_frontend_instdir }}/build/config/config.json'
+    src: "config.js"
+    dest: '{{ oerindex_frontend_instdir }}/build/config/config.js'
 
 - name: Copy custom style-override.css
   copy:
