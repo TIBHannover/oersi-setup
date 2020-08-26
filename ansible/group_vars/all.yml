@@ -20,7 +20,7 @@ oerindex_frontend_lang: en
 # Multiselect  true false.
 oerindex_frontend_multi_select: false
 # Page size options .
-oerindex_frontend_page_size: ["5", "10", "15", "20", "50", "100"] 
+oerindex_frontend_page_size: ["10", "25", "50", "100"] 
 # Multiselect  true false.
 oerindex_frontend_nr_result_page_default: 10
 # path to a custom style-override.css file
