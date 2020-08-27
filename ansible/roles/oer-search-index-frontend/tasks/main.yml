@@ -43,6 +43,12 @@
     dest: '{{ oerindex_frontend_instdir }}/build/locales/{{oerindex_frontend_lang}}/translation.json'
   when: (oerindex_frontend_custom_translation_file_path is defined) and (oerindex_frontend_custom_translation_file_path != "") and (oerindex_frontend_custom_translation_file_path is not none)
   
+- name: Copy custom provider.json
+  copy:
+    src: '{{ oerindex_frontend_custom_provider_translation_file_path }}'
+    dest: '{{ oerindex_frontend_instdir }}/build/locales/{{oerindex_frontend_lang}}/provider.json'
+  when: (oerindex_frontend_custom_provider_translation_file_path is defined) and (oerindex_frontend_custom_provider_translation_file_path != "") and (oerindex_frontend_custom_provider_translation_file_path is not none)
+  
 - name: Copy custom images for footer
   copy:
     src: '{{item[0]}}'

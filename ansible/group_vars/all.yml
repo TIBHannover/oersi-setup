@@ -27,6 +27,7 @@ oerindex_frontend_custom_style_css: style-override.css
 oerindex_frontend_custom_footer_file_path: footer.html
 # path to a custom translation.json file
 oerindex_frontend_custom_translation_file_path: translation.json
+oerindex_frontend_custom_provider_translation_file_path: provider.json
 # a list of custom images that should be copied into ../oersi-frontend/build; format of each entry: [<source-file-path>, <destination under oersi-frontend/build/<image>]
 # example: ['local/path/example.svg', 'example.svg']
 oerindex_frontend_custom_images:
