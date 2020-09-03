@@ -16,7 +16,7 @@ oerindex_db:
 oerindex_frontend_instdir: "/var/www/oersi-frontend"
 oerindex_frontend_artifact_url: "https://gitlab.com/oersi/oersi-frontend/-/jobs/artifacts/development/download?job=build"
 # Language  example en,de, etc.
-oerindex_frontend_lang: en 
+oerindex_frontend_lang: de 
 # Page size options .
 oerindex_frontend_page_size: '["10", "25", "50", "100"]'
 # Multiselect  true false.
@@ -28,6 +28,7 @@ oerindex_frontend_custom_footer_file_path: footer.html
 # path to a custom translation.json file
 oerindex_frontend_custom_translation_file_path: translation.json
 oerindex_frontend_custom_provider_translation_file_path: provider.json
+oerindex_frontend_custom_lrt_translation_file_path: # see default translation in https://gitlab.com/oersi/oersi-frontend/-/blob/development/public/locales/de/lrt.json
 # a list of custom images that should be copied into ../oersi-frontend/build; format of each entry: [<source-file-path>, <destination under oersi-frontend/build/<image>]
 # example: ['local/path/example.svg', 'example.svg']
 oerindex_frontend_custom_images:

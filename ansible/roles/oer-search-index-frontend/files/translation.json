@@ -4,26 +4,27 @@
         "SUBTITLE": "Open Educational Resources Search Index"
     },
     "SEARCH_COMPONENT": {
-        "PLACEHOLDER": "Search for name, subject , description"
+        "PLACEHOLDER": "Suche nach Name, Beschreibung"
     },
     "RESILT_LIST": {
-        "SORT_BY": "Sort by ",
-        "SHOW_RESULT_STATS": " _result_ results found in _ms_ ms"
+        "SORT_BY": "Sortieren nach",
+        "SHOW_RESULT_STATS":" _result_ Ergebnisse (_ms_ ms)"
     },
-    "FILTER": {
-        "SHOW_FILTERS": "🔬Show Filters",
-        "SHOW_RESULT": "📰 Show Results"
+    "FILTER":{
+      "SHOW_FILTERS":"🔬Filter anzeigen",
+      "SHOW_RESULT":"📰 Ergebnisse anzeigen"
     },
     "CARD": {
-        "AUTHOR": "Authors",
-        "LICENSE": "License",
-        "DATE_MODIFIED": "Last update ",
-        "RESOURSE_TYPE": "Type ",
-        "LANGUAGE": "Language ",
-        "SOURCE": "Source "
+        "AUTHOR":"Autoren",
+        "LICENSE":"Lizenz",
+        "DATE_MODIFIED":"Letzte Aktualisierung",
+        "RESOURSE_TYPE":"Typ",
+        "LANGUAGE":"Sprache",
+        "PARAGRAF_TEXT":"Vollständiger Text",
+        "SOURCE":"Quelle"
     },
     "ERROR": {
-        "TITLE": "Error",
-        "MESSAGE": "Something Was wrong and We can't load the page "
+        "TITLE": "Fehler",
+        "MESSAGE": "Ein Fehler ist aufgetreten - die Seite kann nicht geladen werden"
     }
 }
