@@ -13,19 +13,38 @@ add_field('@context.@vocab','http://schema.org/')
 
 /* Map/pick standard edu-sharing fields, TODO: include from separate file */
 map(node.title, name)
-map(node.description, description)
 map(node.preview.url, image)
 
+do map(node.description, description)
+  not_equals('')
+end
+
+/* Default ID: */
 do map('node.properties.cclom:location[].1', id)
   replace_all('ccrep://.*?de/(.+)', 'https://www.oerbw.de/edu-sharing/components/render/$1')
 end
 
-do entity('mainEntityOfPage')
-  /* Take the node.properties.ccm:wwwurl[].1 as default: */
-  map('node.properties.ccm:wwwurl[].1', id)
-  /* But overwrite with ID (node.properties.ccm:wwwurl[].1 has session ID, expires). */
-  do map('node.properties.cclom:location[].1', id)
-    replace_all('ccrep://.*?de/(.+)', 'https://www.oerbw.de/edu-sharing/components/render/$1')
+/* Replace default ID if we have a ccm:wwwurl */
+map('node.properties.ccm:wwwurl[].1', id)
+
+do array('mainEntityOfPage')
+  do entity('')
+    do map('node.properties.cclom:location[].1', id)
+      replace_all('ccrep://.*/(.+)', 'https://www.oerbw.de/edu-sharing/components/render/$1')
+    end
+    /* Add creation/modification date, converting dateTime (e.g. 2019-07-23T09:26:00Z) to date (2019-07-23) */
+    do map('node.modifiedAt', 'dateModified')
+      replace_all('T.+Z', '')
+    end
+    do map('node.createdAt', 'dateCreated')
+      replace_all('T.+Z', '')
+    end
+    /* Add provider/source information to each resource description */
+    do entity('provider')
+      add_field('id','https://oerworldmap.org/resource/urn:uuid:4062c64d-b0ac-4941-95c2-8116f137326d')
+      add_field('type','Service')
+      add_field('name','ZOERR')
+    end
   end
 end
 
@@ -33,10 +52,13 @@ do array('about')
  do entity('')
   /* Build pseudo hochschulfaechersystematik URIs, TODO: implement mapping to hochschulfaechersystematik */
   do map('node.properties.ccm:taxonid[].1', 'id')
+    not_equals('')
     replace_all('(^$)|(\\\\d+)', 'https://w3id.org/kim/hochschulfaechersystematik/$0')
   end
   /* TODO: with mapping mentioned above, use labels from hochschulfaechersystematik */
-  map('node.properties.ccm:taxonid_DISPLAYNAME[].1', 'prefLabel.de')
+  do map('node.properties.ccm:taxonid_DISPLAYNAME[].1', 'prefLabel.de')
+    not_equals('')
+  end
  end
 end
 
@@ -50,7 +72,7 @@ do array('creator')
  end
  do entity('')
   add_field('type', 'Organization')
-  map('node.properties.ccm:university[].1', 'name')
+  map('node.properties.ccm:university_DISPLAYNAME[].1', 'name')
  end
 end
 
