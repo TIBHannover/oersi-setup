@@ -45,7 +45,7 @@ oerindex_harvester_instdir: "{{ base_dir }}/metadata_harvester"
 
 oerindex_etl_downloaddir: "{{ base_dir }}/oersi-etl"
 oerindex_etl_configdir: "{{ base_dir }}/oersi-etl/config"
-oerindex_etl_artifact_url: 'https://gitlab.com/oersi/oersi-etl/-/jobs/artifacts/13-oerbw/download?job=deploy'
+oerindex_etl_artifact_url: 'https://gitlab.com/oersi/oersi-etl/-/jobs/artifacts/develop/download?job=deploy'
 oerindex_etl_outputdir: "{{ base_dir }}/oersi-etl/data/to-elasticsearch"
 # List all flux-files that should be used for the ETL-process here.
 # The file path has to be relative to 'ansible/roles/oer-search-index-etl/templates' or an absolute path.

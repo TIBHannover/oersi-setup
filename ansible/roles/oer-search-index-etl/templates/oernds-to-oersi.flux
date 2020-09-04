@@ -32,6 +32,7 @@ do array('mainEntityOfPage')
     do map('node.properties.cclom:location[].1', id)
       replace_all('ccrep://.*/(.+)', 'https://www.oernds.de/edu-sharing/components/render/$1')
     end
+    /* Add creation/modification date, converting dateTime (e.g. 2019-07-23T09:26:00Z) to date (2019-07-23) */
     do map('node.modifiedAt', 'dateModified')
       replace_all('T.+Z', '')
     end

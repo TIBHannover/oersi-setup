@@ -21,10 +21,10 @@ end
 
 /* Default ID: */
 do map('node.properties.cclom:location[].1', id)
-  replace_all('ccrep://.*?de/(.+)', 'https://www.oerbw.de/edu-sharing/components/render/$1')
+  replace_all('ccrep://.*/(.+)', 'https://www.oerbw.de/edu-sharing/components/render/$1')
 end
 
-/* Replace default ID if we have a ccm:wwwurl */
+/* Replace default ID if we have a ccm:wwwurl TODO: does not work, implement choose */
 map('node.properties.ccm:wwwurl[].1', id)
 
 do array('mainEntityOfPage')
@@ -82,7 +82,8 @@ end
 
 do map('node.properties.cclom:general_language[].1', inLanguage)
   replace_all('_..$', '') /* remove country suffixes eg. _DE */
-  replace_all('^$', 'de') /* empty strings default to 'de' */
+  replace_all('^$', 'de') /* default to 'de' */
+  replace_all('unknown', 'de')
 end
 
 do map('node.properties.ccm:educationallearningresourcetype[].1', learningResourceType.id)
