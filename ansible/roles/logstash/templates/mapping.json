@@ -93,7 +93,7 @@
             "type" : "date",
             "index" : false
           },
-          "basedOn" : {
+          "provider" : {
             "properties" : {
               "id" : {
                 "type" : "keyword",
@@ -102,15 +102,7 @@
               "type" : {
                 "type" : "keyword"
               },
-              "dateCreated" : {
-                "type" : "date",
-                "index" : false
-              },
-              "dateModified" : {
-                "type" : "date",
-                "index" : false
-              },
-              "provider" : {
+              "name" : {
                 "type" : "keyword"
               }
             }
