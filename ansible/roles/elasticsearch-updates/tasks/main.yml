@@ -17,6 +17,7 @@
   vars:
     outdated_indices:
       - oer_data
+      - oer_data_1
   set_fact:
     elasticsearch_existing_outdated_oer_indices: '{{ elasticsearch_existing_oer_indices | intersect(outdated_indices) }}'
 
