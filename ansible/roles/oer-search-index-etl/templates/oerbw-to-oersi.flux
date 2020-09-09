@@ -1,6 +1,6 @@
-"https://www.oernds.de/edu-sharing/eduservlet/sitemap?from=0"
+"https://www.oerbw.de/edu-sharing/eduservlet/sitemap?from=0"
 | open-http
-| oersi.SitemapReader(wait="500",urlPattern=".*/components/.*",findAndReplace="https://www.oernds.de/edu-sharing/components/render/(.*)`https://www.oernds.de/edu-sharing/rest/node/v1/nodes/-home-/$1/metadata?propertyFilter=-all-")
+| oersi.SitemapReader(wait="500",urlPattern=".*/components/.*",findAndReplace="https://uni-tuebingen.oerbw.de/edu-sharing/components/render/(.*)`https://uni-tuebingen.oerbw.de/edu-sharing/rest/node/v1/nodes/-home-/$1/metadata?propertyFilter=-all-")
 | open-http(accept="application/json")
 | as-lines
 | decode-json
@@ -21,7 +21,7 @@ end
 
 /* Default ID: */
 do map('node.properties.cclom:location[].1', id)
-  replace_all('ccrep://.*/(.+)', 'https://www.oernds.de/edu-sharing/components/render/$1')
+  replace_all('ccrep://.*/(.+)', 'https://www.oerbw.de/edu-sharing/components/render/$1')
 end
 
 /* Replace default ID if we have a ccm:wwwurl TODO: does not work, implement choose */
@@ -30,7 +30,7 @@ map('node.properties.ccm:wwwurl[].1', id)
 do array('mainEntityOfPage')
   do entity('')
     do map('node.properties.cclom:location[].1', id)
-      replace_all('ccrep://.*/(.+)', 'https://www.oernds.de/edu-sharing/components/render/$1')
+      replace_all('ccrep://.*/(.+)', 'https://www.oerbw.de/edu-sharing/components/render/$1')
     end
     /* Add creation/modification date, converting dateTime (e.g. 2019-07-23T09:26:00Z) to date (2019-07-23) */
     do map('node.modifiedAt', 'dateModified')
@@ -41,9 +41,9 @@ do array('mainEntityOfPage')
     end
     /* Add provider/source information to each resource description */
     do entity('provider')
-      add_field('id','https://oerworldmap.org/resource/urn:uuid:51277cb8-c5a4-4204-aeaf-10ee06df53ce')
+      add_field('id','https://oerworldmap.org/resource/urn:uuid:4062c64d-b0ac-4941-95c2-8116f137326d')
       add_field('type','Service')
-      add_field('name','OERNDS')
+      add_field('name','ZOERR')
     end
   end
 end
@@ -65,7 +65,7 @@ end
 do array('creator')
  do entity('')
   add_field('type', 'Person')
-  map('node.properties.ccm:lifecyclecontributer_authorFN[].1', 'name')
+  map('node.properties.ccm:lifecyclecontributer_authorFN[].1',name)
  end
  do entity('')
   add_field('type', 'Organization')
@@ -106,8 +106,9 @@ end
 | oersi.FieldMerger
 | oersi.JsonValidator("https://dini-ag-kim.github.io/lrmi-profile/draft/schemas/schema.json")
 | object-tee | {
-    write(FLUX_DIR + "oernds-metadata.json", header="[\n", footer="\n]", separator=",\n")
+    write(FLUX_DIR + "oerbw-metadata.json", header="[\n", footer="\n]", separator=",\n")
   }{
     oersi.OersiWriter("{{ oerindex_backend_metadataapi_url }}",
-      user="{{ oerindex_backend_oermetadata_manage_user }}", pass="{{ oerindex_backend_oermetadata_manage_password }}", log=FLUX_DIR + "oernds-responses.json")
+      user="{{ oerindex_backend_oermetadata_manage_user }}", pass="{{ oerindex_backend_oermetadata_manage_password }}", log=FLUX_DIR + "oerbw-responses.json")
 };
+;
