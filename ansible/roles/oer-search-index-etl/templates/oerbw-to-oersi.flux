@@ -67,9 +67,14 @@ do array('creator')
   add_field('type', 'Person')
   map('node.properties.ccm:lifecyclecontributer_authorFN[].1',name)
  end
+end
+
+do array('sourceOrganization')
  do entity('')
   add_field('type', 'Organization')
-  map('node.properties.ccm:university_DISPLAYNAME[].1', 'name')
+  do map('node.properties.ccm:university_DISPLAYNAME[].1', 'name')
+    not_equals('')
+  end
  end
 end
 

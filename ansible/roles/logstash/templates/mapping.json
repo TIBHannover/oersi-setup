@@ -108,6 +108,20 @@
             }
           }
         }
+      },
+      "sourceOrganization" : {
+        "properties" : {
+          "id" : {
+            "type" : "keyword",
+            "index": false
+          },
+          "type" : {
+            "type" : "keyword"
+          },
+          "name" : {
+            "type" : "keyword"
+          }
+        }
       }
     }
   },
