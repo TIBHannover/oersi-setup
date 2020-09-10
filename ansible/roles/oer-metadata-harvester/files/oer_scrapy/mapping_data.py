@@ -19,9 +19,11 @@ def populate_json(item):
             "id": item["learningResourceType"]
         },
         "license": item["license"],
-        "mainEntityOfPage": {
-            "id": item["url"]
-        },
+        "mainEntityOfPage": [
+            {
+                "id": item["url"]
+            }
+        ],
         "name": item["name"]
     }
 
