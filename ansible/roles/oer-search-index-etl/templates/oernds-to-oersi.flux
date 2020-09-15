@@ -7,9 +7,12 @@
 | org.metafacture.metamorph.Metafix("
 
 /* Set up the context, TODO: include from separate file */
-add_field('@context.id','@id')
-add_field('@context.type','@type')
-add_field('@context.@vocab','http://schema.org/')
+do array('@context')
+ add_field('','https://w3id.org/kim/lrmi-profile/draft/context.jsonld')
+ do entity('')
+  add_field('@language', 'de')
+ end
+end
 
 /* Map/pick standard edu-sharing fields, TODO: include from separate file */
 map(node.title, name)
@@ -20,8 +23,8 @@ do map(node.description, description)
 end
 
 /* Default ID: */
-do map('node.properties.cclom:location[].1', id)
-  replace_all('ccrep://.*/(.+)', 'https://www.oernds.de/edu-sharing/components/render/$1')
+do map('node.ref.id', id)
+  prepend('https://www.oernds.de/edu-sharing/components/render/')
 end
 
 /* Replace default ID if we have a ccm:wwwurl TODO: does not work, implement choose */
@@ -29,8 +32,8 @@ map('node.properties.ccm:wwwurl[].1', id)
 
 do array('mainEntityOfPage')
   do entity('')
-    do map('node.properties.cclom:location[].1', id)
-      replace_all('ccrep://.*/(.+)', 'https://www.oernds.de/edu-sharing/components/render/$1')
+    do map('node.ref.id', id)
+      prepend('https://www.oernds.de/edu-sharing/components/render/')
     end
     /* Add creation/modification date, converting dateTime (e.g. 2019-07-23T09:26:00Z) to date (2019-07-23) */
     do map('node.modifiedAt', 'dateModified')
