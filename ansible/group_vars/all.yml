@@ -77,7 +77,7 @@ elasticsearch_builtin_users:
   - name: remote_monitoring_user
     password: changeme
 elasticsearch_oer_index_alias_name: oer_data # main alias; use external
-elasticsearch_oer_index_name: oer_data_3 # internal use
+elasticsearch_oer_index_name: oer_data_4 # internal use
 elasticsearch_oer_index_number_of_shards: 1
 elasticsearch_oer_index_number_of_replicas: "{{ elasticsearch_oer_index_number_of_shards - 1 }}"
 # logstash-user that writes to the oer-index
