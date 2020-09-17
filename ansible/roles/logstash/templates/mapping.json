@@ -7,12 +7,16 @@
     }
   },
   "mappings" : {
-    "dynamic": "strict",
+    "dynamic": "false",
     "properties" : {
       "about" : {
         "properties" : {
           "id" : {
             "type" : "keyword"
+          },
+          "prefLabel" : {
+            "dynamic" : "true",
+            "properties" : {}
           }
         }
       },
@@ -20,6 +24,10 @@
         "properties" : {
           "id" : {
             "type" : "keyword"
+          },
+          "prefLabel" : {
+            "dynamic" : "true",
+            "properties" : {}
           }
         }
       },
@@ -67,6 +75,10 @@
         "properties" : {
           "id" : {
             "type" : "keyword"
+          },
+          "prefLabel" : {
+            "dynamic" : "true",
+            "properties" : {}
           }
         }
       },
