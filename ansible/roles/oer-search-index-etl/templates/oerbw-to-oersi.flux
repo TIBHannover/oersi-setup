@@ -51,16 +51,15 @@ do array('mainEntityOfPage')
   end
 end
 
+do map('node.properties.ccm:taxonid[].1', '@hochschulfaechersystematik')
+  lookup(in: 'data/maps/edusharing-subject-mapping.tsv')
+end
+
 do array('about')
  do entity('')
-  /* Build pseudo hochschulfaechersystematik URIs, TODO: implement mapping to hochschulfaechersystematik */
-  do map('node.properties.ccm:taxonid[].1', 'id')
-    not_equals('')
-    replace_all('(^$)|(\\\\d+)', 'https://w3id.org/kim/hochschulfaechersystematik/$0')
-  end
-  /* TODO: with mapping mentioned above, use labels from hochschulfaechersystematik */
-  do map('node.properties.ccm:taxonid_DISPLAYNAME[].1', 'prefLabel.de')
-    not_equals('')
+  map('@hochschulfaechersystematik', 'id')
+  do map('@hochschulfaechersystematik', 'prefLabel.de')
+    lookup(in: 'data/maps/subject-labels.tsv')
   end
  end
 end
