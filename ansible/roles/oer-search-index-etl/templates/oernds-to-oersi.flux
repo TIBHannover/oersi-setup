@@ -1,6 +1,6 @@
 "https://www.oernds.de/edu-sharing/eduservlet/sitemap?from=0"
 | open-http
-| oersi.SitemapReader(wait="500",urlPattern=".*/components/.*",findAndReplace="https://www.oernds.de/edu-sharing/components/render/(.*)`https://www.oernds.de/edu-sharing/rest/node/v1/nodes/-home-/$1/metadata?propertyFilter=-all-")
+| oersi.SitemapReader(wait="500",limit=input_limit,urlPattern=".*/components/.*",findAndReplace="https://www.oernds.de/edu-sharing/components/render/(.*)`https://www.oernds.de/edu-sharing/rest/node/v1/nodes/-home-/$1/metadata?propertyFilter=-all-")
 | open-http(accept="application/json")
 | as-lines
 | decode-json
@@ -115,6 +115,6 @@ end
 | object-tee | {
     write(FLUX_DIR + "oernds-metadata.json", header="[\n", footer="\n]", separator=",\n")
   }{
-    oersi.OersiWriter("{{ oerindex_backend_metadataapi_url }}",
-      user="{{ oerindex_backend_oermetadata_manage_user }}", pass="{{ oerindex_backend_oermetadata_manage_password }}", log=FLUX_DIR + "oernds-responses.json")
+    oersi.OersiWriter(backend_api,
+      user=backend_user, pass=backend_pass, log=FLUX_DIR + "oernds-responses.json")
 };

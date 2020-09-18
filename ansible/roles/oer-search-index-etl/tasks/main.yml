@@ -56,8 +56,15 @@
 
 - name: Extract, transform, and load some OER sources
   command:
-    cmd: './build/install/oersi-etl/bin/oersi-etl {{ oerindex_etl_configdir }}-enabled'
+  args:
     chdir: '{{ oerindex_etl_downloaddir }}'
+    argv:
+      - ./build/install/oersi-etl/bin/oersi-etl
+      - '{{ oerindex_etl_configdir }}-enabled' # we could also directly use ./data/production now
+      - input_limit=-1
+      - backend_api={{ oerindex_backend_metadataapi_url }}
+      - backend_user={{ oerindex_backend_oermetadata_manage_user }}
+      - backend_pass={{ oerindex_backend_oermetadata_manage_password }}
   when: oerindex_import_sources_immediately
 
 - name: Configure cron schedule - Extract, transform, and load OER sources
