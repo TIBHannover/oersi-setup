@@ -66,6 +66,7 @@
       - backend_user={{ oerindex_backend_oermetadata_manage_user }}
       - backend_pass={{ oerindex_backend_oermetadata_manage_password }}
   when: oerindex_import_sources_immediately
+  no_log: true
 
 - name: Configure cron schedule - Extract, transform, and load OER sources
   cron:
