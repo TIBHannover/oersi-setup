@@ -54,8 +54,8 @@ class TagPipeline(object):
 class NormLinksPipeline(object):
     def process_item(self, item, spider):
         print("Items is: ", item)
-        if item['learningResourceType']:
-            item['learningResourceType'] = item['learningResourceType'].strip()
+        if item['learningResourceType'] and item['learningResourceType'].strip() == "":
+            item['learningResourceType'] = "https://w3id.org/kim/hcrt/other"
         if spider.name == "zoerr_spider":
             return item
         elif spider.name == "oernds_spider":
