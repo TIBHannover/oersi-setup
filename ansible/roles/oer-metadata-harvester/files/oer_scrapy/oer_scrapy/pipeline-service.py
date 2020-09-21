@@ -54,6 +54,8 @@ class TagPipeline(object):
 class NormLinksPipeline(object):
     def process_item(self, item, spider):
         print("Items is: ", item)
+        if item['learningResourceType']:
+            item['learningResourceType'] = item['learningResourceType'].strip()
         if spider.name == "zoerr_spider":
             return item
         elif spider.name == "oernds_spider":
@@ -65,6 +67,8 @@ class NormLinksPipeline(object):
             else:
                 item['url'] = item['url'].strip()
                 return item
+        else:
+            return item
 
 
 class NormLicensePipeline(object):

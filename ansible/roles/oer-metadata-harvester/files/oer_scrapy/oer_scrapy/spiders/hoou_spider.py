@@ -78,7 +78,7 @@ class HoouSpider(SitemapSpider):
       il.add_value('interactivityType', '')
 
     if il.add_xpath('learningResourceType', '(//tr/td[2])[23]') is None:
-      il.add_value('learningResourceType', '')
+      il.add_value('learningResourceType', 'https://w3id.org/kim/hcrt/other')
 
     il.add_xpath('date_published', '(//p[text()[contains(.,"Veröffentlicht")]]/following-sibling::*/text())[1]')
 
