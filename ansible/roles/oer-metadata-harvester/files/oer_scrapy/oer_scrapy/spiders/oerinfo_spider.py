@@ -75,7 +75,7 @@ class OerinfoSpiderSpider(SitemapSpider):
             il.add_value('interactivityType', '')
 
         if il.add_xpath('learningResourceType', '(//meta[@property="og:type"]/@content)') is None:
-            il.add_value('learningResourceType', '')
+            il.add_value('learningResourceType', 'https://w3id.org/kim/hcrt/other')
 
         il.add_xpath('date_published','(//meta[@property="DC.date.issued"]/@content)')
 
