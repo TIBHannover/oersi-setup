@@ -43,12 +43,10 @@ oerindex_backend_searchapi_url: "{{ oerindex_backend_url_scheme }}://{{ oerindex
 oerindex_harvester_instdir: "{{ base_dir }}/metadata_harvester"
 
 oerindex_etl_downloaddir: "{{ base_dir }}/oersi-etl"
-oerindex_etl_configdir: "{{ base_dir }}/oersi-etl/config"
+oerindex_etl_configdir: "{{ oerindex_etl_downloaddir }}/data/production"
 oerindex_etl_artifact_url: 'https://gitlab.com/oersi/oersi-etl/-/jobs/artifacts/develop/download?job=deploy'
 oerindex_etl_outputdir: "{{ base_dir }}/oersi-etl/data/to-elasticsearch"
-# List all flux-files that should be used for the ETL-process here.
-# The file path has to be relative to 'ansible/roles/oer-search-index-etl/templates' or an absolute path.
-# You can also insert your own flux-files like '../../../my-conf-dir/my-etl.flux'
+# List all flux-files from oersi-etl/data/production/ that should be used for the ETL-process here.
 oerindex_etl_configfiles:
   - oernds-to-oersi.flux
   - oerbw-to-oersi.flux

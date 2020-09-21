@@ -7,34 +7,6 @@
 - name: Ensures output-dir exists
   file: path='{{ oerindex_etl_outputdir }}' state=directory
 
-- name: Ensures config-dir exists
-  file: path='{{ oerindex_etl_configdir }}' state=directory
-
-- name: Copy oersi-etl config files
-  template:
-    src: "{{ item }}"
-    dest: "{{ oerindex_etl_configdir }}/"
-    mode: 'preserve'
-  loop: '{{ oerindex_etl_configfiles | default([], true) }}'
-
-- name: Ensures config-enabled-dir exists
-  file: path='{{ oerindex_etl_configdir }}-enabled' state=directory
-
-- name: Find current config enabled files
-  find: path='{{ oerindex_etl_configdir }}-enabled' file_type=link
-  register: oerindex_etl_config_enabled_files
-
-- name: Remove current config enabled files
-  file: state=absent path='{{ item.path }}'
-  with_items: '{{ oerindex_etl_config_enabled_files.files }}'
-
-- name: Create config enabled files
-  file:
-    state: link
-    src: '{{ oerindex_etl_configdir }}/{{ item | basename }}'
-    path: '{{ oerindex_etl_configdir }}-enabled/{{ item | basename }}'
-  loop: '{{ oerindex_etl_configfiles | default([], true) }}'
-
 - name: download OER search index ETL
   get_url:
     url: "{{ oerindex_etl_artifact_url }}"
@@ -54,24 +26,37 @@
     src: '{{ oerindex_etl_downloaddir }}/oersi-etl.zip'
     dest: "{{ oerindex_etl_downloaddir }}"
 
+- name: Ensures config-dir exists
+  file: path='{{ oerindex_etl_configdir }}' state=directory
+
+- name: Ensures config-enabled-dir exists
+  file: path='{{ oerindex_etl_configdir }}-enabled' state=directory
+
+- name: Find current config enabled files
+  find: path='{{ oerindex_etl_configdir }}-enabled' file_type=link
+  register: oerindex_etl_config_enabled_files
+
+- name: Remove current config enabled files
+  file: state=absent path='{{ item.path }}'
+  with_items: '{{ oerindex_etl_config_enabled_files.files }}'
+
+- name: Create config enabled files
+  file:
+    state: link
+    src: '{{ oerindex_etl_configdir }}/{{ item | basename }}'
+    path: '{{ oerindex_etl_configdir }}-enabled/{{ item | basename }}'
+  loop: '{{ oerindex_etl_configfiles | default([], true) }}'
+
 - name: Extract, transform, and load some OER sources
   command:
-  args:
+    cmd: './build/install/oersi-etl/bin/oersi-etl {{ oerindex_etl_configdir }}-enabled ./data/production/oersi.properties'
     chdir: '{{ oerindex_etl_downloaddir }}'
-    argv:
-      - ./build/install/oersi-etl/bin/oersi-etl
-      - '{{ oerindex_etl_configdir }}-enabled' # we could also directly use ./data/production now
-      - input_limit=-1
-      - backend_api={{ oerindex_backend_metadataapi_url }}
-      - backend_user={{ oerindex_backend_oermetadata_manage_user }}
-      - backend_pass={{ oerindex_backend_oermetadata_manage_password }}
   when: oerindex_import_sources_immediately
-  no_log: true
 
 - name: Configure cron schedule - Extract, transform, and load OER sources
   cron:
     name: "ETL OER sources"
     hour: '{{ oerindex_import_sources_schedule_hour }}'
     minute: '{{ oerindex_import_sources_schedule_minute }}'
-    job: 'cd {{ oerindex_etl_downloaddir }} && ./build/install/oersi-etl/bin/oersi-etl {{ oerindex_etl_configdir }}-enabled &> {{ oerindex_etl_downloaddir }}/etl.log'
+    job: 'cd {{ oerindex_etl_downloaddir }} && ./build/install/oersi-etl/bin/oersi-etl {{ oerindex_etl_configdir }}-enabled ./data/production/oersi.properties &> {{ oerindex_etl_downloaddir }}/etl.log'
     state: '{{ oerindex_import_sources_schedule_state }}'
