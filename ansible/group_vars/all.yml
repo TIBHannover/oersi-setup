@@ -46,6 +46,7 @@ oerindex_etl_downloaddir: "{{ base_dir }}/oersi-etl"
 oerindex_etl_configdir: "{{ oerindex_etl_downloaddir }}/data/production"
 oerindex_etl_artifact_url: 'https://gitlab.com/oersi/oersi-etl/-/jobs/artifacts/develop/download?job=deploy'
 oerindex_etl_outputdir: "{{ base_dir }}/oersi-etl/data/to-elasticsearch"
+oerindex_etl_input_limit: -1
 # List all flux-files from oersi-etl/data/production/ that should be used for the ETL-process here.
 oerindex_etl_configfiles:
   - oernds-to-oersi.flux
