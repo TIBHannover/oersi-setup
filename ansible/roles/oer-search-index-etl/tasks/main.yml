@@ -38,6 +38,13 @@
     dest: "{{ oerindex_etl_configdir }}/oersi.properties"
     mode: '600'
 
+- name: Copy oersi-etl custom config files
+  copy:
+    src: "{{ item }}"
+    dest: "{{ oerindex_etl_configdir }}/{{ item | basename }}"
+    mode: 'preserve'
+  loop: '{{ oerindex_etl_customfiles | default([], true) }}'
+
 - name: Find current config enabled files
   find: path='{{ oerindex_etl_configdir }}-enabled' file_type=link
   register: oerindex_etl_config_enabled_files
@@ -51,7 +58,7 @@
     state: link
     src: '{{ oerindex_etl_configdir }}/{{ item | basename }}'
     path: '{{ oerindex_etl_configdir }}-enabled/{{ item | basename }}'
-  loop: '{{ oerindex_etl_configfiles | default([], true) }}'
+  loop: '{{ (oerindex_etl_configfiles | default([], true)) + (oerindex_etl_customfiles | default([], true)) }}'
 
 - name: Extract, transform, and load some OER sources
   command:
