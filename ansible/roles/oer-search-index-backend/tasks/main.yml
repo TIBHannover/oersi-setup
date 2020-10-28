@@ -1,40 +1,4 @@
 ---
-- name: undeploy war-files from tomcat
-  file:
-    path: "{{item}}"
-    state: absent
-  with_items:
-    - "{{tomcat_home}}/webapps/oersi.war"
-
-- name: wait for war-file-undeployment
-  wait_for:
-    path: "{{item}}"
-    state: absent
-  with_items:
-    - "{{tomcat_home}}/webapps/oersi/"
-
-- name: stop tomcat
-  shell: '{{tomcat_stop_command}}'
-  
-- name: Ensures config-dir exists
-  file: path='{{ oerindex_backend_configdir }}' state=directory
-
-- name: copy config-files
-  template:
-    src: "{{ item }}"
-    dest: "{{ oerindex_backend_configdir }}/"
-  with_items:
-    - "logback.xml"
-    - "oersi.properties"
-
-- name: Ensures tomcat-config-dir exists
-  file: path='{{ tomcat_home }}/conf/Catalina/localhost' state=directory
-
-- name: copy context.xml.default
-  template:
-    src: "context.xml.default"
-    dest: "{{ tomcat_home }}/conf/Catalina/localhost/context.xml.default"
-
 - name: Ensures inst-dir exists
   file: path='{{ oerindex_backend_downloaddir }}' state=directory
 
@@ -77,6 +41,37 @@
     paths: "{{ oerindex_backend_downloaddir }}"
     patterns: oersi-backend*.war
   register: oersi_war_find_result
+
+- name: stop tomcat
+  shell: '{{ tomcat_stop_command }}'
+
+- name: undeploy backend from tomcat
+  file:
+    path: "{{ item }}"
+    state: absent
+  with_items:
+    - "{{ tomcat_home }}/webapps/oersi.war"
+    - "{{ tomcat_home }}/webapps/oersi"
+    - "{{ tomcat_home }}/work/Catalina/localhost/oersi"
+  
+- name: Ensures config-dir exists
+  file: path='{{ oerindex_backend_configdir }}' state=directory
+
+- name: copy config-files
+  template:
+    src: "{{ item }}"
+    dest: "{{ oerindex_backend_configdir }}/"
+  with_items:
+    - "logback.xml"
+    - "oersi.properties"
+
+- name: Ensures tomcat-config-dir exists
+  file: path='{{ tomcat_home }}/conf/Catalina/localhost' state=directory
+
+- name: copy context.xml.default
+  template:
+    src: "context.xml.default"
+    dest: "{{ tomcat_home }}/conf/Catalina/localhost/context.xml.default"
 
 - name: copy war-files to tomcat
   copy:
