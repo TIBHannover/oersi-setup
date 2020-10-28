@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# {{ ansible_managed }}
+
 CATALINA_HOME={{tomcat_home}}
 TOMCAT_BINDIR=${CATALINA_HOME}/bin
 JRE_HOME=$(readlink -f /usr/bin/java | sed "s:bin/java::")
