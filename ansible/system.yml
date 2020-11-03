@@ -26,6 +26,7 @@
     - oer-search-index-backend
     - oer-metadata-harvester
     - oer-search-index-etl
+    - index-scripts
 
 - hosts: oerindex
   become: yes
