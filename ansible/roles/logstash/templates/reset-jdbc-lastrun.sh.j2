@@ -1,0 +1,4 @@
+#!/bin/bash
+# {{ ansible_managed }}
+
+test -w {{ logstash_dir }}/.logstash_jdbc_last_run && rm {{ logstash_dir }}/.logstash_jdbc_last_run
