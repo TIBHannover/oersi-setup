@@ -2,7 +2,7 @@
 - name: download mariadb jconnector
   get_url:
     url: '{{mariadb_jconnector_url}}'
-    dest: "/usr/share/logstash/logstash-core/lib/jars/mariadb-connector-java.jar"
+    dest: "{{ logstash_dir }}/logstash-core/lib/jars/mariadb-connector-java.jar"
     force: yes # necessary for driver updates
 
 - name: Ensure config-directories exist
@@ -44,6 +44,22 @@
     - filter_jdbc.conf
     - output_elastic_search.conf
   notify: restart logstash
-  
+
+- name: Add reset-jdbc-lastrun.sh
+  template:
+    src: "reset-jdbc-lastrun.sh.j2"
+    dest: "{{ logstash_dir }}/bin/reset-jdbc-lastrun.sh"
+    owner: logstash
+    group: logstash
+    mode: 0700
+
+- name: Allow logstash group to manage logstash service
+  become: yes
+  template:
+    src: "sudoers-logstash.j2"
+    dest: "/etc/sudoers.d/logstash"
+    mode: 0440
+    validate: 'visudo -cf %s'
+
 - name: Force a restart if configuration has changed.
   meta: flush_handlers

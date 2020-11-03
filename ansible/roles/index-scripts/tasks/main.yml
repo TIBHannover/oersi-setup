@@ -1,0 +1,31 @@
+---
+- name: Install curl
+  become: yes
+  package:
+    name: curl
+    state: present
+  
+- name: Adding user to logstash group
+  become: yes
+  user:
+    name: "{{ ansible_user }}"
+    groups: logstash
+    append: yes
+
+- name: Ensures conf dir exists
+  file: path='{{ base_dir }}/conf' state=directory
+
+- name: Add oer_index_access
+  become: yes
+  template:
+    src: "oer_index_access.j2"
+    dest: "{{ base_dir }}/conf/oer_index_access"
+    owner: logstash
+    group: logstash
+    mode: 0440
+
+- name: Add recreate-index.sh.j2
+  template:
+    src: "recreate-index.sh.j2"
+    dest: "{{ base_dir }}/bin/recreate-index.sh"
+    mode: 0700
