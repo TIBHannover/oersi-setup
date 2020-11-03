@@ -29,3 +29,15 @@
     src: "recreate-index.sh.j2"
     dest: "{{ base_dir }}/bin/recreate-index.sh"
     mode: 0700
+
+- name: Add oer_backend_access
+  template:
+    src: "oer_backend_access.j2"
+    dest: "{{ base_dir }}/conf/oer_backend_access"
+    mode: 0400
+
+- name: Add reset-sql-oerdata.sh.j2
+  template:
+    src: "reset-sql-oerdata.sh.j2"
+    dest: "{{ base_dir }}/bin/reset-sql-oerdata.sh"
+    mode: 0700
