@@ -53,6 +53,11 @@
     group: logstash
     mode: 0700
 
+- name: Install sudo
+  package:
+    name: sudo
+    state: present
+
 - name: Allow logstash group to manage logstash service
   become: yes
   template:
