@@ -21,7 +21,7 @@
         </appender>
 
         <logger name="org.springframework" level="ERROR" />
-        <logger name="eu.tib" level="DEBUG" />
+        <logger name="org.oersi" level="{{ oerindex_backend_loglevel }}" />
         <root level="error">
                 <appender-ref ref="FILE" />
         </root>
