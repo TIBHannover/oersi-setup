@@ -14,15 +14,8 @@
     elasticsearch_existing_oer_indices: '{{ elasticsearch_existing_oer_indices_result.content | from_json | map(attribute="index") | list }}'
 
 - name: Determine outdated oer-indices
-  vars:
-    outdated_indices:
-      - oer_data
-      - oer_data_1
-      - oer_data_2
-      - oer_data_3
-      - oer_data_4
   set_fact:
-    elasticsearch_existing_outdated_oer_indices: '{{ elasticsearch_existing_oer_indices | intersect(outdated_indices) }}'
+    elasticsearch_existing_outdated_oer_indices: '{{ elasticsearch_existing_oer_indices | reject("equalto", elasticsearch_oer_index_name) | list }}'
 
 - name: Delete outdated oer-indices
   uri:
