@@ -134,6 +134,9 @@
             "type" : "keyword"
           }
         }
+      },
+      "keywords" : {
+        "type:" : "keyword"
       }
     }
   },
