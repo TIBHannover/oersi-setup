@@ -1,0 +1,21 @@
+---
+- name: Ensure mysql python packages are present
+  become: true
+  package:
+    name: python-mysqldb
+
+- name: Create a new database
+  become: true
+  mysql_db:
+    name: '{{ matomo_dbname }}'
+    encoding: 'utf8'
+    collation: 'utf8_bin'
+    config_file: /etc/my.cnf.d/mysql.cnf
+    state: present
+
+- name: Create database user
+  become: true
+  mysql_user:
+    name: '{{ matomo_dbuser }}'
+    password: '{{ matomo_dbpassword }}'
+    priv: '{{ matomo_dbname }}.*:ALL'

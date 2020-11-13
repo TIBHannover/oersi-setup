@@ -1,0 +1,12 @@
+---
+- name: Install php packages
+  become: true
+  package:
+    name: [ "php", "php-curl", "php-gd", "php-cli", "php-mysql", "php-xml", "php-mbstring" ]
+    state: present
+  
+- name: Install php package for nginx
+  become: true
+  package:
+    name: [ "php-fpm" ]
+    state: present

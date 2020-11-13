@@ -1,0 +1,18 @@
+---
+# Requirements for the matomo role:
+# - MariaDB has to be installed
+# - nginx has to be installed
+
+- include: php.yml
+- include: init-database.yml
+- include: matomo.yml
+- include: nginx-config.yml
+
+- name: Check if the config.ini.php exists
+  become: true
+  stat:
+    path: "{{ matomo_inst_dir }}/matomo/config/config.ini.php"
+  register: matomo_config_ini_stat_result
+        
+- include: matomo-init.yml
+  when: not matomo_config_ini_stat_result.stat.exists

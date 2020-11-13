@@ -1,0 +1,68 @@
+---
+#- name: Remove existing database
+#  become: true
+#  mysql_db:
+#    name: '{{ matomo_dbname }}'
+#    state: absent
+
+- name: Force all notified handlers to run at this point, not waiting for normal sync points
+  meta: flush_handlers
+
+- name: matomo installation database setup
+  uri:
+    url: '{{ matomo_url_local }}/index.php?action=databaseSetup'
+    method: POST
+    body_format: form-urlencoded
+    follow_redirects: all
+    body: 
+      type:	"InnoDB"
+      host:	"127.0.0.1"
+      username:	"{{ matomo_dbuser }}"
+      password:	"{{ matomo_dbpassword }}"
+      dbname:	"{{ matomo_dbname }}"
+      tables_prefix:	"matomo_"
+      adapter:	"PDO\\MYSQL"
+    return_content: true
+
+- name: matomo installation superuser setup
+  uri:
+    url: '{{ matomo_url_local }}/index.php?action=setupSuperUser&module=Installation'
+    method: POST
+    body_format: form-urlencoded
+    follow_redirects: all
+    body: 
+      login:	"{{ matomo_superuser_name }}"
+      password:	"{{ matomo_superuser_password }}"
+      password_bis:	"{{ matomo_superuser_password }}"
+      email:	"{{ matomo_superuser_mail }}"
+    return_content: true
+
+- name: matomo installation website setup
+  uri:
+    url: '{{ matomo_url_local }}/index.php?action=firstWebsiteSetup&module=Installation'
+    method: POST
+    body_format: form-urlencoded
+    follow_redirects: all
+    body: 
+      siteName:	"{{ matomo_init_website.name }}"
+      url:	"{{ matomo_init_website.url }}"
+      timezone:	"{{ matomo_init_website.timezone }}"
+      ecommerce:	"0"
+    return_content: true
+
+- name: matomo finish installation
+  uri:
+    url: '{{ matomo_url_local }}/index.php?action=finished&module=Installation'
+    method: POST
+    body_format: form-urlencoded
+    follow_redirects: all
+    body:
+      do_not_track:	"1"
+      anonymise_ip:	"1"
+    return_content: true
+
+- name: consider matomo port in config
+  lineinfile:
+    path: '{{ matomo_inst_dir }}/matomo/config/config.ini.php'
+    line: 'trusted_hosts[] = "{{ matomo_host }}:{{ matomo_port }}"'
+    regexp: '^trusted_hosts\[\] = "{{ matomo_host }}"$'

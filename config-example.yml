@@ -35,3 +35,11 @@ example:
       oerindex_backend_oermetadata_manage_password: test
 
       oerindex_frontend_custom_style_css: '../doc/gitlab-config-example/frontend/style-override.css'
+      
+      matomo_install: true
+      matomo_superuser_name: admin
+      matomo_superuser_password: changeme
+      matomo_superuser_mail: xyz@example.org
+      matomo_dbname: matomo
+      matomo_dbuser: matomo
+      matomo_dbpassword: changeme
