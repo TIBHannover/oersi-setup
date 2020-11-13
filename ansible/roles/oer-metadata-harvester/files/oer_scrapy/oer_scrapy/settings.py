@@ -69,6 +69,7 @@ ITEM_PIPELINES = {
     'oer_scrapy.pipeline-service.NormLicensePipeline': 200,
     'oer_scrapy.pipeline-service.JoinLongWhiteSpaceStringsPipeline': 250,
     'oer_scrapy.pipeline-service.NormLanguagePipeline': 270,
+    'oer_scrapy.pipeline-service.NormDatePipeline': 280,
     'oer_scrapy.pipeline-service.NormLinksPipeline': 290,
     'oer_scrapy.pipeline-service.ServisePipeline': 350,
 }

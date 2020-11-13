@@ -1,0 +1,32 @@
+---
+- name: Get existing oer-indices
+  uri:
+    url: "{{elasticsearch_api_url}}/_cat/indices/oer*?format=json&h=index"
+    method: GET
+    user: "{{elasticsearch_elastic_username}}"
+    password: "{{elasticsearch_elastic_password}}"
+    force_basic_auth: yes
+    return_content: yes
+  register: elasticsearch_existing_oer_indices_result
+  
+- name: Determine existing oer-indices result
+  set_fact:
+    elasticsearch_existing_oer_indices: '{{ elasticsearch_existing_oer_indices_result.content | from_json | map(attribute="index") | list }}'
+
+- name: Determine outdated oer-indices
+  set_fact:
+    elasticsearch_existing_outdated_oer_indices: '{{ elasticsearch_existing_oer_indices | reject("equalto", elasticsearch_oer_index_name) | list }}'
+
+- name: Delete outdated oer-indices
+  uri:
+    url: "{{elasticsearch_api_url}}/{{ item }}"
+    method: DELETE
+    user: "{{elasticsearch_elastic_username}}"
+    password: "{{elasticsearch_elastic_password}}"
+    force_basic_auth: yes
+  loop: '{{elasticsearch_existing_outdated_oer_indices}}'
+
+- name: Remove current logstash_jdbc_last_run
+  file: state=absent path='/usr/share/logstash/.logstash_jdbc_last_run'
+  when: elasticsearch_existing_outdated_oer_indices | length > 0
+  notify: restart logstash

@@ -10,8 +10,13 @@
   become: yes
   roles:
     - mariadb
+    - geerlingguy.java
     - elasticsearch
     - logstash
+    - role: kibana
+      when: kibana_install
+    - role: elasticsearch-updates
+      tags: elasticsearch-updates
   tags:
     - root-task
 
@@ -20,6 +25,8 @@
     - tomcat
     - oer-search-index-backend
     - oer-metadata-harvester
+    - oer-search-index-etl
+    - index-scripts
 
 - hosts: oerindex
   become: yes

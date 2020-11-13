@@ -3,7 +3,6 @@ oerindex_host: 192.168.98.115
 
 mariadb_host: localhost
 mariadb_port: 3306
-mariadb_jconnector_url: https://repo1.maven.org/maven2/org/mariadb/jdbc/mariadb-java-client/2.5.3/mariadb-java-client-2.5.3.jar
 
 base_dir: "{{ansible_env.HOME}}"
 
@@ -14,12 +13,53 @@ oerindex_db:
 
 oerindex_frontend_instdir: "/var/www/oersi-frontend"
 oerindex_frontend_artifact_url: "https://gitlab.com/oersi/oersi-frontend/-/jobs/artifacts/master/download?job=build"
+# Language  example en,de, etc.
+oerindex_frontend_lang: de 
+# Page size options .
+oerindex_frontend_page_size: '["10", "25", "50", "100"]'
+# Multiselect  true false.
+oerindex_frontend_nr_result_page_default: 10
+# path to a custom style-override.css file
+oerindex_frontend_custom_style_css: style-override.css
+# path to a custom footer.html file
+oerindex_frontend_custom_footer_file_path: footer.html
+# path to a custom translation.json file
+oerindex_frontend_custom_translation_file_path: # see default translation in https://gitlab.com/oersi/oersi-frontend/-/blob/development/public/locales/de/translation.json
+oerindex_frontend_custom_provider_translation_file_path: # see default translation in https://gitlab.com/oersi/oersi-frontend/-/blob/development/public/locales/de/provider.json
+oerindex_frontend_custom_lrt_translation_file_path: # see default translation in https://gitlab.com/oersi/oersi-frontend/-/blob/development/public/locales/de/lrt.json
+# a list of custom images that should be copied into ../oersi-frontend/build; format of each entry: [<source-file-path>, <destination under oersi-frontend/build/<image>]
+# example: ['local/path/example.svg', 'example.svg']
+oerindex_frontend_custom_images:
 
 oerindex_backend_downloaddir: "{{ base_dir }}/oersi-backend"
 oerindex_backend_configdir: "{{ base_dir }}/oersi-backend/config"
 oerindex_backend_artifact_url: 'https://gitlab.com/oersi/oersi-backend/-/jobs/artifacts/master/download?job=deploy'
+oerindex_backend_searchapi_root_path: '/resources/es/'
+oerindex_backend_url_scheme: 'http'
+oerindex_backend_metadataapi_url: 'http://localhost:8080/oersi/api/metadata'
+oerindex_backend_searchapi_url: "{{ oerindex_backend_url_scheme }}://{{ oerindex_host }}{{ oerindex_backend_searchapi_root_path }}"
 
 oerindex_harvester_instdir: "{{ base_dir }}/metadata_harvester"
+
+oerindex_etl_downloaddir: "{{ base_dir }}/oersi-etl"
+oerindex_etl_configdir: "{{ oerindex_etl_downloaddir }}/data/production"
+oerindex_etl_artifact_url: 'https://gitlab.com/oersi/oersi-etl/-/jobs/artifacts/master/download?job=deploy'
+oerindex_etl_outputdir: "{{ base_dir }}/oersi-etl/data/to-elasticsearch"
+oerindex_etl_input_limit: -1
+# List all standard flux-files from oersi-etl/data/production/ that should be used for the ETL-process here.
+oerindex_etl_configfiles:
+  - oernds-to-oersi.flux
+  - oerbw-to-oersi.flux
+  - edu-sharing.fix
+# List all your custom flux-files that should be used for the ETL-process here.
+# The file path has to be relative to 'ansible/roles/oer-search-index-etl/files' or an absolute path.
+oerindex_etl_customfiles:
+#  - '../../../my-conf-dir/my-etl.flux'
+  
+oerindex_import_sources_immediately: true # import all configured sources immediately at the installation process (true|false)
+oerindex_import_sources_schedule_state: 'present' # import all configured sources scheduled (absent|present)
+oerindex_import_sources_schedule_hour: '0'  # Hour when the job should run - see https://docs.ansible.com/ansible/latest/modules/cron_module.html
+oerindex_import_sources_schedule_minute: '0' # Minute when the job should run - see https://docs.ansible.com/ansible/latest/modules/cron_module.html
 
 elasticsearch_host: localhost
 elasticsearch_port: 9200
@@ -38,7 +78,10 @@ elasticsearch_builtin_users:
     password: changeme
   - name: remote_monitoring_user
     password: changeme
-elasticsearch_oer_index_name: oer_data
+elasticsearch_oer_index_alias_name: oer_data # main alias; use external
+elasticsearch_oer_index_name: oer_data_6 # internal use
+elasticsearch_oer_index_number_of_shards: 1
+elasticsearch_oer_index_number_of_replicas: "{{ elasticsearch_oer_index_number_of_shards - 1 }}"
 # logstash-user that writes to the oer-index
 elasticsearch_oersi_logstash_username: oersi_logstash
 elasticsearch_oersi_logstash_password: ch@ngeMe
@@ -53,14 +96,18 @@ elasticsearch_api_url: "http://{{ elasticsearch_host }}:{{ elasticsearch_port }}
 #elasticsearch_heap_size_min: 1g
 #elasticsearch_heap_size_max: 2g
 
+# install kibana true/false
+kibana_install: false
+# insternal geerlingguy.kibana properties
+kibana_elasticsearch_username: 'kibana'
+kibana_elasticsearch_password: '{{ (elasticsearch_builtin_users | selectattr("name", "equalto", "kibana")  | list)[0].password }}'
+
 logstash_monitor_local_syslog: false
 logstash_install_plugins:
   - logstash-input-jdbc
   - logstash-filter-jdbc_streaming
   
-  
-tomcat_name: apache-tomcat-9.0.31
-tomcat_archive_url: 'https://archive.apache.org/dist/tomcat/tomcat-9/v9.0.31/bin/{{tomcat_name}}.tar.gz'
+tomcat_version: '9.0.39'
 tomcat_port: 8080
 tomcat_shutdown_port: 8005
 tomcat_ssl_port: 8443

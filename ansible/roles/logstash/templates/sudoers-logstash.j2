@@ -1,0 +1,4 @@
+%logstash   ALL= NOPASSWD: /usr/bin/systemctl start logstash.service
+%logstash   ALL= NOPASSWD: /usr/bin/systemctl stop logstash.service
+%logstash   ALL= NOPASSWD: /usr/bin/systemctl restart logstash.service
+%logstash   ALL= NOPASSWD: {{ logstash_dir }}/bin/reset-jdbc-lastrun.sh

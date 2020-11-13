@@ -1,7 +1,0 @@
-{
-  "ELASTIC_SEARCH": {
-    "URL": "http://{{ oerindex_host }}/es/",
-    "CREDENCIAL": "",
-    "APP_NAME": "{{ elasticsearch_oer_index_name }}"
-  }
-}

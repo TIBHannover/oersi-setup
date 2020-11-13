@@ -1,0 +1,15 @@
+#!/bin/bash
+# {{ ansible_managed }}
+#
+# Deletes the current oer_data index and forces a rebuild from the sql-data
+#
+
+date +"*** %Y-%m-%d %H:%M:%S stop logstash"
+sudo systemctl stop logstash.service
+date +"*** %Y-%m-%d %H:%M:%S delete index"
+curl --netrc-file {{ base_dir }}/conf/oer_index_access -XDELETE "http://{{ elasticsearch_host }}:{{ elasticsearch_port }}/{{ elasticsearch_oer_index_name }}"
+echo ""
+date +"*** %Y-%m-%d %H:%M:%S reset jdbc-lastrun"
+sudo /usr/share/logstash/bin/reset-jdbc-lastrun.sh
+date +"*** %Y-%m-%d %H:%M:%S start logstash"
+sudo systemctl start logstash.service

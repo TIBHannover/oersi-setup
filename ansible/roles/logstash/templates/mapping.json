@@ -1,26 +1,42 @@
 {
-  "template": "oer*",
+  "index_patterns": "oer*",
   "settings": {
     "index": {
-      "number_of_shards": "1",
-      "number_of_replicas": "1"
+      "number_of_shards": "{{ elasticsearch_oer_index_number_of_shards }}",
+      "number_of_replicas": "{{ elasticsearch_oer_index_number_of_replicas }}"
     }
   },
   "mappings" : {
-    "dynamic": "strict",
+    "dynamic": "false",
     "properties" : {
-      "audience" : {
-        "type" : "text",
-        "fields" : {
-          "keyword" : {
+      "about" : {
+        "properties" : {
+          "id" : {
             "type" : "keyword"
+          },
+          "prefLabel" : {
+            "dynamic" : "true",
+            "properties" : {}
           }
         }
       },
-      "authors" : {
-        "type" : "nested",
+      "audience" : {
         "properties" : {
-          "familyname" : {
+          "id" : {
+            "type" : "keyword"
+          },
+          "prefLabel" : {
+            "dynamic" : "true",
+            "properties" : {}
+          }
+        }
+      },
+      "creator" : {
+        "properties" : {
+          "id" : {
+            "type" : "keyword"
+          },
+          "name" : {
             "type" : "text",
             "fields" : {
               "keyword" : {
@@ -28,192 +44,103 @@
               }
             }
           },
-          "fullname" : {
-            "type" : "text",
-            "fields" : {
-              "keyword" : {
-                "type" : "keyword"
-              }
-            }
-          },
-          "firstname" : {
-            "type" : "text",
-            "fields" : {
-              "keyword" : {
-                "type" : "keyword"
-              }
-            }
-          },
-          "gnd" : {
-            "type" : "text",
-            "fields" : {
-              "keyword" : {
-                "type" : "keyword"
-              }
-            }
-          },
-          "orcid" : {
-            "type" : "text",
-            "fields" : {
-              "keyword" : {
-                "type" : "keyword"
-              }
-            }
+          "type" : {
+            "type" : "keyword"
           }
         }
       },
       "dateCreated" : {
-        "type" : "date"
-      },
-      "dateLastUpdated" : {
-        "type" : "date"
-      },
-      "dateModifiedInternal" : {
-        "type" : "date"
+        "type" : "date",
+        "index" : false
       },
       "datePublished" : {
-        "type" : "date"
+        "type" : "date",
+        "index" : false
       },
       "description" : {
-        "type" : "text",
-        "fields" : {
-          "keyword" : {
-            "type" : "keyword"
-          }
-        }
-      },
-      "identifier" : {
-        "type" : "text",
-        "fields" : {
-          "keyword" : {
-            "type" : "keyword"
-          }
-        }
-      },
-      "name" : {
-        "type" : "text",
-        "fields" : {
-          "keyword" : {
-            "type" : "keyword"
-          }
-        }
-      },
-      "version" : {
-        "type" : "text",
-        "fields" : {
-          "keyword" : {
-            "type" : "keyword"
-          }
-        }
-      },
-      "educationalUse" : {
-        "type" : "text",
-        "fields" : {
-          "keyword" : {
-            "type" : "keyword"
-          }
-        }
+        "type" : "text"
       },
       "id" : {
-        "type" : "long"
+        "type" : "keyword",
+        "index": false
+      },
+      "image" : {
+        "type" : "keyword",
+        "index": false
       },
       "inLanguage" : {
-        "type" : "text",
-        "fields" : {
-          "keyword" : {
+        "type" : "keyword"
+      },
+      "learningResourceType" : {
+        "properties" : {
+          "id" : {
             "type" : "keyword"
+          },
+          "prefLabel" : {
+            "dynamic" : "true",
+            "properties" : {}
           }
         }
       },
-      "institutionName" : {
-        "type" : "text",
-        "fields" : {
-          "keyword" : {
+      "license" : {
+        "type" : "keyword"
+      },
+      "name" : {
+        "type" : "text"
+      },
+      "mainEntityOfPage" : {
+        "properties" : {
+          "id" : {
+            "type" : "keyword",
+            "index": false
+          },
+          "type" : {
             "type" : "keyword"
+          },
+          "dateCreated" : {
+            "type" : "date",
+            "index" : false
+          },
+          "dateModified" : {
+            "type" : "date",
+            "index" : false
+          },
+          "provider" : {
+            "properties" : {
+              "id" : {
+                "type" : "keyword",
+                "index": false
+              },
+              "type" : {
+                "type" : "keyword"
+              },
+              "name" : {
+                "type" : "keyword"
+              }
+            }
           }
         }
       },
-      "institutionRor" : {
-        "type" : "text",
-        "fields" : {
-          "keyword" : {
+      "sourceOrganization" : {
+        "properties" : {
+          "id" : {
+            "type" : "keyword",
+            "index": false
+          },
+          "type" : {
             "type" : "keyword"
-          }
-        }
-      },
-      "interactivityType" : {
-        "type" : "text",
-        "fields" : {
-          "keyword" : {
+          },
+          "name" : {
             "type" : "keyword"
           }
         }
       },
       "keywords" : {
-        "type" : "text",
-        "fields" : {
-          "keyword" : {
-            "type" : "keyword"
-          }
-        }
-      },
-      "learningResourceType" : {
-        "type" : "text",
-        "fields" : {
-          "keyword" : {
-            "type" : "keyword"
-          }
-        }
-      },
-      "license" : {
-        "type" : "text",
-        "fields" : {
-          "keyword" : {
-            "type" : "keyword"
-          }
-        }
-      },
-      "source" : {
-        "type" : "text",
-        "fields" : {
-          "keyword" : {
-            "type" : "keyword"
-          }
-        }
-      },
-      "subject" : {
-        "type" : "text",
-        "fields" : {
-          "keyword" : {
-            "type" : "keyword"
-          }
-        }
-      },
-      "thumbnailUrl" : {
-        "type" : "text",
-        "fields" : {
-          "keyword" : {
-            "type" : "keyword"
-          }
-        }
-      },
-      "timeRequired" : {
-        "type" : "text",
-        "fields" : {
-          "keyword" : {
-            "type" : "keyword"
-          }
-        }
-      },
-      "url" : {
-        "type" : "text",
-        "fields" : {
-          "keyword" : {
-            "type" : "keyword"
-          }
-        }
+        "type:" : "keyword"
       }
     }
   },
-  "aliases": {}
+  "aliases": {
+    "{{ elasticsearch_oer_index_alias_name }}": { }
+  }
 }
