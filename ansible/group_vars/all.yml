@@ -12,7 +12,7 @@ oerindex_db:
   password: oerindexpw
 
 oerindex_frontend_instdir: "/var/www/oersi-frontend"
-oerindex_frontend_artifact_url: "https://gitlab.com/oersi/oersi-frontend/-/jobs/artifacts/master/download?job=build"
+oerindex_frontend_artifact_url: "https://gitlab.com/oersi/oersi-frontend/-/jobs/artifacts/development/download?job=build"
 # Language  example en,de, etc.
 oerindex_frontend_lang: de 
 # Page size options .
@@ -33,7 +33,7 @@ oerindex_frontend_custom_images:
 
 oerindex_backend_downloaddir: "{{ base_dir }}/oersi-backend"
 oerindex_backend_configdir: "{{ base_dir }}/oersi-backend/config"
-oerindex_backend_artifact_url: 'https://gitlab.com/oersi/oersi-backend/-/jobs/artifacts/master/download?job=deploy'
+oerindex_backend_artifact_url: 'https://gitlab.com/oersi/oersi-backend/-/jobs/artifacts/develop/download?job=deploy'
 oerindex_backend_searchapi_root_path: '/resources/es/'
 oerindex_backend_url_scheme: 'http'
 oerindex_backend_metadataapi_url: 'http://localhost:8080/oersi/api/metadata'
@@ -43,7 +43,7 @@ oerindex_harvester_instdir: "{{ base_dir }}/metadata_harvester"
 
 oerindex_etl_downloaddir: "{{ base_dir }}/oersi-etl"
 oerindex_etl_configdir: "{{ oerindex_etl_downloaddir }}/data/production"
-oerindex_etl_artifact_url: 'https://gitlab.com/oersi/oersi-etl/-/jobs/artifacts/master/download?job=deploy'
+oerindex_etl_artifact_url: 'https://gitlab.com/oersi/oersi-etl/-/jobs/artifacts/develop/download?job=deploy'
 oerindex_etl_outputdir: "{{ base_dir }}/oersi-etl/data/to-elasticsearch"
 oerindex_etl_input_limit: -1
 # List all standard flux-files from oersi-etl/data/production/ that should be used for the ETL-process here.
