@@ -33,5 +33,8 @@
   roles:
     - oer-search-index-frontend
     - nginx
+    - role: matomo
+      tags: matomo
+      when: matomo_install
   tags:
     - root-task

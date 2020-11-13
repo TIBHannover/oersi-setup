@@ -6,18 +6,37 @@
   tags:
   - root-task
 
-- name: Configure nginx.
-  become: yes
+- name: Configure nginx.conf
+  become: true
   template:
     src: "nginx.conf"
     dest: /etc/nginx/nginx.conf
+  notify:
+    - restart nginx
   tags:
     - root-task
 
-- name: restart nginx
-  become: yes
-  service:
-    name: nginx
-    state: restarted
-  tags:
-  - root-task
+- name: Configure oersi nginx.
+  become: true
+  template:
+    src: oersi.conf.j2
+    dest: /etc/nginx/sites-available/oersi.conf
+  notify:
+    - restart nginx
+
+- name: enable nginx config
+  become: true
+  file:
+    path: '/etc/nginx/sites-enabled/oersi.conf'
+    src: '/etc/nginx/sites-available/oersi.conf'
+    state: link
+  notify:
+    - restart nginx
+
+- name: disable default config
+  become: true
+  file:
+    path: /etc/nginx/sites-enabled/default
+    state: absent
+  notify:
+    - restart nginx

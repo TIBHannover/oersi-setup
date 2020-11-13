@@ -11,6 +11,10 @@ oerindex_db:
   user: oerindex
   password: oerindexpw
 
+oerindex_public_scheme: 'http'
+oerindex_public_base_path: '/resources'
+oerindex_public_base_url: '{{ oerindex_public_scheme }}://{{ oerindex_host }}'
+
 oerindex_frontend_instdir: "/var/www/oersi-frontend"
 oerindex_frontend_artifact_url: "https://gitlab.com/oersi/oersi-frontend/-/jobs/artifacts/development/download?job=build"
 # Language  example en,de, etc.
@@ -34,8 +38,8 @@ oerindex_frontend_custom_images:
 oerindex_backend_downloaddir: "{{ base_dir }}/oersi-backend"
 oerindex_backend_configdir: "{{ base_dir }}/oersi-backend/config"
 oerindex_backend_artifact_url: 'https://gitlab.com/oersi/oersi-backend/-/jobs/artifacts/develop/download?job=deploy'
-oerindex_backend_searchapi_root_path: '/resources/es/'
-oerindex_backend_url_scheme: 'http'
+oerindex_backend_searchapi_root_path: '{{ oerindex_public_base_path }}/es/'
+oerindex_backend_url_scheme: '{{ oerindex_public_scheme }}'
 oerindex_backend_metadataapi_url: 'http://localhost:8080/oersi/api/metadata'
 oerindex_backend_searchapi_url: "{{ oerindex_backend_url_scheme }}://{{ oerindex_host }}{{ oerindex_backend_searchapi_root_path }}"
 
@@ -121,3 +125,12 @@ tomcat_stop_command: "{{tomcat_bin}}/tomcat.sh stop"
 # NOTE: cannot be changed atm, because it is hardcoded in scrapy pipeline-service.py
 oerindex_backend_oermetadata_manage_user: test
 oerindex_backend_oermetadata_manage_password: test
+
+# matomo - analysis of user statistics see https://gitlab.com/oersi/oersi-setup/-/tree/develop/doc/WEBANALYTICS.md
+matomo_install: false # install matomo true|false
+matomo_superuser_name: admin
+matomo_superuser_password: changeme
+matomo_superuser_mail: xyz@example.org
+matomo_dbname: matomo
+matomo_dbuser: matomo
+matomo_dbpassword: changeme

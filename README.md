@@ -112,6 +112,10 @@ Scenario: Install _oersi_ on an existing system directly via the ansible-playboo
 * create ansible inventory _config.yml_ (see [config-example.yml](config-example.yml)) and adjust all variables to your installation (see variables in _ansible/group_vars_)
 * run ```ansible-playbook -v -i config.yml ansible/system.yml```
 
+## Web analytics
+
+See [WEBANALYTICS.md](doc/WEBANALYTICS.md)
+
 ## Contributing
 
 Contributions are welcome. Please read [CONTRIBUTING.md](CONTRIBUTING.md) for further details.
