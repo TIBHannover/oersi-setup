@@ -66,3 +66,4 @@
     path: '{{ matomo_inst_dir }}/matomo/config/config.ini.php'
     line: 'trusted_hosts[] = "{{ matomo_host }}:{{ matomo_port }}"'
     regexp: '^trusted_hosts\[\] = "{{ matomo_host }}"$'
+    insertafter: '^\[General\]$'
