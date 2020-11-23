@@ -24,7 +24,7 @@ oerindex_frontend_nr_result_page_default: 10
 # path to a custom style-override.css file
 oerindex_frontend_custom_style_css: style-override.css
 # path to a custom footer.html file
-oerindex_frontend_custom_footer_file_path: 
+oerindex_frontend_custom_footers: 
   - {path: 'en/footer.html',language: 'en'}
   - {path: 'de/footer.html',language: 'de'}
 # path to a custom translations - required in each entry: "path" (path to your tanslation file), "language" (languagecode)
