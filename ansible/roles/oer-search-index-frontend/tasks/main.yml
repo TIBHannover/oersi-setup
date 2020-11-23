@@ -51,9 +51,13 @@
 
 - name: Ensures the folder {{ oerindex_frontend_instdir }}/footer exists 
   file: path={{ oerindex_frontend_instdir }}/footer state=directory    
-  
-- name: Copy custom footer.html
+
+- name: Ensures the folder for the custom footer  exists 
+  file: path={{ oerindex_frontend_instdir }}/build/footer/{{ item.language }} state=directory
+  loop: '{{ oerindex_frontend_custom_footer_file_path | default([], true) }}'
+
+- name: Copy custom footers 
   copy:
-    src: '{{ oerindex_frontend_custom_footer_file_path }}'
-    dest: '{{ oerindex_frontend_instdir }}/build/footer/footer.html'
-  when: (oerindex_frontend_custom_footer_file_path is defined) and (oerindex_frontend_custom_footer_file_path != "") and (oerindex_frontend_custom_footer_file_path is not none)
+    src: '{{ item.path }}'
+    dest: '{{ oerindex_frontend_instdir }}/build/locales/{{ item.language }}/{{ item.path | basename }}'
+  loop: '{{ oerindex_frontend_custom_footer_file_path | default([], true) }}'

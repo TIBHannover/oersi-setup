@@ -16,7 +16,7 @@ oerindex_public_base_path: '/resources'
 oerindex_public_base_url: '{{ oerindex_public_scheme }}://{{ oerindex_host }}'
 
 oerindex_frontend_instdir: "/var/www/oersi-frontend"
-oerindex_frontend_artifact_url: "https://gitlab.com/oersi/oersi-frontend/-/jobs/artifacts/development/download?job=build"
+oerindex_frontend_artifact_url: "https://gitlab.com/oersi/oersi-frontend/-/jobs/artifacts/translates_footer/download?job=build"
 # Page size options .
 oerindex_frontend_page_size: '["10", "25", "50", "100"]'
 # Multiselect  true false.
@@ -24,7 +24,9 @@ oerindex_frontend_nr_result_page_default: 10
 # path to a custom style-override.css file
 oerindex_frontend_custom_style_css: style-override.css
 # path to a custom footer.html file
-oerindex_frontend_custom_footer_file_path: footer.html
+oerindex_frontend_custom_footer_file_path: 
+  - {path: 'en/footer.html',language: 'en'}
+  - {path: 'de/footer.html',language: 'de'}
 # path to a custom translations - required in each entry: "path" (path to your tanslation file), "language" (languagecode)
 oerindex_frontend_custom_translations:
 #  - path: translation.json
