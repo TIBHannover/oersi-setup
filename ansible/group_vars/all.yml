@@ -52,6 +52,7 @@ oerindex_etl_input_limit: -1
 oerindex_etl_configfiles:
   - oernds-to-oersi.flux
   - oerbw-to-oersi.flux
+  - oerinfo-to-oersi.flux
   - edu-sharing.fix
 # List all your custom flux-files that should be used for the ETL-process here.
 # The file path has to be relative to 'ansible/roles/oer-search-index-etl/files' or an absolute path.
