@@ -61,3 +61,17 @@
     src: '{{ item.path }}'
     dest: '{{ oerindex_frontend_instdir }}/build/footer/{{ item.language }}/{{ item.path | basename }}'
   loop: '{{ oerindex_frontend_custom_footers | default([], true) }}'
+
+
+- name: Ensures the folder {{ oerindex_frontend_instdir }}/policy exists 
+  file: path={{ oerindex_frontend_instdir }}/build/policy state=directory    
+
+- name: Ensures the folder for the custom policy files  exists 
+  file: path={{ oerindex_frontend_instdir }}/build/policy/{{ item.language }} state=directory
+  loop: '{{ oerindex_frontend_custom_cookie_links | default([], true) }}'
+
+- name: Copy custom policy files 
+  copy:
+    src: '{{ item.path }}'
+    dest: '{{ oerindex_frontend_instdir }}/build/policy/{{ item.language }}/{{ item.path | basename }}'
+  loop: '{{ oerindex_frontend_custom_cookie_links | default([], true) }}'
