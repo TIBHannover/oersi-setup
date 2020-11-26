@@ -6,6 +6,13 @@ window['runTimeConfig'] = {
   },
   GENERAL_CONFIGURATION: {
     RESULT_PAGE_SIZE_OPTIONS: {{oerindex_frontend_page_size}},  // page size options configuration    
-    NR_OF_RESULT_PER_PAGE: {{oerindex_frontend_nr_result_page_default}},  //  number of results to show per view. Defaults to 10.   
+    NR_OF_RESULT_PER_PAGE: {{oerindex_frontend_nr_result_page_default}},  //  number of results to show per view. Defaults to 10.
+    /**
+     * Accept a list of objects 
+     * example:
+     * {'path': 'public/{folderName}/{languageCode}/{fileName}.html', 'language': '{languageCode}'}
+     * 
+     */
+    PRIVACY_POLICY_LINK: {{oerindex_frontend_custom_cookie_links | default([], true)}}   
   }
 }
