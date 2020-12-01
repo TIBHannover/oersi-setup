@@ -58,19 +58,3 @@
     src: '{{ item.path }}'
     dest: '{{ oerindex_frontend_instdir }}/build/locales/{{ item.language }}/{{ item.path | basename }}'
   loop: '{{ oerindex_frontend_custom_footers | default([], true) }}'
-
-- name: Ensures the folder for the custom policy files  exists 
-  file: path={{ oerindex_frontend_instdir }}/build/policy/{{ item.language }} state=directory
-  when: 
-    - not item.path|regex_search('(www.|http://|https://|ftp://)')
-  loop: '{{ oerindex_frontend_custom_cookie_links | default([], true) }}'
-
-- name: Copy custom policy files 
-  copy:
-    src: '{{ item.path }}'
-    dest: '{{ oerindex_frontend_instdir }}/build/policy/{{ item.language }}/{{ item.path | basename }}'
-  when: 
-    - not item.path|regex_search('(www.|http://|https://|ftp://)')
-  loop: '{{ oerindex_frontend_custom_cookie_links | default([], true)}}'
-    dest: '{{ oerindex_frontend_instdir }}/build/footer/{{ item.language }}/{{ item.path | basename }}'
-  loop: '{{ oerindex_frontend_custom_footers | default([], true) }}'
