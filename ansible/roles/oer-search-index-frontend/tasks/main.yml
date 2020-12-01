@@ -49,9 +49,6 @@
     dest: '{{ oerindex_frontend_instdir }}/build/{{item[1]}}'
   loop: '{{ oerindex_frontend_custom_images | default([], true) }}'
 
-- name: Ensures the folder {{ oerindex_frontend_instdir }}/footer exists 
-  file: path={{ oerindex_frontend_instdir }}/footer state=directory    
-
 - name: Ensures the folder for the custom footer  exists 
   file: path={{ oerindex_frontend_instdir }}/build/footer/{{ item.language }} state=directory
   loop: '{{ oerindex_frontend_custom_footers | default([], true) }}'
@@ -75,3 +72,5 @@
   when: 
     - not item.path|regex_search('(www.|http://|https://|ftp://)')
   loop: '{{ oerindex_frontend_custom_cookie_links | default([], true)}}'
+    dest: '{{ oerindex_frontend_instdir }}/build/footer/{{ item.language }}/{{ item.path | basename }}'
+  loop: '{{ oerindex_frontend_custom_footers | default([], true) }}'
