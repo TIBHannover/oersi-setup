@@ -18,7 +18,7 @@
     name: ["unzip"]
   become: yes
   tags:
-  - root-task
+    - root-task
 
 - name: extract OER search index ETL
   unarchive:

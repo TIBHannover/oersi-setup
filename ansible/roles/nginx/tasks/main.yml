@@ -4,7 +4,7 @@
     name: [ "nginx" ]
     state: present
   tags:
-  - root-task
+    - root-task
 
 - name: Configure nginx.conf
   become: true
