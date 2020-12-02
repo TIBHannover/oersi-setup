@@ -35,6 +35,14 @@ oerindex_frontend_custom_footers:
 #  {path: 'path/policy.html',language: 'en'}
 #  {path: 'path/policy.html',language: 'de'}
 oerindex_frontend_custom_cookie_links:
+
+# Copy custom files for oersi-frontend
+# Each entry must have: "source" (path to custom file), "destination" (path where you want to copy this file)
+# example :
+#  {source: 'path/example.html',destination: 'path/example'}
+#  {source: 'path/example.css',destination: 'path/css'}
+oerindex_frontend_custom_files:
+
 # path to a custom translations - required in each entry: "path" (path to your tanslation file), "language" (languagecode)
 oerindex_frontend_custom_translations:
 #  - path: translation.json
