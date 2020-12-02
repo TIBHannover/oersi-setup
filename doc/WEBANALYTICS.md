@@ -6,7 +6,7 @@ To get an overview of how the Search Index is used (e.g. number of visits in a p
 
 ## Requirements
 
-Already covered by the other rolls in oersi: Installation of MariaDB and Nginx.
+Already covered by the other roles in oersi: Installation of MariaDB and Nginx.
 
 ## Configuration
 
