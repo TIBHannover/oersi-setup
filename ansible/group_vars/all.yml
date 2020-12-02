@@ -28,6 +28,13 @@ oerindex_frontend_custom_style_css: style-override.css
 #  {path: 'path/footer.html',language: 'en'}
 #  {path: 'path/footer.html',language: 'de'}
 oerindex_frontend_custom_footers: 
+# Each cookies notification has a link which can give more info about the data we collect
+# "oerindex_frontend_custom_cookie_links" accept a list of custom links (or Files ) for Cookie notification 'link', 
+# Each entry must have: "path" (path or link to your data-protection), "language" (languageCode)
+# example :
+#  {path: 'path/policy.html',language: 'en'}
+#  {path: 'path/policy.html',language: 'de'}
+oerindex_frontend_custom_cookie_links:
 # path to a custom translations - required in each entry: "path" (path to your tanslation file), "language" (languagecode)
 oerindex_frontend_custom_translations:
 #  - path: translation.json
