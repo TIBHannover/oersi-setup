@@ -13,4 +13,4 @@
 
 - include: users.yml
   tags:
-  - es-users
+    - es-users
