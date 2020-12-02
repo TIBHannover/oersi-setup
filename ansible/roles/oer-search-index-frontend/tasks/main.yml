@@ -56,5 +56,5 @@
 - name: Copy custom footers 
   copy:
     src: '{{ item.path }}'
-    dest: '{{ oerindex_frontend_instdir }}/build/locales/{{ item.language }}/{{ item.path | basename }}'
+    dest: '{{ oerindex_frontend_instdir }}/build/footer/{{ item.language }}/{{ item.path | basename }}'
   loop: '{{ oerindex_frontend_custom_footers | default([], true) }}'
