@@ -13,6 +13,6 @@ window['runTimeConfig'] = {
      * {'path': 'public/{folderName}/{languageCode}/{fileName}.html', 'language': '{languageCode}'}
      * 
      */
-    PRIVACY_POLICY_LINK: {{oerindex_frontend_custom_cookie_links | default([], true)}}   
+    PRIVACY_POLICY_LINK: {{oerindex_frontend_custom_cookie_links | default([], true) | to_json(ensure_ascii=False,indent=0) }}
   }
 }
