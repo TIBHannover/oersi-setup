@@ -1,0 +1,18 @@
+---
+- name: Clear SQL database via cron
+  cron:
+    name: "Clear SQL database"
+    weekday: "{{ oerindex_delete_sql_data_schedule_weekday }}"
+    hour: "{{ oerindex_delete_sql_data_schedule_hour }}"
+    minute: "{{ oerindex_delete_sql_data_schedule_minute }}"
+    job: "{{ base_dir }}/bin/reset-sql-oerdata.sh > {{ oerindex_logdir }}/reset-sql-data.log 2>&1"
+    state: "{{ 'present' if oerindex_delete_outdated_data_periodically else 'absent' }}"
+
+- name: Recreate oerdata index via cron
+  cron:
+    name: "Recreate oerdata index"
+    weekday: "{{ oerindex_recreate_index_schedule_weekday }}"
+    hour: "{{ oerindex_recreate_index_schedule_hour }}"
+    minute: "{{ oerindex_recreate_index_schedule_minute }}"
+    job: "{{ base_dir }}/bin/recreate-index.sh > {{ oerindex_logdir }}/recreate-index.log 2>&1"
+    state: "{{ 'present' if oerindex_delete_outdated_data_periodically else 'absent' }}"
