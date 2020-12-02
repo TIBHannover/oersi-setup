@@ -37,7 +37,7 @@ oerindex_frontend_custom_footers:
 oerindex_frontend_custom_cookie_links:
 
 # Copy custom files for oersi-frontend
-# Each entry must have: "source" (path to custom file), "destination" (path where you want to copy this file)
+# Each entry must have: "source" (specifies the path where the custom files are located), "destination" (specifies the target folder you want to copy that files)
 # example :
 #  {source: 'path/example.html',destination: 'path/example'}
 #  {source: 'path/example.css',destination: 'path/css'}
