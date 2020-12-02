@@ -1,0 +1,12 @@
+---
+oerindex_logdir: "{{ base_dir }}/log" # logging directory, will be used for processes like delete-outdated-data
+
+oerindex_delete_outdated_data_periodically: true   # delete outdated data automatically via cron (true | false)
+# schedule for deletion of sql data
+oerindex_delete_sql_data_schedule_weekday: "Fri"
+oerindex_delete_sql_data_schedule_hour: "19"
+oerindex_delete_sql_data_schedule_minute: "30"
+# schedule for recreation of index data
+oerindex_recreate_index_schedule_weekday: "Mon"
+oerindex_recreate_index_schedule_hour: "5"
+oerindex_recreate_index_schedule_minute: "58"
