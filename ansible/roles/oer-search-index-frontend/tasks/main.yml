@@ -58,3 +58,13 @@
     src: '{{ item.path }}'
     dest: '{{ oerindex_frontend_instdir }}/build/footer/{{ item.language }}/{{ item.path | basename }}'
   loop: '{{ oerindex_frontend_custom_footers | default([], true) }}'
+
+- name: Ensures the folder for the custom files  exists 
+  file: path={{ oerindex_frontend_instdir }}/build/{{ item.destination }} state=directory
+  loop: '{{ oerindex_frontend_custom_files | default([], true) }}'
+
+- name: Copy custom files 
+  copy:
+    src: '{{ item.source }}'
+    dest: '{{ oerindex_frontend_instdir }}/build/{{ item.destination}}'
+  loop: '{{ oerindex_frontend_custom_files | default([], true) }}'
