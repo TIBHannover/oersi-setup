@@ -43,12 +43,6 @@
     dest: '{{ oerindex_frontend_instdir }}/build/locales/{{ item.language }}/{{ item.path | basename }}'
   loop: '{{ oerindex_frontend_custom_translations | default([], true) }}'
   
-- name: Copy custom images for footer
-  copy:
-    src: '{{item[0]}}'
-    dest: '{{ oerindex_frontend_instdir }}/build/{{item[1]}}'
-  loop: '{{ oerindex_frontend_custom_images | default([], true) }}'
-
 - name: Ensures the folder for the custom footer  exists 
   file: path={{ oerindex_frontend_instdir }}/build/footer/{{ item.language }} state=directory
   loop: '{{ oerindex_frontend_custom_footers | default([], true) }}'

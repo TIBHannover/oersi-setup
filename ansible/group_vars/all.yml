@@ -47,9 +47,6 @@ oerindex_frontend_custom_files:
 oerindex_frontend_custom_translations:
 #  - path: translation.json
 #    language: de
-# a list of custom images that should be copied into ../oersi-frontend/build; format of each entry: [<source-file-path>, <destination under oersi-frontend/build/<image>]
-# example: ['local/path/example.svg', 'example.svg']
-oerindex_frontend_custom_images:
 
 oerindex_backend_downloaddir: "{{ base_dir }}/oersi-backend"
 oerindex_backend_configdir: "{{ base_dir }}/oersi-backend/config"
