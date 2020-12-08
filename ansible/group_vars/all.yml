@@ -23,28 +23,17 @@ oerindex_frontend_page_size: '["10", "25", "50", "100"]'
 oerindex_frontend_nr_result_page_default: 10
 # path to a custom style-override.css file
 oerindex_frontend_custom_style_css: style-override.css
-# list  to a custom footer.html files
-# example :
-#  {path: 'path/footer.html',language: 'en'}
-#  {path: 'path/footer.html',language: 'de'}
-oerindex_frontend_custom_footers: 
+# list to custom footer.html files; required in each entry: "path" (path to your footer file), "language" (languagecode)
+oerindex_frontend_custom_footers:       # example entry: {path: 'path/footer.html',language: 'en'}
+# path to a custom translations- required in each entry: "path" (path to your tanslation file), "language" (languagecode)
+oerindex_frontend_custom_translations:  # example entry:  path: translation.json, language: de 
+# A list of custom files that should be copied for oersi-frontend
+# Each entry must have: "source" (specifies the path where the custom files are located), "destination" (specifies the target path under the frontend-root)
+oerindex_frontend_custom_files:         # example entry: {source: 'path/example.html',destination: 'path/example/example.html'}
 # Each cookies notification has a link which can give more info about the data we collect
 # "oerindex_frontend_custom_cookie_links" accept a list of custom links (or Files ) for Cookie notification 'link', 
 # Each entry must have: "path" (path or link to your data-protection), "language" (languageCode)
-# example :
-#  {path: 'path/policy.html',language: 'en'}
-#  {path: 'path/policy.html',language: 'de'}
-oerindex_frontend_custom_cookie_links:
-
-# A list of custom files that should be copied for oersi-frontend
-# Each entry must have: "source" (specifies the path where the custom files are located), "destination" (specifies the target path under the frontend-root)
-# example entry : {source: 'path/example.html',destination: 'path/example/example.html'}
-oerindex_frontend_custom_files:
-
-# path to a custom translations - required in each entry: "path" (path to your tanslation file), "language" (languagecode)
-oerindex_frontend_custom_translations:
-#  - path: translation.json
-#    language: de
+oerindex_frontend_custom_cookie_links:  # example entry: {path: 'path/policy.html',language: 'en'}
 
 oerindex_backend_downloaddir: "{{ base_dir }}/oersi-backend"
 oerindex_backend_configdir: "{{ base_dir }}/oersi-backend/config"
