@@ -80,7 +80,7 @@ elasticsearch_builtin_users:
     password: changeme
   - name: logstash_system
     password: changeme
-  - name: kibana
+  - name: kibana_system
     password: changeme
   - name: remote_monitoring_user
     password: changeme
@@ -105,8 +105,8 @@ elasticsearch_api_url: "http://{{ elasticsearch_host }}:{{ elasticsearch_port }}
 # install kibana true/false
 kibana_install: false
 # insternal geerlingguy.kibana properties
-kibana_elasticsearch_username: 'kibana'
-kibana_elasticsearch_password: '{{ (elasticsearch_builtin_users | selectattr("name", "equalto", "kibana")  | list)[0].password }}'
+kibana_elasticsearch_username: 'kibana_system'
+kibana_elasticsearch_password: '{{ (elasticsearch_builtin_users | selectattr("name", "equalto", "kibana_system")  | list)[0].password }}'
 
 logstash_monitor_local_syslog: false
 logstash_install_plugins:

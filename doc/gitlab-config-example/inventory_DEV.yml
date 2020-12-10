@@ -20,7 +20,7 @@ oerindex:
           password: changeme
         - name: logstash_system
           password: changeme
-        - name: kibana
+        - name: kibana_system
           password: changeme
         - name: remote_monitoring_user
           password: changeme

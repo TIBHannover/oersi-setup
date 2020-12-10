@@ -21,7 +21,7 @@ example:
           password: changeme
         - name: logstash_system
           password: changeme
-        - name: kibana
+        - name: kibana_system
           password: changeme
         - name: remote_monitoring_user
           password: changeme
@@ -35,6 +35,8 @@ example:
       oerindex_backend_oermetadata_manage_password: test
 
       oerindex_frontend_custom_style_css: '../doc/gitlab-config-example/frontend/style-override.css'
+      
+      kibana_install: true
       
       matomo_install: true
       matomo_superuser_name: admin
