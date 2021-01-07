@@ -13,6 +13,7 @@ window['runTimeConfig'] = {
      * {'path': 'public/{folderName}/{languageCode}/{fileName}.html', 'language': '{languageCode}'}
      * 
      */
-    PRIVACY_POLICY_LINK: {{oerindex_frontend_custom_cookie_links | default([], true) | to_json(ensure_ascii=False,indent=0) }}
+    PRIVACY_POLICY_LINK: {{oerindex_frontend_custom_cookie_links | default([], true) | to_json(ensure_ascii=False,indent=0) }},
+    I18N_CACHE_EXPIRATION: {{ oerindex_frontend_i18n_cache_expiration }} // expiration time of the i18n translation cache storage
   }
 }
