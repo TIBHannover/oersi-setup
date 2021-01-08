@@ -40,5 +40,5 @@
     name: "Scrapy Import OER sources"
     hour: '{{ (oerindex_import_sources_schedule_hour | int) + 2 }}'
     minute: '{{ oerindex_import_sources_schedule_minute }}'
-    job: 'cd {{ oerindex_harvester_instdir }} && {{ oerindex_harvester_instdir }}/import.sh hhu hoou oncampus oerinfo > {{ oerindex_harvester_instdir }}/scrapy.log 2>&1'
+    job: 'cd {{ oerindex_harvester_instdir }} && {{ oerindex_harvester_instdir }}/import.sh hoou oncampus oerinfo > {{ oerindex_harvester_instdir }}/scrapy.log 2>&1'
     state: '{{ oerindex_import_sources_schedule_state }}'
