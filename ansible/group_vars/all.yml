@@ -58,10 +58,12 @@ oerindex_etl_configfiles:
   - digill-to-oersi.flux
   - tibav-to-oersi.flux
   - hhu-to-oersi.flux
+  - oncampus-to-oersi.flux
   - edu-sharing.fix
   - digill.fix
   - tibav.fix
   - hhu.fix
+  - oncampus.fix
 # List all your custom flux-files that should be used for the ETL-process here.
 # The file path has to be relative to 'ansible/roles/oer-search-index-etl/files' or an absolute path.
 oerindex_etl_customfiles:
