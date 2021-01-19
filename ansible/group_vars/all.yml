@@ -54,7 +54,7 @@ oerindex_etl_input_limit: -1
 # List all standard flux-files from oersi-etl/data/production/ that should be used for the ETL-process here.
 oerindex_etl_configfiles:
   - oernds-to-oersi.flux
-  - oerbw-to-oersi.flux
+  - zoerr-to-oersi.flux
   - digill-to-oersi.flux
   - tibav-to-oersi.flux
   - hhu-to-oersi.flux
