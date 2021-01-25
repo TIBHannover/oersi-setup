@@ -12,8 +12,8 @@ egrep 'oersi.ETL run|Running|Success: .*, Fail: .*' {{ oerindex_etl_downloaddir 
 
 #gawk 'match($0, /Success: (.+), Fail: (.+)/, a) {fails = fails + a[2]; print "Success: "a[1]; print "Fail: "a[2]}END{print fails}' {{ oerindex_etl_downloaddir }}/etl-report.txt
 PROCESSES=$(grep 'oersi.ETL run' {{ oerindex_etl_downloaddir }}/etl-report.txt | wc -l)
-FAILURES=$(gawk 'match($0, /Success: (.+), Fail: (.+)/, a) {failures = failures + a[2]}END{print failures}' {{ oerindex_etl_downloaddir }}/etl-report.txt)
-SUCCESSES=$(gawk 'match($0, /Success: (.+), Fail: (.+)/, a) {successes = successes + a[1]}END{print successes}' {{ oerindex_etl_downloaddir }}/etl-report.txt)
+FAILURES=$(gawk 'match($0, /Success: (.+), Fail: (.+)/, a) {gsub(/,/,"",a[2]);failures = failures + a[2]}END{print failures}' {{ oerindex_etl_downloaddir }}/etl-report.txt)
+SUCCESSES=$(gawk 'match($0, /Success: (.+), Fail: (.+)/, a) {gsub(/,/,"",a[1]);successes = successes + a[1]}END{print successes}' {{ oerindex_etl_downloaddir }}/etl-report.txt)
 
 SUBJECT="OERSI ETL Monitoring - $PROCESSES processes, $SUCCESSES successes, $FAILURES failures"
 
