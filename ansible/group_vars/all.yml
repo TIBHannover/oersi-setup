@@ -71,6 +71,10 @@ oerindex_etl_configfiles:
 # The file path has to be relative to 'ansible/roles/oer-search-index-etl/files' or an absolute path.
 oerindex_etl_customfiles:
 #  - '../../../my-conf-dir/my-etl.flux'
+
+oerindex_monitoring_etl: false  # activate the ETL monitoring process; true|false
+oerindex_monitoring_etl_recipients:   # mail recipients of the ETL report (comma separated)
+oerindex_monitoring_etl_from_address:   # mail sender address for the ETL report
   
 oerindex_import_sources_immediately: true # import all configured sources immediately at the installation process (true|false)
 oerindex_import_sources_schedule_state: 'present' # import all configured sources scheduled (absent|present)

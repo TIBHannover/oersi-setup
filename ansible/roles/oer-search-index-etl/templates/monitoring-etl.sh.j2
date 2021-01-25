@@ -1,0 +1,25 @@
+#!/bin/bash
+# {{ ansible_managed }}
+#
+# Create a report of the ETL-process and send via mail.
+#
+
+FAILURE_BOUND={{ oerindex_monitoring_etl_failure_bound }} # send ETL report when number of failures is greater than or equal to this bound
+MAIL_RECIPIENTS={{ oerindex_monitoring_etl_recipients }}
+MAIL_FROM_ADDRESS={{ oerindex_monitoring_etl_from_address }}
+
+egrep 'oersi.ETL run|Running|Success: .*, Fail: .*' {{ oerindex_etl_downloaddir }}/etl.log > {{ oerindex_etl_downloaddir }}/etl-report.txt
+
+#gawk 'match($0, /Success: (.+), Fail: (.+)/, a) {fails = fails + a[2]; print "Success: "a[1]; print "Fail: "a[2]}END{print fails}' {{ oerindex_etl_downloaddir }}/etl-report.txt
+PROCESSES=$(grep 'oersi.ETL run' {{ oerindex_etl_downloaddir }}/etl-report.txt | wc -l)
+FAILURES=$(gawk 'match($0, /Success: (.+), Fail: (.+)/, a) {failures = failures + a[2]}END{print failures}' {{ oerindex_etl_downloaddir }}/etl-report.txt)
+SUCCESSES=$(gawk 'match($0, /Success: (.+), Fail: (.+)/, a) {successes = successes + a[1]}END{print successes}' {{ oerindex_etl_downloaddir }}/etl-report.txt)
+
+SUBJECT="OERSI ETL Monitoring - $PROCESSES processes, $SUCCESSES successes, $FAILURES failures"
+
+if [ "$FAILURES" -ge "$FAILURE_BOUND" ]; then
+  echo "Sending report ($SUBJECT)"
+  cat {{ oerindex_etl_downloaddir }}/etl-report.txt | mail -s "$SUBJECT" -r $MAIL_FROM_ADDRESS $MAIL_RECIPIENTS
+else
+  echo "Don't send report ($SUBJECT)"
+fi

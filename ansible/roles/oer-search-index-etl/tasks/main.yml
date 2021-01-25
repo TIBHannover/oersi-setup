@@ -73,3 +73,5 @@
     minute: '{{ oerindex_import_sources_schedule_minute }}'
     job: 'cd {{ oerindex_etl_downloaddir }} && ./build/install/oersi-etl/bin/oersi-etl {{ oerindex_etl_configdir }}-enabled {{ oerindex_etl_configdir }}/oersi.properties > {{ oerindex_etl_downloaddir }}/etl.log 2>&1'
     state: '{{ oerindex_import_sources_schedule_state }}'
+
+- include: monitoring.yml
