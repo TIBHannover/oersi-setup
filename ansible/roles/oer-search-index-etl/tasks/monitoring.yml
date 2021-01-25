@@ -1,0 +1,18 @@
+---
+
+- fail: msg='Missing mandatory variables "oerindex_monitoring_etl_recipients" and "oerindex_monitoring_etl_from_address"'
+  when: (oerindex_monitoring_etl) and ((oerindex_monitoring_etl_recipients == "") or (oerindex_monitoring_etl_recipients is none) or (oerindex_monitoring_etl_from_address == "") or (oerindex_monitoring_etl_from_address is none))
+
+- name: Create monitoring-etl.sh
+  template:
+    src: "monitoring-etl.sh.j2"
+    dest: "{{ base_dir }}/bin/monitoring-etl.sh"
+    mode: 0700
+
+- name: Configure cron schedule - ETL Monitoring
+  cron:
+    name: "ETL Monitoring"
+    hour: "{{ oerindex_monitoring_etl_schedule_hour }}"
+    minute: "{{ oerindex_monitoring_etl_schedule_minute }}"
+    job: "{{ base_dir }}/bin/monitoring-etl.sh"
+    state: "{{ 'present' if oerindex_monitoring_etl else 'absent' }}"
