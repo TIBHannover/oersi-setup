@@ -30,7 +30,7 @@ oerindex:
       # user with read-only access to oer-index
       elasticsearch_oersi_viewer_username: oersi_viewer
       elasticsearch_oersi_viewer_password: ch@ngeMe
-      oerindex_backend_oermetadata_manage_user: test
-      oerindex_backend_oermetadata_manage_password: test
+      oerindex_backend_oermetadata_manage_user: changeme
+      oerindex_backend_oermetadata_manage_password: changeme
 
       oerindex_frontend_custom_style_css: '../../frontend/style-override.css'

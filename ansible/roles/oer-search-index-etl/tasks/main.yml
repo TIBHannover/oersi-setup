@@ -60,11 +60,12 @@
     path: '{{ oerindex_etl_configdir }}-enabled/{{ item | basename }}'
   loop: '{{ (oerindex_etl_configfiles | default([], true)) + (oerindex_etl_customfiles | default([], true)) }}'
 
-- name: Extract, transform, and load some OER sources
+- name: Extract, transform, and load some example OER sources
   command:
-    cmd: './build/install/oersi-etl/bin/oersi-etl {{ oerindex_etl_configdir }}-enabled {{ oerindex_etl_configdir }}/oersi.properties'
+    cmd: './build/install/oersi-etl/bin/oersi-etl {{ oerindex_etl_configdir }}/{{ item }} {{ oerindex_etl_configdir }}/oersi.properties'
     chdir: '{{ oerindex_etl_downloaddir }}'
-  when: oerindex_import_sources_immediately
+  loop: '{{ oerindex_import_example_sources | default([], true) }}'
+  when: oerindex_import_example_sources_immediately
 
 - name: Configure cron schedule - Extract, transform, and load OER sources
   cron:
