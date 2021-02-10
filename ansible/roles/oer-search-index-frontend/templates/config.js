@@ -1,7 +1,7 @@
 window['runTimeConfig'] = {
   ELASTIC_SEARCH: {
     URL: "{{ oerindex_backend_searchapi_url }}",
-    CREDENCIAL: "",
+    CREDENTIALS: "",
     APP_NAME: "{{ elasticsearch_oer_index_alias_name }}"
   },
   GENERAL_CONFIGURATION: {
