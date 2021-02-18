@@ -8,12 +8,12 @@ FAILURE_BOUND={{ oerindex_monitoring_etl_failure_bound }} # send ETL report when
 MAIL_RECIPIENTS={{ oerindex_monitoring_etl_recipients }}
 MAIL_FROM_ADDRESS={{ oerindex_monitoring_etl_from_address }}
 
-egrep 'oersi.ETL run|Running|Success: .*, Fail: .*' {{ oerindex_etl_downloaddir }}/etl.log > {{ oerindex_etl_downloaddir }}/etl-report.txt
+grep 'Import channel.*SUCCESS.*FAIL.*DURATION' {{ oerindex_etl_downloaddir }}/etl.log > {{ oerindex_etl_downloaddir }}/etl-report.txt
 
 #gawk 'match($0, /Success: (.+), Fail: (.+)/, a) {fails = fails + a[2]; print "Success: "a[1]; print "Fail: "a[2]}END{print fails}' {{ oerindex_etl_downloaddir }}/etl-report.txt
-PROCESSES=$(grep 'oersi.ETL run' {{ oerindex_etl_downloaddir }}/etl-report.txt | wc -l)
-FAILURES=$(gawk 'match($0, /Success: (.+), Fail: (.+)/, a) {gsub(/,/,"",a[2]);failures = failures + a[2]}END{print failures}' {{ oerindex_etl_downloaddir }}/etl-report.txt)
-SUCCESSES=$(gawk 'match($0, /Success: (.+), Fail: (.+)/, a) {gsub(/,/,"",a[1]);successes = successes + a[1]}END{print successes}' {{ oerindex_etl_downloaddir }}/etl-report.txt)
+PROCESSES=$(wc -l < {{ oerindex_etl_downloaddir }}/etl-report.txt)
+FAILURES=$(gawk 'match($0, /SUCCESS: (.+), FAIL-VALIDATION: (.+), FAIL-WRITE: (.+)/, a) {failures = failures + a[2] + a[3]}END{print failures}' {{ oerindex_etl_downloaddir }}/etl-report.txt)
+SUCCESSES=$(gawk 'match($0, /SUCCESS: (.+), FAIL-VALIDATION: (.+), FAIL-WRITE: (.+)/, a) {successes = successes + a[1]}END{print successes}' {{ oerindex_etl_downloaddir }}/etl-report.txt)
 
 SUBJECT="OERSI ETL Monitoring - $PROCESSES processes, $SUCCESSES successes, $FAILURES failures"
 
