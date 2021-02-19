@@ -4,6 +4,15 @@
 # Show versions of oersi modules
 #
 
+echo "-------"
+echo "Backend"
+echo "-------"
+cat {{ tomcat_home }}/webapps/oersi/WEB-INF/classes/build.info
+BACKEND_COMMIT_SHA=$(grep "COMMIT_SHA=" {{ tomcat_home }}/webapps/oersi/WEB-INF/classes/build.info | cut -d'=' -f2)
+BACKEND_BUILDNUMBER=$(grep "BUILDNUMBER=" {{ tomcat_home }}/webapps/oersi/WEB-INF/classes/build.info | cut -d'=' -f2)
+echo "SOURCE: https://gitlab.com/oersi/oersi-backend/-/tree/${BACKEND_COMMIT_SHA}"
+echo "BUILD-JOB: https://gitlab.com/oersi/oersi-backend/-/jobs/${BACKEND_BUILDNUMBER}"
+
 echo "--------"
 echo "Frontend"
 echo "--------"
