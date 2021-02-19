@@ -4,6 +4,15 @@
 # Show versions of oersi modules
 #
 
+echo "---"
+echo "ETL"
+echo "---"
+cat {{ oerindex_etl_downloaddir }}/build.info
+ETL_COMMIT_SHA=$(grep "COMMIT_SHA=" {{ oerindex_etl_downloaddir }}/build.info | cut -d'=' -f2)
+ETL_BUILDNUMBER=$(grep "BUILDNUMBER=" {{ oerindex_etl_downloaddir }}/build.info | cut -d'=' -f2)
+echo "SOURCE: https://gitlab.com/oersi/oersi-etl/-/tree/${ETL_COMMIT_SHA}"
+echo "BUILD-JOB: https://gitlab.com/oersi/oersi-etl/-/jobs/${ETL_BUILDNUMBER}"
+
 echo "-------"
 echo "Backend"
 echo "-------"
