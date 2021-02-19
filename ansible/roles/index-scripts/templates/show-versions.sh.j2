@@ -1,0 +1,14 @@
+#!/bin/bash
+# {{ ansible_managed }}
+#
+# Show versions of oersi modules
+#
+
+echo "--------"
+echo "Frontend"
+echo "--------"
+cat {{ oerindex_frontend_instdir }}/build.info
+FRONTEND_COMMIT_SHA=$(grep "COMMIT_SHA=" {{ oerindex_frontend_instdir }}/build.info | cut -d'=' -f2)
+FRONTEND_BUILDNUMBER=$(grep "BUILDNUMBER=" {{ oerindex_frontend_instdir }}/build.info | cut -d'=' -f2)
+echo "SOURCE: https://gitlab.com/oersi/oersi-frontend/-/tree/${FRONTEND_COMMIT_SHA}"
+echo "BUILD-JOB: https://gitlab.com/oersi/oersi-frontend/-/jobs/${FRONTEND_BUILDNUMBER}"
