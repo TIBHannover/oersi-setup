@@ -14,11 +14,12 @@ stages:
     - chmod 644 ~/.ssh/known_hosts
   script:
     - ansible-playbook -v -i ${INVENTORY_FILE} prerequisites.yml
-    - ansible-playbook -v -i ${INVENTORY_FILE} oersi-playbook.yml
+    - ansible-playbook -v -i ${INVENTORY_FILE} ${PLAYBOOK}
 
 #scheduled deploy to Develop:
 #  variables:
 #    INVENTORY_FILE: inventory_DEV.yml
+#    PLAYBOOK: oersi-playbook.yml
 #  extends: .deploy_job
 #  only:
 #    - schedules
@@ -26,6 +27,34 @@ stages:
 deploy to Develop:
   variables:
     INVENTORY_FILE: inventory_DEV.yml
+    PLAYBOOK: oersi-playbook.yml
+  extends: .deploy_job
+  only:
+    - master
+  when: manual
+
+Develop Backend Deployment:
+  variables:
+    INVENTORY_FILE: inventory_DEV.yml
+    PLAYBOOK: oersi-backend.yml
+  extends: .deploy_job
+  only:
+    - master
+  when: manual
+
+Develop ETL Deployment:
+  variables:
+    INVENTORY_FILE: inventory_DEV.yml
+    PLAYBOOK: oersi-etl.yml
+  extends: .deploy_job
+  only:
+    - master
+  when: manual
+
+Develop Frontend Deployment:
+  variables:
+    INVENTORY_FILE: inventory_DEV.yml
+    PLAYBOOK: oersi-frontend.yml
   extends: .deploy_job
   only:
     - master
@@ -34,6 +63,7 @@ deploy to Develop:
 deploy to Test:
   variables:
     INVENTORY_FILE: inventory_TEST.yml
+    PLAYBOOK: oersi-playbook.yml
   extends: .deploy_job
   only:
     - master
