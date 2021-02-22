@@ -37,7 +37,7 @@ oerindex_frontend_custom_cookie_links:  # example entry: {path: 'path/policy.htm
 
 oerindex_backend_downloaddir: "{{ base_dir }}/oersi-backend"
 oerindex_backend_configdir: "{{ base_dir }}/oersi-backend/config"
-oerindex_backend_artifact_url: 'https://gitlab.com/oersi/oersi-backend/-/jobs/artifacts/develop/download?job=deploy'
+oerindex_backend_artifact_url: 'https://gitlab.com/oersi/oersi-backend/-/jobs/artifacts/develop/download?job=deploy+branch'
 oerindex_backend_searchapi_root_path: '{{ oerindex_public_base_path }}/api-internal/search/'
 oerindex_backend_labelapi_root_path: '{{ oerindex_public_base_path }}/api-internal/label/'
 oerindex_backend_url_scheme: '{{ oerindex_public_scheme }}'
