@@ -50,3 +50,6 @@
     job: "{{tomcat_bin}}/tomcat.sh start"
 
 - include: cleanup-logs.yml
+
+- name: start tomcat
+  shell: '{{tomcat_start_command}}'

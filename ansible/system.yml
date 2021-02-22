@@ -1,39 +1,6 @@
 ---
-- hosts: all
-  become: yes
-  roles:
-    - set-timezone
-  tags:
-    - root-task
-
-- hosts: oerindex
-  become: yes
-  roles:
-    - mariadb
-    - geerlingguy.java
-    - elasticsearch
-    - logstash
-    - role: kibana
-      when: kibana_install
-    - role: elasticsearch-updates
-      tags: elasticsearch-updates
-  tags:
-    - root-task
-
-- hosts: oerindex
-  roles:
-    - tomcat
-    - oer-search-index-backend
-    - oer-search-index-etl
-    - index-scripts
-
-- hosts: oerindex
-  become: yes
-  roles:
-    - oer-search-index-frontend
-    - nginx
-    - role: matomo
-      tags: matomo
-      when: matomo_install
-  tags:
-    - root-task
+# Playbook: install everything that is needed for oersi
+- import_playbook: provisioning.yml
+- import_playbook: backend.yml
+- import_playbook: etl.yml
+- import_playbook: frontend.yml
