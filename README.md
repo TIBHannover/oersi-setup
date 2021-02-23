@@ -122,7 +122,6 @@ Contributions are welcome. Please read [CONTRIBUTING.md](CONTRIBUTING.md) for fu
 
 ## Technologies
 
-- **Scrapy**: First OER repositories are crawled using [Scrapy](http://scrapy.org/) -> just for the first prototype; a general, robust approach has to be developed (see https://gitlab.com/oersi/oersi-etl)
 - **MariaDB**: Used to store the results of Scrapy.
 - **Logstash**: Logstash is regulary checking the MariaDB database, if any new items are added or changes are made to existing entries.
 - **Elasticsearch**: Elasticsearch is the search engine and indexes the input it gets from Logstash.
