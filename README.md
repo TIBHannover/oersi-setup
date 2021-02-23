@@ -122,7 +122,7 @@ Contributions are welcome. Please read [CONTRIBUTING.md](CONTRIBUTING.md) for fu
 
 ## Technologies
 
-- **MariaDB**: Used to store the results of Scrapy.
+- **MariaDB**: Used to store the imported data.
 - **Logstash**: Logstash is regulary checking the MariaDB database, if any new items are added or changes are made to existing entries.
 - **Elasticsearch**: Elasticsearch is the search engine and indexes the input it gets from Logstash.
 - **Kibana**: For development or monitoring of Elasticsearch Kibana can be installed optionally (activate in _ansible/group_vars_ -> _kibana_install_)
