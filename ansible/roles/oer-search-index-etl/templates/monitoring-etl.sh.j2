@@ -3,23 +3,26 @@
 #
 # Create a report of the ETL-process and send via mail.
 #
+# ERRORS - number of processing errors in the process
+# FAILURES - number of conspicuities in the data 
+#
 
 FAILURE_BOUND={{ oerindex_monitoring_etl_failure_bound }} # send ETL report when number of failures is greater than or equal to this bound
 MAIL_RECIPIENTS={{ oerindex_monitoring_etl_recipients }}
 MAIL_FROM_ADDRESS={{ oerindex_monitoring_etl_from_address }}
 
-grep 'Import channel.*SUCCESS.*FAIL.*DURATION' {{ oerindex_etl_downloaddir }}/etl.log > {{ oerindex_etl_downloaddir }}/etl-report.txt
+egrep 'Import channel.*(SUCCESS.*FAIL.*DURATION)|(FAILED:)' {{ oerindex_etl_logdir }}/etl.log > {{ oerindex_etl_logdir }}/etl-report.txt
 
-#gawk 'match($0, /Success: (.+), Fail: (.+)/, a) {fails = fails + a[2]; print "Success: "a[1]; print "Fail: "a[2]}END{print fails}' {{ oerindex_etl_downloaddir }}/etl-report.txt
-PROCESSES=$(wc -l < {{ oerindex_etl_downloaddir }}/etl-report.txt)
-FAILURES=$(gawk 'match($0, /SUCCESS: (.+), FAIL-VALIDATION: (.+), FAIL-WRITE: (.+)/, a) {failures = failures + a[2] + a[3]}END{print failures}' {{ oerindex_etl_downloaddir }}/etl-report.txt)
-SUCCESSES=$(gawk 'match($0, /SUCCESS: (.+), FAIL-VALIDATION: (.+), FAIL-WRITE: (.+)/, a) {successes = successes + a[1]}END{print successes}' {{ oerindex_etl_downloaddir }}/etl-report.txt)
+PROCESSES=$(wc -l < {{ oerindex_etl_logdir }}/etl-report.txt)
+ERRORS=$(grep 'FAILED:' {{ oerindex_etl_logdir }}/etl-report.txt | wc -l)
+FAILURES=$(gawk 'match($0, /SUCCESS: (.+), FAIL-VALIDATION: (.+), FAIL-WRITE: (.+)/, a) {failures = failures + a[2] + a[3]}END{print failures}' {{ oerindex_etl_logdir }}/etl-report.txt)
+SUCCESSES=$(gawk 'match($0, /SUCCESS: (.+), FAIL-VALIDATION: (.+), FAIL-WRITE: (.+)/, a) {successes = successes + a[1]}END{print successes}' {{ oerindex_etl_logdir }}/etl-report.txt)
 
-SUBJECT="OERSI ETL Monitoring - $PROCESSES processes, $SUCCESSES successes, $FAILURES failures"
+SUBJECT="OERSI ETL Monitoring - processes $(($PROCESSES-$ERRORS)) ok, $ERRORS error (data $SUCCESSES ok, $FAILURES failed)"
 
-if [ "$FAILURES" -ge "$FAILURE_BOUND" ]; then
+if [ "$FAILURES" -ge "$FAILURE_BOUND" ] || [ "$ERRORS" -gt "0" ]; then
   echo "Sending report ($SUBJECT)"
-  cat {{ oerindex_etl_downloaddir }}/etl-report.txt | mail -s "$SUBJECT" -r $MAIL_FROM_ADDRESS $MAIL_RECIPIENTS
+  cat {{ oerindex_etl_logdir }}/etl-report.txt | mail -s "$SUBJECT" -r $MAIL_FROM_ADDRESS $MAIL_RECIPIENTS
 else
   echo "Don't send report ($SUBJECT)"
 fi
