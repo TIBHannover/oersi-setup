@@ -9,9 +9,9 @@ If you contribute to the OER search index repositories, please ensure that you c
      * If your contribution is minor, such as a typo fix, open a merge request.
      * Otherwise open an issue first. That way, other people can weigh in on the discussion before you do any work.
 * Fork the project into your personal namespace (or group).
-* Create a feature branch in your fork from develop (don't work off develop or master).
+* Create a feature branch in your fork from master (don't work off master).
 * Write tests, code and documentations that satisfy [coding conventions](#coding-conventions).
-* When the feature is fully implemented (see [Definition of Done](#definition-of-done)), submit a merge request to the develop branch in the original project.
+* When the feature is fully implemented (see [Definition of Done](#definition-of-done)), submit a merge request to the master branch in the original project.
 
 ## Coding conventions
 
@@ -34,31 +34,25 @@ When can a task be marked as "finished"?
 * Documentation is completely finished and understandable.
 * Automated tests (e.g. unit tests) have been created, code coverage > 80%
 * No open bugs (testing with [sonarlint](https://www.sonarlint.org/) / [sonarcloud](https://sonarcloud.io/))
-* The code is finished and merged into the development branch.
+* The code is finished and merged into the master branch.
 * Concluding short comment in the issue: what has been done / what is the current status?
 
 ## Branching Strategy
 
-### Internal Branching Workflow (gitflow)
+### Internal Branching Workflow
 
 * master
      * long living
-     * stable branch
-     * contains only release versions
-* develop
-     * long living
-     * stable development branch
-     * merge into master when ready for release
+     * stable branch (all merges and commits are "ready-for-production")
 * feature- / topic-branches
-     * branch from develop
-     * merge into develop when ready / fully implemented (see [Definition of Done](#definition-of-done))
-* hotfix
      * branch from master
-     * for urgent fix in released version
-     * merge into master and develop when ready
+     * merge into master when ready (see [Definition of Done](#definition-of-done))
+     * stability can be achieved by testing the feature-branch in the local Vagrant VM first and/or by using feature toggles.
+     
+**Note:** we do not support hotfixes. Bugs are fixed in the current master.
      
 ![Branching Strategy](doc/images/branching_strategy.png)
 
 ### Branching Workflow for external contributors (fork)
 
-Any developer interested in collaborating should fork the repository and work on that local copy on a specific feature/topic. A feature branch should be created in the fork from the develop branch. When the feature is fully implemented (see [Definition of Done](#definition-of-done)), a merge request can be opened to merge the changes from the feature branch into the develop branch of the original repository.
+Any developer interested in collaborating should fork the repository and work on that local copy on a specific feature/topic. A feature branch should be created in the fork from the master branch. When the feature is fully implemented (see [Definition of Done](#definition-of-done)), a merge request can be opened to merge the changes from the feature branch into the master branch of the original repository.
