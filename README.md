@@ -33,6 +33,8 @@ The same index can also be reused at the level of a federal state (or generally 
 
 ## Installation / Update
 
+The latest stable version is available in the master-branch. We do not offer older versions.
+
 The installation processes will install all components that are necessary to run _oersi_ (sql-db, elasticsearch, logstash, tomcat, nginx, etc). To avoid conflicts, it is recommended that no other applications / processes are running on the target system.
 
 Depending on the scenario, there are different possibilities to install _oersi_. To test the index a little bit with minimal effort, you can use a [local installation in the local VirtualBox VM](#run-it-locally-with-virtualbox) via vargant. The other installation methods are suitable for installing the index on an existing system that is accessible via ansible. Of these, the [installation via gitlab-ci](#automatic-installation-via-gitlab-ci) is clearly recommended.
@@ -111,6 +113,7 @@ Scenario: Install _oersi_ on an existing system directly via the ansible-playboo
      * ```ansible-galaxy install -r requirements.yml```
 * create ansible inventory _config.yml_ (see [config-example.yml](config-example.yml)) and adjust all variables to your installation (see variables in _ansible/group_vars_)
 * run ```ansible-playbook -v -i config.yml ansible/system.yml```
+     * you can also install single modules via ```ansible-playbook -v -i config.yml ansible/<MODULE>.yml```
 
 ## Web analytics
 
