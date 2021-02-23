@@ -4,7 +4,7 @@ oerindex:
       ansible_ssh_user: your_user
       ansible_become_password: changeme
       
-      oersi_setup_branch: develop
+      oersi_setup_branch: master
 
       oerindex_host: your.oersi.develop.host
       oerindex_db:

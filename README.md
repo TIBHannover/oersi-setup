@@ -58,7 +58,7 @@ Scenario: Install _oersi_ on an existing system. Can be controlled via the UI of
 * Create your own inventory-files with help of _inventory_DEV.yml_ and _inventory_TEST.yml_
      * When you adjust the filenames of your inventory-files, please assure to also adjust the filenames in _.gitlab-ci.yml_
      * Assure root access via [ansible connection variables](https://docs.ansible.com/ansible/latest/user_guide/become.html#become-connection-variables) like _ansible_become_password_.
-     * **oersi_setup_branch** - _master_ for latest release version, _develop_ for latest stable development version
+     * **oersi_setup_branch** - _master_ for latest stable version
 * Now you should be able to update your systems via your gitlab-project
      * Call: **CI / CD** -> **Pipelines** -> **Latest**
      * Click the "Play"-Button for the system you want to update
