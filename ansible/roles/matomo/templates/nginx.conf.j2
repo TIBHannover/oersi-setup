@@ -1,0 +1,20 @@
+server {
+  listen      {{ matomo_port }};
+  root {{ matomo_inst_dir }};
+  index index.php index.html index.htm;
+  server_name localhost;
+
+  location ~ "^/matomo/.*\.php$" {
+      include snippets/fastcgi-php.conf;
+      fastcgi_pass unix:{{ fpm_socket }};
+  }
+  location /matomo {
+    alias /var/www/matomo/matomo;
+    index index.php;
+  }
+  location / {
+    deny  all;
+  }
+  
+  access_log  /var/log/nginx/matomo-access.log  main;
+}

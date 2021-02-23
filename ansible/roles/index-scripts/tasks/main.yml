@@ -41,3 +41,11 @@
     src: "reset-sql-oerdata.sh.j2"
     dest: "{{ base_dir }}/bin/reset-sql-oerdata.sh"
     mode: 0700
+
+- include: delete-outdated-data.yml
+
+- name: Add show-versions.sh
+  template:
+    src: "show-versions.sh.j2"
+    dest: "{{ base_dir }}/bin/show-versions.sh"
+

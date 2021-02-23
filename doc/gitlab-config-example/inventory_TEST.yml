@@ -20,7 +20,7 @@ oerindex:
           password: changeme
         - name: logstash_system
           password: changeme
-        - name: kibana
+        - name: kibana_system
           password: changeme
         - name: remote_monitoring_user
           password: changeme
@@ -30,5 +30,5 @@ oerindex:
       # user with read-only access to oer-index
       elasticsearch_oersi_viewer_username: oersi_viewer
       elasticsearch_oersi_viewer_password: ch@ngeMe
-      oerindex_backend_oermetadata_manage_user: test
-      oerindex_backend_oermetadata_manage_password: test
+      oerindex_backend_oermetadata_manage_user: changeme
+      oerindex_backend_oermetadata_manage_password: changeme

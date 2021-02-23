@@ -13,7 +13,7 @@
     name: ["unzip"]
   become: yes
   tags:
-  - root-task
+    - root-task
 
 - name: extract OER search index frontend
   unarchive:
@@ -33,39 +33,32 @@
     dest: '{{ oerindex_frontend_instdir }}/build/css/style-override.css'
   when: (oerindex_frontend_custom_style_css is defined) and (oerindex_frontend_custom_style_css != "") and (oerindex_frontend_custom_style_css is not none)
 
-- name: Ensures the folder {{ oerindex_frontend_instdir }}/build/locales/{{oerindex_frontend_lang}} exists 
-  file: path={{ oerindex_frontend_instdir }}/build/locales/{{oerindex_frontend_lang}} state=directory
+- name: Ensures the folder for the custom translations exists 
+  file: path={{ oerindex_frontend_instdir }}/build/locales/{{ item.language }} state=directory
+  loop: '{{ oerindex_frontend_custom_translations | default([], true) }}'
 
+- name: Copy custom translations
+  copy:
+    src: '{{ item.path }}'
+    dest: '{{ oerindex_frontend_instdir }}/build/locales/{{ item.language }}/{{ item.path | basename }}'
+  loop: '{{ oerindex_frontend_custom_translations | default([], true) }}'
+  
+- name: Ensures the folder for the custom footer  exists 
+  file: path={{ oerindex_frontend_instdir }}/build/footer/{{ item.language }} state=directory
+  loop: '{{ oerindex_frontend_custom_footers | default([], true) }}'
 
-- name: Copy custom translation.json
+- name: Copy custom footers 
   copy:
-    src: '{{ oerindex_frontend_custom_translation_file_path }}'
-    dest: '{{ oerindex_frontend_instdir }}/build/locales/{{oerindex_frontend_lang}}/translation.json'
-  when: (oerindex_frontend_custom_translation_file_path is defined) and (oerindex_frontend_custom_translation_file_path != "") and (oerindex_frontend_custom_translation_file_path is not none)
-  
-- name: Copy custom provider.json
-  copy:
-    src: '{{ oerindex_frontend_custom_provider_translation_file_path }}'
-    dest: '{{ oerindex_frontend_instdir }}/build/locales/{{oerindex_frontend_lang}}/provider.json'
-  when: (oerindex_frontend_custom_provider_translation_file_path is defined) and (oerindex_frontend_custom_provider_translation_file_path != "") and (oerindex_frontend_custom_provider_translation_file_path is not none)
-  
-- name: Copy custom lrt.json
-  copy:
-    src: '{{ oerindex_frontend_custom_lrt_translation_file_path }}'
-    dest: '{{ oerindex_frontend_instdir }}/build/locales/{{oerindex_frontend_lang}}/lrt.json'
-  when: (oerindex_frontend_custom_lrt_translation_file_path is defined) and (oerindex_frontend_custom_lrt_translation_file_path != "") and (oerindex_frontend_custom_lrt_translation_file_path is not none)
-  
-- name: Copy custom images for footer
-  copy:
-    src: '{{item[0]}}'
-    dest: '{{ oerindex_frontend_instdir }}/build/{{item[1]}}'
-  loop: '{{ oerindex_frontend_custom_images | default([], true) }}'
+    src: '{{ item.path }}'
+    dest: '{{ oerindex_frontend_instdir }}/build/footer/{{ item.language }}/{{ item.path | basename }}'
+  loop: '{{ oerindex_frontend_custom_footers | default([], true) }}'
 
-- name: Ensures the folder {{ oerindex_frontend_instdir }}/footer exists 
-  file: path={{ oerindex_frontend_instdir }}/footer state=directory    
-  
-- name: Copy custom footer.html
+- name: Ensures the folder for the custom files exists
+  file: path={{ oerindex_frontend_instdir }}/build/{{ item.destination | dirname }} state=directory
+  loop: '{{ oerindex_frontend_custom_files | default([], true) }}'
+
+- name: Copy custom files
   copy:
-    src: '{{ oerindex_frontend_custom_footer_file_path }}'
-    dest: '{{ oerindex_frontend_instdir }}/build/footer/footer.html'
-  when: (oerindex_frontend_custom_footer_file_path is defined) and (oerindex_frontend_custom_footer_file_path != "") and (oerindex_frontend_custom_footer_file_path is not none)
+    src: '{{ item.source }}'
+    dest: '{{ oerindex_frontend_instdir }}/build/{{ item.destination}}'
+  loop: '{{ oerindex_frontend_custom_files | default([], true) }}'

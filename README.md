@@ -58,7 +58,7 @@ Scenario: Install _oersi_ on an existing system. Can be controlled via the UI of
 * Create your own inventory-files with help of _inventory_DEV.yml_ and _inventory_TEST.yml_
      * When you adjust the filenames of your inventory-files, please assure to also adjust the filenames in _.gitlab-ci.yml_
      * Assure root access via [ansible connection variables](https://docs.ansible.com/ansible/latest/user_guide/become.html#become-connection-variables) like _ansible_become_password_.
-     * **oersi_setup_branch** - _master_ for latest release version, _develop_ for latest stable development version
+     * **oersi_setup_branch** - _master_ for latest stable version
 * Now you should be able to update your systems via your gitlab-project
      * Call: **CI / CD** -> **Pipelines** -> **Latest**
      * Click the "Play"-Button for the system you want to update
@@ -112,14 +112,17 @@ Scenario: Install _oersi_ on an existing system directly via the ansible-playboo
 * create ansible inventory _config.yml_ (see [config-example.yml](config-example.yml)) and adjust all variables to your installation (see variables in _ansible/group_vars_)
 * run ```ansible-playbook -v -i config.yml ansible/system.yml```
 
+## Web analytics
+
+See [WEBANALYTICS.md](doc/WEBANALYTICS.md)
+
 ## Contributing
 
 Contributions are welcome. Please read [CONTRIBUTING.md](CONTRIBUTING.md) for further details.
 
 ## Technologies
 
-- **Scrapy**: First OER repositories are crawled using [Scrapy](http://scrapy.org/) -> just for the first prototype; a general, robust approach has to be developed (see https://gitlab.com/oersi/oersi-etl)
-- **MariaDB**: Used to store the results of Scrapy.
+- **MariaDB**: Used to store the imported data.
 - **Logstash**: Logstash is regulary checking the MariaDB database, if any new items are added or changes are made to existing entries.
 - **Elasticsearch**: Elasticsearch is the search engine and indexes the input it gets from Logstash.
 - **Kibana**: For development or monitoring of Elasticsearch Kibana can be installed optionally (activate in _ansible/group_vars_ -> _kibana_install_)

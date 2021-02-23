@@ -1,0 +1,25 @@
+---
+matomo_superuser_name: admin
+matomo_superuser_password: changeme
+matomo_superuser_mail: xyz@example.org
+
+matomo_dbname: matomo
+matomo_dbuser: matomo
+matomo_dbpassword: changeme
+
+matomo_archive_url: https://builds.matomo.org/matomo.zip
+dbip_archive_url: https://download.db-ip.com/free/dbip-city-lite-2021-01.mmdb.gz
+
+matomo_inst_dir: /var/www/matomo
+matomo_bin: '{{ ansible_env.HOME }}/bin'
+matomo_owner: www-data # The name of the user that should own the installation
+matomo_group: www-data # The name of the group that should own the installation
+matomo_host: '{{ oerindex_host }}'
+matomo_port: 8923
+matomo_url_local: 'http://localhost:{{ matomo_port }}/matomo'
+
+matomo_init_website:
+  name: OERSI
+  url: '{{ oerindex_public_base_url }}'
+  timezone: '{{ timezone if (timezone is defined and timezone) else "Europe/Berlin" }}'
+  idsite: 1

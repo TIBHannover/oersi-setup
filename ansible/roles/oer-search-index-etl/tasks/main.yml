@@ -18,7 +18,7 @@
     name: ["unzip"]
   become: yes
   tags:
-  - root-task
+    - root-task
 
 - name: extract OER search index ETL
   unarchive:
@@ -60,16 +60,19 @@
     path: '{{ oerindex_etl_configdir }}-enabled/{{ item | basename }}'
   loop: '{{ (oerindex_etl_configfiles | default([], true)) + (oerindex_etl_customfiles | default([], true)) }}'
 
-- name: Extract, transform, and load some OER sources
+- name: Extract, transform, and load some example OER sources
   command:
-    cmd: './build/install/oersi-etl/bin/oersi-etl {{ oerindex_etl_configdir }}-enabled {{ oerindex_etl_configdir }}/oersi.properties'
+    cmd: './build/install/oersi-etl/bin/oersi-etl {{ oerindex_etl_configdir }}/{{ item }} {{ oerindex_etl_configdir }}/oersi.properties'
     chdir: '{{ oerindex_etl_downloaddir }}'
-  when: oerindex_import_sources_immediately
+  loop: '{{ oerindex_import_example_sources | default([], true) }}'
+  when: oerindex_import_example_sources_immediately
 
 - name: Configure cron schedule - Extract, transform, and load OER sources
   cron:
     name: "ETL OER sources"
     hour: '{{ oerindex_import_sources_schedule_hour }}'
     minute: '{{ oerindex_import_sources_schedule_minute }}'
-    job: 'cd {{ oerindex_etl_downloaddir }} && ./build/install/oersi-etl/bin/oersi-etl {{ oerindex_etl_configdir }}-enabled {{ oerindex_etl_configdir }}/oersi.properties &> {{ oerindex_etl_downloaddir }}/etl.log'
+    job: 'cd {{ oerindex_etl_downloaddir }} && ./build/install/oersi-etl/bin/oersi-etl {{ oerindex_etl_configdir }}-enabled {{ oerindex_etl_configdir }}/oersi.properties > {{ oerindex_etl_logdir }}/etl.log 2>&1'
     state: '{{ oerindex_import_sources_schedule_state }}'
+
+- include: monitoring.yml
