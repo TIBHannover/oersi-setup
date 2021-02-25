@@ -8,7 +8,7 @@ The search index offers the possibility to search quickly in various oer sources
 
 With this project you can set up all components that are necessary to run the index. The process uses [ansible](https://docs.ansible.com/) to install the components.
 
-You can find stable versions of the setup in the branch **_master_**.
+You can find stable versions of the setup in the branch **_master_** and also tagged fixed releases.
 
 ## Concept
 
