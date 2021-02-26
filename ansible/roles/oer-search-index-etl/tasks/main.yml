@@ -87,3 +87,4 @@
     state: '{{ oerindex_import_sources_schedule_state }}'
 
 - include: monitoring.yml
+- include: cleanup-logs.yml
