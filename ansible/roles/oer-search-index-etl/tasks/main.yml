@@ -38,6 +38,17 @@
     dest: "{{ oerindex_etl_configdir }}/oersi.properties"
     mode: '600'
 
+- name: Create log4j.properties
+  template:
+    src: "log4j.properties.j2"
+    dest: "{{ oerindex_etl_configdir }}/log4j.properties"
+
+- name: Create etl wrapper script
+  template:
+    src: "etl.sh.j2"
+    dest: "{{ oerindex_etl_downloaddir }}/etl.sh"
+    mode: 0700
+
 - name: Copy oersi-etl custom config files
   copy:
     src: "{{ item }}"
@@ -72,7 +83,7 @@
     name: "ETL OER sources"
     hour: '{{ oerindex_import_sources_schedule_hour }}'
     minute: '{{ oerindex_import_sources_schedule_minute }}'
-    job: 'cd {{ oerindex_etl_downloaddir }} && ./build/install/oersi-etl/bin/oersi-etl {{ oerindex_etl_configdir }}-enabled {{ oerindex_etl_configdir }}/oersi.properties > {{ oerindex_etl_logdir }}/etl.log 2>&1'
+    job: '{{ oerindex_etl_downloaddir }}/etl.sh'
     state: '{{ oerindex_import_sources_schedule_state }}'
 
 - include: monitoring.yml

@@ -1,4 +1,5 @@
 ---
+oerindex_etl_loglevel: INFO
 
 oerindex_monitoring_etl: false  # activate the ETL monitoring process; true|false
 oerindex_monitoring_etl_recipients:   # required, mail recipients of the ETL report (comma separated)
