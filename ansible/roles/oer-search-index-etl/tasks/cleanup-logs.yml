@@ -1,0 +1,29 @@
+
+- name: Install package bzip2 for file compression
+  become: yes
+  package:
+    name: bzip2
+    state: present
+
+- name: create etl logfile cleanup script
+  template:
+    src: cleanup-logs.sh.j2
+    dest: '{{ base_dir }}/bin/cleanup-etl-logs.sh'
+    mode: '744'
+  vars:
+    maintenance_logcompress_items:
+      - startingPoint: "{{ oerindex_etl_logdir }}/"
+        expressions: "! -name '*.bz2'"
+        mtime: "{{ oerindex_etl_logcompress_mtime }}"
+    maintenance_logdelete_items:
+      - startingPoint: "{{ oerindex_etl_logdir }}/"
+        expressions: "-name '*.bz2'"
+        mtime: "{{ oerindex_etl_logdelete_mtime }}"
+
+- name: Configure cron schedule - cleanup etl logs
+  cron:
+    name: "cleanup etl logs"
+    hour: "1"
+    minute: "0"
+    job: '{{ base_dir }}/bin/cleanup-etl-logs.sh >> {{ oerindex_etl_logdir }}/cleanup-etl-logs.`date +\%Y-\%m-\%d`.log 2>&1'
+    state: "present"
