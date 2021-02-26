@@ -32,7 +32,6 @@
 - name: set facts about downloaded artifact
   set_fact:
     backend_artifact_path: "{{ oersi_backend_download_result.dest }}"
-    backend_artifact_changed: "{{ oersi_backend_download_result.changed }}"
 
 - name: extract OER search index backend
   unarchive:
@@ -41,7 +40,7 @@
     dest: "{{ oerindex_backend_downloaddir }}"
     extra_opts:
       - -j
-  when: backend_artifact_path.endswith('.zip') and backend_artifact_changed
+  when: backend_artifact_path.endswith('.zip')
 
 - name: find war-files in download directory
   find:
@@ -60,7 +59,6 @@
     - "{{ tomcat_home }}/webapps/oersi.war"
     - "{{ tomcat_home }}/webapps/oersi"
     - "{{ tomcat_home }}/work/Catalina/localhost/oersi"
-  when: backend_artifact_changed
   
 - name: Ensures config-dir exists
   file: path='{{ oerindex_backend_configdir }}' state=directory
@@ -88,7 +86,6 @@
     remote_src: yes
   with_items:
     - "{{ oersi_war_find_result.files }}"
-  when: backend_artifact_changed
 
 - name: start tomcat
   shell: '{{tomcat_start_command}}'
