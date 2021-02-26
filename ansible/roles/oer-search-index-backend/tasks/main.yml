@@ -2,12 +2,6 @@
 - name: Ensures inst-dir exists
   file: path='{{ oerindex_backend_downloaddir }}' state=directory
 
-- name: download OER search index backend
-  get_url:
-    url: "{{ oerindex_backend_artifact_url }}"
-    force: yes
-    dest: "{{ oerindex_backend_downloaddir }}/oersi-backend.zip"
-
 - name: Ensure unzip is present
   package:
     name: ["unzip"]
@@ -28,13 +22,26 @@
   with_items:
     - "{{ oersi_existing_war_find_result.files }}"
 
+- name: download OER search index backend
+  get_url:
+    url: "{{ oerindex_backend_artifact_url }}"
+    force: yes
+    dest: "{{ oerindex_backend_downloaddir }}/"
+  register: oersi_backend_download_result
+
+- name: set facts about downloaded artifact
+  set_fact:
+    backend_artifact_path: "{{ oersi_backend_download_result.dest }}"
+    backend_artifact_changed: "{{ oersi_backend_download_result.changed }}"
+
 - name: extract OER search index backend
   unarchive:
     remote_src: yes
-    src: '{{ oerindex_backend_downloaddir }}/oersi-backend.zip'
+    src: '{{ backend_artifact_path }}'
     dest: "{{ oerindex_backend_downloaddir }}"
     extra_opts:
       - -j
+  when: backend_artifact_path.endswith('.zip') and backend_artifact_changed
 
 - name: find war-files in download directory
   find:
@@ -53,6 +60,7 @@
     - "{{ tomcat_home }}/webapps/oersi.war"
     - "{{ tomcat_home }}/webapps/oersi"
     - "{{ tomcat_home }}/work/Catalina/localhost/oersi"
+  when: backend_artifact_changed
   
 - name: Ensures config-dir exists
   file: path='{{ oerindex_backend_configdir }}' state=directory
@@ -80,6 +88,7 @@
     remote_src: yes
   with_items:
     - "{{ oersi_war_find_result.files }}"
+  when: backend_artifact_changed
 
 - name: start tomcat
   shell: '{{tomcat_start_command}}'
