@@ -52,19 +52,19 @@ oerindex_etl_input_limit: -1
 # List all standard flux-files from oersi-etl/data/production/ that should be used for the ETL-process here.
 oerindex_etl_configfiles:
   - oernds-to-oersi.flux
-  - zoerr-to-oersi.flux
-  - digill-to-oersi.flux
-  - tibav-to-oersi.flux
-  - hhu-to-oersi.flux
-  - oncampus-to-oersi.flux
-  - hoou-to-oersi.flux
   - edu-sharing.fix
-  - digill.fix
-  - tibav.fix
-  - hhu.fix
-  - oncampus.fix
-  - hoou-id.fix
-  - hoou.fix
+#  - zoerr-to-oersi.flux
+#  - digill-to-oersi.flux
+#  - tibav-to-oersi.flux
+#  - hhu-to-oersi.flux
+#  - oncampus-to-oersi.flux
+#  - hoou-to-oersi.flux
+#  - digill.fix
+#  - tibav.fix
+#  - hhu.fix
+#  - oncampus.fix
+#  - hoou-id.fix
+#  - hoou.fix
 # List all your custom flux-files that should be used for the ETL-process here.
 # The file path has to be relative to 'ansible/roles/oer-search-index-etl/files' or an absolute path.
 oerindex_etl_customfiles:
@@ -74,9 +74,7 @@ oerindex_monitoring_etl: false  # activate the ETL monitoring process; true|fals
 oerindex_monitoring_etl_recipients:   # mail recipients of the ETL report (comma separated)
 oerindex_monitoring_etl_from_address:   # mail sender address for the ETL report
   
-oerindex_import_example_sources_immediately: true # import configured example sources immediately at the installation process (true|false)
-oerindex_import_example_sources:  # example sources that should be imported when 'oerindex_import_example_sources_immediately' is set to true
-  - oernds-to-oersi.flux
+oerindex_import_sources_immediately: true # import configured sources immediately at the installation process (true|false)
 oerindex_import_sources_schedule_state: 'present' # import all configured sources scheduled (absent|present)
 oerindex_import_sources_schedule_hour: '0'  # Hour when the job should run - see https://docs.ansible.com/ansible/latest/modules/cron_module.html
 oerindex_import_sources_schedule_minute: '0' # Minute when the job should run - see https://docs.ansible.com/ansible/latest/modules/cron_module.html

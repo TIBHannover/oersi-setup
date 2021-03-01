@@ -34,3 +34,10 @@ oerindex:
       oerindex_backend_oermetadata_manage_password: changeme
 
       oerindex_frontend_custom_style_css: '../../frontend/style-override.css'
+
+      oerindex_import_sources_immediately: false # import configured sources immediately at the installation process (true|false)
+      oerindex_etl_configfiles:
+        - oernds-to-oersi.flux
+        - edu-sharing.fix
+        - digill-to-oersi.flux
+        - digill.fix
