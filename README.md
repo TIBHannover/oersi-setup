@@ -1,14 +1,10 @@
-# **Under Development**
-
-first draft
-
 # OER Search Index Setup
 
-The search index offers the possibility to search quickly in various oer sources.
+The search index offers the possibility to search quickly in various oer sources (mainly in the context of higher education).
 
 With this project you can set up all components that are necessary to run the index. The process uses [ansible](https://docs.ansible.com/) to install the components.
 
-You can find stable versions of the setup in the branch **_master_** and also tagged fixed releases.
+You can find stable versions of the setup in the branch **_master_** and also tagged fixed releases - see https://gitlab.com/oersi/oersi-setup/-/releases.
 
 ## Concept
 
@@ -24,10 +20,10 @@ The same index can also be reused at the level of a federal state (or generally 
 
 ### Components
 
-* **Harvester**: The harvester connects to the individual repositories and fetches metadata updates according to a configured schedule (e.g. daily).
+* **ETL**: The ETL-module (extract, transform, load) connects to the individual repositories and fetches metadata updates according to a configured schedule (e.g. daily).
 * **API / Backend**: Provides interfaces to retrieve data from the index (external) and to import / update data into the index (internal). A read-only user is used to retrieve data. When creating / updating the data, the data is first written into an SQL database and from there written into an elasticsearch index with the help of logstash.
 * **Frontend**: Website that displays the data from the index and offers the possibility to search
-* **User Management**: _Optional_ - only needed if the index is used as a (local) standalone solution. So users can be given access to manually update the data via a UI.
+* **User Management**: (TDB) _Optional_ - only needed if the index is used as a (local) standalone solution. So users can be given access to manually update the data via a UI.
 
 ![Components OERSI](doc/images/OER-Search-Index-Components.png)
 
