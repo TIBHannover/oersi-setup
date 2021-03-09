@@ -3,3 +3,11 @@ oerindex_frontend_i18n_cache_expiration: 600000 # expiration time of the i18n tr
 oerindex_frontend_track_total_hits: "true" # track number of total hits from elasticsearch - see https://www.elastic.co/guide/en/elasticsearch/reference/7.10/search-your-data.html#track-total-hits
 
 oerindex_frontend_features_embed_oer: "false"
+
+oerindex_frontend_embed_media_mapping: # mappings from source url to embedding-code for media; required in each entry: regex (apply for resources whose id matches), html (html-snippet for the media part of the embedding, may contain matching groups from the regex via 'match')
+  - regex: "https://av.tib.eu/media/([0-9]+)"
+    html: '<iframe width="560" height="315" scrolling="no" src="//av.tib.eu/player/${match[1]}" frameborder="0" allowfullscreen></iframe>'
+  - regex: "https://mediathek.hhu.de/watch/([a-zA-Z0-9-]+)"
+    html: '<iframe width="560" height="315" src="https://mediathek.hhu.de/embed/${match[1]}" frameborder="0" allowfullscreen></iframe>'
+  - regex: "https://(?:www.youtube.com/watch\\\\?v\\\\=|youtu.be/)([a-zA-Z0-9-_]+)"
+    html: '<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/${match[1]}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
