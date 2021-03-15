@@ -35,7 +35,7 @@ oerindex:
 
       oerindex_import_sources_immediately: false # import configured sources immediately at the installation process (true|false)
       oerindex_etl_configfiles:
-        - oernds-to-oersi.flux
+        - twillo-to-oersi.flux
         - edu-sharing.fix
         - digill-to-oersi.flux
         - digill.fix
