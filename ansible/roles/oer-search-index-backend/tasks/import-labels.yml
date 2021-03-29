@@ -1,0 +1,31 @@
+---
+- name: Ensures config-dir exists
+  file: path='{{ oerindex_backend_configdir }}/labels' state=directory
+
+- name: copy label config-files
+  copy:
+    src: "{{ item }}"
+    dest: "{{ oerindex_backend_configdir }}/labels/"
+  loop: "{{ oerindex_backend_label_files }}"
+  register: copy_labels_result
+
+- set_fact:
+    oerindex_backend_label_import: "{{ copy_labels_result.results | selectattr('changed','equalto',true) | map(attribute='dest') | list }}"
+
+- name: "bulk import label definitions"
+  uri:
+    url: '{{ oerindex_backend_internal_labeldefinition_api_url }}/bulk'
+    method: POST
+    body_format: json
+    status_code: 200
+    timeout: 60
+    headers:
+      Accept: 'application/json'
+    user: '{{ oerindex_backend_oermetadata_manage_user }}'
+    password: '{{ oerindex_backend_oermetadata_manage_password }}'
+    force_basic_auth: yes
+    src: '{{ item }}'
+    remote_src: yes
+  loop: "{{ oerindex_backend_label_import }}"
+  retries: 3
+  delay: 5

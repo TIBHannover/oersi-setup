@@ -1,0 +1,26 @@
+{
+  "http://purl.org/dcx/lrmi-vocabs/educationalAudienceRole/administrator": {
+    "en": "administrator"
+  },
+  "http://purl.org/dcx/lrmi-vocabs/educationalAudienceRole/generalPublic": {
+    "en": "general public"
+  },
+  "http://purl.org/dcx/lrmi-vocabs/educationalAudienceRole/mentor": {
+    "en": "mentor"
+  },
+  "http://purl.org/dcx/lrmi-vocabs/educationalAudienceRole/parent": {
+    "en": "parent"
+  },
+  "http://purl.org/dcx/lrmi-vocabs/educationalAudienceRole/peerTutor": {
+    "en": "peer tutor"
+  },
+  "http://purl.org/dcx/lrmi-vocabs/educationalAudienceRole/professional": {
+    "en": "professional"
+  },
+  "http://purl.org/dcx/lrmi-vocabs/educationalAudienceRole/student": {
+    "en": "student"
+  },
+  "http://purl.org/dcx/lrmi-vocabs/educationalAudienceRole/teacher": {
+    "en": "teacher"
+  }
+}
