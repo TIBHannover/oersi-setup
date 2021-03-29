@@ -1,2 +1,9 @@
 ---
 oerindex_backend_loglevel: DEBUG
+oerindex_backend_label_files:
+  - labels-educational-audience.json
+  - labels-hcrt.json
+  - labels-hochschulfaechersystematik.json
+
+oerindex_backend_features_add_missing_labels: "false" # add missing labels of known vocabularies
+oerindex_backend_internal_labeldefinition_api_url: '{{ oerindex_backend_internal_api_base_url }}/labeldefinition'

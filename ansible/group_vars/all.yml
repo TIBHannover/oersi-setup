@@ -40,9 +40,9 @@ oerindex_backend_configdir: "{{ base_dir }}/oersi-backend/config"
 oerindex_backend_artifact_url: 'https://gitlab.com/oersi/oersi-backend/-/jobs/artifacts/master/download?job=deploy+branch'
 oerindex_backend_searchapi_root_path: '{{ oerindex_public_base_path }}/api-internal/search/'
 oerindex_backend_labelapi_root_path: '{{ oerindex_public_base_path }}/api-internal/label/'
-oerindex_backend_url_scheme: '{{ oerindex_public_scheme }}'
-oerindex_backend_metadataapi_url: 'http://localhost:8080/oersi/api/metadata'
-oerindex_backend_searchapi_url: "{{ oerindex_backend_url_scheme }}://{{ oerindex_host }}{{ oerindex_backend_searchapi_root_path }}"
+oerindex_backend_searchapi_url: "{{ oerindex_public_base_url }}{{ oerindex_backend_searchapi_root_path }}"
+oerindex_backend_internal_api_base_url: 'http://localhost:{{ tomcat_port }}/oersi/api'
+oerindex_backend_internal_metadataapi_url: '{{ oerindex_backend_internal_api_base_url }}/metadata'
 
 oerindex_etl_downloaddir: "{{ base_dir }}/oersi-etl"
 oerindex_etl_configdir: "{{ oerindex_etl_downloaddir }}/data/production"

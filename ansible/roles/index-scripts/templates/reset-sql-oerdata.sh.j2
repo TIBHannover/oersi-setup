@@ -5,6 +5,6 @@
 #
 
 date +"*** %Y-%m-%d %H:%M:%S delete sql data"
-curl --netrc-file {{ base_dir }}/conf/oer_backend_access --header 'Content-Type: application/json' -H 'Accept: application/json' -XDELETE "{{ oerindex_backend_metadataapi_url }}"
+curl --netrc-file {{ base_dir }}/conf/oer_backend_access --header 'Content-Type: application/json' -H 'Accept: application/json' -XDELETE "{{ oerindex_backend_internal_metadataapi_url }}"
 
 date +"*** %Y-%m-%d %H:%M:%S done"

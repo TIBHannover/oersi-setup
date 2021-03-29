@@ -2,17 +2,17 @@ server {
   listen       80;
   server_name  localhost;
   location ~ "^{{ oerindex_public_base_path }}/((?:[A-Za-z0-9-_]{4}+){4,}(?:[A-Za-z0-9-_]{3}=|[A-Za-z0-9-_]{2}==)?)$" {
-    proxy_pass http://localhost:8080/oersi/api/search/{{ elasticsearch_oer_index_alias_name }}/_doc/$1/_source;
+    proxy_pass {{ oerindex_backend_internal_api_base_url }}/search/{{ elasticsearch_oer_index_alias_name }}/_doc/$1/_source;
   }
   # support old, deprecated location for a short time; will be removed soon
   location ~ "^/resources/es/(.*)$" {
     return 301 {{ oerindex_backend_searchapi_root_path }}$1;
   }
   location {{ oerindex_backend_searchapi_root_path }} {
-    proxy_pass http://localhost:8080/oersi/api/search/;
+    proxy_pass {{ oerindex_backend_internal_api_base_url }}/search/;
   }
   location {{ oerindex_backend_labelapi_root_path }} {
-    proxy_pass http://localhost:8080/oersi/api/label/;
+    proxy_pass {{ oerindex_backend_internal_api_base_url }}/label/;
   }
   location {{ oerindex_public_base_path }} {
     alias {{ oerindex_frontend_instdir }}/build;

@@ -1,0 +1,102 @@
+{
+  "https://w3id.org/kim/hcrt/application": {
+    "de": "Softwareanwendung",
+    "en": "Software Application"
+  },
+  "https://w3id.org/kim/hcrt/assessment": {
+    "de": "Lernkontrolle",
+    "en": "Assessment"
+  },
+  "https://w3id.org/kim/hcrt/audio": {
+    "de": "Tonaufnahme",
+    "en": "Audio Recording"
+  },
+  "https://w3id.org/kim/hcrt/case_study": {
+    "de": "Fallstudie",
+    "en": "Case Study"
+  },
+  "https://w3id.org/kim/hcrt/course": {
+    "de": "Kurs",
+    "en": "Course"
+  },
+  "https://w3id.org/kim/hcrt/data": {
+    "de": "Daten",
+    "en": "Data"
+  },
+  "https://w3id.org/kim/hcrt/diagram": {
+    "de": "Diagramm",
+    "en": "Diagram"
+  },
+  "https://w3id.org/kim/hcrt/drill_and_practice": {
+    "de": "Übung",
+    "en": "Drill and Practice"
+  },
+  "https://w3id.org/kim/hcrt/educational_game": {
+    "de": "Lernspiel",
+    "en": "Game"
+  },
+  "https://w3id.org/kim/hcrt/experiment": {
+    "de": "Experiment",
+    "en": "Experiment"
+  },
+  "https://w3id.org/kim/hcrt/image": {
+    "de": "Abbildung",
+    "en": "Image"
+  },
+  "https://w3id.org/kim/hcrt/index": {
+    "de": "Nachschlagewerk",
+    "en": "Reference Work"
+  },
+  "https://w3id.org/kim/hcrt/lesson_plan": {
+    "de": "Unterrichtsplanung",
+    "en": "Lesson Plan"
+  },
+  "https://w3id.org/kim/hcrt/map": {
+    "de": "Karte",
+    "en": "Map"
+  },
+  "https://w3id.org/kim/hcrt/other": {
+    "de": "Sonstiges",
+    "en": "Other"
+  },
+  "https://w3id.org/kim/hcrt/portal": {
+    "de": "Portal",
+    "en": "Web Portal"
+  },
+  "https://w3id.org/kim/hcrt/questionnaire": {
+    "de": "Fragebogen",
+    "en": "Questionnaire"
+  },
+  "https://w3id.org/kim/hcrt/script": {
+    "de": "Skript",
+    "en": "Script"
+  },
+  "https://w3id.org/kim/hcrt/simulation": {
+    "de": "Simulation",
+    "en": "Simulation"
+  },
+  "https://w3id.org/kim/hcrt/slide": {
+    "de": "Präsentation",
+    "en": "Presentation"
+  },
+  "https://w3id.org/kim/hcrt/text": {
+    "de": "Textdokument",
+    "en": "Text"
+  },
+  "https://w3id.org/kim/hcrt/textbook": {
+    "de": "Lehrbuch",
+    "en": "Textbook"
+  },
+  "https://w3id.org/kim/hcrt/video": {
+    "de": "Video",
+    "en": "Video"
+  },
+  "https://w3id.org/kim/hcrt/web_page": {
+    "de": "Webseite",
+    "en": "Web Page"
+  },
+  "https://w3id.org/kim/hcrt/worksheet": {
+    "de": "Arbeitsmaterial",
+    "en": "Worksheet"
+  }
+}

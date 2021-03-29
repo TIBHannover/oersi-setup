@@ -89,3 +89,5 @@
 
 - name: start tomcat
   shell: '{{tomcat_start_command}}'
+
+- include: import-labels.yml
