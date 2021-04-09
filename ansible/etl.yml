@@ -2,4 +2,5 @@
 # Playbook: Installation of oersi-etl module
 - hosts: oerindex
   roles:
+    - init-facts
     - oer-search-index-etl

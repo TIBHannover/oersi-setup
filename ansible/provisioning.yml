@@ -1,6 +1,10 @@
 ---
 # Playbook: provisioning of third party software that is required for oersi
 - hosts: all
+  roles:
+    - init-facts
+
+- hosts: all
   become: yes
   roles:
     - set-timezone

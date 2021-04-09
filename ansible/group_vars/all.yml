@@ -4,7 +4,7 @@ oerindex_host: 192.168.98.115
 mariadb_host: localhost
 mariadb_port: 3306
 
-base_dir: "{{ansible_env.HOME}}"
+base_dir:   # base directory for oersi components; default to HOME-dir of ansible user
 
 oerindex_db:
   name: oerindex_db

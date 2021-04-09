@@ -1,0 +1,4 @@
+---
+- name: Setting base directory
+  set_fact: base_dir="{{ ansible_env.HOME }}"
+  when: (base_dir == "") or (base_dir is none)
