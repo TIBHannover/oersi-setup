@@ -11,5 +11,7 @@ curl --netrc-file {{ base_dir }}/conf/oer_index_access -XDELETE "http://{{ elast
 echo ""
 date +"*** %Y-%m-%d %H:%M:%S reset jdbc-lastrun"
 sudo /usr/share/logstash/bin/reset-jdbc-lastrun.sh
+date +"*** %Y-%m-%d %H:%M:%S run logstash pipeline once"
+sudo /usr/share/logstash/bin/run-oersi-pipeline-once.sh
 date +"*** %Y-%m-%d %H:%M:%S start logstash"
 sudo systemctl start logstash.service

@@ -2,3 +2,5 @@
 mariadb_jconnector_url: https://repo1.maven.org/maven2/org/mariadb/jdbc/mariadb-java-client/2.6.2/mariadb-java-client-2.6.2.jar
 
 logstash_dir: /usr/share/logstash
+logstash_settings_dir: /etc/logstash
+logstash_schedule: "*/5 * * * *"

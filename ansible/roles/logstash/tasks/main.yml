@@ -8,13 +8,13 @@
 - name: Ensure config-directories exist
   file: path={{ item }} state=directory
   with_items:
-    - /etc/logstash/templates/
-    - /etc/logstash/pipelines/
+    - "{{ logstash_settings_dir }}/templates/"
+    - "{{ logstash_settings_dir }}/pipelines/"
 
 - name: Configure Logstash.
   template:
     src: "{{ item }}"
-    dest: "/etc/logstash/{{ item }}"
+    dest: "{{ logstash_settings_dir }}/{{ item }}"
     owner: root
     group: root
     mode: 0644
@@ -26,7 +26,7 @@
 - name: Configure Logstash mapping.
   template:
     src: "mapping.json"
-    dest: "/etc/logstash/templates/mapping.json"
+    dest: "{{ logstash_settings_dir }}/templates/mapping.json"
     owner: root
     group: root
     mode: 0644
@@ -35,7 +35,7 @@
 - name: Configure Logstash pipelines.
   template:
     src: "{{ item }}"
-    dest: "/etc/logstash/pipelines/{{ item }}"
+    dest: "{{ logstash_settings_dir }}/pipelines/{{ item }}"
     owner: root
     group: root
     mode: 0644
@@ -49,6 +49,14 @@
   template:
     src: "reset-jdbc-lastrun.sh.j2"
     dest: "{{ logstash_dir }}/bin/reset-jdbc-lastrun.sh"
+    owner: logstash
+    group: logstash
+    mode: 0700
+    
+- name: Add run-oersi-pipeline-once.sh
+  template:
+    src: "run-oersi-pipeline-once.sh.j2"
+    dest: "{{ logstash_dir }}/bin/run-oersi-pipeline-once.sh"
     owner: logstash
     group: logstash
     mode: 0700
