@@ -1,0 +1,145 @@
+{
+  "index_patterns": "{{ elasticsearch_oer_index_name_prefix }}{{ elasticsearch_oer_index_version }}_*",
+  "template": {
+    "settings": {
+      "index": {
+        "number_of_shards": "{{ elasticsearch_oer_index_number_of_shards }}",
+        "number_of_replicas": "{{ elasticsearch_oer_index_number_of_replicas }}"
+      }
+    },
+    "mappings" : {
+      "dynamic": "false",
+      "properties" : {
+        "about" : {
+          "properties" : {
+            "id" : {
+              "type" : "keyword"
+            },
+            "prefLabel" : {
+              "dynamic" : "true",
+              "properties" : {}
+            }
+          }
+        },
+        "audience" : {
+          "properties" : {
+            "id" : {
+              "type" : "keyword"
+            },
+            "prefLabel" : {
+              "dynamic" : "true",
+              "properties" : {}
+            }
+          }
+        },
+        "creator" : {
+          "properties" : {
+            "id" : {
+              "type" : "keyword"
+            },
+            "name" : {
+              "type" : "text",
+              "fields" : {
+                "keyword" : {
+                  "type" : "keyword"
+                }
+              }
+            },
+            "type" : {
+              "type" : "keyword"
+            }
+          }
+        },
+        "dateCreated" : {
+          "type" : "date",
+          "index" : false
+        },
+        "datePublished" : {
+          "type" : "date",
+          "index" : false
+        },
+        "description" : {
+          "type" : "text"
+        },
+        "id" : {
+          "type" : "keyword",
+          "index": false
+        },
+        "image" : {
+          "type" : "keyword",
+          "index": false
+        },
+        "inLanguage" : {
+          "type" : "keyword"
+        },
+        "learningResourceType" : {
+          "properties" : {
+            "id" : {
+              "type" : "keyword"
+            },
+            "prefLabel" : {
+              "dynamic" : "true",
+              "properties" : {}
+            }
+          }
+        },
+        "license" : {
+          "type" : "keyword"
+        },
+        "name" : {
+          "type" : "text"
+        },
+        "mainEntityOfPage" : {
+          "properties" : {
+            "id" : {
+              "type" : "keyword",
+              "index": false
+            },
+            "type" : {
+              "type" : "keyword"
+            },
+            "dateCreated" : {
+              "type" : "date",
+              "index" : false
+            },
+            "dateModified" : {
+              "type" : "date",
+              "index" : false
+            },
+            "provider" : {
+              "properties" : {
+                "id" : {
+                  "type" : "keyword",
+                  "index": false
+                },
+                "type" : {
+                  "type" : "keyword"
+                },
+                "name" : {
+                  "type" : "keyword"
+                }
+              }
+            }
+          }
+        },
+        "sourceOrganization" : {
+          "properties" : {
+            "id" : {
+              "type" : "keyword",
+              "index": false
+            },
+            "type" : {
+              "type" : "keyword"
+            },
+            "name" : {
+              "type" : "keyword"
+            }
+          }
+        },
+        "keywords" : {
+          "type" : "keyword"
+        }
+      }
+    }
+  }
+}

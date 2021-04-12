@@ -3,6 +3,7 @@
 - hosts: all
   roles:
     - init-facts
+    - index-scripts
 
 - hosts: all
   become: yes
@@ -20,13 +21,10 @@
     - logstash
     - role: kibana
       when: kibana_install
-    - role: elasticsearch-updates
-      tags: elasticsearch-updates
 
 - hosts: oerindex
   roles:
     - tomcat
-    - index-scripts
 
 - hosts: oerindex
   become: yes

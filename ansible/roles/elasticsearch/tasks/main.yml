@@ -1,16 +1,4 @@
 ---
-- name: Configure Elasticsearch.
-  template:
-    src: "elasticsearch.yml.j2"
-    dest: /etc/elasticsearch/elasticsearch.yml
-    owner: root
-    group: elasticsearch
-    mode: 0660
-  notify: restart elasticsearch
-  
-- name: Force a restart if configuration has changed.
-  meta: flush_handlers
 
 - include: users.yml
-  tags:
-    - es-users
+- include: index.yml

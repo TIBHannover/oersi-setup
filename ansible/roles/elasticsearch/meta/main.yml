@@ -1,3 +1,9 @@
 ---
 dependencies:
   - role: geerlingguy.elasticsearch
+    vars:
+      elasticsearch_network_host: "{{ elasticsearch_host }}"
+      elasticsearch_http_port: "{{ elasticsearch_port }}"
+      elasticsearch_extra_options: |
+        xpack.security.enabled: true
+        action.destructive_requires_name: true
