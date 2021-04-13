@@ -19,8 +19,7 @@
     - geerlingguy.java
     - elasticsearch
     - logstash
-    - role: kibana
-      when: kibana_install
+    - index-update
 
 - hosts: oerindex
   roles:
@@ -30,6 +29,8 @@
   become: yes
   roles:
     - nginx
+    - role: kibana
+      when: kibana_install
     - role: matomo
       tags: matomo
       when: matomo_install
