@@ -83,6 +83,3 @@
     dest: "/etc/sudoers.d/logstash"
     mode: 0440
     validate: '/usr/sbin/visudo -cf %s'
-
-- name: Force a restart if configuration has changed.
-  meta: flush_handlers
