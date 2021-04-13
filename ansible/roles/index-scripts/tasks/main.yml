@@ -12,9 +12,12 @@
     - '{{ base_dir }}/conf'
 
 - name: Add oer_index_access
+  become: true  # workaround for update of old configuration before 04/2021
   template:
     src: "oer_index_access.j2"
     dest: "{{ base_dir }}/conf/oer_index_access"
+    owner: "{{ oersi_user }}"  # workaround for update of old configuration before 04/2021
+    group: "{{ oersi_user }}"  # workaround for update of old configuration before 04/2021
     mode: 0400
 
 - name: Add recreate-index.sh.j2
