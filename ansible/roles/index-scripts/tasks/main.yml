@@ -1,28 +1,21 @@
 ---
-- name: Install curl
+- name: Install curl and jq
   become: yes
   package:
-    name: curl
+    name: ["jq", "curl"]
     state: present
   
-- name: Adding user to logstash group
-  become: yes
-  user:
-    name: "{{ ansible_user }}"
-    groups: logstash
-    append: yes
-
-- name: Ensures conf dir exists
-  file: path='{{ base_dir }}/conf' state=directory
+- name: Ensures dirs exist
+  file: path='{{ item }}' state=directory
+  loop:
+    - '{{ base_dir }}/bin'
+    - '{{ base_dir }}/conf'
 
 - name: Add oer_index_access
-  become: yes
   template:
     src: "oer_index_access.j2"
     dest: "{{ base_dir }}/conf/oer_index_access"
-    owner: logstash
-    group: logstash
-    mode: 0440
+    mode: 0400
 
 - name: Add recreate-index.sh.j2
   template:
@@ -40,6 +33,18 @@
   template:
     src: "reset-sql-oerdata.sh.j2"
     dest: "{{ base_dir }}/bin/reset-sql-oerdata.sh"
+    mode: 0700
+
+- name: Add create-new-index-and-rebuild.sh.j2
+  template:
+    src: "create-new-index-and-rebuild.sh.j2"
+    dest: "{{ base_dir }}/bin/create-new-index-and-rebuild.sh"
+    mode: 0700
+
+- name: Add update-index-alias.sh.j2
+  template:
+    src: "update-index-alias.sh.j2"
+    dest: "{{ base_dir }}/bin/update-index-alias.sh"
     mode: 0700
 
 - include: delete-outdated-data.yml

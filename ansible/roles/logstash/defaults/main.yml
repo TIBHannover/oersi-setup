@@ -3,4 +3,5 @@ mariadb_jconnector_url: https://repo1.maven.org/maven2/org/mariadb/jdbc/mariadb-
 
 logstash_dir: /usr/share/logstash
 logstash_settings_dir: /etc/logstash
+logstash_serviced_conf_dir: /etc/systemd/system/logstash.service.d
 logstash_schedule: "*/1 * * * *"

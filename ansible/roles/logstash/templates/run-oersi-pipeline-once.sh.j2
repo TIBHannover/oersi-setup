@@ -1,13 +1,13 @@
 #!/bin/bash
 # {{ ansible_managed }}
 
-# TODO load variables
-
 export HOME="{{ logstash_dir }}"
+. {{ base_dir }}/conf/oer_index.conf
+export OER_INDEX_NAME
 
 cp {{ logstash_settings_dir }}/pipelines/input_jdbc_metadata.conf {{ logstash_settings_dir }}/pipelines/input_jdbc_metadata.conf.original
 sed -i 's/.*schedule =>.*//g' {{ logstash_settings_dir }}/pipelines/input_jdbc_metadata.conf
 
-sudo -u logstash sh -c '{{ logstash_dir }}/bin/logstash "--path.settings" "{{ logstash_settings_dir }}"'
+sudo --preserve-env -u logstash sh -c '{{ logstash_dir }}/bin/logstash "--path.settings" "{{ logstash_settings_dir }}"'
 
 mv {{ logstash_settings_dir }}/pipelines/input_jdbc_metadata.conf.original {{ logstash_settings_dir }}/pipelines/input_jdbc_metadata.conf

@@ -1,6 +1,11 @@
 ---
 # Playbook: provisioning of third party software that is required for oersi
 - hosts: all
+  roles:
+    - init-facts
+    - index-scripts
+
+- hosts: all
   become: yes
   roles:
     - set-timezone
@@ -16,13 +21,10 @@
     - logstash
     - role: kibana
       when: kibana_install
-    - role: elasticsearch-updates
-      tags: elasticsearch-updates
 
 - hosts: oerindex
   roles:
     - tomcat
-    - index-scripts
 
 - hosts: oerindex
   become: yes
