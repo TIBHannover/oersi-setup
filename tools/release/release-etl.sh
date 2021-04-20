@@ -13,6 +13,8 @@ echo "RELEASE_ISSUE_URL=$RELEASE_ISSUE_URL"
 echo "PUSH_TO_ORIGIN=$PUSH_TO_ORIGIN"
 echo "WORKING_DIR=$WORKING_DIR"
 
+NEXT_SNAPSHOT_VERSION=${NEXT_VERSION}-SNAPSHOT
+
 echo "---------------"
 echo "Release ETL"
 echo "---------------"
@@ -25,8 +27,15 @@ if [ $? -ne 0 ] ; then
   exit 1
 fi
 cd $WORKING_DIR/oersi-etl
+sed -i "s/^version = .*/version = \"${RELEASE_VERSION}\"/g" build.gradle
+git add build.gradle
+git commit -m "release $RELEASE_VERSION (Ref $RELEASE_ISSUE_URL)"
 git tag -a $RELEASE_VERSION -m "release $RELEASE_VERSION (Ref $RELEASE_ISSUE_URL)"
+sed -i "s/^version = .*/version = \"${NEXT_SNAPSHOT_VERSION}\"/g" build.gradle
+git add build.gradle
+git commit -m "next snapshot (Ref $RELEASE_ISSUE_URL)"
 if [ "$PUSH_TO_ORIGIN" = true ] ; then
   echo "push to origin"
+  git push origin master
   git push origin $RELEASE_VERSION
 fi
