@@ -20,6 +20,9 @@
   tags:
     - root-task
 
+- name: Remove current ETL
+  file: state=absent path='{{ oerindex_etl_downloaddir }}/build'
+
 - name: extract OER search index ETL
   unarchive:
     remote_src: yes
