@@ -1,19 +1,27 @@
-# Contributing
+# Contributing Guidelines
 
-If you contribute to the OER search index repositories, please ensure that you comply with the license, coding conventions, definition of done and the workflow for submitting merge requests.
+First of all, thank you very much for being interested in contributing to the oersi! Contributions of any kind are welcome - for example proposing a new source of Open Educational Resources, submitting a bug report, requesting a new feature, translating the application into a new language, or actively contributing to the source code.
 
-## Workflow for external contributers
+If you want to contribute to the OER search index, please make sure to read through and follow these guidelines. The guidelines apply to all oersi repositories.
 
-* If you'd like to contribute, start by searching through the issues and merge requests to see whether someone else has raised a similar idea or question.
-* If you don't see your idea listed, do one of the following:
-     * If your contribution is minor, such as a typo fix, open a merge request.
-     * Otherwise open an issue first. That way, other people can weigh in on the discussion before you do any work.
+## Submitting an Issue
+
+Before creating a new issue, start by searching through the issues and open merge requests to see whether someone else has raised a similar idea or question. If you don't see your idea listed, do one of the following:
+* If your contribution is a minor change of the code, such as a typo fix, open a merge request.
+* Otherwise open an issue first. That way, other people can weigh in on the discussion before you do any work.
+
+## Contributing to the source code
+
+Please ensure that you comply with the license, coding conventions, definition of done and the workflow for submitting merge requests.
+
+### Workflow for external contributers
+
 * Fork the project into your personal namespace (or group).
 * Create a feature branch in your fork from master (don't work off master).
 * Write tests, code and documentations that satisfy [coding conventions](#coding-conventions).
 * When the feature is fully implemented (see [Definition of Done](#definition-of-done)), submit a merge request to the master branch in the original project.
 
-## Coding conventions
+### Coding conventions
 
 * Code Style: [Google Code Style](https://google.github.io/styleguide/)
 * No issues in [sonarlint](https://www.sonarlint.org/).
@@ -26,7 +34,7 @@ If you contribute to the OER search index repositories, please ensure that you c
      * The issue or merge request should be added to the commit message.
      * Use issues and merge requests' full URLs instead of short references.
 
-## Definition of Done
+### Definition of Done
 
 When can a task be marked as "finished"?
 
@@ -37,9 +45,7 @@ When can a task be marked as "finished"?
 * The code is finished and merged into the master branch.
 * Concluding short comment in the issue: what has been done / what is the current status?
 
-## Branching Strategy
-
-### Internal Branching Workflow
+### OERSI Branching Strategy
 
 * master
      * long living
@@ -53,6 +59,3 @@ When can a task be marked as "finished"?
      
 ![Branching Strategy](doc/images/branching_strategy.png)
 
-### Branching Workflow for external contributors (fork)
-
-Any developer interested in collaborating should fork the repository and work on that local copy on a specific feature/topic. A feature branch should be created in the fork from the master branch. When the feature is fully implemented (see [Definition of Done](#definition-of-done)), a merge request can be opened to merge the changes from the feature branch into the master branch of the original repository.
