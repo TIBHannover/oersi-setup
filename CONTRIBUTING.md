@@ -4,6 +4,10 @@ First of all, thank you very much for being interested in contributing to the oe
 
 If you want to contribute to the OER search index, please make sure to read through and follow these guidelines. The guidelines apply to all oersi repositories.
 
+## Table of Contents
+
+[[_TOC_]]
+
 ## Submitting an Issue
 
 Before creating a new issue, start by searching through the issues and open merge requests to see whether someone else has raised a similar idea or question. If you don't see your idea listed, do one of the following:
