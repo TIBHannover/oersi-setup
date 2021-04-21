@@ -17,7 +17,7 @@ oerindex_public_base_path: '/resources'
 oerindex_public_base_url: '{{ oerindex_public_scheme }}://{{ oerindex_host }}'
 
 oerindex_frontend_instdir: "/var/www/oersi-frontend"
-oerindex_frontend_artifact_url: 'https://gitlab.com/oersi/oersi-frontend/-/package_files/9700274/download'
+oerindex_frontend_artifact_url: 'https://gitlab.com/oersi/oersi-frontend/-/jobs/artifacts/master/download?job=build'
 # Page size options .
 oerindex_frontend_page_size: '["12", "24", "48", "96"]'
 # Multiselect  true false.
@@ -38,7 +38,7 @@ oerindex_frontend_custom_cookie_links:  # example entry: {path: 'path/policy.htm
 
 oerindex_backend_downloaddir: "{{ base_dir }}/oersi-backend"
 oerindex_backend_configdir: "{{ base_dir }}/oersi-backend/config"
-oerindex_backend_artifact_url: 'https://gitlab.com/oersi/oersi-backend/-/package_files/9700273/download'
+oerindex_backend_artifact_url: 'https://gitlab.com/oersi/oersi-backend/-/jobs/artifacts/master/download?job=deploy+branch'
 oerindex_backend_searchapi_root_path: '{{ oerindex_public_base_path }}/api-internal/search/'
 oerindex_backend_labelapi_root_path: '{{ oerindex_public_base_path }}/api-internal/label/'
 oerindex_backend_searchapi_url: "{{ oerindex_public_base_url }}{{ oerindex_backend_searchapi_root_path }}"
@@ -47,7 +47,7 @@ oerindex_backend_internal_metadataapi_url: '{{ oerindex_backend_internal_api_bas
 
 oerindex_etl_downloaddir: "{{ base_dir }}/oersi-etl"
 oerindex_etl_configdir: "{{ oerindex_etl_downloaddir }}/data/production"
-oerindex_etl_artifact_url: 'https://gitlab.com/oersi/oersi-etl/-/package_files/9700202/download'
+oerindex_etl_artifact_url: 'https://gitlab.com/oersi/oersi-etl/-/jobs/artifacts/master/download?job=deploy'
 oerindex_etl_outputdir: "{{ base_dir }}/oersi-etl/data/to-elasticsearch"
 oerindex_etl_input_limit: -1
 # List all standard flux-files from oersi-etl/data/production/ that should be used for the ETL-process here.
