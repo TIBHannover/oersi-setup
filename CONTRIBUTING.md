@@ -4,7 +4,7 @@ First of all, thank you very much for being interested in contributing to the oe
 
 If you want to contribute to the OER search index, please make sure to read through and follow these guidelines. The guidelines apply to all oersi repositories.
 
-If you need help or have any questions that are not covered by this guide, please contact us at incoming+oersi-oersi-setup-16999502-issue-@incoming.gitlab.com
+If you need help or have any questions that are not covered by this guide, please contact us at contact-project+oersi-oersi-setup-support1@incoming.gitlab.com
 
 ## Table of Contents
 
@@ -15,6 +15,18 @@ If you need help or have any questions that are not covered by this guide, pleas
 Before creating a new issue, start by searching through the issues and open merge requests to see whether someone else has raised a similar idea or question. If you don't see your idea listed, do one of the following:
 * If your contribution is a minor change of the code, such as a typo fix, open a merge request.
 * Otherwise open an issue first. That way, other people can weigh in on the discussion before you do any work.
+
+### Propose source of Open Educational Resources
+
+We are interested in more sources that contain OERs in the higher education context and welcome any suggestions. Please use the following template: https://gitlab.com/oersi/oersi-etl/-/issues/new?issuable_template=add-source
+
+### Bug Report
+
+Bug reports include anything that causes the application to behave in an unintended way. Please describe the error as detailed as possible (where did the error occur, what happened, what are the consequences) and tell us what is your expected behavior in the case. Please also describe how the error can be reproduced.
+
+### Change / Feature Request
+
+Changes / Feature Request include any functional code that should be adjusted / added. This can include small adjustments or translations, but it can also include large adjustments. The change or new feature should be described in detail, as well as the problem that should be solved. What exactly needs to be changed / added and how the system should behave. It is also very important to specify the use case for the issue, so that it is clear why the issue should be implemented.
 
 ## Contributing to the source code
 

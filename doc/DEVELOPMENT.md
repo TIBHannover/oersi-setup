@@ -2,7 +2,7 @@
 
 ## Development Setup
 
-Will be documented soon - until then if you have any questions please contact incoming+oersi-oersi-setup-16999502-issue-@incoming.gitlab.com
+Will be documented soon - until then if you have any questions please contact us (see [CONTRIBUTING](../CONTRIBUTING.md))
 
 ## Changes to the oer index (elasticsearch)
 
