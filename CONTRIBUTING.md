@@ -4,6 +4,8 @@ First of all, thank you very much for being interested in contributing to the oe
 
 If you want to contribute to the OER search index, please make sure to read through and follow these guidelines. The guidelines apply to all oersi repositories.
 
+If you need help or have any questions that are not covered by this guide, please contact us at incoming+oersi-oersi-setup-16999502-issue-@incoming.gitlab.com
+
 ## Table of Contents
 
 [[_TOC_]]
@@ -16,14 +18,20 @@ Before creating a new issue, start by searching through the issues and open merg
 
 ## Contributing to the source code
 
-Please ensure that you comply with the license, coding conventions, definition of done and the workflow for submitting merge requests.
+Please ensure that you comply with the license, coding conventions, definition of done and the workflow for submitting merge requests. 
+
+Contributions to an issue are always developed in a feature branch. The feature-branch may only contain changes for one issue - contributions to different issues may not be mixed in one MR.
+
+Please also refer the [development documentation](doc/DEVELOPMENT.md).
+
+When you select tasks for development, you can either search the repository for existing issues to work on, or you can submit your own issues if you don't find any that cover the topic of your interest (see the [Submitting an Issue](#submitting-an-issue) section of this guide). Issues that you want to work on should first be marked with the label `approval requested` and then wait for one of the core developers to discuss and approve the development with you.
 
 ### Workflow for external contributers
 
 * Fork the project into your personal namespace (or group).
 * Create a feature branch in your fork from master (don't work off master).
 * Write tests, code and documentations that satisfy [coding conventions](#coding-conventions).
-* When the feature is fully implemented (see [Definition of Done](#definition-of-done)), submit a merge request to the master branch in the original project.
+* When the feature is fully implemented (see [Definition of Done](#definition-of-done)), submit a merge request to the master branch in the original project. One of the core developers will then look at the MR, discuss any adjustments with you, and once everything is ok, merge the MR.
 
 ### Coding conventions
 
