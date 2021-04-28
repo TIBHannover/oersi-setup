@@ -2,7 +2,7 @@ window['runTimeConfig'] = {
   ELASTIC_SEARCH: {
     URL: "{{ oerindex_backend_searchapi_url }}",
     CREDENTIALS: "",
-    APP_NAME: "{{ elasticsearch_oer_index_alias_name }}"
+    APP_NAME: "{{ elasticsearch_oer_index_internal_alias_name }}"
   },
   GENERAL_CONFIGURATION: {
     RESULT_PAGE_SIZE_OPTIONS: {{oerindex_frontend_page_size}},  // page size options configuration    

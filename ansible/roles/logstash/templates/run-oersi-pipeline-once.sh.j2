@@ -4,6 +4,7 @@
 export HOME="{{ logstash_dir }}"
 . {{ base_dir }}/conf/oer_index.conf
 export OER_INDEX_NAME
+export OER_INDEX_INTERNAL_NAME
 
 cp {{ logstash_settings_dir }}/pipelines/input_jdbc_metadata.conf {{ logstash_settings_dir }}/pipelines/input_jdbc_metadata.conf.original
 sed -i 's/.*schedule =>.*//g' {{ logstash_settings_dir }}/pipelines/input_jdbc_metadata.conf

@@ -6,21 +6,28 @@
 #
 
 CURRENT_INDEX_NAME=$(grep "OER_INDEX_NAME=" {{ base_dir }}/conf/oer_index.conf | cut -d'=' -f2)
+CURRENT_INDEX_INTERNAL_NAME=$(grep "OER_INDEX_INTERNAL_NAME=" {{ base_dir }}/conf/oer_index.conf | cut -d'=' -f2)
 date +"*** %Y-%m-%d %H:%M:%S start update alias to current index $CURRENT_INDEX_NAME"
-date +"*** %Y-%m-%d %H:%M:%S retrieve existing aliases"
-OLD_ALIASES=$(curl --netrc-file {{ base_dir }}/conf/oer_index_access -X GET "http://{{ elasticsearch_host }}:{{ elasticsearch_port }}/_cat/aliases/{{ elasticsearch_oer_index_alias_name }}?format=json&h=index")
-OLD_ALIASES=$(echo $OLD_ALIASES | jq "del(.[] | select(.index == \"$CURRENT_INDEX_NAME\"))")
 
-ALIASES_UPDATE="{\"actions\": []}"
-for INDEX in $(echo $OLD_ALIASES | jq -r '.[] | .index'); do
-  ALIASES_UPDATE=$(echo $ALIASES_UPDATE | jq ".actions += [{\"remove\": {\"index\": \"$INDEX\", \"alias\": \"{{ elasticsearch_oer_index_alias_name }}\"}}]")
-done
-ALIASES_UPDATE=$(echo $ALIASES_UPDATE | jq ".actions += [{\"add\": {\"index\": \"$CURRENT_INDEX_NAME\", \"alias\": \"{{ elasticsearch_oer_index_alias_name }}\"}}]")
-date +"*** %Y-%m-%d %H:%M:%S process aliases update"
-echo $ALIASES_UPDATE | jq -r '.'
-curl --netrc-file {{ base_dir }}/conf/oer_index_access -X POST --header 'Content-Type: application/json' "http://{{ elasticsearch_host }}:{{ elasticsearch_port }}/_aliases" -d "$ALIASES_UPDATE"
+update() {
+  date +"*** %Y-%m-%d %H:%M:%S retrieve existing aliases"
+  OLD_ALIASES=$(curl --netrc-file {{ base_dir }}/conf/oer_index_access -X GET "http://{{ elasticsearch_host }}:{{ elasticsearch_port }}/_cat/aliases/$2?format=json&h=index")
+  OLD_ALIASES=$(echo $OLD_ALIASES | jq "del(.[] | select(.index == \"$1\"))")
 
-for INDEX in $(echo $OLD_ALIASES | jq -r '.[] | .index'); do
-  date +"*** %Y-%m-%d %H:%M:%S removing old index $INDEX"
-  curl --netrc-file {{ base_dir }}/conf/oer_index_access -X DELETE "http://{{ elasticsearch_host }}:{{ elasticsearch_port }}/$INDEX"
-done
+  ALIASES_UPDATE="{\"actions\": []}"
+  for INDEX in $(echo $OLD_ALIASES | jq -r '.[] | .index'); do
+    ALIASES_UPDATE=$(echo $ALIASES_UPDATE | jq ".actions += [{\"remove\": {\"index\": \"$INDEX\", \"alias\": \"$2\"}}]")
+  done
+  ALIASES_UPDATE=$(echo $ALIASES_UPDATE | jq ".actions += [{\"add\": {\"index\": \"$1\", \"alias\": \"$2\"}}]")
+  date +"*** %Y-%m-%d %H:%M:%S process aliases update"
+  echo $ALIASES_UPDATE | jq -r '.'
+  curl --netrc-file {{ base_dir }}/conf/oer_index_access -X POST --header 'Content-Type: application/json' "http://{{ elasticsearch_host }}:{{ elasticsearch_port }}/_aliases" -d "$ALIASES_UPDATE"
+
+  for INDEX in $(echo $OLD_ALIASES | jq -r '.[] | .index'); do
+    date +"*** %Y-%m-%d %H:%M:%S removing old index $INDEX"
+    curl --netrc-file {{ base_dir }}/conf/oer_index_access -X DELETE "http://{{ elasticsearch_host }}:{{ elasticsearch_port }}/$INDEX"
+  done
+}
+
+update $CURRENT_INDEX_NAME {{ elasticsearch_oer_index_alias_name }}
+update $CURRENT_INDEX_INTERNAL_NAME {{ elasticsearch_oer_index_internal_alias_name }}
