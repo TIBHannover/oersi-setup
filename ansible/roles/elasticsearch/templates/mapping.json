@@ -1,5 +1,5 @@
 {
-  "index_patterns": "{{ elasticsearch_oer_index_name_prefix }}{{ elasticsearch_oer_index_version }}_*",
+  "index_patterns": ["{{ elasticsearch_oer_index_name_prefix }}{{ elasticsearch_oer_index_version }}_*", "{{ elasticsearch_oer_index_internal_name_prefix }}{{ elasticsearch_oer_index_version }}_*"],
   "template": {
     "settings": {
       "index": {
@@ -138,6 +138,38 @@
         },
         "keywords" : {
           "type" : "keyword"
+        },
+        "persons" : {
+          "properties" : {
+            "id" : {
+              "type" : "keyword"
+            },
+            "name" : {
+              "type" : "text",
+              "fields" : {
+                "keyword" : {
+                  "type" : "keyword"
+                }
+              }
+            },
+            "type" : {
+              "type" : "keyword"
+            }
+          }
+        },
+        "institutions" : {
+          "properties" : {
+            "id" : {
+              "type" : "keyword",
+              "index": false
+            },
+            "type" : {
+              "type" : "keyword"
+            },
+            "name" : {
+              "type" : "keyword"
+            }
+          }
         }
       }
     }

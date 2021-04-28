@@ -24,15 +24,19 @@ test "$PROCESS_LOGSTASH" = true && date +"*** %Y-%m-%d %H:%M:%S stop logstash" &
 TIMESTAMP=$(date +'%Y%m%d%H%M%S')
 INDEX_VERSION={{ elasticsearch_oer_index_version }}
 INDEX_NAME={{ elasticsearch_oer_index_name_prefix }}${INDEX_VERSION}_${TIMESTAMP}
-date +"*** %Y-%m-%d %H:%M:%S creating index $INDEX_NAME"
-curl --netrc-file {{ base_dir }}/conf/oer_index_access -X PUT "http://{{ elasticsearch_host }}:{{ elasticsearch_port }}/${INDEX_NAME}"
-echo ""
+INDEX_INTERNAL_NAME={{ elasticsearch_oer_index_internal_name_prefix }}${INDEX_VERSION}_${TIMESTAMP}
+for INDEX in $INDEX_NAME $INDEX_INTERNAL_NAME; do
+  date +"*** %Y-%m-%d %H:%M:%S creating index $INDEX"
+  curl --netrc-file {{ base_dir }}/conf/oer_index_access -X PUT "http://{{ elasticsearch_host }}:{{ elasticsearch_port }}/${INDEX}"
+  echo ""
+done
 
 date +"*** %Y-%m-%d %H:%M:%S write conf file"
 cat >{{ base_dir }}/conf/oer_index.conf <<EOL
 OER_INDEX_VERSION=$INDEX_VERSION
 OER_INDEX_TIMESTAMP=$TIMESTAMP
 OER_INDEX_NAME=${INDEX_NAME}
+OER_INDEX_INTERNAL_NAME=${INDEX_INTERNAL_NAME}
 EOL
 
 test "$PROCESS_LOGSTASH" = true && date +"*** %Y-%m-%d %H:%M:%S reset jdbc-lastrun" && sudo /usr/share/logstash/bin/reset-jdbc-lastrun.sh
