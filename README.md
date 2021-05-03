@@ -21,6 +21,7 @@ The same index can also be reused at the level of a federal state (or generally 
 ### Components
 
 * **ETL**: The ETL-module (extract, transform, load) connects to the individual repositories and fetches metadata updates according to a configured schedule (e.g. daily).
+* **Import Scripts**: Another channel to connect individual OER repositories and import metadata according to a configured schedule (e.g. daily). Contains scripted imports (e.g. Python)
 * **API / Backend**: Provides interfaces to retrieve data from the index (external) and to import / update data into the index (internal). A read-only user is used to retrieve data. When creating / updating the data, the data is first written into an SQL database and from there written into an elasticsearch index with the help of logstash.
 * **Frontend**: Website that displays the data from the index and offers the possibility to search
 * **User Management**: (TDB) _Optional_ - only needed if the index is used as a (local) standalone solution. So users can be given access to manually update the data via a UI.
@@ -128,6 +129,7 @@ Contributions are welcome. Please read [CONTRIBUTING.md](CONTRIBUTING.md) for fu
 - **Backend**: The backend is the interface for read/write access to the index, see https://gitlab.com/oersi/oersi-backend
 - **Frontend**: The frontend is used from https://gitlab.com/oersi/oersi-frontend
 - **ETL**: The harvester component uses the oersi-etl (Extract, Transform, Load) project, see https://gitlab.com/oersi/oersi-etl
+- **Import Scripts** - Uses scripts like python to process an import of an OER repo, see https://gitlab.com/oersi/oersi-import-scripts
 
 ## License
 

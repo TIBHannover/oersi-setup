@@ -1,0 +1,6 @@
+---
+- name: Create monitoring script
+  template:
+    src: "monitoring-import-scripts.sh.j2"
+    dest: "{{ base_dir }}/bin/monitoring-import-scripts.sh"
+    mode: 0700

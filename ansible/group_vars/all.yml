@@ -71,14 +71,20 @@ oerindex_etl_configfiles:
 oerindex_etl_customfiles:
 #  - '../../../my-conf-dir/my-etl.flux'
 
-oerindex_monitoring_etl: false  # activate the ETL monitoring process; true|false
-oerindex_monitoring_etl_recipients:   # mail recipients of the ETL report (comma separated)
-oerindex_monitoring_etl_from_address:   # mail sender address for the ETL report
+oerindex_monitoring: false  # activate the monitoring process; true|false
+oerindex_monitoring_recipients:   # mail recipients of the monitoring report (comma separated)
+oerindex_monitoring_from_address:   # mail sender address for the monitoring report
   
 oerindex_import_sources_immediately: true # import configured sources immediately at the installation process (true|false)
 oerindex_import_sources_schedule_state: 'present' # import all configured sources scheduled (absent|present)
 oerindex_import_sources_schedule_hour: '0'  # Hour when the job should run - see https://docs.ansible.com/ansible/latest/modules/cron_module.html
 oerindex_import_sources_schedule_minute: '0' # Minute when the job should run - see https://docs.ansible.com/ansible/latest/modules/cron_module.html
+
+oerindex_import_scripts_artifact_url: 'https://gitlab.com/oersi/oersi-import-scripts/-/jobs/artifacts/master/download?job=deploy'
+oerindex_import_scripts_dir: "{{ base_dir }}/oersi-import-scripts"
+oerindex_import_scripts_enabled_sources_py:  # list of enabled python imports (will be imported scheduled)
+#  - Aoe
+#  - Hoou
 
 elasticsearch_host: localhost
 elasticsearch_port: 9200

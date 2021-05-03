@@ -1,0 +1,6 @@
+---
+# Playbook: Installation of oersi-import-scripts module
+- hosts: oerindex
+  roles:
+    - init-facts
+    - oer-search-index-import-scripts

@@ -57,3 +57,5 @@
     src: "show-versions.sh.j2"
     dest: "{{ base_dir }}/bin/show-versions.sh"
     mode: 0755
+
+- include: monitoring.yml
