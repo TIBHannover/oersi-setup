@@ -4,3 +4,6 @@ oerindex_etl_loglevel: INFO
 oerindex_etl_logdir: "{{ base_dir }}/log/etl" # directory where to place log-files
 oerindex_etl_logcompress_mtime: '+2' # default mtime value for file-compression (find command - see 'man find')
 oerindex_etl_logdelete_mtime: '+20' # default mtime value for file-deletion (find command - see 'man find')
+
+oerindex_etl_configdir: "{{ oerindex_etl_downloaddir }}/data/production"
+oerindex_etl_outputdir: "{{ oerindex_etl_downloaddir }}/data/to-elasticsearch"
