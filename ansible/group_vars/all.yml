@@ -37,7 +37,6 @@ oerindex_frontend_custom_files:         # example entry: {source: 'path/example.
 oerindex_frontend_custom_cookie_links:  # example entry: {path: 'path/policy.html',language: 'en'}
 
 oerindex_backend_downloaddir: "{{ base_dir }}/oersi-backend"
-oerindex_backend_configdir: "{{ base_dir }}/oersi-backend/config"
 oerindex_backend_artifact_url: 'https://gitlab.com/oersi/oersi-backend/-/jobs/artifacts/master/download?job=deploy+branch'
 oerindex_backend_searchapi_root_path: '{{ oerindex_public_base_path }}/api-internal/search/'
 oerindex_backend_labelapi_root_path: '{{ oerindex_public_base_path }}/api-internal/label/'
@@ -46,9 +45,7 @@ oerindex_backend_internal_api_base_url: 'http://localhost:{{ tomcat_port }}/oers
 oerindex_backend_internal_metadataapi_url: '{{ oerindex_backend_internal_api_base_url }}/metadata'
 
 oerindex_etl_downloaddir: "{{ base_dir }}/oersi-etl"
-oerindex_etl_configdir: "{{ oerindex_etl_downloaddir }}/data/production"
 oerindex_etl_artifact_url: 'https://gitlab.com/oersi/oersi-etl/-/jobs/artifacts/master/download?job=deploy'
-oerindex_etl_outputdir: "{{ base_dir }}/oersi-etl/data/to-elasticsearch"
 oerindex_etl_input_limit: -1
 # List all standard flux-files from oersi-etl/data/production/ that should be used for the ETL-process here.
 oerindex_etl_configfiles:
@@ -71,14 +68,20 @@ oerindex_etl_configfiles:
 oerindex_etl_customfiles:
 #  - '../../../my-conf-dir/my-etl.flux'
 
-oerindex_monitoring_etl: false  # activate the ETL monitoring process; true|false
-oerindex_monitoring_etl_recipients:   # mail recipients of the ETL report (comma separated)
-oerindex_monitoring_etl_from_address:   # mail sender address for the ETL report
+oerindex_monitoring: false  # activate the monitoring process; true|false
+oerindex_monitoring_recipients:   # mail recipients of the monitoring report (comma separated)
+oerindex_monitoring_from_address:   # mail sender address for the monitoring report
   
 oerindex_import_sources_immediately: true # import configured sources immediately at the installation process (true|false)
 oerindex_import_sources_schedule_state: 'present' # import all configured sources scheduled (absent|present)
 oerindex_import_sources_schedule_hour: '0'  # Hour when the job should run - see https://docs.ansible.com/ansible/latest/modules/cron_module.html
 oerindex_import_sources_schedule_minute: '0' # Minute when the job should run - see https://docs.ansible.com/ansible/latest/modules/cron_module.html
+
+oerindex_import_scripts_artifact_url: 'https://gitlab.com/oersi/oersi-import-scripts/-/jobs/artifacts/master/download?job=deploy'
+oerindex_import_scripts_dir: "{{ base_dir }}/oersi-import-scripts"
+oerindex_import_scripts_enabled_sources_py:  # list of enabled python imports (will be imported scheduled)
+#  - Aoe
+#  - Hoou
 
 elasticsearch_host: localhost
 elasticsearch_port: 9200

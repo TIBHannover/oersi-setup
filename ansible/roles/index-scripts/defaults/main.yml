@@ -10,3 +10,10 @@ oerindex_delete_sql_data_schedule_minute: "30"
 oerindex_recreate_index_schedule_weekday: "Mon"
 oerindex_recreate_index_schedule_hour: "5"
 oerindex_recreate_index_schedule_minute: "58"
+
+oerindex_monitoring: false  # activate the import monitoring process; true|false
+oerindex_monitoring_recipients:   # required, mail recipients of the import report (comma separated)
+oerindex_monitoring_from_address:   # required, mail sender address for the import report
+oerindex_monitoring_import_failure_bound: 0  # send import report when number of failures (conspicuities in the data) is greater than or equal to this bound
+oerindex_monitoring_schedule_hour: "5"
+oerindex_monitoring_schedule_minute: "0"

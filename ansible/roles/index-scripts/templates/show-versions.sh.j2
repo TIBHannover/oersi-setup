@@ -13,6 +13,15 @@ ETL_BUILDNUMBER=$(grep "BUILDNUMBER=" {{ oerindex_etl_downloaddir }}/build.info 
 echo "SOURCE: https://gitlab.com/oersi/oersi-etl/-/tree/${ETL_COMMIT_SHA}"
 echo "BUILD-JOB: https://gitlab.com/oersi/oersi-etl/-/jobs/${ETL_BUILDNUMBER}"
 
+echo "--------------"
+echo "Import Scripts"
+echo "--------------"
+cat {{ oerindex_import_scripts_dir }}/build.info
+IMPORTSCRIPTS_COMMIT_SHA=$(grep "COMMIT_SHA=" {{ oerindex_import_scripts_dir }}/build.info | cut -d'=' -f2)
+IMPORTSCRIPTS_BUILDNUMBER=$(grep "BUILDNUMBER=" {{ oerindex_import_scripts_dir }}/build.info | cut -d'=' -f2)
+echo "SOURCE: https://gitlab.com/oersi/oersi-import-scripts/-/tree/${IMPORTSCRIPTS_COMMIT_SHA}"
+echo "BUILD-JOB: https://gitlab.com/oersi/oersi-import-scripts/-/jobs/${IMPORTSCRIPTS_BUILDNUMBER}"
+
 echo "-------"
 echo "Backend"
 echo "-------"

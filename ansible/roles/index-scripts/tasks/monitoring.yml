@@ -1,0 +1,17 @@
+---
+- fail: msg='Missing mandatory variables "oerindex_monitoring_recipients" and "oerindex_monitoring_from_address"'
+  when: (oerindex_monitoring) and ((oerindex_monitoring_recipients == "") or (oerindex_monitoring_recipients is none) or (oerindex_monitoring_from_address == "") or (oerindex_monitoring_from_address is none))
+
+- name: Create send-monitoring-report.sh
+  template:
+    src: "send-monitoring-report.sh.j2"
+    dest: "{{ base_dir }}/bin/send-monitoring-report.sh"
+    mode: 0700
+
+- name: Configure cron schedule - Import Monitoring
+  cron:
+    name: "Import Monitoring"
+    hour: "{{ oerindex_monitoring_schedule_hour }}"
+    minute: "{{ oerindex_monitoring_schedule_minute }}"
+    job: "{{ base_dir }}/bin/send-monitoring-report.sh"
+    state: "{{ 'present' if oerindex_monitoring else 'absent' }}"

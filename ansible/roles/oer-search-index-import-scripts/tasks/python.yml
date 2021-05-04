@@ -1,0 +1,35 @@
+---
+- name: Ensure python packages are present
+  package:
+    name: ["python3", "python3-pip"]
+  become: yes
+
+- name: install requirements
+  command:
+    cmd: "pip3 install -r python/requirements.txt"
+    chdir: "{{ oerindex_import_scripts_dir }}"
+
+- name: Create config.ini
+  template:
+    src: "config.ini.j2"
+    dest: "{{ oerindex_import_scripts_python_configdir }}/config.ini"
+    mode: '600'
+
+- name: Create log4j.properties
+  template:
+    src: "logging.conf.j2"
+    dest: "{{ oerindex_import_scripts_python_configdir }}/logging.conf"
+
+- name: Execute python import scripts immediately
+  command:
+    cmd: "./import.sh {{ oerindex_import_scripts_enabled_sources_py | default([], true) | join(' ') }}"
+    chdir: "{{ oerindex_import_scripts_dir }}/python"
+  when: oerindex_import_sources_immediately and oerindex_import_scripts_enabled_sources_py is not none
+
+- name: Configure cron schedule - process python import scripts
+  cron:
+    name: "Python Script Import of OER sources"
+    hour: "{{ oerindex_import_sources_py_scripts_schedule_hour }}"
+    minute: "{{ oerindex_import_sources_py_scripts_schedule_minute }}"
+    job: "cd {{ oerindex_import_scripts_dir }}/python && ./import.sh {{ oerindex_import_scripts_enabled_sources_py | default([], true) | join(' ') }}"
+    state: "{{ oerindex_import_sources_py_scripts_schedule_state }}"

@@ -1,12 +1,9 @@
 ---
 oerindex_etl_loglevel: INFO
 
-oerindex_monitoring_etl: false  # activate the ETL monitoring process; true|false
-oerindex_monitoring_etl_recipients:   # required, mail recipients of the ETL report (comma separated)
-oerindex_monitoring_etl_from_address:   # required, mail sender address for the ETL report
-oerindex_monitoring_etl_failure_bound: 0  # send ETL report when number of failures is greater than or equal to this bound
-oerindex_monitoring_etl_schedule_hour: "5"
-oerindex_monitoring_etl_schedule_minute: "0"
 oerindex_etl_logdir: "{{ base_dir }}/log/etl" # directory where to place log-files
 oerindex_etl_logcompress_mtime: '+2' # default mtime value for file-compression (find command - see 'man find')
 oerindex_etl_logdelete_mtime: '+20' # default mtime value for file-deletion (find command - see 'man find')
+
+oerindex_etl_configdir: "{{ oerindex_etl_downloaddir }}/data/production"
+oerindex_etl_outputdir: "{{ oerindex_etl_downloaddir }}/data/to-elasticsearch"

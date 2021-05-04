@@ -1,0 +1,26 @@
+---
+- name: Ensures dirs exist
+  file: path='{{ item }}' state=directory
+  loop:
+    - '{{ oerindex_import_scripts_dir }}'
+    - '{{ oerindex_import_scripts_logdir }}'
+
+- name: download OER search index import scripts
+  get_url:
+    url: "{{ oerindex_import_scripts_artifact_url }}"
+    force: yes
+    dest: "{{ oerindex_import_scripts_dir }}/oersi-import-scripts.zip"
+
+- name: Ensure packages are present
+  package:
+    name: ["unzip"]
+  become: yes
+
+- name: extract OER search index import scripts
+  unarchive:
+    remote_src: yes
+    src: '{{ oerindex_import_scripts_dir }}/oersi-import-scripts.zip'
+    dest: "{{ oerindex_import_scripts_dir }}"
+
+- include: python.yml
+- include: monitoring.yml
