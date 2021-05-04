@@ -1,0 +1,10 @@
+---
+# Playbook: includes roles that depend on multiple other roles (like provisioning and modules) and that have to be executed after the other roles
+- hosts: all
+  roles:
+    - init-facts
+
+- hosts: oerindex
+  become: yes
+  roles:
+    - index-update
