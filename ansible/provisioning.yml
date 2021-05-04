@@ -19,7 +19,6 @@
     - geerlingguy.java
     - elasticsearch
     - logstash
-    - index-update
 
 - hosts: oerindex
   roles:

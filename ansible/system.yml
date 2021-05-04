@@ -5,3 +5,4 @@
 - import_playbook: etl.yml
 - import_playbook: import-scripts.yml
 - import_playbook: frontend.yml
+- import_playbook: postprocessing.yml
