@@ -13,6 +13,12 @@ server {
   location {{ oerindex_public_base_path }} {
     alias {{ oerindex_frontend_instdir }}/build;
     index  index.html;
+    add_header Cache-Control "no-store, no-cache, must-revalidate"; 
+  }
+  location {{ oerindex_public_base_path }}/static {
+    alias {{ oerindex_frontend_instdir }}/build/static;
+    expires 1y;
+    add_header Cache-Control "public, immutable";
   }
   location / {
     return 301 {{ oerindex_public_base_path }};
