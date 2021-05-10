@@ -8,7 +8,7 @@ matomo_dbuser: matomo
 matomo_dbpassword: changeme
 
 matomo_archive_url: https://builds.matomo.org/matomo.zip
-dbip_archive_url: https://download.db-ip.com/free/dbip-city-lite-2021-03.mmdb.gz
+dbip_archive_url: https://download.db-ip.com/free/dbip-city-lite-2021-05.mmdb.gz
 
 matomo_inst_dir: /var/www/matomo
 matomo_bin: '{{ ansible_env.HOME }}/bin'
