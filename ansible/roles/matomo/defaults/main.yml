@@ -8,7 +8,7 @@ matomo_dbuser: matomo
 matomo_dbpassword: changeme
 
 matomo_archive_url: https://builds.matomo.org/matomo.zip
-dbip_archive_url: "https://download.db-ip.com/free/dbip-city-lite-{{ lookup('pipe', 'date --date=\"-1 month\" +%Y-%m') }}.mmdb.gz"
+dbip_archive_url: "https://download.db-ip.com/free/dbip-city-lite-{{ lookup('pipe', 'date -d@\"$(($(date +%s)-15*24*60*60))\" +%Y-%m') }}.mmdb.gz"
 
 matomo_inst_dir: /var/www/matomo
 matomo_bin: '{{ ansible_env.HOME }}/bin'
