@@ -29,7 +29,7 @@ server {
     proxy_pass {{ oerindex_backend_internal_api_base_url }}/search/{{ elasticsearch_oer_index_alias_name }}/_doc/$resourceId/_source;
   }
   location @html_resource {
-    proxy_pass http://$host{{ oerindex_public_base_path }}/details/$resourceId;
+    proxy_pass http://127.0.0.1{{ oerindex_public_base_path }}/details/$resourceId;
   }
   location {{ oerindex_public_base_path }}/static {
     alias {{ oerindex_frontend_instdir }}/build/static;
