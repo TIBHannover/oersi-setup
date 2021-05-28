@@ -2,7 +2,7 @@ stages:
   - deploy
 
 .deploy_job:
-  image: mullnerz/ansible-playbook:2.9.1
+  image: registry.gitlab.com/tibhannover/docker-ansible-playbook:2.9.22
   stage: deploy
   before_script:
     - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
