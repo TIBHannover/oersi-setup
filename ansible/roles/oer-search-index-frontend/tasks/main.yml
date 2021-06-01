@@ -62,3 +62,19 @@
     src: '{{ item.source }}'
     dest: '{{ oerindex_frontend_instdir }}/build/{{ item.destination}}'
   loop: '{{ oerindex_frontend_custom_files | default([], true) }}'
+
+- name: Check if sitemap.xml exists
+  stat:
+    path: "{{ oerindex_frontend_instdir }}/build/sitemap.xml"
+  register: sitemap_stat_result
+
+- name: Create sitemap, if it does not exist
+  become: true
+  command: "{{ base_dir }}/bin/create-sitemap.sh"
+  when: not sitemap_stat_result.stat.exists
+
+- name: adjust robots.txt
+  lineinfile:
+    path: '{{ oerindex_frontend_instdir }}/build/robots.txt'
+    line: 'Sitemap: {{ oerindex_public_base_url }}{{ oerindex_public_base_path }}/sitemap.xml'
+    regexp: '^Sitemap:.*$'

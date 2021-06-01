@@ -1,0 +1,19 @@
+---
+- name: Install sudo
+  package:
+    name: sudo
+    state: present
+
+- name: Add create-sitemap.sh.j2
+  template:
+    src: "create-sitemap.sh.j2"
+    dest: "{{ base_dir }}/bin/create-sitemap.sh"
+    mode: 0700
+
+- name: Create oersi sudoers
+  become: yes
+  template:
+    src: "sudoers-oersi.j2"
+    dest: "/etc/sudoers.d/oersi"
+    mode: 0440
+    validate: '/usr/sbin/visudo -cf %s'

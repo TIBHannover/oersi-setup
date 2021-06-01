@@ -1,0 +1,87 @@
+#!/bin/bash
+# {{ ansible_managed }}
+#
+# Create a new sitemap based on the current elasticsearch data and provide it via the oersi-frontend
+#
+
+RESOURCE_URL_BASEPATH={{ oerindex_public_base_url }}{{ oerindex_public_base_path }}
+WORK_DIR={{ base_dir }}/.sitemaptool
+TARGET_DIR={{ oerindex_frontend_instdir }}/build
+
+date +"*** %Y-%m-%d %H:%M:%S Preparing work-dir $WORK_DIR"
+mkdir -p $WORK_DIR
+INDEXFILE="${WORK_DIR}/sitemap.xml"
+cat <<EOL >$INDEXFILE
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+EOL
+
+PIT_ID=$(curl --netrc-file {{ base_dir }}/conf/oer_index_access -X POST "http://{{ elasticsearch_host }}:{{ elasticsearch_port }}/{{ elasticsearch_oer_index_alias_name }}/_pit?keep_alive=1m" | jq -r '.id')
+date +"*** %Y-%m-%d %H:%M:%S PIT $PIT_ID"
+
+i=0
+LAST_SORT=
+declare -a SITEMAP_FILES
+while true ; do
+  i=$((i+1))
+  CRITERIA="{\"size\": 10000, \"track_total_hits\": false, \"_source\": false, \"pit\":{\"id\":\"$PIT_ID\", \"keep_alive\":\"1m\"}, \"sort\": [{\"id\":\"asc\"}]}"
+  if [ ! -z "$LAST_SORT" ]; then
+    CRITERIA=$(echo $CRITERIA | jq ".search_after += $LAST_SORT")
+  fi
+  date +"*** %Y-%m-%d %H:%M:%S fetching next data"
+  HITS=$(curl --netrc-file {{ base_dir }}/conf/oer_index_access -X GET --header 'Content-Type: application/json' "http://{{ elasticsearch_host }}:{{ elasticsearch_port }}/_search" -d "$CRITERIA" | jq '.hits .hits | select(length > 0)')
+  if [ $? -ne 0 ] || [ -z "$HITS" ]; then
+    break
+  fi
+  
+  date +"*** %Y-%m-%d %H:%M:%S writing sitemap file"
+  RECORD_IDS=$(echo $HITS | jq -r '.[] ._id')
+  FILE="${WORK_DIR}/sitemap_${i}.xml"
+  cat <<EOL >$FILE
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+EOL
+  if [[ "$i" -eq 1 ]]; then
+    cat <<EOL >>$FILE
+  <url>
+    <loc>${RESOURCE_URL_BASEPATH}</loc>
+  </url>
+EOL
+  fi
+  for RECORD_ID in $RECORD_IDS; do
+    echo "  <url>
+    <loc>${RESOURCE_URL_BASEPATH}/${RECORD_ID}</loc>
+  </url>" >>$FILE
+  done
+  echo "</urlset>" >> $FILE
+  gzip -f $FILE
+  SITEMAP_FILES[$i]="${FILE}.gz"
+  cat <<EOL >>$INDEXFILE
+  <sitemap>
+    <loc>${RESOURCE_URL_BASEPATH}/sitemap_${i}.xml.gz</loc>
+  </sitemap>  
+EOL
+
+  LAST_SORT=$(echo $HITS | jq -r '.[-1] .sort')
+  if [ -z "$LAST_SORT" ]; then
+    date +"*** %Y-%m-%d %H:%M:%S Could not find last sort attr"
+    break
+  fi
+done
+
+date +"*** %Y-%m-%d %H:%M:%S removing pit $PIT_ID"
+curl --netrc-file {{ base_dir }}/conf/oer_index_access -X DELETE --header 'Content-Type: application/json' "http://{{ elasticsearch_host }}:{{ elasticsearch_port }}/_pit" -d "{\"id\": \"${PIT_ID}\"}"
+
+date +"*** %Y-%m-%d %H:%M:%S finalizing indexfile"
+echo "</sitemapindex>" >> $INDEXFILE
+
+date +"*** %Y-%m-%d %H:%M:%S installing sitemaps to frontend"
+if [ ! -w "$TARGET_DIR" ]; then
+  echo "Cannot access target directory!"
+  exit 1
+fi
+cp $INDEXFILE $TARGET_DIR
+for FILE in ${SITEMAP_FILES[@]}; do
+  cp $FILE $TARGET_DIR
+done
+date +"*** %Y-%m-%d %H:%M:%S done"

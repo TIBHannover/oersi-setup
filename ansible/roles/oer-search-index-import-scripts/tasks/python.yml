@@ -21,8 +21,8 @@
     dest: "{{ oerindex_import_scripts_python_configdir }}/logging.conf"
 
 - name: Execute python import scripts immediately
-  command:
-    cmd: "./import.sh {{ oerindex_import_scripts_enabled_sources_py | default([], true) | join(' ') }}"
+  shell:
+    cmd: "./import.sh {{ oerindex_import_scripts_enabled_sources_py | default([], true) | join(' ') }} && sudo {{ base_dir }}/bin/create-sitemap.sh"
     chdir: "{{ oerindex_import_scripts_dir }}/python"
   when: oerindex_import_sources_immediately and oerindex_import_scripts_enabled_sources_py is not none
 
@@ -31,5 +31,5 @@
     name: "Python Script Import of OER sources"
     hour: "{{ oerindex_import_sources_py_scripts_schedule_hour }}"
     minute: "{{ oerindex_import_sources_py_scripts_schedule_minute }}"
-    job: "cd {{ oerindex_import_scripts_dir }}/python && ./import.sh {{ oerindex_import_scripts_enabled_sources_py | default([], true) | join(' ') }}"
+    job: "cd {{ oerindex_import_scripts_dir }}/python && ./import.sh {{ oerindex_import_scripts_enabled_sources_py | default([], true) | join(' ') }} && sudo {{ base_dir }}/bin/create-sitemap.sh"
     state: "{{ oerindex_import_sources_py_scripts_schedule_state }}"
