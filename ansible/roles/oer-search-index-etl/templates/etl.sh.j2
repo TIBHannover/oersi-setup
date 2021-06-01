@@ -13,3 +13,4 @@ echo "Running ETL import with $PROCESS_ARG"
 
 export OERSI_ETL_OPTS="-Dlog4j.configuration=file:{{ oerindex_etl_configdir }}/log4j.properties"
 cd {{ oerindex_etl_downloaddir }} && ./build/install/oersi-etl/bin/oersi-etl $PROCESS_ARG {{ oerindex_etl_configdir }}/oersi.properties
+sudo {{ base_dir }}/bin/create-sitemap.sh

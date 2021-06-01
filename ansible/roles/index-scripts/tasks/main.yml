@@ -58,4 +58,5 @@
     dest: "{{ base_dir }}/bin/show-versions.sh"
     mode: 0755
 
+- include: sitemap.yml
 - include: monitoring.yml
