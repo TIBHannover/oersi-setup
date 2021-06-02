@@ -54,11 +54,11 @@ EOL
   </url>" >>$FILE
   done
   echo "</urlset>" >> $FILE
-  gzip -f $FILE
-  SITEMAP_FILES[$i]="${FILE}.gz"
+  gzip -fk $FILE
+  SITEMAP_FILES[$i]="${FILE}"
   cat <<EOL >>$INDEXFILE
   <sitemap>
-    <loc>${RESOURCE_URL_BASEPATH}/sitemap_${i}.xml.gz</loc>
+    <loc>${RESOURCE_URL_BASEPATH}/sitemap_${i}.xml</loc>
   </sitemap>  
 EOL
 
@@ -83,5 +83,6 @@ fi
 cp $INDEXFILE $TARGET_DIR
 for FILE in ${SITEMAP_FILES[@]}; do
   cp $FILE $TARGET_DIR
+  cp ${FILE}.gz $TARGET_DIR
 done
 date +"*** %Y-%m-%d %H:%M:%S done"

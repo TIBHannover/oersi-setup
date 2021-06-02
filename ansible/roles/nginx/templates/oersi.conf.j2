@@ -37,6 +37,7 @@ server {
     add_header Cache-Control "public, immutable";
   }
   location {{ oerindex_public_base_path }} {
+    gzip_static on;
     alias {{ oerindex_frontend_instdir }}/build;
     index  index.html;
     try_files $uri $uri/ /index.html =404;
