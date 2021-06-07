@@ -5,6 +5,7 @@ window['runTimeConfig'] = {
     APP_NAME: "{{ elasticsearch_oer_index_internal_alias_name }}"
   },
   GENERAL_CONFIGURATION: {
+    PUBLIC_URL: "{{ oerindex_public_base_url }}{{ oerindex_public_base_path }}",
     RESULT_PAGE_SIZE_OPTIONS: {{oerindex_frontend_page_size}},  // page size options configuration    
     NR_OF_RESULT_PER_PAGE: {{oerindex_frontend_nr_result_page_default}},  //  number of results to show per view. Defaults to 10.
     /**
