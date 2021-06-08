@@ -136,6 +136,9 @@
             }
           }
         },
+        "type": {
+          "type" : "keyword"
+        },
         "keywords" : {
           "type" : "text",
           "fields" : {
