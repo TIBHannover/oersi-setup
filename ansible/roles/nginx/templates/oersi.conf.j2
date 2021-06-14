@@ -1,6 +1,9 @@
 server {
   listen       80;
   server_name  localhost;
+  location {{ oerindex_backend_contactapi_root_path }} {
+    proxy_pass {{ oerindex_backend_internal_api_base_url }}/contact/;
+  }
   location {{ oerindex_backend_searchapi_root_path }} {
     proxy_pass {{ oerindex_backend_internal_api_base_url }}/search/;
   }

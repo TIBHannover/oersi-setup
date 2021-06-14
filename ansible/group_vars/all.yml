@@ -35,11 +35,16 @@ oerindex_frontend_custom_cookie_links:  # example entry: {path: 'path/policy.htm
 
 oerindex_backend_downloaddir: "{{ base_dir }}/oersi-backend"
 oerindex_backend_artifact_url: 'https://gitlab.com/oersi/oersi-backend/-/jobs/artifacts/master/download?job=deploy+branch'
+oerindex_backend_contactapi_root_path: '{{ oerindex_public_base_path }}/api-internal/contact'
 oerindex_backend_searchapi_root_path: '{{ oerindex_public_base_path }}/api-internal/search/'
 oerindex_backend_labelapi_root_path: '{{ oerindex_public_base_path }}/api-internal/label/'
 oerindex_backend_searchapi_url: "{{ oerindex_public_base_url }}{{ oerindex_backend_searchapi_root_path }}"
 oerindex_backend_internal_api_base_url: 'http://localhost:{{ tomcat_port }}/oersi/api'
 oerindex_backend_internal_metadataapi_url: '{{ oerindex_backend_internal_api_base_url }}/metadata'
+oerindex_backend_support_mail: "changeme@oersi.org"
+oerindex_backend_mail_config:  # "spring.mail"-configuration (property - name of the property, value - value)
+  - property: host
+    value: changeme
 
 oerindex_etl_downloaddir: "{{ base_dir }}/oersi-etl"
 oerindex_etl_artifact_url: 'https://gitlab.com/oersi/oersi-etl/-/jobs/artifacts/master/download?job=deploy'
