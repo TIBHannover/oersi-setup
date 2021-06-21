@@ -18,6 +18,14 @@
     - "{{ logstash_settings_dir }}/pipelines/"
     - "{{ logstash_serviced_conf_dir }}/"
 
+- name: Chown of logstash installation
+  file:
+    path: '{{ logstash_dir }}'
+    owner: logstash
+    group: logstash
+    recurse: yes
+    state: directory
+
 - name: Configure Logstash.
   template:
     src: "{{ item }}"
