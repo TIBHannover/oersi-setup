@@ -11,7 +11,7 @@ Vagrant.configure("2") do |config|
 
     srv.vm.provider :virtualbox do |vb|
       vb.name = "oerindex"
-      vb.memory = 4048
+      vb.memory = 6072
       vb.cpus = 2
     end
   end
