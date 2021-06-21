@@ -18,6 +18,14 @@
     - "{{ logstash_settings_dir }}/pipelines/"
     - "{{ logstash_serviced_conf_dir }}/"
 
+- name: Chown of logstash installation
+  file:
+    path: '{{ logstash_dir }}'
+    owner: logstash
+    group: logstash
+    recurse: yes
+    state: directory
+
 - name: Configure Logstash.
   template:
     src: "{{ item }}"
@@ -58,6 +66,14 @@
     owner: logstash
     group: logstash
     mode: 0700
+
+- name: Ensure oer_index.conf exists
+  copy:
+    content: ""
+    dest: "{{ base_dir }}/conf/oer_index.conf"
+    force: no
+    group: "{{ oersi_user }}"
+    owner: "{{ oersi_user }}"
 
 - name: Add override.conf of serviced
   template:
