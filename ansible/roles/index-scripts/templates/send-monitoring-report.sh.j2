@@ -16,8 +16,8 @@ IMPORTSCRIPT_REPORT=$({{ base_dir }}/bin/monitoring-import-scripts.sh)
 
 ETL_PROCESSES=$(echo "$ETL_REPORT" | grep 'Import channel' | wc -l)
 ETL_ERRORS=$(echo "$ETL_REPORT" | grep 'FAILED:' | wc -l)
-ETL_FAILURES=$(echo "$ETL_REPORT" | gawk -v failures='0' 'match($0, /SUCCESS: (.+), FAIL-VALIDATION: (.+), FAIL-WRITE: (.+)/, a) {failures = failures + a[2] + a[3]}END{print failures}')
-ETL_SUCCESSES=$(echo "$ETL_REPORT" | gawk -v successes='0' 'match($0, /SUCCESS: (.+), FAIL-VALIDATION: (.+), FAIL-WRITE: (.+)/, a) {successes = successes + a[1]}END{print successes}')
+ETL_FAILURES=$(echo "$ETL_REPORT" | gawk -v failures='0' 'match($0, /SUCCESS: (.+), FAIL-PROCESS: (.+), FAIL-VALIDATION: (.+), FAIL-WRITE: (.+)/, a) {failures = failures + (a[2] == "n/a" ? 0 : a[2]) + a[3] + a[4]}END{print failures}')
+ETL_SUCCESSES=$(echo "$ETL_REPORT" | gawk -v successes='0' 'match($0, /SUCCESS: (.+), FAIL-PROCESS: (.+), FAIL-VALIDATION: (.+), FAIL-WRITE: (.+)/, a) {successes = successes + a[1]}END{print successes}')
 
 IMPORTSCRIPT_PROCESSES=$(echo "$IMPORTSCRIPT_REPORT" | grep 'Import channel' | wc -l)
 IMPORTSCRIPT_ERRORS=$(echo "$IMPORTSCRIPT_REPORT" | grep 'FAILED:' | wc -l)
