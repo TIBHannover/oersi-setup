@@ -87,6 +87,8 @@ oerindex_import_scripts_enabled_sources_py:  # list of enabled python imports (w
 
 elasticsearch_host: localhost
 elasticsearch_port: 9200
+elasticsearch_heap_size_min: 2g
+elasticsearch_heap_size_max: 2g
 elasticsearch_home: "/usr/share/elasticsearch"
 elasticsearch_elastic_username: elastic
 elasticsearch_elastic_password: changeme
