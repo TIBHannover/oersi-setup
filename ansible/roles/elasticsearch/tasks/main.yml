@@ -1,4 +1,28 @@
 ---
 
+- name: Ensure config-directory exist
+  file: path={{ elasticsearch_serviced_conf_dir }} state=directory
+    
+- name: Add override.conf of serviced
+  template:
+    src: "serviced-override.conf.j2"
+    dest: "{{ elasticsearch_serviced_conf_dir }}/override.conf"
+    mode: 0644
+  notify: restart elasticsearch
+  register: elasticsearch_systemd_config_result
+  
+- name: reload systemd
+  systemd: daemon_reload=yes
+  when: elasticsearch_systemd_config_result.changed
+
+- include_role:
+    name: geerlingguy.elasticsearch
+  vars:
+    elasticsearch_network_host: "{{ elasticsearch_host }}"
+    elasticsearch_http_port: "{{ elasticsearch_port }}"
+    elasticsearch_extra_options: |
+      xpack.security.enabled: true
+      action.destructive_requires_name: true
+
 - include: users.yml
 - include: index.yml
