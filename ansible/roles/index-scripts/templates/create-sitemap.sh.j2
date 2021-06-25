@@ -41,13 +41,13 @@ while true ; do
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 EOL
-  if [[ "$i" -eq 1 ]]; then
-    cat <<EOL >>$FILE
-  <url>
-    <loc>${RESOURCE_URL_BASEPATH}</loc>
-  </url>
-EOL
-  fi
+#  if [[ "$i" -eq 1 ]]; then
+#    cat <<EOL >>$FILE
+#  <url>
+#    <loc>${RESOURCE_URL_BASEPATH}</loc>
+#  </url>
+#EOL
+#  fi
   for RECORD_ID in $RECORD_IDS; do
     echo "  <url>
     <loc>${RESOURCE_URL_BASEPATH}/${RECORD_ID}</loc>
