@@ -1,5 +1,5 @@
 ---
-oerindex_backend_loglevel: DEBUG
+oerindex_backend_loglevel: INFO
 oerindex_backend_label_files:
   - labels-educational-audience.json
   - labels-hcrt.json
