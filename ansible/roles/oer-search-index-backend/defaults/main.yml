@@ -8,4 +8,20 @@ oerindex_backend_label_files:
 oerindex_backend_configdir: "{{ oerindex_backend_downloaddir }}/config"
 
 oerindex_backend_features_add_missing_labels: "true" # add missing labels of known vocabularies
+oerindex_backend_features_add_missing_metadata_infos: "false" # add missing infos like embedUrl, image width and height to metadata
 oerindex_backend_internal_labeldefinition_api_url: '{{ oerindex_backend_internal_api_base_url }}/labeldefinition'
+
+# config of feature "add_missing_metadata_infos"
+# regex - (required) identifier of the data must match this regex to apply the definition
+# embedUrl - A URL pointing to a player for a specific video. (groups from the regex can be inserted via placeholder ###<group_index>###)
+# providerName - The name of the resource provider.
+# providerUrl - The url of the resource provider.
+oerindex_backend_autoupdate_definitions:
+  - regex: "https://av.tib.eu/media/([0-9]+)"
+    embedUrl: "https://av.tib.eu/player/###1###"
+    providerName: "TIB AV-Portal"
+    providerUrl: "https://av.tib.eu"
+  - regex: "https://(?:www.youtube.com/watch\\?v\\=|youtu.be/)([a-zA-Z0-9-_]+)"
+    embedUrl: "https://www.youtube-nocookie.com/embed/###1###"
+    providerName: "YouTube"
+    providerUrl: "https://youtube.com/"
