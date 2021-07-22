@@ -22,13 +22,6 @@ window['runTimeConfig'] = {
       EMBED_OER: {{ oerindex_frontend_features_embed_oer }}, // feature toggle: use "embed-oer" button
       SCROLL_TOP_BUTTON: {{ oerindex_frontend_features_scroll_top_button }}, // feature toggle: use "scroll-to-top" button
       USE_RESOURCE_PAGE: {{ oerindex_frontend_features_use_resource_page }} // feature toggle: use a single html-page per resource
-    },
-    EMBED_MEDIA_MAPPING: [ // mappings from source url to embedding-code for media
-{% for mapping in oerindex_frontend_embed_media_mapping %}      {
-        regex: "{{ mapping.regex }}",
-        html: (match) => `{{ mapping.html }}`
-      }{{ "," if not loop.last else "" }}
-{% endfor %}
-    ]
+    }
   }
 }
