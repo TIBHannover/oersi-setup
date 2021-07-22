@@ -147,6 +147,20 @@
             }
           }
         },
+        "encoding": {
+          "properties": {
+            "type": {
+              "type": "keyword"
+            },
+            "embedUrl": {
+              "type": "keyword",
+              "index": false
+            },
+            "encodingFormat": {
+              "type": "keyword"
+            }
+          }
+        },
         "persons" : {
           "properties" : {
             "id" : {
