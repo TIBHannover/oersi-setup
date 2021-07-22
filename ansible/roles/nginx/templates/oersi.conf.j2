@@ -10,6 +10,15 @@ server {
   location {{ oerindex_backend_labelapi_root_path }} {
     proxy_pass {{ oerindex_backend_internal_api_base_url }}/label/;
   }
+  location {{ oerindex_backend_oembedapi_root_path }}-json {
+    proxy_pass {{ oerindex_backend_internal_api_base_url }}/oembed-json/;
+  }
+  location {{ oerindex_backend_oembedapi_root_path }}-xml {
+    proxy_pass {{ oerindex_backend_internal_api_base_url }}/oembed-xml/;
+  }
+  location {{ oerindex_backend_oembedapi_root_path }} {
+    proxy_pass {{ oerindex_backend_internal_api_base_url }}/oembed-json/;
+  }
   location ~ "^{{ oerindex_public_base_path }}/((?:[A-Za-z0-9-_]{4}+){4,}(?:[A-Za-z0-9-_]{3}=|[A-Za-z0-9-_]{2}==)?)$" {
     # if-workaround, see https://www.nginx.com/resources/wiki/start/topics/depth/ifisevil/
     error_page 418 = @json_resource;
