@@ -106,7 +106,7 @@ elasticsearch_builtin_users:
   - name: remote_monitoring_user
     password: changeme
 elasticsearch_oer_index_alias_name: oer_data # main alias; use external
-elasticsearch_oer_index_version: 14 # internal use
+elasticsearch_oer_index_version: 15 # internal use
 elasticsearch_oer_index_name_prefix: oer_data_ # internal use
 elasticsearch_oer_index_internal_alias_name: "{{ elasticsearch_oer_index_alias_name }}_internal"
 elasticsearch_oer_index_internal_name_prefix: "{{ elasticsearch_oer_index_name_prefix }}internal_"

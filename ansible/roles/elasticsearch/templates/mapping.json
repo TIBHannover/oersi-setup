@@ -52,11 +52,11 @@
         },
         "dateCreated" : {
           "type" : "date",
-          "index" : false
+          "index" : true
         },
         "datePublished" : {
           "type" : "date",
-          "index" : false
+          "index" : true
         },
         "description" : {
           "type" : "text"
@@ -100,11 +100,11 @@
             },
             "dateCreated" : {
               "type" : "date",
-              "index" : false
+              "index" : true
             },
             "dateModified" : {
               "type" : "date",
-              "index" : false
+              "index" : true
             },
             "provider" : {
               "properties" : {
