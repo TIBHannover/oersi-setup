@@ -20,6 +20,7 @@ tomcat_connectors:
     attributes:
       - 'connectionTimeout="20000"'
       - 'redirectPort="{{ tomcat_ssl_port }}"'
+      - 'relaxedQueryChars="[]{}|"'
 #  - port: '{{ tomcat_ajp_port }}'
 #    protocol: 'AJP/1.3'
 #    attributes:
