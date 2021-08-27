@@ -84,7 +84,11 @@
           }
         },
         "license" : {
-          "type" : "keyword"
+          "properties" : {
+            "id" : {
+              "type" : "keyword"
+            }
+          }
         },
         "name" : {
           "type" : "text"
