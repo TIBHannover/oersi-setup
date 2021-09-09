@@ -4,6 +4,9 @@ server {
   location {{ oerindex_backend_contactapi_root_path }} {
     proxy_pass {{ oerindex_backend_internal_api_base_url }}/contact/;
   }
+  location ~ "^{{ oerindex_backend_searchapi_root_path }}(_[^/]+)$" {
+    return 301 {{ oerindex_backend_searchapi_root_path }}{{ elasticsearch_oer_index_alias_name }}/$1$is_args$args;
+  }
   location {{ oerindex_backend_searchapi_root_path }} {
     proxy_pass {{ oerindex_backend_internal_api_base_url }}/search/;
   }
