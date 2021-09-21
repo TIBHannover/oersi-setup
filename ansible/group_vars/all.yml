@@ -53,15 +53,14 @@ oerindex_etl_input_limit: -1
 # List all standard flux-files from oersi-etl/data/production/ that should be used for the ETL-process here.
 oerindex_etl_configfiles:
   - twillo-to-oersi.flux
-  - edu-sharing.fix
+  - twillo_edu-sharing.fix
 #  - zoerr-to-oersi.flux
+#  - zoerr_edu-sharing.fix
 #  - digill-to-oersi.flux
 #  - tibav-to-oersi.flux
 #  - hhu-to-oersi.flux
 #  - oncampus-to-oersi.flux
 #  - hoou-to-oersi.flux
-#  - edu-sharing.fix
-#  - edu-sharing-6_0.fix
 #  - digill.fix
 #  - tibav.fix
 #  - hhu.fix
