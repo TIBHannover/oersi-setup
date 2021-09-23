@@ -66,7 +66,7 @@
     - name: oer_readonly
       role_definition:
         indices:
-          - names: '[ "{{ elasticsearch_oer_index_internal_alias_name }}", "{{ elasticsearch_oer_index_alias_name }}" ]'
+          - names: '[ "{{ elasticsearch_oer_index_internal_name_prefix }}*", "{{ elasticsearch_oer_index_internal_alias_name }}", "{{ elasticsearch_oer_index_name_prefix }}*", "{{ elasticsearch_oer_index_alias_name }}" ]'
             privileges:
               - read
 
