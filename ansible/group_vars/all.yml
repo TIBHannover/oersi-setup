@@ -50,6 +50,7 @@ oerindex_backend_mail_config:  # "spring.mail"-configuration (property - name of
 oerindex_etl_downloaddir: "{{ base_dir }}/oersi-etl"
 oerindex_etl_artifact_url: 'https://gitlab.com/oersi/oersi-etl/-/jobs/artifacts/master/download?job=deploy'
 oerindex_etl_input_limit: -1
+oerindex_etl_orca_auth: changeme
 # List all standard flux-files from oersi-etl/data/production/ that should be used for the ETL-process here.
 oerindex_etl_configfiles:
   - twillo-to-oersi.flux
@@ -60,6 +61,8 @@ oerindex_etl_configfiles:
 #  - tibav-to-oersi.flux
 #  - hhu-to-oersi.flux
 #  - oncampus-to-oersi.flux
+#  - orca_fedora-to-oersi.flux
+#  - orca_fedora.fix
 #  - hoou-to-oersi.flux
 #  - digill.fix
 #  - tibav.fix
