@@ -30,7 +30,7 @@ The same index can also be reused at the level of a federal state (or generally 
 
 ## Installation / Update
 
-The latest stable version is available in the master-branch. We do not offer older versions.
+The latest stable version is available in the master-branch. There are also tagged stable versions (0.7.0 and later).
 
 The installation processes will install all components that are necessary to run _oersi_ (sql-db, elasticsearch, logstash, tomcat, nginx, etc). To avoid conflicts, it is recommended that no other applications / processes are running on the target system.
 
