@@ -1,4 +1,17 @@
 ---
+- name: Assure synonyms file exists
+  file:
+    path: "{{ elasticsearch_conf_dir }}/synonym.txt"
+    state: touch
+  when: oerindex_features_use_synonyms
+  
+# copy example just for first phase / tests - needs to be created / updated independently afterwards
+- name: Copy synonyms file for TESTs
+  copy:
+    src: "{{ elasticsearch_synonyms_file }}"
+    dest: "{{ elasticsearch_conf_dir }}/synonym.txt"
+  when: oerindex_features_use_synonyms and elasticsearch_synonyms_file is defined and elasticsearch_synonyms_file is not none
+  
 - name: Configure mapping.
   template:
     src: "mapping.json"
