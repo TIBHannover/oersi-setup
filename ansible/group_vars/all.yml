@@ -12,6 +12,8 @@ oerindex_db:
   user: oerindex
   password: oerindexpw
 
+oerindex_features_use_synonyms: false   # activate/deactivate synonyms feature
+
 oerindex_public_scheme: 'http'
 oerindex_public_base_path: '/resources'
 oerindex_public_base_url: '{{ oerindex_public_scheme }}://{{ oerindex_host }}'

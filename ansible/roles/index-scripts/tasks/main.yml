@@ -32,6 +32,12 @@
     dest: "{{ base_dir }}/conf/oer_backend_access"
     mode: 0400
 
+- name: Add reload-search_analyzer.sh.j2
+  template:
+    src: "reload-search_analyzer.sh.j2"
+    dest: "{{ base_dir }}/bin/reload-search_analyzer.sh"
+    mode: 0700
+
 - name: Add reset-sql-oerdata.sh.j2
   template:
     src: "reset-sql-oerdata.sh.j2"

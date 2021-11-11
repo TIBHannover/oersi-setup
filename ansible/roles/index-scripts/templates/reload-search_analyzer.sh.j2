@@ -1,0 +1,16 @@
+#!/bin/bash
+# {{ ansible_managed }}
+#
+# Reload search analyzers of oer_data indices. (see https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-reload-analyzers.html)
+#
+
+date +"*** %Y-%m-%d %H:%M:%S start reload search analyzers"
+reload() {
+  curl --netrc-file {{ base_dir }}/conf/oer_index_access -X POST "http://{{ elasticsearch_host }}:{{ elasticsearch_port }}/$1/_reload_search_analyzers" -d ''
+  curl --netrc-file {{ base_dir }}/conf/oer_index_access -X POST "http://{{ elasticsearch_host }}:{{ elasticsearch_port }}/$1/_cache/clear?request=true" -d ''
+}
+
+reload {{ elasticsearch_oer_index_alias_name }}
+reload {{ elasticsearch_oer_index_internal_alias_name }}
+
+date +"*** %Y-%m-%d %H:%M:%S done"

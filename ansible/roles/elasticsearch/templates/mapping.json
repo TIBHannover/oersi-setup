@@ -3,6 +3,26 @@
   "template": {
     "settings": {
       "index": {
+{% if oerindex_features_use_synonyms %}
+        "analysis": {
+          "analyzer": {
+            "synonym": {
+              "tokenizer": "standard",
+              "filter": [ 
+                "lowercase",
+                "graph_synonyms"
+              ]
+            }
+          },
+          "filter": {
+            "graph_synonyms": {
+              "type": "synonym_graph",
+              "synonyms_path": "synonym.txt",
+              "updateable": true
+            }
+          }
+        },
+{% endif %}
         "number_of_shards": "{{ elasticsearch_oer_index_number_of_shards }}",
         "number_of_replicas": "{{ elasticsearch_oer_index_number_of_replicas }}"
       }
@@ -59,6 +79,10 @@
           "index" : true
         },
         "description" : {
+{% if oerindex_features_use_synonyms %}
+          "analyzer": "standard",
+          "search_analyzer": "synonym",
+{% endif %}
           "type" : "text"
         },
         "id" : {
@@ -91,6 +115,10 @@
           }
         },
         "name" : {
+{% if oerindex_features_use_synonyms %}
+          "analyzer": "standard",
+          "search_analyzer": "synonym",
+{% endif %}
           "type" : "text"
         },
         "mainEntityOfPage" : {
@@ -144,6 +172,10 @@
           "type" : "keyword"
         },
         "keywords" : {
+{% if oerindex_features_use_synonyms %}
+          "analyzer": "standard",
+          "search_analyzer": "synonym",
+{% endif %}
           "type" : "text",
           "fields" : {
             "keyword" : {
