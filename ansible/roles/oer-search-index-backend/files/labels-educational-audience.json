@@ -1,26 +1,66 @@
 {
   "http://purl.org/dcx/lrmi-vocabs/educationalAudienceRole/administrator": {
-    "en": "administrator"
+    "da": "administrator",
+    "de": "Administrator",
+    "en": "administrator",
+    "es": "administrador",
+    "fr": "administrateur",
+    "nl": "administrator"
   },
   "http://purl.org/dcx/lrmi-vocabs/educationalAudienceRole/generalPublic": {
-    "en": "general public"
+    "da": "Offentlighed",
+    "de": "Allgemeinheit",
+    "en": "general public",
+    "es": "público",
+    "fr": "public",
+    "nl": "publiek"
   },
   "http://purl.org/dcx/lrmi-vocabs/educationalAudienceRole/mentor": {
-    "en": "mentor"
+    "da": "Mentor",
+    "de": "Mentor",
+    "en": "mentor",
+    "es": "Mentor",
+    "fr": "Mentor",
+    "nl": "Mentor"
   },
   "http://purl.org/dcx/lrmi-vocabs/educationalAudienceRole/parent": {
-    "en": "parent"
+    "da": "forælder",
+    "de": "Eltern",
+    "en": "parent",
+    "es": "progenitor",
+    "fr": "parent",
+    "nl": "ouder"
   },
   "http://purl.org/dcx/lrmi-vocabs/educationalAudienceRole/peerTutor": {
-    "en": "peer tutor"
+    "da": "peer tutor",
+    "de": "Peer Tutor",
+    "en": "peer tutor",
+    "es": "tutor de pares",
+    "fr": "tuteur de pairs",
+    "nl": "peer tutor"
   },
   "http://purl.org/dcx/lrmi-vocabs/educationalAudienceRole/professional": {
-    "en": "professional"
+    "da": "professionel",
+    "de": "Profi",
+    "en": "professional",
+    "es": "profesional",
+    "fr": "professionnel",
+    "nl": "professional"
   },
   "http://purl.org/dcx/lrmi-vocabs/educationalAudienceRole/student": {
-    "en": "student"
+    "da": "student/elev",
+    "de": "Student",
+    "en": "student",
+    "es": "estudiante",
+    "fr": "étudiant",
+    "nl": "student"
   },
   "http://purl.org/dcx/lrmi-vocabs/educationalAudienceRole/teacher": {
-    "en": "teacher"
+    "da": "lærer",
+    "de": "Lehrer",
+    "en": "teacher",
+    "es": "profesor",
+    "fr": "enseignant",
+    "nl": "onderwijzer"
   }
 }

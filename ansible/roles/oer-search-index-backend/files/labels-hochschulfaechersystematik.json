@@ -1,1022 +1,1386 @@
 {
   "https://w3id.org/kim/hochschulfaechersystematik/n001": {
-    "de": "Ägyptologie"
+    "de": "Ägyptologie",
+    "en": "Egyptology"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n002": {
-    "de": "Afrikanistik"
+    "de": "Afrikanistik",
+    "en": "African Studies"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n003": {
-    "de": "Agrarwissenschaft/Landwirtschaft"
+    "de": "Agrarwissenschaft/Landwirtschaft",
+    "en": "Agricultural Science/Agriculture"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n004": {
-    "de": "Interdisziplinäre Studien (Schwerpunkt Sprach- und Kulturwissenschaften)"
+    "de": "Interdisziplinäre Studien (Schwerpunkt Sprach- und Kulturwissenschaften)",
+    "en": "Interdisciplinary Studies (specialising in Humanities)"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n005": {
-    "de": "Klassische Philologie"
+    "de": "Klassische Philologie",
+    "en": "Classical Philology"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n006": {
-    "de": "Amerikanistik/Amerikakunde"
+    "de": "Amerikanistik/Amerikakunde",
+    "en": "American Studies"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n007": {
-    "de": "Angewandte Kunst"
+    "de": "Angewandte Kunst",
+    "en": "Applied Art"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n008": {
-    "de": "Anglistik/Englisch"
+    "de": "Anglistik/Englisch",
+    "en": "English Studies"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n009": {
-    "de": "Anthropologie (Humanbiologie)"
+    "de": "Anthropologie (Humanbiologie)",
+    "en": "Anthropology (Human Biology)"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n01": {
-    "de": "Geisteswissenschaften allgemein"
+    "de": "Geisteswissenschaften allgemein",
+    "en": "Humanities (general)"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n010": {
-    "de": "Arabisch/Arabistik"
+    "de": "Arabisch/Arabistik",
+    "en": "Arabic/Arabic Studies"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n011": {
-    "de": "Arbeitslehre/Wirtschaftslehre"
+    "de": "Arbeitslehre/Wirtschaftslehre",
+    "en": "Work Studies/Business Studies"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n012": {
-    "de": "Archäologie"
+    "de": "Archäologie",
+    "en": "Archaeology"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n0128": {
-    "de": "Physik"
+    "de": "Physik",
+    "en": "Physics"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n013": {
-    "de": "Architektur"
+    "de": "Architektur",
+    "en": "Architecture"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n014": {
-    "de": "Astronomie, Astrophysik"
+    "de": "Astronomie, Astrophysik",
+    "en": "Astrophysics, Astronomy"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n015": {
-    "de": "Außereuropäische Sprachen und Kulturen in Ozeanien und Amerika"
+    "de": "Außereuropäische Sprachen und Kulturen in Ozeanien und Amerika",
+    "en": "Non-European Languages and Cultures in Oceania and America"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n016": {
-    "de": "Baltistik"
+    "de": "Baltistik",
+    "en": "Baltic Studies"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n017": {
-    "de": "Bauingenieurwesen/Ingenieurbau"
+    "de": "Bauingenieurwesen/Ingenieurbau",
+    "en": "Civil Engineering/Structural Engineering"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n018": {
-    "de": "Berufsbezogene Fremdsprachenausbildung"
+    "de": "Berufsbezogene Fremdsprachenausbildung",
+    "en": "Occupation-specific Foreign Language Training"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n02": {
-    "de": "Evang. Theologie, -Religionslehre"
+    "de": "Evang. Theologie, -Religionslehre",
+    "en": "Protestant Theology, Protestant Religious Education"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n020": {
-    "de": "Bergbau/Bergtechnik"
+    "de": "Bergbau/Bergtechnik",
+    "en": "Mining/Mine Engineering"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n021": {
-    "de": "Betriebswirtschaftslehre"
+    "de": "Betriebswirtschaftslehre",
+    "en": "Business Administration"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n022": {
-    "de": "Bibliothekswissenschaft/-wesen (nicht an Verwaltungsfachhochschulen)"
+    "de": "Bibliothekswissenschaft/-wesen (nicht an Verwaltungsfachhochschulen)",
+    "en": "Information and Library Sciences"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n023": {
-    "de": "Bildende Kunst/Graphik"
+    "de": "Bildende Kunst/Graphik",
+    "en": "Fine Arts/Graphics"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n024": {
-    "de": "Europäische Ethnologie und Kulturwissenschaft"
+    "de": "Europäische Ethnologie und Kulturwissenschaft",
+    "en": "European Ethnology and Cultural Studies"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n025": {
-    "de": "Biochemie"
+    "de": "Biochemie",
+    "en": "Biochemistry"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n026": {
-    "de": "Biologie"
+    "de": "Biologie",
+    "en": "Biology"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n028": {
-    "de": "Brauwesen/Getränketechnologie"
+    "de": "Brauwesen/Getränketechnologie",
+    "en": "Brewing Science/Beverage Technology"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n029": {
-    "de": "Sportwissenschaft"
+    "de": "Sportwissenschaft",
+    "en": "Sports Science"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n03": {
-    "de": "Kath. Theologie, -Religionslehre"
+    "de": "Kath. Theologie, -Religionslehre",
+    "en": "Catholic Theology, Catholic Religious Education"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n030": {
-    "de": "Interdisziplinäre Studien (Schwerpunkt Rechts-, Wirtschafts- und Sozialwissenschaften)"
+    "de": "Interdisziplinäre Studien (Schwerpunkt Rechts-, Wirtschafts- und Sozialwissenschaften)",
+    "en": "Interdisc. St. (spec. in Law, Econ. and Soc. Sci.)"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n030010001": {
-    "de": "Islamische Studien"
+    "de": "Islamische Studien",
+    "en": "Islamic Studies/Islamic Theology"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n031": {
-    "de": "Byzantinistik"
+    "de": "Byzantinistik",
+    "en": "Byzantine Studies"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n032": {
-    "de": "Chemie"
+    "de": "Chemie",
+    "en": "Chemistry"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n033": {
-    "de": "Chemie-Ingenieurwesen/Chemietechnik"
+    "de": "Chemie-Ingenieurwesen/Chemietechnik",
+    "en": "Chemical Engineering/Chemical Process Engineering"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n034": {
-    "de": "Dänisch"
+    "de": "Dänisch",
+    "en": "Danish"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n035": {
-    "de": "Darstellende Kunst/Bühnenkunst/Regie"
+    "de": "Darstellende Kunst/Bühnenkunst/Regie",
+    "en": "Performing Arts/Stagecraft/Directing"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n036": {
-    "de": "Sonstige Regionalwissenschaften"
+    "de": "Sonstige Regionalwissenschaften",
+    "en": "Other regional studies"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n037": {
-    "de": "Dokumentationswissenschaft"
+    "de": "Dokumentationswissenschaft",
+    "en": "Archival and Documentation Science"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n038": {
-    "de": "Lateinamerika"
+    "de": "Lateinamerika",
+    "en": "Latin American Studies"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n039": {
-    "de": "Geowissenschaften"
+    "de": "Geowissenschaften",
+    "en": "Geosciences (general)"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n04": {
-    "de": "Studienbereich Philosophie"
+    "de": "Studienbereich Philosophie",
+    "en": "Philosophy"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n040": {
-    "de": "Interdisziplinäre Studien (Schwerpunkt Kunst, Kunstwissenschaft)"
+    "de": "Interdisziplinäre Studien (Schwerpunkt Kunst, Kunstwissenschaft)",
+    "en": "Interdisc. Studies (special. in Art, Art Theory)"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n042": {
-    "de": "Wirtschaftsrecht"
+    "de": "Wirtschaftsrecht",
+    "en": "Business Law"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n043": {
-    "de": "Neugriechisch"
+    "de": "Neugriechisch",
+    "en": "Modern Greek"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n044": {
-    "de": "Ost- und Südosteuropa"
+    "de": "Ost- und Südosteuropa",
+    "en": "East and Southeast European Studies"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n048": {
-    "de": "Elektrotechnik/Elektronik"
+    "de": "Elektrotechnik/Elektronik",
+    "en": "Electrical Engineering/Electronics"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n049": {
-    "de": "Interdisziplinäre Studien (Schwerpunkt Naturwissenschaften)"
+    "de": "Interdisziplinäre Studien (Schwerpunkt Naturwissenschaften)",
+    "en": "Interdisc. Studies (special. in Natural Sciences)"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n05": {
-    "de": "Studienbereich Geschichte"
+    "de": "Studienbereich Geschichte",
+    "en": "History"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n050": {
-    "de": "Geographie/Erdkunde"
+    "de": "Geographie/Erdkunde",
+    "en": "Geography"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n052": {
-    "de": "Erziehungswissenschaft (Pädagogik)"
+    "de": "Erziehungswissenschaft (Pädagogik)",
+    "en": "Educational Science (Pedagogy)"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n053": {
-    "de": "Evang. Theologie, -Religionslehre"
+    "de": "Evang. Theologie, -Religionslehre",
+    "en": "Protestant Theology, Protestant Religious Education"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n054": {
-    "de": "Film und Fernsehen"
+    "de": "Film und Fernsehen",
+    "en": "Film and Television Studies"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n056": {
-    "de": "Finno-Ugristik"
+    "de": "Finno-Ugristik",
+    "en": "Finno-Ugrian Studies"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n057": {
-    "de": "Luft- und Raumfahrttechnik"
+    "de": "Luft- und Raumfahrttechnik",
+    "en": "Aeronautical and Aerospace Engineering"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n058": {
-    "de": "Forstwissenschaft, -wirtschaft"
+    "de": "Forstwissenschaft, -wirtschaft",
+    "en": "Forest Science, Forestry"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n059": {
-    "de": "Französisch"
+    "de": "Französisch",
+    "en": "French"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n06": {
-    "de": "Bibliothekswissenschaft, Dokumentation"
+    "de": "Bibliothekswissenschaft, Dokumentation",
+    "en": "Information and Library Sciences"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n060": {
-    "de": "Gartenbau"
+    "de": "Gartenbau",
+    "en": "Horticulture"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n061": {
-    "de": "Meliorationswesen"
+    "de": "Meliorationswesen",
+    "en": "Ground Improvement"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n064": {
-    "de": "Naturschutz"
+    "de": "Naturschutz",
+    "en": "Nature Conservation"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n065": {
-    "de": "Geologie/Paläontologie"
+    "de": "Geologie/Paläontologie",
+    "en": "Geology/Palaeontology"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n066": {
-    "de": "Geophysik"
+    "de": "Geophysik",
+    "en": "Geophysics"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n067": {
-    "de": "Germanistik/Deutsch"
+    "de": "Germanistik/Deutsch",
+    "en": "German Studies/German"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n068": {
-    "de": "Geschichte"
+    "de": "Geschichte",
+    "en": "History"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n069": {
-    "de": "Graphikdesign/Kommunikationsgestaltung"
+    "de": "Graphikdesign/Kommunikationsgestaltung",
+    "en": "Graphic Design/Communication Design"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n07": {
-    "de": "Allgemeine und vergleichende Literatur- und Sprachwissenschaft"
+    "de": "Allgemeine und vergleichende Literatur- und Sprachwissenschaft",
+    "en": "General and Comparative Literary Studies and Linguistics"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n070": {
-    "de": "Griechisch"
+    "de": "Griechisch",
+    "en": "Greek"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n071": {
-    "de": "Haushalts- und Ernährungswissenschaft"
+    "de": "Haushalts- und Ernährungswissenschaft",
+    "en": "Domestic and Nutritional Sciences"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n072": {
-    "de": "Interdisziplinäre Studien (Schwerpunkt Ingenieurwissenschaften)"
+    "de": "Interdisziplinäre Studien (Schwerpunkt Ingenieurwissenschaften)",
+    "en": "Interdisc. Studies (specialising in Engineering)"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n073": {
-    "de": "Hebräisch/Judaistik"
+    "de": "Hebräisch/Judaistik",
+    "en": "Judaic Studies/Hebrew"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n074": {
-    "de": "Transport-/Fördertechnik"
+    "de": "Transport-/Fördertechnik",
+    "en": "Transport and Conveying Technology"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n075": {
-    "de": "Holzwirtschaft"
+    "de": "Holzwirtschaft",
+    "en": "Wood Science"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n076": {
-    "de": "Hütten- und Gießereiwesen"
+    "de": "Hütten- und Gießereiwesen",
+    "en": "Metallurgy and Foundry"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n077": {
-    "de": "Wasserwirtschaft"
+    "de": "Wasserwirtschaft",
+    "en": "Water Management"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n078": {
-    "de": "Indologie"
+    "de": "Indologie",
+    "en": "Indology"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n079": {
-    "de": "Informatik"
+    "de": "Informatik",
+    "en": "Computer Science"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n08": {
-    "de": "Altphilologie (klass. Philologie), Neugriechisch"
+    "de": "Altphilologie (klass. Philologie), Neugriechisch",
+    "en": "Classical Philology, Modern Greek"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n080": {
-    "de": "Instrumentalmusik"
+    "de": "Instrumentalmusik",
+    "en": "Instrumental Music"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n081": {
-    "de": "Iranistik"
+    "de": "Iranistik",
+    "en": "Iranian Studies"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n082": {
-    "de": "Holz-/Fasertechnik"
+    "de": "Holz-/Fasertechnik",
+    "en": "Wood and Fibre Technology"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n083": {
-    "de": "Islamwissenschaft"
+    "de": "Islamwissenschaft",
+    "en": "Islamic Studies"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n084": {
-    "de": "Italienisch"
+    "de": "Italienisch",
+    "en": "Italian"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n085": {
-    "de": "Japanologie"
+    "de": "Japanologie",
+    "en": "Japanese Studies"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n086": {
-    "de": "Kath. Theologie, -Religionslehre"
+    "de": "Kath. Theologie, -Religionslehre",
+    "en": "Catholic Theology, Catholic Religious Education"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n088": {
-    "de": "Optoelektronik"
+    "de": "Optoelektronik",
+    "en": "Optoelectronics"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n089": {
-    "de": "Verkehrsingenieurwesen"
+    "de": "Verkehrsingenieurwesen",
+    "en": "Transport Engineering"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n09": {
-    "de": "Germanistik (Deutsch, germanische Sprachen ohne Anglistik)"
+    "de": "Germanistik (Deutsch, germanische Sprachen ohne Anglistik)",
+    "en": "German Studies (German, Germanic Languages excl. English)"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n090": {
-    "de": "Lernbereich Sprach- und Kulturwissenschaften"
+    "de": "Lernbereich Sprach- und Kulturwissenschaften",
+    "en": "Area of study: Humanities"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n091": {
-    "de": "Kunsterziehung"
+    "de": "Kunsterziehung",
+    "en": "Arts Education"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n092": {
-    "de": "Kunstgeschichte, Kunstwissenschaft"
+    "de": "Kunstgeschichte, Kunstwissenschaft",
+    "en": "Art History, Art Theory"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n093": {
-    "de": "Landespflege/Landschaftsgestaltung"
+    "de": "Landespflege/Landschaftsgestaltung",
+    "en": "Land Management Engineering/Landscape Design"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n094": {
-    "de": "Wasserbau"
+    "de": "Wasserbau",
+    "en": "Hydraulic Engineering"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n095": {
-    "de": "Latein"
+    "de": "Latein",
+    "en": "Latin"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n096": {
-    "de": "Lebensmittelchemie"
+    "de": "Lebensmittelchemie",
+    "en": "Food Chemistry"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n097": {
-    "de": "Lebensmitteltechnologie"
+    "de": "Lebensmitteltechnologie",
+    "en": "Food Technology"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n098": {
-    "de": "Sportpädagogik/Sportpsychologie"
+    "de": "Sportpädagogik/Sportpsychologie",
+    "en": "Sports Education/Sports Psychology"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n1": {
-    "de": "Geisteswissenschaften"
+    "de": "Geisteswissenschaften",
+    "en": "Humanities"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n10": {
-    "de": "Anglistik, Amerikanistik"
+    "de": "Anglistik, Amerikanistik",
+    "en": "English Studies, American Studies"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n101": {
-    "de": "Restaurierungskunde"
+    "de": "Restaurierungskunde",
+    "en": "Restoration Studies"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n102": {
-    "de": "Schauspiel"
+    "de": "Schauspiel",
+    "en": "Drama Studies"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n103": {
-    "de": "Markscheidewesen"
+    "de": "Markscheidewesen",
+    "en": "Mine Surveying"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n104": {
-    "de": "Maschinenbau/-wesen"
+    "de": "Maschinenbau/-wesen",
+    "en": "Mechanical Engineering"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n105": {
-    "de": "Mathematik"
+    "de": "Mathematik",
+    "en": "Mathematics"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n106": {
-    "de": "Tanzpädagogik"
+    "de": "Tanzpädagogik",
+    "en": "Dance Education"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n107": {
-    "de": "Medizin (Allgemein-Medizin)"
+    "de": "Medizin (Allgemein-Medizin)",
+    "en": "Medicine (General Medicine)"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n108": {
-    "de": "Metalltechnik"
+    "de": "Metalltechnik",
+    "en": "Metals Technology"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n11": {
-    "de": "Romanistik"
+    "de": "Romanistik",
+    "en": "Romance Studies"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n110": {
-    "de": "Meteorologie"
+    "de": "Meteorologie",
+    "en": "Meteorology"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n111": {
-    "de": "Mineralogie"
+    "de": "Mineralogie",
+    "en": "Mineralogy"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n113": {
-    "de": "Musikerziehung"
+    "de": "Musikerziehung",
+    "en": "Music Education"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n114": {
-    "de": "Musikwissenschaft/-geschichte"
+    "de": "Musikwissenschaft/-geschichte",
+    "en": "Musicology/History of Music"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n115": {
-    "de": "Grundschul-/Primarstufenpädagogik"
+    "de": "Grundschul-/Primarstufenpädagogik",
+    "en": "Primary School Education/Primary Level Education"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n116": {
-    "de": "Textilgestaltung"
+    "de": "Textilgestaltung",
+    "en": "Textile Design"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n117": {
-    "de": "Ausländerpädagogik"
+    "de": "Ausländerpädagogik",
+    "en": "Immigrant Education"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n118": {
-    "de": "Technomathematik"
+    "de": "Technomathematik",
+    "en": "Technomathematics"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n119": {
-    "de": "Niederländisch"
+    "de": "Niederländisch",
+    "en": "Dutch"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n12": {
-    "de": "Slawistik, Baltistik, Finno-Ugristik"
+    "de": "Slawistik, Baltistik, Finno-Ugristik",
+    "en": "Slavic, Baltic, Finno-Ugrian Studies"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n120": {
-    "de": "Nordistik/Skandinavistik (Nordische Philologie, Einzelsprachen a.n.g.)"
+    "de": "Nordistik/Skandinavistik (Nordische Philologie, Einzelsprachen a.n.g.)",
+    "en": "Nordic/Scand. St. (Nord. Phil., ind. lang. n.e.c.)"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n121": {
-    "de": "Medieninformatik"
+    "de": "Medieninformatik",
+    "en": "Media Informatics"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n122": {
-    "de": "Orientalistik/Altorientalistik"
+    "de": "Orientalistik/Altorientalistik",
+    "en": "Oriental Studies, Ancient Oriental Studies"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n123": {
-    "de": "Ingenieurinformatik/Technische Informatik"
+    "de": "Ingenieurinformatik/Technische Informatik",
+    "en": "Computational Engineering/Technical Computer Science"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n124": {
-    "de": "Ozeanographie"
+    "de": "Ozeanographie",
+    "en": "Oceanography"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n125": {
-    "de": "Agrarökonomie"
+    "de": "Agrarökonomie",
+    "en": "Agricultural Economics"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n126": {
-    "de": "Pharmazie"
+    "de": "Pharmazie",
+    "en": "Pharmacy"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n127": {
-    "de": "Philosophie"
+    "de": "Philosophie",
+    "en": "Philosophy"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n129": {
-    "de": "Politikwissenschaft/Politologie"
+    "de": "Politikwissenschaft/Politologie",
+    "en": "Political Science"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n13": {
-    "de": "Außereuropäische Sprach- und Kulturwissenschaften"
+    "de": "Außereuropäische Sprach- und Kulturwissenschaften",
+    "en": "Other linguistic and cultural studies"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n130": {
-    "de": "Westslawisch (allgemein und a.n.g.)"
+    "de": "Westslawisch (allgemein und a.n.g.)",
+    "en": "Western Slavic (general and n.e.c.)"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n131": {
-    "de": "Portugiesisch"
+    "de": "Portugiesisch",
+    "en": "Portuguese"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n132": {
-    "de": "Psychologie"
+    "de": "Psychologie",
+    "en": "Psychology"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n134": {
-    "de": "Raumplanung"
+    "de": "Raumplanung",
+    "en": "Spatial Planning"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n135": {
-    "de": "Rechtswissenschaft"
+    "de": "Rechtswissenschaft",
+    "en": "Law"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n136": {
-    "de": "Religionswissenschaft"
+    "de": "Religionswissenschaft",
+    "en": "Religious Studies"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n137": {
-    "de": "Romanistik (Roman. Philologie, Einzelsprachen a.n.g.)"
+    "de": "Romanistik (Roman. Philologie, Einzelsprachen a.n.g.)",
+    "en": "Romance Studies (Rom. Phil., indiv. lang. n.e.c.)"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n138": {
-    "de": "Agrarbiologie"
+    "de": "Agrarbiologie",
+    "en": "Agricultural Biology"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n139": {
-    "de": "Russisch"
+    "de": "Russisch",
+    "en": "Russian"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n14": {
-    "de": "Kulturwissenschaften i.e.S."
+    "de": "Kulturwissenschaften i.e.S.",
+    "en": "Cultural Studies in the narrower sense"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n140": {
-    "de": "Angewandte Systemwissenschaften"
+    "de": "Angewandte Systemwissenschaften",
+    "en": "Applied Systems Science"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n141": {
-    "de": "Abfallwirtschaft"
+    "de": "Abfallwirtschaft",
+    "en": "Waste Management"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n142": {
-    "de": "Schiffbau/Schiffstechnik"
+    "de": "Schiffbau/Schiffstechnik",
+    "en": "Naval Architecture/Ship Technology"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n143": {
-    "de": "Augenoptik"
+    "de": "Augenoptik",
+    "en": "Ophthalmic Optics"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n144": {
-    "de": "Technische Kybernetik"
+    "de": "Technische Kybernetik",
+    "en": "Technical Cybernetics"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n145": {
-    "de": "Sinologie/Koreanistik"
+    "de": "Sinologie/Koreanistik",
+    "en": "Sinology/Korean Studies"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n146": {
-    "de": "Slawistik (Slaw. Philologie)"
+    "de": "Slawistik (Slaw. Philologie)",
+    "en": "Slavic Studies (Slavic Philology)"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n147": {
-    "de": "Sozialkunde"
+    "de": "Sozialkunde",
+    "en": "Social Studies"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n148": {
-    "de": "Sozialwissenschaft"
+    "de": "Sozialwissenschaft",
+    "en": "Social Sciences"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n149": {
-    "de": "Soziologie"
+    "de": "Soziologie",
+    "en": "Sociology"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n150": {
-    "de": "Spanisch"
+    "de": "Spanisch",
+    "en": "Spanish"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n152": {
-    "de": "Allgemeine Sprachwissenschaft/Indogermanistik"
+    "de": "Allgemeine Sprachwissenschaft/Indogermanistik",
+    "en": "General Linguistics/Indo-European Studies"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n153": {
-    "de": "Südslawisch (Bulgarisch, Serbokroatisch Slowenisch usw.)"
+    "de": "Südslawisch (Bulgarisch, Serbokroatisch Slowenisch usw.)",
+    "en": "South Slavic (Bulgar., Serbo-Croat., Slovene etc.)"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n154": {
-    "de": "Lernbereich Gesellschaftslehre"
+    "de": "Lernbereich Gesellschaftslehre",
+    "en": "Area of study: Social Studies"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n155": {
-    "de": "Theaterwissenschaft"
+    "de": "Theaterwissenschaft",
+    "en": "Theatre Studies"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n156": {
-    "de": "Tiermedizin/Veterinärmedizin"
+    "de": "Tiermedizin/Veterinärmedizin",
+    "en": "Veterinary Medicine"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n157": {
-    "de": "Mikroelektronik"
+    "de": "Mikroelektronik",
+    "en": "Microelectronics"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n158": {
-    "de": "Turkologie"
+    "de": "Turkologie",
+    "en": "Turkish Studies"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n159": {
-    "de": "Edelstein- und Schmuckdesign"
+    "de": "Edelstein- und Schmuckdesign",
+    "en": "Gemstone and Jewellery Design"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n160": {
-    "de": "Computerlinguistik"
+    "de": "Computerlinguistik",
+    "en": "Computer Linguistics"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n161": {
-    "de": "Diakoniewissenschaft"
+    "de": "Diakoniewissenschaft",
+    "en": "Pastoral Care Studies"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n162": {
-    "de": "Caritaswissenschaft"
+    "de": "Caritaswissenschaft",
+    "en": "Caritas Science"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n163": {
-    "de": "Rhythmik"
+    "de": "Rhythmik",
+    "en": "Rhythmics"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n164": {
-    "de": "Jazz und Popularmusik"
+    "de": "Jazz und Popularmusik",
+    "en": "Jazz and Popular Music"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n165": {
-    "de": "Orchestermusik"
+    "de": "Orchestermusik",
+    "en": "Orchestral Music"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n166": {
-    "de": "Sportmanagement/Sportökonomie"
+    "de": "Sportmanagement/Sportökonomie",
+    "en": "Sports Management/Sports Economics"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n167": {
-    "de": "Europäische Wirtschaft"
+    "de": "Europäische Wirtschaft",
+    "en": "European Economic Studies"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n168": {
-    "de": "Justizvollzug"
+    "de": "Justizvollzug",
+    "en": "Law Enforcement"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n169": {
-    "de": "Ethik"
+    "de": "Ethik",
+    "en": "Ethics"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n171": {
-    "de": "Vermessungswesen (Geodäsie)"
+    "de": "Vermessungswesen (Geodäsie)",
+    "en": "Surveying (Geodesy)"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n172": {
-    "de": "Verwaltungswissenschaft/-wesen"
+    "de": "Verwaltungswissenschaft/-wesen",
+    "en": "Administrative Science/Public Administration"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n173": {
-    "de": "Ethnologie"
+    "da": "Etnologi",
+    "de": "Ethnologie",
+    "en": "Ethnology",
+    "es": "Etnología",
+    "fr": "Ethnologie",
+    "nl": "Etnologie"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n174": {
-    "de": "Volkskunde"
+    "de": "Volkskunde",
+    "en": "Folklore"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n175": {
-    "de": "Volkswirtschaftslehre"
+    "de": "Volkswirtschaftslehre",
+    "en": "Economics"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n176": {
-    "de": "Werkerziehung"
+    "de": "Werkerziehung",
+    "en": "Handicrafts Education"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n177": {
-    "de": "Werkstofftechnik"
+    "de": "Werkstofftechnik",
+    "en": "Materials Technology"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n178": {
-    "de": "Wirtschafts-/Sozialgeographie"
+    "de": "Wirtschafts-/Sozialgeographie",
+    "en": "Economic/Social Geography"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n179": {
-    "de": "Wirtschaftsingenieurwesen mit wirtschaftswissenschaftlichem Schwerpunkt"
+    "de": "Wirtschaftsingenieurwesen mit wirtschaftswissenschaftlichem Schwerpunkt",
+    "en": "Business Engineering specialising in Economics"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n18": {
-    "de": "Studienbereich Islamische Studien"
+    "de": "Studienbereich Islamische Studien",
+    "en": "Islamic Studies/Islamic Theology"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n180": {
-    "de": "Kaukasistik"
+    "de": "Kaukasistik",
+    "en": "Caucasian Studies"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n181": {
-    "de": "Wirtschaftspädagogik"
+    "de": "Wirtschaftspädagogik",
+    "en": "Business and Economics Education"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n182": {
-    "de": "Internationale Betriebswirtschaft/Management"
+    "de": "Internationale Betriebswirtschaft/Management",
+    "en": "International Business Studies/Management"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n183": {
-    "de": "Wirtschafts-/Sozialgeschichte"
+    "de": "Wirtschafts-/Sozialgeschichte",
+    "en": "Economic/Social History"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n184": {
-    "de": "Wirtschaftswissenschaften"
+    "de": "Wirtschaftswissenschaften",
+    "en": "Business and Economics"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n185": {
-    "de": "Zahnmedizin"
+    "de": "Zahnmedizin",
+    "en": "Dentistry"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n186": {
-    "de": "Lernbereich Naturwissenschaften/Sachunterricht"
+    "de": "Lernbereich Naturwissenschaften/Sachunterricht",
+    "en": "Area of study: Natural Sciences/General Studies"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n187": {
-    "de": "Asiatische Sprachen und Kulturen/Asienwissenschaften"
+    "de": "Asiatische Sprachen und Kulturen/Asienwissenschaften",
+    "en": "Asian Languages and Cultures/Asian Studies"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n188": {
-    "de": "Allgemeine Literaturwissenschaft"
+    "de": "Allgemeine Literaturwissenschaft",
+    "en": "General Literary Studies"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n189": {
-    "de": "Niederdeutsch"
+    "de": "Niederdeutsch",
+    "en": "Low German"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n190": {
-    "de": "Sonderpädagogik"
+    "de": "Sonderpädagogik",
+    "en": "Special Needs Education"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n191": {
-    "de": "Komposition"
+    "de": "Komposition",
+    "en": "Composition"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n192": {
-    "de": "Dirigieren"
+    "de": "Dirigieren",
+    "en": "Conducting"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n193": {
-    "de": "Kirchenmusik"
+    "de": "Kirchenmusik",
+    "en": "Church Music"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n194": {
-    "de": "Tonmeister"
+    "de": "Tonmeister",
+    "en": "Sound Engineering"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n195": {
-    "de": "Gesundheitspädagogik"
+    "de": "Gesundheitspädagogik",
+    "en": "Health Education"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n197": {
-    "de": "Holzbau"
+    "de": "Holzbau",
+    "en": "Timber Construction"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n199": {
-    "de": "Lernbereich Technik"
+    "de": "Lernbereich Technik",
+    "en": "Area of study: Technology"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n2": {
-    "de": "Sport"
+    "de": "Sport",
+    "en": "Sports"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n200": {
-    "de": "Computer- und Kommunikationstechniken"
+    "de": "Computer- und Kommunikationstechniken",
+    "en": "Computer and Communication Technology"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n201": {
-    "de": "Werken (technisch)/Technologie"
+    "de": "Werken (technisch)/Technologie",
+    "en": "Handicrafts (technical)/Technology"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n202": {
-    "de": "Fertigungs-/Produktionstechnik"
+    "de": "Fertigungs-/Produktionstechnik",
+    "en": "Manufacturing Technology/Production Engineering"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n203": {
-    "de": "Industriedesign/Produktgestaltung"
+    "de": "Industriedesign/Produktgestaltung",
+    "en": "Industrial Design/Product Design"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n204": {
-    "de": "Malerei"
+    "de": "Malerei",
+    "en": "Painting"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n205": {
-    "de": "Bildhauerei/Plastik"
+    "de": "Bildhauerei/Plastik",
+    "en": "Sculpting/Statuary Art"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n206": {
-    "de": "Polnisch"
+    "de": "Polnisch",
+    "en": "Polish"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n207": {
-    "de": "Sorbisch"
+    "de": "Sorbisch",
+    "en": "Sorbian Studies"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n208": {
-    "de": "Soziale Arbeit"
+    "de": "Soziale Arbeit",
+    "en": "Social Work"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n209": {
-    "de": "Tschechisch"
+    "de": "Tschechisch",
+    "en": "Czech"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n210": {
-    "de": "Verkehrswirtschaft"
+    "de": "Verkehrswirtschaft",
+    "en": "Transport Economics"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n211": {
-    "de": "Energietechnik (ohne Elektrotechnik)"
+    "de": "Energietechnik (ohne Elektrotechnik)",
+    "en": "Energy Process Engineering"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n212": {
-    "de": "Feinwerktechnik"
+    "de": "Feinwerktechnik",
+    "en": "Precision Engineering"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n213": {
-    "de": "Versorgungstechnik"
+    "de": "Versorgungstechnik",
+    "en": "Supply Technology"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n215": {
-    "de": "Gesundheitstechnik"
+    "de": "Gesundheitstechnik",
+    "en": "Health Technology"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n216": {
-    "de": "Glastechnik/Keramik"
+    "de": "Glastechnik/Keramik",
+    "en": "Glass Technology/Ceramics"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n219": {
-    "de": "Kunststofftechnik"
+    "de": "Kunststofftechnik",
+    "en": "Plastics Technology"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n22": {
-    "de": "Sport, Sportwissenschaft"
+    "de": "Sport, Sportwissenschaft",
+    "en": "Sports, Sports Science"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n220": {
-    "de": "Milch- und Molkereiwirtschaft"
+    "de": "Milch- und Molkereiwirtschaft",
+    "en": "Dairy Farming"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n221": {
-    "de": "Bioinformatik"
+    "de": "Bioinformatik",
+    "en": "Bioinformatics"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n222": {
-    "de": "Kommunikations- und Informationstechnik"
+    "de": "Kommunikations- und Informationstechnik",
+    "en": "Communication Technology, Information Engineering"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n223": {
-    "de": "Nautik/Seefahrt"
+    "de": "Nautik/Seefahrt",
+    "en": "Nautical Science/Maritime Studies"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n224": {
-    "de": "Physikalische Technik"
+    "de": "Physikalische Technik",
+    "en": "Engineering Physics/Mechanical Process Engineering"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n225": {
-    "de": "Textil- und Bekleidungstechnik/-gewerbe"
+    "de": "Textil- und Bekleidungstechnik/-gewerbe",
+    "en": "Textile and Clothing Technology/Industry"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n226": {
-    "de": "Verfahrenstechnik"
+    "de": "Verfahrenstechnik",
+    "en": "Process Engineering"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n227": {
-    "de": "Weinbau und Kellerwirtschaft"
+    "de": "Weinbau und Kellerwirtschaft",
+    "en": "Viticulture and Oenology"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n23": {
-    "de": "Rechts-, Wirtschafts- und Sozialwissenschaften allgemein"
+    "de": "Rechts-, Wirtschafts- und Sozialwissenschaften allgemein",
+    "en": "Law, Economics and Social Sciences (general)"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n230": {
-    "de": "Gesang"
+    "de": "Gesang",
+    "en": "Singing"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n231": {
-    "de": "Druck- und Reproduktionstechnik"
+    "de": "Druck- und Reproduktionstechnik",
+    "en": "Printing and Reproduction Technology"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n232": {
-    "de": "Gesundheitswissenschaft/-management"
+    "de": "Gesundheitswissenschaft/-management",
+    "en": "Health Science/Health Management"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n233": {
-    "de": "Nichtärztliche Heilberufe/Therapien"
+    "de": "Nichtärztliche Heilberufe/Therapien",
+    "en": "Non-medical Healthcare Professions/Therapies"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n234": {
-    "de": "Pflegewissenschaft/-management"
+    "de": "Pflegewissenschaft/-management",
+    "en": "Nursing Science/Nursing Management"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n235": {
-    "de": "Fahrzeugtechnik"
+    "de": "Fahrzeugtechnik",
+    "en": "Automotive Technology"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n237": {
-    "de": "Mathematische Statistik/Wahrscheinlichkeitsrechnung"
+    "de": "Mathematische Statistik/Wahrscheinlichkeitsrechnung",
+    "en": "Mathematical statistics/probability calculation"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n24": {
-    "de": "Regionalwissenschaften"
+    "de": "Regionalwissenschaften",
+    "en": "Regional Studies"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n241": {
-    "de": "Kerntechnik/Kernverfahrenstechnik"
+    "de": "Kerntechnik/Kernverfahrenstechnik",
+    "en": "Nuclear technology/nuclear process engineering"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n242": {
-    "de": "Innenarchitektur"
+    "de": "Innenarchitektur",
+    "en": "Interior Architecture"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n245": {
-    "de": "Sozialpädagogik"
+    "de": "Sozialpädagogik",
+    "en": "Social Pedagogy"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n247": {
-    "de": "Medizinische Informatik"
+    "de": "Medizinische Informatik",
+    "en": "Medical Informatics"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n25": {
-    "de": "Politikwissenschaften"
+    "de": "Politikwissenschaften",
+    "en": "Political Science"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n253": {
-    "de": "Sozialwesen"
+    "de": "Sozialwesen",
+    "en": "Applied Social Science"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n254": {
-    "de": "Sachunterricht (einschl. Schulgarten)"
+    "de": "Sachunterricht (einschl. Schulgarten)",
+    "en": "General Studies (including School Garden)"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n255": {
-    "de": "Archivwesen"
+    "de": "Archivwesen",
+    "en": "Archive Studies"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n256": {
-    "de": "Rechtspflege"
+    "de": "Rechtspflege",
+    "en": "Administration of Justice"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n257": {
-    "de": "Arbeits- und Berufsberatung"
+    "de": "Arbeits- und Berufsberatung",
+    "en": "Occupational Guidance and Career Counselling"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n258": {
-    "de": "Arbeitsverwaltung"
+    "de": "Arbeitsverwaltung",
+    "en": "Labour Administration"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n259": {
-    "de": "Auswärtige Angelegenheiten"
+    "de": "Auswärtige Angelegenheiten",
+    "en": "Foreign Affairs Administration"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n26": {
-    "de": "Sozialwissenschaften"
+    "de": "Sozialwissenschaften",
+    "en": "Social Sciences/Sociology"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n260": {
-    "de": "Bundeswehrverwaltung"
+    "de": "Bundeswehrverwaltung",
+    "en": "Armed Forces Administration"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n261": {
-    "de": "Innere Verwaltung"
+    "de": "Innere Verwaltung",
+    "en": "Internal Administration"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n262": {
-    "de": "Bibliothekswesen"
+    "de": "Bibliothekswesen",
+    "en": "Librarianship"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n263": {
-    "de": "Polizei/Verfassungsschutz"
+    "de": "Polizei/Verfassungsschutz",
+    "en": "Police/Protection of the Constitution"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n264": {
-    "de": "Sozialversicherung"
+    "de": "Sozialversicherung",
+    "en": "Social Security Administration"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n265": {
-    "de": "Bankwesen"
+    "de": "Bankwesen",
+    "en": "Banking"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n266": {
-    "de": "Finanzverwaltung"
+    "de": "Finanzverwaltung",
+    "en": "Financial Administration"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n268": {
-    "de": "Verkehrswesen"
+    "de": "Verkehrswesen",
+    "en": "Transportation Systems"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n269": {
-    "de": "Zoll- und Steuerverwaltung"
+    "de": "Zoll- und Steuerverwaltung",
+    "en": "Customs and Tax Administration"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n27": {
-    "de": "Studienbereich Sozialwesen"
+    "de": "Studienbereich Sozialwesen",
+    "en": "Applied Social Science"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n270": {
-    "de": "Berufs- und Wirtschaftspädagogik"
+    "de": "Berufs- und Wirtschaftspädagogik",
+    "en": "Vocational, Business and Economics Education"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n271": {
-    "de": "Deutsch als Fremdsprache oder als Zweitsprache"
+    "de": "Deutsch als Fremdsprache oder als Zweitsprache",
+    "en": "German as a Foreign or Second Language"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n272": {
-    "de": "Alte Geschichte"
+    "de": "Alte Geschichte",
+    "en": "Ancient History"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n273": {
-    "de": "Mittlere und neuere Geschichte"
+    "de": "Mittlere und neuere Geschichte",
+    "en": "Medieval and Modern History"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n274": {
-    "de": "Tourismuswirtschaft"
+    "de": "Tourismuswirtschaft",
+    "en": "Tourism Management"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n275": {
-    "de": "Geschichte der Mathematik und Naturwissenschaften"
+    "de": "Geschichte der Mathematik und Naturwissenschaften",
+    "en": "History of Science/History of Technology"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n276": {
-    "de": "Wirtschaftsmathematik"
+    "de": "Wirtschaftsmathematik",
+    "en": "Business Mathematics"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n277": {
-    "de": "Wirtschaftsinformatik"
+    "de": "Wirtschaftsinformatik",
+    "en": "Business Informatics"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n28": {
-    "de": "Rechtswissenschaften"
+    "de": "Rechtswissenschaften",
+    "en": "Law"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n280": {
-    "de": "Kartographie"
+    "de": "Kartographie",
+    "en": "Cartography"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n282": {
-    "de": "Biotechnologie"
+    "de": "Biotechnologie",
+    "en": "Biotechnology"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n283": {
-    "de": "Biogeographie"
+    "de": "Biogeographie",
+    "en": "Landscape Ecology/Biogeography"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n284": {
-    "de": "Angewandte Sprachwissenschaft"
+    "de": "Angewandte Sprachwissenschaft",
+    "en": "Applied Linguistics"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n286": {
-    "de": "Mikrosystemtechnik"
+    "de": "Mikrosystemtechnik",
+    "en": "Microsystems Technology"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n287": {
-    "de": "Neue Medien"
+    "de": "Neue Medien",
+    "en": "New Media"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n29": {
-    "de": "Verwaltungswissenschaften"
+    "de": "Verwaltungswissenschaften",
+    "en": "Administrative Sciences"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n294": {
-    "de": "Materialwissenschaft"
+    "de": "Materialwissenschaft",
+    "en": "Materials Science"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n3": {
-    "de": "Rechts-, Wirtschafts- und Sozialwissenschaften"
+    "de": "Rechts-, Wirtschafts- und Sozialwissenschaften",
+    "en": "Law, Economics and Social Sciences"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n30": {
-    "de": "Studienbereich Wirtschaftswissenschaften"
+    "de": "Studienbereich Wirtschaftswissenschaften",
+    "en": "Business and Economics"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n300": {
-    "de": "Biomedizin"
+    "de": "Biomedizin",
+    "en": "Biomedicine"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n302": {
-    "de": "Medienwissenschaft"
+    "de": "Medienwissenschaft",
+    "en": "Media Science"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n303": {
-    "de": "Kommunikationswissenschaft/Publizistik"
+    "de": "Kommunikationswissenschaft/Publizistik",
+    "en": "Communication Science/Journalism"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n304": {
-    "de": "Medienwirtschaft/Medienmanagement"
+    "de": "Medienwirtschaft/Medienmanagement",
+    "en": "Media Economics/Media Management"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n305": {
-    "de": "Medientechnik"
+    "de": "Medientechnik",
+    "en": "Media Technology"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n31": {
-    "de": "Studienbereich Wirtschaftsingenieurwesen mit wirtschaftswissenschaftlichem Schwerpunkt"
+    "de": "Studienbereich Wirtschaftsingenieurwesen mit wirtschaftswissenschaftlichem Schwerpunkt",
+    "en": "Business Engineering specialising in Economics"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n310": {
-    "de": "Regenerative Energien"
+    "de": "Regenerative Energien",
+    "en": "Renewable Energy"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n316": {
-    "de": "Elektrische Energietechnik"
+    "de": "Elektrische Energietechnik",
+    "en": "Electrical Power Engineering"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n32": {
-    "de": "Studienbereich Psychologie"
+    "de": "Studienbereich Psychologie",
+    "en": "Psychology"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n320": {
-    "de": "Ernährungswissenschaft"
+    "de": "Ernährungswissenschaft",
+    "en": "Nutritional Science"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n321": {
-    "de": "Erwachsenenbildung und außerschulische Jugendbildung"
+    "de": "Erwachsenenbildung und außerschulische Jugendbildung",
+    "en": "Adult Education and Extracurricular Youth Educat."
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n33": {
-    "de": "Erziehungswissenschaften"
+    "de": "Erziehungswissenschaften",
+    "en": "Educational Sciences"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n333": {
-    "de": "Haushaltswissenschaft"
+    "de": "Haushaltswissenschaft",
+    "en": "Domestic Science"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n353": {
-    "de": "Pflanzenproduktion"
+    "de": "Pflanzenproduktion",
+    "en": "Plant Production"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n36": {
-    "de": "Mathematik, Naturwissenschaften allgemein"
+    "de": "Mathematik, Naturwissenschaften allgemein",
+    "en": "Mathematics, Natural Sciences (general)"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n361": {
-    "de": "Schulpädagogik"
+    "de": "Schulpädagogik",
+    "en": "School Pedagogy"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n365": {
-    "de": "Pädagogik der frühen Kindheit"
+    "de": "Pädagogik der frühen Kindheit",
+    "en": "Early Childhood Education"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n37": {
-    "de": "Studienbereich Mathematik"
+    "da": "Matematik",
+    "de": "Studienbereich Mathematik",
+    "en": "Mathematics",
+    "es": "Matemáticas",
+    "fr": "Mathématiques",
+    "nl": "Wiskunde"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n370": {
-    "de": "Wirtschaftsingenieurwesen mit ingenieurwissenschaftlichem Schwerpunkt"
+    "de": "Wirtschaftsingenieurwesen mit ingenieurwissenschaftlichem Schwerpunkt",
+    "en": "Business Engineering specialising in Engineering Sciences"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n371": {
-    "de": "Tierproduktion"
+    "de": "Tierproduktion",
+    "en": "Animal Production"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n380": {
-    "de": "Mechatronik"
+    "de": "Mechatronik",
+    "en": "Mechatronics"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n385": {
-    "de": "Geoökologie"
+    "de": "Geoökologie",
+    "en": "Geoecology"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n39": {
-    "de": "Physik, Astronomie"
+    "da": "Fysik, Astronomi",
+    "de": "Physik, Astronomie",
+    "en": "Physics, Astronomy",
+    "es": "Física, Astronomía",
+    "fr": "Physique, Astronomie",
+    "nl": "Natuurkunde, Astronomie"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n390": {
-    "de": "Archäometrie (Ingenieurarchäologie)"
+    "de": "Archäometrie (Ingenieurarchäologie)",
+    "en": "Archaeometry (Archaeological Engineering)"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n4": {
-    "de": "Mathematik, Naturwissenschaften"
+    "de": "Mathematik, Naturwissenschaften",
+    "en": "Mathematics, Natural Sciences"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n40": {
-    "de": "Studienbereich Chemie"
+    "da": "Kemi",
+    "de": "Studienbereich Chemie",
+    "en": "Chemistry",
+    "es": "Química",
+    "fr": "Chimie",
+    "nl": "Scheikunde"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n41": {
-    "de": "Studienbereich Pharmazie"
+    "de": "Studienbereich Pharmazie",
+    "en": "Pharmacy"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n42": {
-    "de": "Studienbereich Biologie"
+    "de": "Studienbereich Biologie",
+    "en": "Biology"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n429": {
-    "de": "Stahlbau"
+    "de": "Stahlbau",
+    "en": "Steel Construction"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n43": {
-    "de": "Geowissenschaften (ohne Geographie)"
+    "de": "Geowissenschaften (ohne Geographie)",
+    "en": "Geosciences (excl. Geography)"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n44": {
-    "de": "Geographie"
+    "de": "Geographie",
+    "en": "Geography"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n457": {
-    "de": "Umwelttechnik (einschl. Recycling)"
+    "de": "Umwelttechnik (einschl. Recycling)",
+    "en": "Environmental Technology (including Recycling)"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n458": {
-    "de": "Umweltschutz"
+    "de": "Umweltschutz",
+    "en": "Environmental Protection"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n464": {
-    "de": "Facility Management"
+    "de": "Facility Management",
+    "en": "Facility Management"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n48": {
-    "de": "Gesundheitswissenschaften allgemein"
+    "de": "Gesundheitswissenschaften allgemein",
+    "en": "Health Sciences (general)"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n49": {
-    "de": "Humanmedizin (ohne Zahnmedizin)"
+    "de": "Humanmedizin (ohne Zahnmedizin)",
+    "en": "Human Medicine (excl. Dentistry)"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n5": {
-    "de": "Humanmedizin/Gesundheitswissenschaften"
+    "de": "Humanmedizin/Gesundheitswissenschaften",
+    "en": "Human Medicine / Health Sciences"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n50": {
-    "de": "Studienbereich Zahnmedizin"
+    "de": "Studienbereich Zahnmedizin",
+    "en": "Dentistry"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n51": {
-    "de": "Veterinärmedizin"
+    "de": "Veterinärmedizin",
+    "en": "Veterinary Medicine"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n544": {
-    "de": "Evang. Religionspädagogik, kirchliche Bildungsarbeit"
+    "de": "Evang. Religionspädagogik, kirchliche Bildungsarbeit",
+    "en": "Protestant Religious Pedagogy, Church Educational Work"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n545": {
-    "de": "Kath. Religionspädagogik, kirchliche Bildungsarbeit"
+    "de": "Kath. Religionspädagogik, kirchliche Bildungsarbeit",
+    "en": "Catholic Religious Pedagogy, Church Educational Work"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n548": {
-    "de": "Ur- und Frühgeschichte"
+    "de": "Ur- und Frühgeschichte",
+    "en": "Prehistory and Early History"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n57": {
-    "de": "Landespflege, Umweltgestaltung"
+    "de": "Landespflege, Umweltgestaltung",
+    "en": "Land Management Engineering, Environmental Design"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n58": {
-    "de": "Agrarwissenschaften, Lebensmittel- und Getränketechnologie"
+    "de": "Agrarwissenschaften, Lebensmittel- und Getränketechnologie",
+    "en": "Agricultural Science, Food- and Beverage Technology"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n59": {
-    "de": "Forstwissenschaft, Holzwirtschaft"
+    "de": "Forstwissenschaft, Holzwirtschaft",
+    "en": "Forestry, Wood Science"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n60": {
-    "de": "Ernährungs- und Haushaltswissenschaften"
+    "de": "Ernährungs- und Haushaltswissenschaften",
+    "en": "Nutritional and Domestic Science"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n61": {
-    "de": "Ingenieurwesen allgemein"
+    "de": "Ingenieurwesen allgemein",
+    "en": "Engineering (general)"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n62": {
-    "de": "Bergbau, Hüttenwesen"
+    "de": "Bergbau, Hüttenwesen",
+    "en": "Mining, Metallurgy"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n63": {
-    "de": "Maschinenbau/Verfahrenstechnik"
+    "de": "Maschinenbau/Verfahrenstechnik",
+    "en": "Mechanical Engineering / Process Engineering"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n64": {
-    "de": "Elektrotechnik und Informationstechnik"
+    "de": "Elektrotechnik und Informationstechnik",
+    "en": "Electrical Engineering and Information Engineering"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n65": {
-    "de": "Verkehrstechnik, Nautik"
+    "de": "Verkehrstechnik, Nautik",
+    "en": "Traffic Engineering, Nautical Science"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n66": {
-    "de": "Architektur, Innenarchitektur"
+    "de": "Architektur, Innenarchitektur",
+    "en": "Architecture, Interior Architecture "
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n67": {
-    "de": "Studienbereich Raumplanung"
+    "de": "Studienbereich Raumplanung",
+    "en": "Spatial Planning"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n68": {
-    "de": "Bauingenieurwesen"
+    "de": "Bauingenieurwesen",
+    "en": "Civil Engineering"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n69": {
-    "de": "Vermessungswesen"
+    "de": "Vermessungswesen",
+    "en": "Surveying"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n7": {
-    "de": "Agrar-, Forst- und Ernährungswissenschaften, Veterinärmedizin"
+    "de": "Agrar-, Forst- und Ernährungswissenschaften, Veterinärmedizin",
+    "en": "Agricultural, Forest and Nutritional Sciences, Veterinary medicine"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n70": {
-    "de": "Studienbereich Wirtschaftsingenieurwesen mit ingenieurwissenschaftlichem Schwerpunkt"
+    "de": "Studienbereich Wirtschaftsingenieurwesen mit ingenieurwissenschaftlichem Schwerpunkt",
+    "en": "Business Engineering specialising in Engineering Sciences"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n71": {
-    "de": "Studienbereich Informatik"
+    "da": "Datalogi",
+    "de": "Studienbereich Informatik",
+    "en": "Computer Science",
+    "es": "Ciencias de la Computación",
+    "fr": "Informatique",
+    "nl": "Informatica"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n72": {
-    "de": "Materialwissenschaft und Werkstofftechnik"
+    "de": "Materialwissenschaft und Werkstofftechnik",
+    "en": "Materials Science and Materials Engineering"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n74": {
-    "de": "Kunst, Kunstwissenschaft allgemein"
+    "de": "Kunst, Kunstwissenschaft allgemein",
+    "en": "Art, Art Theory (general)"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n75": {
-    "de": "Studienbereich Bildende Kunst"
+    "de": "Studienbereich Bildende Kunst",
+    "en": "Fine Arts"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n76": {
-    "de": "Gestaltung"
+    "de": "Gestaltung",
+    "en": "Design"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n77": {
-    "de": "Darstellende Kunst, Film und Fernsehen, Theaterwissenschaft"
+    "de": "Darstellende Kunst, Film und Fernsehen, Theaterwissenschaft",
+    "en": "Performing Arts, Film and Television Studies, Theatre Studies"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n78": {
-    "de": "Musik, Musikwissenschaft"
+    "de": "Musik, Musikwissenschaft",
+    "en": "Music, Musicology"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n8": {
-    "de": "Ingenieurwissenschaften"
+    "da": "Ingeniørvidenskab",
+    "de": "Ingenieurwissenschaften",
+    "en": "Engineering Sciences",
+    "es": "Ingeniería",
+    "fr": "Ingénierie",
+    "nl": "Engineering"
   },
   "https://w3id.org/kim/hochschulfaechersystematik/n9": {
-    "de": "Kunst, Kunstwissenschaft"
+    "de": "Kunst, Kunstwissenschaft",
+    "en": "Art, Art Theory"
   }
 }

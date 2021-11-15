@@ -1,102 +1,202 @@
 {
   "https://w3id.org/kim/hcrt/application": {
+    "da": "Softwareapplikation",
     "de": "Softwareanwendung",
-    "en": "Software Application"
+    "en": "Software Application",
+    "es": "Aplicación Informática",
+    "fr": "Application",
+    "nl": "Applicatie"
   },
   "https://w3id.org/kim/hcrt/assessment": {
+    "da": "Evaluering",
     "de": "Lernkontrolle",
-    "en": "Assessment"
+    "en": "Assessment",
+    "es": "Evaluación",
+    "fr": "Évaluation",
+    "nl": "Evaluatie"
   },
   "https://w3id.org/kim/hcrt/audio": {
+    "da": "Lydoptagelse",
     "de": "Tonaufnahme",
-    "en": "Audio Recording"
+    "en": "Audio Recording",
+    "es": "Grabación de Sonido",
+    "fr": "Enregistrement Sonore",
+    "nl": "Geluidsregistratie"
   },
   "https://w3id.org/kim/hcrt/case_study": {
+    "da": "Casestudie",
     "de": "Fallstudie",
-    "en": "Case Study"
+    "en": "Case Study",
+    "es": "Estudio de Caso",
+    "fr": "Étude de Cas",
+    "nl": "Case Study"
   },
   "https://w3id.org/kim/hcrt/course": {
+    "da": "Kursus",
     "de": "Kurs",
-    "en": "Course"
+    "en": "Course",
+    "es": "Curso",
+    "fr": "Cours",
+    "nl": "Cursus"
   },
   "https://w3id.org/kim/hcrt/data": {
+    "da": "Data",
     "de": "Daten",
-    "en": "Data"
+    "en": "Data",
+    "es": "Dato",
+    "fr": "Donnée",
+    "nl": "Gegeven"
   },
   "https://w3id.org/kim/hcrt/diagram": {
+    "da": "Diagram",
     "de": "Diagramm",
-    "en": "Diagram"
+    "en": "Diagram",
+    "es": "Diagrama",
+    "fr": "Diagramme",
+    "nl": "Diagram"
   },
   "https://w3id.org/kim/hcrt/drill_and_practice": {
+    "da": "Øvelse",
     "de": "Übung",
-    "en": "Drill and Practice"
+    "en": "Drill and Practice",
+    "es": "Práctica",
+    "fr": "Apprentissage par Répétition",
+    "nl": "Oefenen"
   },
   "https://w3id.org/kim/hcrt/educational_game": {
+    "da": "Pædagogisk Spil",
     "de": "Lernspiel",
-    "en": "Game"
+    "en": "Game",
+    "es": "Juego Educativo",
+    "fr": "Jeu Éducatif",
+    "nl": "Educatief Spel"
   },
   "https://w3id.org/kim/hcrt/experiment": {
+    "da": "Eksperiment",
     "de": "Experiment",
-    "en": "Experiment"
+    "en": "Experiment",
+    "es": "Experimento",
+    "fr": "Expérimentation",
+    "nl": "Experiment"
   },
   "https://w3id.org/kim/hcrt/image": {
+    "da": "Billede",
     "de": "Abbildung",
-    "en": "Image"
+    "en": "Image",
+    "es": "Imagen",
+    "fr": "Image",
+    "nl": "Afbeelding"
   },
   "https://w3id.org/kim/hcrt/index": {
+    "da": "Opslagsværk",
     "de": "Nachschlagewerk",
-    "en": "Reference Work"
+    "en": "Reference Work",
+    "es": "Obra de Referencia",
+    "fr": "Ouvrage de Référence",
+    "nl": "Naslagwerk"
   },
   "https://w3id.org/kim/hcrt/lesson_plan": {
+    "da": "Lektionsplan",
     "de": "Unterrichtsplanung",
-    "en": "Lesson Plan"
+    "en": "Lesson Plan",
+    "es": "Unidad Didáctica",
+    "fr": "Préparation des Cours",
+    "nl": "Lesplan"
   },
   "https://w3id.org/kim/hcrt/map": {
+    "da": "Kort",
     "de": "Karte",
-    "en": "Map"
+    "en": "Map",
+    "es": "Mapa",
+    "fr": "Carte Géographique",
+    "nl": "Kaart"
   },
   "https://w3id.org/kim/hcrt/other": {
+    "da": "Andre",
     "de": "Sonstiges",
-    "en": "Other"
+    "en": "Other",
+    "es": "Diverso",
+    "fr": "Divers",
+    "nl": "Andere"
   },
   "https://w3id.org/kim/hcrt/portal": {
+    "da": "Webportal",
     "de": "Portal",
-    "en": "Web Portal"
+    "en": "Web Portal",
+    "es": "Portal de Internet",
+    "fr": "Portail Web",
+    "nl": "Internetportaal"
   },
   "https://w3id.org/kim/hcrt/questionnaire": {
+    "da": "Spørgeskema",
     "de": "Fragebogen",
-    "en": "Questionnaire"
+    "en": "Questionnaire",
+    "es": "Cuestionario",
+    "fr": "Questionnaire",
+    "nl": "Vragenlijst"
   },
   "https://w3id.org/kim/hcrt/script": {
+    "da": "Script",
     "de": "Skript",
-    "en": "Script"
+    "en": "Script",
+    "es": "Script",
+    "fr": "Script",
+    "nl": "Script"
   },
   "https://w3id.org/kim/hcrt/simulation": {
+    "da": "Simulering",
     "de": "Simulation",
-    "en": "Simulation"
+    "en": "Simulation",
+    "es": "Simulación",
+    "fr": "Simulation de Phénomènes",
+    "nl": "Simulatie"
   },
   "https://w3id.org/kim/hcrt/slide": {
+    "da": "Præsentation",
     "de": "Präsentation",
-    "en": "Presentation"
+    "en": "Presentation",
+    "es": "Presentación",
+    "fr": "Présentation",
+    "nl": "Presentatie"
   },
   "https://w3id.org/kim/hcrt/text": {
+    "da": "Tekst",
     "de": "Textdokument",
-    "en": "Text"
+    "en": "Text",
+    "es": "Texto",
+    "fr": "Texte",
+    "nl": "Tekst"
   },
   "https://w3id.org/kim/hcrt/textbook": {
+    "da": "Lærebog",
     "de": "Lehrbuch",
-    "en": "Textbook"
+    "en": "Textbook",
+    "es": "Libro de Texto",
+    "fr": "Manuel Scolaire",
+    "nl": "Studieboek"
   },
   "https://w3id.org/kim/hcrt/video": {
+    "da": "Video",
     "de": "Video",
-    "en": "Video"
+    "en": "Video",
+    "es": "Video",
+    "fr": "Vidéo",
+    "nl": "Video"
   },
   "https://w3id.org/kim/hcrt/web_page": {
+    "da": "Hjemmeside",
     "de": "Webseite",
-    "en": "Web Page"
+    "en": "Web Page",
+    "es": "Página Web",
+    "fr": "Page Web",
+    "nl": "Webpagina"
   },
   "https://w3id.org/kim/hcrt/worksheet": {
+    "da": "Arbejdsark",
     "de": "Arbeitsmaterial",
-    "en": "Worksheet"
+    "en": "Worksheet",
+    "es": "Hoja de Trabajo",
+    "fr": "Feuille de Travail",
+    "nl": "Werkblad"
   }
 }
