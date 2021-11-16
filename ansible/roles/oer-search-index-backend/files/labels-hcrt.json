@@ -4,6 +4,7 @@
     "de": "Softwareanwendung",
     "en": "Software Application",
     "es": "Aplicación Informática",
+    "fi": "Sovellusohjelma",
     "fr": "Application",
     "nl": "Applicatie"
   },
@@ -12,6 +13,7 @@
     "de": "Lernkontrolle",
     "en": "Assessment",
     "es": "Evaluación",
+    "fi": "Oppimistarkastus",
     "fr": "Évaluation",
     "nl": "Evaluatie"
   },
@@ -20,6 +22,7 @@
     "de": "Tonaufnahme",
     "en": "Audio Recording",
     "es": "Grabación de Sonido",
+    "fi": "äänen tallennus",
     "fr": "Enregistrement Sonore",
     "nl": "Geluidsregistratie"
   },
@@ -28,6 +31,7 @@
     "de": "Fallstudie",
     "en": "Case Study",
     "es": "Estudio de Caso",
+    "fi": "Tapaustutkimus",
     "fr": "Étude de Cas",
     "nl": "Case Study"
   },
@@ -36,6 +40,7 @@
     "de": "Kurs",
     "en": "Course",
     "es": "Curso",
+    "fi": "Kurssi",
     "fr": "Cours",
     "nl": "Cursus"
   },
@@ -44,6 +49,7 @@
     "de": "Daten",
     "en": "Data",
     "es": "Dato",
+    "fi": "datasetti",
     "fr": "Donnée",
     "nl": "Gegeven"
   },
@@ -52,6 +58,7 @@
     "de": "Diagramm",
     "en": "Diagram",
     "es": "Diagrama",
+    "fi": "Kaavio",
     "fr": "Diagramme",
     "nl": "Diagram"
   },
@@ -60,6 +67,7 @@
     "de": "Übung",
     "en": "Drill and Practice",
     "es": "Práctica",
+    "fi": "Harjoitus",
     "fr": "Apprentissage par Répétition",
     "nl": "Oefenen"
   },
@@ -68,6 +76,7 @@
     "de": "Lernspiel",
     "en": "Game",
     "es": "Juego Educativo",
+    "fi": "Opettavainen peli",
     "fr": "Jeu Éducatif",
     "nl": "Educatief Spel"
   },
@@ -76,6 +85,7 @@
     "de": "Experiment",
     "en": "Experiment",
     "es": "Experimento",
+    "fi": "Koe",
     "fr": "Expérimentation",
     "nl": "Experiment"
   },
@@ -84,6 +94,7 @@
     "de": "Abbildung",
     "en": "Image",
     "es": "Imagen",
+    "fi": "Kuva",
     "fr": "Image",
     "nl": "Afbeelding"
   },
@@ -92,6 +103,7 @@
     "de": "Nachschlagewerk",
     "en": "Reference Work",
     "es": "Obra de Referencia",
+    "fi": "Hakuteos",
     "fr": "Ouvrage de Référence",
     "nl": "Naslagwerk"
   },
@@ -100,6 +112,7 @@
     "de": "Unterrichtsplanung",
     "en": "Lesson Plan",
     "es": "Unidad Didáctica",
+    "fi": "Oppituntien suunnittelu",
     "fr": "Préparation des Cours",
     "nl": "Lesplan"
   },
@@ -108,6 +121,7 @@
     "de": "Karte",
     "en": "Map",
     "es": "Mapa",
+    "fi": "Kartta",
     "fr": "Carte Géographique",
     "nl": "Kaart"
   },
@@ -116,6 +130,7 @@
     "de": "Sonstiges",
     "en": "Other",
     "es": "Diverso",
+    "fi": "Muut",
     "fr": "Divers",
     "nl": "Andere"
   },
@@ -124,6 +139,7 @@
     "de": "Portal",
     "en": "Web Portal",
     "es": "Portal de Internet",
+    "fi": "Portaali",
     "fr": "Portail Web",
     "nl": "Internetportaal"
   },
@@ -132,6 +148,7 @@
     "de": "Fragebogen",
     "en": "Questionnaire",
     "es": "Cuestionario",
+    "fi": "Kyselytutkimus",
     "fr": "Questionnaire",
     "nl": "Vragenlijst"
   },
@@ -140,6 +157,7 @@
     "de": "Skript",
     "en": "Script",
     "es": "Script",
+    "fi": "Käsikirjoitus",
     "fr": "Script",
     "nl": "Script"
   },
@@ -148,6 +166,7 @@
     "de": "Simulation",
     "en": "Simulation",
     "es": "Simulación",
+    "fi": "Simulaatio",
     "fr": "Simulation de Phénomènes",
     "nl": "Simulatie"
   },
@@ -156,6 +175,7 @@
     "de": "Präsentation",
     "en": "Presentation",
     "es": "Presentación",
+    "fi": "Esitys",
     "fr": "Présentation",
     "nl": "Presentatie"
   },
@@ -164,6 +184,7 @@
     "de": "Textdokument",
     "en": "Text",
     "es": "Texto",
+    "fi": "Teksti",
     "fr": "Texte",
     "nl": "Tekst"
   },
@@ -172,6 +193,7 @@
     "de": "Lehrbuch",
     "en": "Textbook",
     "es": "Libro de Texto",
+    "fi": "Oppikirja",
     "fr": "Manuel Scolaire",
     "nl": "Studieboek"
   },
@@ -180,6 +202,7 @@
     "de": "Video",
     "en": "Video",
     "es": "Video",
+    "fi": "Video",
     "fr": "Vidéo",
     "nl": "Video"
   },
@@ -188,6 +211,7 @@
     "de": "Webseite",
     "en": "Web Page",
     "es": "Página Web",
+    "fi": "Verkkosivu",
     "fr": "Page Web",
     "nl": "Webpagina"
   },
@@ -196,6 +220,7 @@
     "de": "Arbeitsmaterial",
     "en": "Worksheet",
     "es": "Hoja de Trabajo",
+    "fi": "Työarkki",
     "fr": "Feuille de Travail",
     "nl": "Werkblad"
   }

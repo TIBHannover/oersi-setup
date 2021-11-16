@@ -684,6 +684,7 @@
     "de": "Ethnologie",
     "en": "Ethnology",
     "es": "Etnología",
+    "fi": "Etnologia",
     "fr": "Ethnologie",
     "nl": "Etnologie"
   },
@@ -1172,6 +1173,7 @@
     "de": "Studienbereich Mathematik",
     "en": "Mathematics",
     "es": "Matemáticas",
+    "fi": "matematiikka",
     "fr": "Mathématiques",
     "nl": "Wiskunde"
   },
@@ -1196,6 +1198,7 @@
     "de": "Physik, Astronomie",
     "en": "Physics, Astronomy",
     "es": "Física, Astronomía",
+    "fi": "fysiikka, tähtitiede",
     "fr": "Physique, Astronomie",
     "nl": "Natuurkunde, Astronomie"
   },
@@ -1212,6 +1215,7 @@
     "de": "Studienbereich Chemie",
     "en": "Chemistry",
     "es": "Química",
+    "fi": "kemia",
     "fr": "Chimie",
     "nl": "Scheikunde"
   },
@@ -1344,6 +1348,7 @@
     "de": "Studienbereich Informatik",
     "en": "Computer Science",
     "es": "Ciencias de la Computación",
+    "fi": "tietojenkäsittelytiede",
     "fr": "Informatique",
     "nl": "Informatica"
   },
@@ -1376,6 +1381,7 @@
     "de": "Ingenieurwissenschaften",
     "en": "Engineering Sciences",
     "es": "Ingeniería",
+    "fi": "tekniikka",
     "fr": "Ingénierie",
     "nl": "Engineering"
   },
