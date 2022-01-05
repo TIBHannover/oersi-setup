@@ -5,4 +5,3 @@ oerindex_frontend_track_total_hits: "true" # track number of total hits from ela
 
 oerindex_frontend_features_embed_oer: "true"
 oerindex_frontend_features_scroll_top_button: "true"
-oerindex_frontend_features_use_resource_page: "true"
