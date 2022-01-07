@@ -20,6 +20,7 @@ oerindex_public_base_url: '{{ oerindex_public_scheme }}://{{ oerindex_host }}'
 
 oerindex_frontend_instdir: "/var/www/oersi-frontend"
 oerindex_frontend_artifact_url: 'https://gitlab.com/oersi/oersi-frontend/-/jobs/artifacts/master/download?job=build'
+oerindex_frontend_available_languages: '["de", "en"]'
 oerindex_frontend_page_size: '["12", "24", "48", "96"]' # Page size options .
 oerindex_frontend_nr_result_page_default: 12
 oerindex_frontend_custom_style_css:     # path to a custom style-override.css file
