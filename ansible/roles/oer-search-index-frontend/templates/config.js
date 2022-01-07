@@ -21,8 +21,7 @@ window['runTimeConfig'] = {
     TRACK_TOTAL_HITS: {{ oerindex_frontend_track_total_hits }}, // track number of total hits from elasticsearch - see https://www.elastic.co/guide/en/elasticsearch/reference/7.10/search-your-data.html#track-total-hits
     FEATURES: {
       EMBED_OER: {{ oerindex_frontend_features_embed_oer }}, // feature toggle: use "embed-oer" button
-      SCROLL_TOP_BUTTON: {{ oerindex_frontend_features_scroll_top_button }}, // feature toggle: use "scroll-to-top" button
-      HEADER_TYPE: "{{ oerindex_frontend_features_header_type }}" // temp feature until old reactstrap header is removed, select header-ui "mui" | "reactstrap"
+      SCROLL_TOP_BUTTON: {{ oerindex_frontend_features_scroll_top_button }} // feature toggle: use "scroll-to-top" button
     }
   }
 }
