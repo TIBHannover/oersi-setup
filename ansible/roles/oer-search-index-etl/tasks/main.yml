@@ -70,7 +70,7 @@
 - name: Create config enabled files
   file:
     state: link
-    src: '{{ oerindex_etl_configdir }}/{{ item | basename }}'
+    src: '{{ oerindex_etl_configdir }}/{{ item }}'
     path: '{{ oerindex_etl_configdir }}-enabled/{{ item | basename }}'
   loop: '{{ (oerindex_etl_configfiles | default([], true)) + (oerindex_etl_customfiles | default([], true)) }}'
 
