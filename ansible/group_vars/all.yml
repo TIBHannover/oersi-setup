@@ -54,32 +54,31 @@ oerindex_etl_downloaddir: "{{ base_dir }}/oersi-etl"
 oerindex_etl_artifact_url: 'https://gitlab.com/oersi/oersi-etl/-/jobs/artifacts/master/download?job=deploy'
 oerindex_etl_input_limit: -1
 oerindex_etl_orca_auth: changeme
-# List all standard flux-files from oersi-etl/data/production/ that should be used for the ETL-process here.
+# List all standard files from oersi-etl/data/production/ that should be used for the ETL-process here.
 oerindex_etl_configfiles:
-  - twillo-to-oersi.flux
-  - twillo_edu-sharing.fix
-#  - zoerr-to-oersi.flux
-#  - zoerr_edu-sharing.fix
-#  - digill-to-oersi.flux
-#  - tibav-to-oersi.flux
-#  - hhu-to-oersi.flux
-#  - oncampus-to-oersi.flux
-#  - orca_fedora-to-oersi.flux
-#  - orca_fedora.fix
-#  - hoou-to-oersi.flux
-#  - digill.fix
-#  - tibav.fix
-#  - hhu.fix
-#  - oncampus.fix
-#  - hoou-id.fix
-#  - hoou.fix
-#  - iMoox-to-oersi.flux
-#  - moochub.fix
-#  - duepublico-to-oersi.flux
-#  - duepublico-morph.xml
-#  - openRub-to-oersi.flux
-#  - openRub.fix
-# List all your custom flux-files that should be used for the ETL-process here.
+  - twillo/twillo-to-oersi.flux
+  - twillo/twillo_edu-sharing.fix
+#  - zoerr/zoerr-to-oersi.flux
+#  - zoerr/zoerr_edu-sharing.fix
+#  - orca_fedora/orca_fedora-to-oersi.flux
+#  - orca_fedora/orca_fedora.fix
+#  - digill/digill-to-oersi.flux
+#  - digill/digill.fix
+#  - tibav/tibav-to-oersi.flux
+#  - tibav/tibav.fix
+#  - hhu/hhu-to-oersi.flux
+#  - hhu/hhu.fix
+#  - oncampus/oncampus-to-oersi.flux
+#  - oncampus/oncampus.fix
+#  - hoou/hoou-to-oersi.flux
+#  - hoou/hoou.fix
+#  - iMoox/iMoox-to-oersi.flux
+#  - iMoox/iMoox_moocHub.fix
+#  - duepublico/duepublico-to-oersi.flux
+#  - duepublico/duepublico-morph.xml
+#  - openRub/openRub-to-oersi.flux
+#  - openRub/openRub.fix
+# List all your custom files that should be used for the ETL-process here.
 # The file path has to be relative to 'ansible/roles/oer-search-index-etl/files' or an absolute path.
 oerindex_etl_customfiles:
 #  - '../../../my-conf-dir/my-etl.flux'
