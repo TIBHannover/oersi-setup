@@ -11,6 +11,7 @@ window['runTimeConfig'] = {
     NR_OF_RESULT_PER_PAGE: {{oerindex_frontend_nr_result_page_default}},  //  number of results to show per view. Defaults to 10.
     HEADER_LOGO_URL: "{{ oerindex_frontend_header_logo_url }}",  // if set, use this URL for the logo in the header and include your custom svg or similar; default is "logo-192.png". You may use placeholders \{\{dark\}\} and \{\{small\}\} to use different logo-versions for dark/mobile mode (they will be replaced by "_dark" and "_small").
     THEME_COLORS: {{ oerindex_frontend_theme_colors }},  // customize colors of the theme; format: {primary: {main: "#000"}, secondary: {main: "#000"}}
+    THEME_COLORS_DARK: {{ oerindex_frontend_theme_colors_dark }},  // customize colors of the dark theme; format: {primary: {main: "#000"}, secondary: {main: "#000"}}
     /**
      * Accept a list of objects 
      * example:
