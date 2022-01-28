@@ -21,7 +21,7 @@ oerindex_backend_autoupdate_definitions:
     embedUrl: "https://av.tib.eu/player/###1###"
     providerName: "TIB AV-Portal"
     providerUrl: "https://av.tib.eu"
-  - regex: "https://(?:www.youtube.com/watch\\\\?v\\\\=|youtu.be/)([a-zA-Z0-9-_]+)(&.+)?"
+  - regex: "https://(?:www.youtube.com/watch\\\\?v\\\\=|youtu.be/)([a-zA-Z0-9-_]+)(?:&.+)?"
     embedUrl: "https://www.youtube-nocookie.com/embed/###1###"
     providerName: "YouTube"
     providerUrl: "https://youtube.com/"
