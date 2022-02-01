@@ -6,5 +6,6 @@ oerindex_frontend_header_logo_url: "" # if set, use this URL for the logo in the
 oerindex_frontend_theme_colors: "null" # customize colors of the theme; format: {primary: {main: "#000"}, secondary: {main: "#000"}}
 oerindex_frontend_theme_colors_dark: "null" # customize colors of the dark theme; format: {primary: {main: "#000"}, secondary: {main: "#000"}}
 
+oerindex_frontend_features_dark_mode: "false"
 oerindex_frontend_features_embed_oer: "true"
 oerindex_frontend_features_scroll_top_button: "true"
