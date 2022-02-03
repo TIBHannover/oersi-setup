@@ -24,6 +24,7 @@ window['runTimeConfig'] = {
     TRACK_TOTAL_HITS: {{ oerindex_frontend_track_total_hits }}, // track number of total hits from elasticsearch - see https://www.elastic.co/guide/en/elasticsearch/reference/7.10/search-your-data.html#track-total-hits
     FEATURES: {
       DARK_MODE: {{ oerindex_frontend_features_dark_mode }},
+      CHANGE_FONTSIZE: {{ oerindex_frontend_features_change_font_size }},  // experimental/beta - just to show weaknesses in styling
       EMBED_OER: {{ oerindex_frontend_features_embed_oer }}, // feature toggle: use "embed-oer" button
       SCROLL_TOP_BUTTON: {{ oerindex_frontend_features_scroll_top_button }} // feature toggle: use "scroll-to-top" button
     }
