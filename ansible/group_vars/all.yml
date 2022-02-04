@@ -75,7 +75,7 @@ oerindex_etl_configfiles:
 #  - iMoox/iMoox-to-oersi.flux
 #  - iMoox/iMoox_moocHub.fix
 #  - duepublico/duepublico-to-oersi.flux
-#  - duepublico/duepublico-morph.xml
+#  - duepublico/duepublico.fix
 #  - openRub/openRub-to-oersi.flux
 #  - openRub/openRub.fix
 # List all your custom files that should be used for the ETL-process here.
