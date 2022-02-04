@@ -22,6 +22,9 @@ window['runTimeConfig'] = {
     I18N_CACHE_EXPIRATION: {{ oerindex_frontend_i18n_cache_expiration }}, // expiration time of the i18n translation cache storage
     I18N_DEBUG: {{ oerindex_frontend_i18n_debug }},
     TRACK_TOTAL_HITS: {{ oerindex_frontend_track_total_hits }}, // track number of total hits from elasticsearch - see https://www.elastic.co/guide/en/elasticsearch/reference/7.10/search-your-data.html#track-total-hits
+    AGGREGATION_SEARCH_COMPONENTS: {{ oerindex_frontend_aggregation_search_components }}, // filters/components that should update the aggregation on typing in the search field
+    AGGREGATION_SEARCH_DEBOUNCE: {{ oerindex_frontend_aggregation_search_debounce }}, // sets the milliseconds to wait before executing an aggregation search (search inside filters)
+    AGGREGATION_SEARCH_MIN_LENGTH: {{ oerindex_frontend_aggregation_search_min_length }}, // minimum length of search term in aggregation search (search inside filters)
     FEATURES: {
       DARK_MODE: {{ oerindex_frontend_features_dark_mode }},
       CHANGE_FONTSIZE: {{ oerindex_frontend_features_change_font_size }},  // experimental/beta - just to show weaknesses in styling

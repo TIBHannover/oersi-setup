@@ -5,6 +5,9 @@ oerindex_frontend_track_total_hits: "true" # track number of total hits from ela
 oerindex_frontend_header_logo_url: "" # if set, use this URL for the logo in the header and include your custom svg or similar; default is "logo-192.png". You may use placeholders {{dark}} and {{small}} to use different logo-versions for dark/mobile mode (they will be replaced by "_dark" and "_small").
 oerindex_frontend_theme_colors: "null" # customize colors of the theme; format: {primary: {main: "#000"}, secondary: {main: "#000"}}
 oerindex_frontend_theme_colors_dark: "null" # customize colors of the dark theme; format: {primary: {main: "#000"}, secondary: {main: "#000"}}
+oerindex_frontend_aggregation_search_components: '["author"]' # filters/components that should update the aggregation on typing in the filter search field
+oerindex_frontend_aggregation_search_debounce: 150 # sets the milliseconds to wait before executing an aggregation search (search inside filters)
+oerindex_frontend_aggregation_search_min_length: 3 #  minimum length of search term in aggregation search (search inside filters)
 
 oerindex_frontend_features_dark_mode: "true"
 oerindex_frontend_features_change_font_size: "false"
