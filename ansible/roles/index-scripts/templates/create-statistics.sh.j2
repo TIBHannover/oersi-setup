@@ -1,0 +1,57 @@
+#!/bin/bash
+# {{ ansible_managed }}
+#
+# Create statistics for the current state of OER metadata in the index and store the statistics in elasticsearch
+#
+
+ELASTICSEARCH_URL=http://{{ elasticsearch_host }}:{{ elasticsearch_port }}
+OER_INDEX_NAME={{ elasticsearch_oer_index_internal_alias_name }}
+CURRENT_DATE=$(date +"%Y-%m-%d")
+DATA_FIELDS="{{ oerindex_statistics_fields | join(' ') }}"
+
+date +"*** %Y-%m-%d %H:%M:%S create statistics from $OER_INDEX_NAME"
+date +"*** %Y-%m-%d %H:%M:%S determine providers"
+read -r -d '' PROVIDERS_QUERY << EOC
+{
+  "size": 0, 
+  "aggs": {
+    "providers": {
+      "terms": {
+        "field": "mainEntityOfPage.provider.name",
+        "size": 1000
+      }
+    }
+  }
+}
+EOC
+PROVIDERS_RESPONSE=$(curl -s --netrc-file {{ base_dir }}/conf/oer_index_access --header 'Content-Type: application/json' -d "$PROVIDERS_QUERY" -X POST "${ELASTICSEARCH_URL}/${OER_INDEX_NAME}/_search")
+PROVIDERS=$(echo $PROVIDERS_RESPONSE | jq -r '.aggregations.providers.buckets | .[].key')
+
+createStatistics() {
+  STATISTICS="{\"date\":\"${CURRENT_DATE}\"}"
+  if [ -z "$1" ]; then
+    date +"*** %Y-%m-%d %H:%M:%S determine counts"
+    COUNT_TOTAL_QUERY=
+    COUNT_FIELD_BASE_QUERY="?q="
+  else
+    date +"*** %Y-%m-%d %H:%M:%S determine counts for $1"
+    STATISTICS=$(echo $STATISTICS | jq ".provider = \"$1\"")
+    COUNT_TOTAL_QUERY="?q=mainEntityOfPage.provider.name:\"$1\""
+    COUNT_FIELD_BASE_QUERY="?q=mainEntityOfPage.provider.name:\"$1\" AND "
+  fi
+  TOTAL=$(curl -s --netrc-file {{ base_dir }}/conf/oer_index_access -X GET "${ELASTICSEARCH_URL}/${OER_INDEX_NAME}/_count${COUNT_TOTAL_QUERY// /%20}" | jq -r '.count')
+  STATISTICS=$(echo $STATISTICS | jq ".total = $TOTAL")
+  for FIELD in $DATA_FIELDS; do
+    QUERY="${COUNT_FIELD_BASE_QUERY// /%20}_exists_:${FIELD}"
+    COUNT=$(curl -s --netrc-file {{ base_dir }}/conf/oer_index_access -X GET "${ELASTICSEARCH_URL}/${OER_INDEX_NAME}/_count${QUERY}" | jq -r '.count')
+    STATISTICS=$(echo $STATISTICS | jq ".${FIELD} = $COUNT")
+  done
+
+  date +"*** %Y-%m-%d %H:%M:%S persist statistics"
+  curl -s --netrc-file {{ base_dir }}/conf/oer_index_access --header 'Content-Type: application/json' -d "$STATISTICS" -X POST "${ELASTICSEARCH_URL}/{{ elasticsearch_oer_index_name_prefix }}statistics/_doc"
+}
+
+createStatistics
+while IFS= read -r PROVIDER; do
+  createStatistics "$PROVIDER"
+done <<< "$PROVIDERS"

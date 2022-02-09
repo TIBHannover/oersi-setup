@@ -20,49 +20,27 @@
     group: "{{ oersi_user }}"  # workaround for update of old configuration before 04/2021
     mode: 0400
 
-- name: Add recreate-index.sh.j2
-  template:
-    src: "recreate-index.sh.j2"
-    dest: "{{ base_dir }}/bin/recreate-index.sh"
-    mode: 0700
-
 - name: Add oer_backend_access
   template:
     src: "oer_backend_access.j2"
     dest: "{{ base_dir }}/conf/oer_backend_access"
     mode: 0400
 
-- name: Add reload-search_analyzer.sh.j2
+- name: Add scripts
   template:
-    src: "reload-search_analyzer.sh.j2"
-    dest: "{{ base_dir }}/bin/reload-search_analyzer.sh"
+    src: "{{ item }}"
+    dest: "{{ base_dir }}/bin/{{ item | regex_replace('.j2$', '') }}"
     mode: 0700
-
-- name: Add reset-sql-oerdata.sh.j2
-  template:
-    src: "reset-sql-oerdata.sh.j2"
-    dest: "{{ base_dir }}/bin/reset-sql-oerdata.sh"
-    mode: 0700
-
-- name: Add create-new-index-and-rebuild.sh.j2
-  template:
-    src: "create-new-index-and-rebuild.sh.j2"
-    dest: "{{ base_dir }}/bin/create-new-index-and-rebuild.sh"
-    mode: 0700
-
-- name: Add update-index-alias.sh.j2
-  template:
-    src: "update-index-alias.sh.j2"
-    dest: "{{ base_dir }}/bin/update-index-alias.sh"
-    mode: 0700
+  loop:
+    - create-new-index-and-rebuild.sh.j2
+    - create-statistics.sh.j2
+    - recreate-index.sh.j2
+    - reload-search_analyzer.sh.j2
+    - reset-sql-oerdata.sh.j2
+    - show-versions.sh.j2
+    - update-index-alias.sh.j2
 
 - include: delete-outdated-data.yml
-
-- name: Add show-versions.sh
-  template:
-    src: "show-versions.sh.j2"
-    dest: "{{ base_dir }}/bin/show-versions.sh"
-    mode: 0755
 
 - include: sitemap.yml
 - include: monitoring.yml

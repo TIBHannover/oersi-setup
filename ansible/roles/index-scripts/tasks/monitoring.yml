@@ -15,3 +15,12 @@
     minute: "{{ oerindex_monitoring_schedule_minute }}"
     job: "{{ base_dir }}/bin/send-monitoring-report.sh"
     state: "{{ 'present' if oerindex_monitoring else 'absent' }}"
+
+- name: Configure cron schedule - Create metadata statistics
+  cron:
+    name: "Create metadata statistics"
+    weekday: "{{ oerindex_statistics_schedule_weekday }}"
+    hour: "{{ oerindex_statistics_schedule_hour }}"
+    minute: "{{ oerindex_statistics_schedule_minute }}"
+    job: "{{ base_dir }}/bin/create-statistics.sh"
+    state: "{{ 'present' if oerindex_statistics else 'absent' }}"
