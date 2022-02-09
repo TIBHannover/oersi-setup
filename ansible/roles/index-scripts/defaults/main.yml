@@ -17,3 +17,16 @@ oerindex_monitoring_from_address:   # required, mail sender address for the impo
 oerindex_monitoring_import_failure_bound: 0  # send import report when number of failures (conspicuities in the data) is greater than or equal to this bound
 oerindex_monitoring_schedule_hour: "5"
 oerindex_monitoring_schedule_minute: "0"
+
+oerindex_statistics: true # activate creation of metadata statistics
+oerindex_statistics_fields: # fields for metadata statistics
+  - about
+  - creator
+  - inLanguage
+  - learningResourceType
+  - license
+  - sourceOrganization
+  - institutions
+oerindex_statistics_schedule_weekday: "Mon"
+oerindex_statistics_schedule_hour: "6"
+oerindex_statistics_schedule_minute: "30"
