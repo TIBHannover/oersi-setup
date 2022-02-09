@@ -154,6 +154,25 @@
             }
           }
         },
+        "publisher" : {
+          "properties" : {
+            "id" : {
+              "type" : "keyword",
+              "index": false
+            },
+            "type" : {
+              "type" : "keyword"
+            },
+            "name" : {
+              "type" : "text",
+              "fields" : {
+                "keyword" : {
+                  "type" : "keyword"
+                }
+              }
+            }
+          }
+        },
         "sourceOrganization" : {
           "properties" : {
             "id" : {
