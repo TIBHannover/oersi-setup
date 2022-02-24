@@ -22,7 +22,10 @@ oerindex_statistics: true # activate creation of metadata statistics
 oerindex_statistics_fields: # fields for metadata statistics
   - about
   - creator
+  - description
+  - image
   - inLanguage
+  - keywords
   - learningResourceType
   - license
   - sourceOrganization
