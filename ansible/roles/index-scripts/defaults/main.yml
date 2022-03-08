@@ -23,6 +23,8 @@ oerindex_statistics_fields: # fields for metadata statistics
   - about
   - creator
   - description
+  - encoding.contentUrl
+  - encoding.embedUrl
   - image
   - inLanguage
   - keywords
