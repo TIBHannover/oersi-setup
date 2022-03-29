@@ -23,4 +23,5 @@ def format_labels(url):
 
 #format_labels('https://raw.githubusercontent.com/dini-ag-kim/hochschulfaechersystematik/master/hochschulfaechersystematik.ttl')
 #format_labels('https://raw.githubusercontent.com/acka47/lrmi-audience-role/master/educationalAudienceRole.ttl')
-format_labels('https://raw.githubusercontent.com/dini-ag-kim/hcrt/master/hcrt.ttl')
+#format_labels('https://raw.githubusercontent.com/dini-ag-kim/hcrt/master/hcrt.ttl')
+format_labels('https://raw.githubusercontent.com/dini-ag-kim/value-lists/main/conditionsOfAccess.ttl')

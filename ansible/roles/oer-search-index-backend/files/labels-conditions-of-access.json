@@ -1,0 +1,10 @@
+{
+  "https://w3id.org/kim/conditionsOfAccess/login": {
+    "de": "Anmeldung erforderlich",
+    "en": "login required"
+  },
+  "https://w3id.org/kim/conditionsOfAccess/no_login": {
+    "de": "keine Anmeldung erforderlich",
+    "en": "no login required"
+  }
+}
