@@ -1,6 +1,7 @@
 ---
 oerindex_backend_loglevel: INFO
 oerindex_backend_label_files:
+  - labels-conditions-of-access.json
   - labels-educational-audience.json
   - labels-hcrt.json
   - labels-hochschulfaechersystematik.json
