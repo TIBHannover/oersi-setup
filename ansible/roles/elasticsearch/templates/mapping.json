@@ -52,6 +52,59 @@
             }
           }
         },
+        "conditionsOfAccess": {
+          "properties" : {
+            "type": {
+              "type": "keyword"
+            },
+            "id" : {
+              "type" : "keyword"
+            },
+            "prefLabel" : {
+              "dynamic" : "true",
+              "properties" : {}
+            }
+          }
+        },
+        "contributor" : {
+          "properties" : {
+            "id" : {
+              "type" : "keyword"
+            },
+            "name" : {
+              "type" : "text",
+              "fields" : {
+                "keyword" : {
+                  "type" : "keyword"
+                }
+              }
+            },
+            "type" : {
+              "type" : "keyword"
+            },
+            "honorificPrefix": {
+              "type": "text"
+            },
+            "affiliation": {
+              "properties": {
+                "id": {
+                  "type": "keyword"
+                },
+                "type": {
+                  "type": "keyword"
+                },
+                "name": {
+                  "type" : "text",
+                  "fields" : {
+                    "keyword" : {
+                      "type" : "keyword"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
         "creator" : {
           "properties" : {
             "id" : {
@@ -67,6 +120,27 @@
             },
             "type" : {
               "type" : "keyword"
+            },
+            "honorificPrefix": {
+              "type": "text"
+            },
+            "affiliation": {
+              "properties": {
+                "id": {
+                  "type": "keyword"
+                },
+                "type": {
+                  "type": "keyword"
+                },
+                "name": {
+                  "type" : "text",
+                  "fields" : {
+                    "keyword" : {
+                      "type" : "keyword"
+                    }
+                  }
+                }
+              }
             }
           }
         },
@@ -95,6 +169,9 @@
         },
         "inLanguage" : {
           "type" : "keyword"
+        },
+        "isAccessibleForFree": {
+          "type": "boolean"
         },
         "learningResourceType" : {
           "properties" : {
