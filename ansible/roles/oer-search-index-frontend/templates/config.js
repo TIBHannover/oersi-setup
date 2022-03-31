@@ -1,9 +1,6 @@
 window['runTimeConfig'] = {
-  ELASTIC_SEARCH: {
-    URL: "{{ oerindex_backend_searchapi_url }}",
-    CREDENTIALS: "",
-    APP_NAME: "{{ elasticsearch_oer_index_internal_alias_name }}"
-  },
+  BACKEND_API_URL: "{{ oerindex_public_base_url }}{{ oerindex_public_base_path }}/api-internal",
+  ELASTIC_SEARCH_INDEX_NAME: "{{ elasticsearch_oer_index_internal_alias_name }}",
   GENERAL_CONFIGURATION: {
     AVAILABLE_LANGUAGES: {{ oerindex_frontend_available_languages }},
     PUBLIC_URL: "{{ oerindex_public_base_url }}{{ oerindex_public_base_path }}",
