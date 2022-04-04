@@ -19,7 +19,7 @@
   },
   "https://w3id.org/kim/hcrt/audio": {
     "da": "Lydoptagelse",
-    "de": "Tonaufnahme",
+    "de": "Audio",
     "en": "Audio Recording",
     "es": "Grabación de Sonido",
     "fi": "äänen tallennus",
@@ -160,6 +160,15 @@
     "fi": "Käsikirjoitus",
     "fr": "Script",
     "nl": "Script"
+  },
+  "https://w3id.org/kim/hcrt/sheet_music": {
+    "da": "Noter",
+    "de": "Musiknoten",
+    "en": "Sheet Music",
+    "es": "Partituras de música",
+    "fi": "Nuotit",
+    "fr": "Partitions de musique",
+    "nl": "Bladmuziek"
   },
   "https://w3id.org/kim/hcrt/simulation": {
     "da": "Simulering",
