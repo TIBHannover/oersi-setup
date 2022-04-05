@@ -1,4 +1,4 @@
-bakterier, bakterien, bacteria, bactérie, bacteriën
-faststoffysik, festkörperphysik, solid-state physics, física del estado sólido, physique du solide, vastestoffysica
-klimaændring, klimawandel, climate change, cambio climático, changement climatique, klimaatverandering
-luftfart, luftfahrt, aviation, aviación, luchtvaart
+bakterier, bakterien, bacteria, bakteerit, bactérie, bacteriën, бактерії
+faststoffysik, festkörperphysik, solid-state physics, física del estado sólido, kiinteän olomuodon fysiikka, physique du solide, vastestoffysica, фізика твердого тіла
+klimaændring, klimawandel, climate change, cambio climático, ilmastonmuutos, changement climatique, klimaatverandering, зміна клімату
+luftfart, luftfahrt, aviation, aviación, ilmailu, luchtvaart, авіація
