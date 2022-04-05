@@ -20,6 +20,10 @@ Before creating a new issue, start by searching through the issues and open merg
 
 We are interested in more sources that contain OERs in the higher education context and welcome any suggestions. Please use the following template: https://gitlab.com/oersi/oersi-etl/-/issues/new?issuable_template=add-source
 
+### Adding translation
+
+We are happy to accept new languages for the OERSI frontend and labels in the data. Please use the following template: https://gitlab.com/oersi/oersi-frontend/-/issues/new?issuable_template=add-translation and see also [Add new language](doc/INTERNATIONALIZATION.md#add-new-language)
+
 ### Bug Report
 
 Bug reports include anything that causes the application to behave in an unintended way. Please describe the error as detailed as possible (where did the error occur, what happened, what are the consequences) and tell us what is your expected behavior in the case. Please also describe how the error can be reproduced.

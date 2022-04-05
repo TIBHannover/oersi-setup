@@ -1,5 +1,41 @@
 # Internationalization
 
+## Add new language
+
+For adding a new language to the OERSI, we need to extend the frontend-labels, the vocabularies and the multilingual search. Please create a new Issue in [oersi-frontend](https://gitlab.com/oersi/oersi-frontend/-/issues/new?issuable_template=add-translation) for this with title `Add translation into <YOUR-LANGUAGE>`
+
+### Frontend-Labels
+
+* Create a new folder for the [ISO-639-1 code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) of the new language under https://gitlab.com/oersi/oersi-frontend/-/tree/master/public/locales
+* Create a `translation.json` inside of the new folder and translate all the labels in this file (except `HEADER` and `META` labels). Template for this may be [public/locales/en/translation.json](https://gitlab.com/oersi/oersi-frontend/-/blob/master/public/locales/en/translation.json)
+
+**OERSI-internal**:
+* Create a `language.json` inside of the new folder. Can be created via [get-language-labels.py](../tools/scripts/get-language-labels.py) (uses Wikidata).
+* In all existing `translation.json`: add `HEADER.CHANGE_LANGUAGE`-entry for the new language. Please use the new language as label for all existing files.
+
+### Vocabularies
+
+The `ttl`-files of all vocabularies used by OERSI needs to be extended: there needs to be an additional entry in the `skos:prefLabel` for the new language for _every_ `skos:Concept`-entry.
+
+Example:
+```
+skos:prefLabel "Softwareanwendung"@de, "Software Application"@en, "TRANSLATE ME"@<YOUR-NEW-ISO639-1-CODE> .
+```
+
+Vocabularies:
+* https://raw.githubusercontent.com/acka47/lrmi-audience-role/master/educationalAudienceRole.ttl
+* https://raw.githubusercontent.com/dini-ag-kim/hcrt/master/hcrt.ttl
+* https://raw.githubusercontent.com/dini-ag-kim/hochschulfaechersystematik/master/hochschulfaechersystematik.ttl
+* https://raw.githubusercontent.com/dini-ag-kim/value-lists/main/conditionsOfAccess.ttl
+
+**external contributers:** Please attach these files to your Merge-Request/issue.
+
+**OERSI-internal**: Please create a PullRequest directly in the corresponding github-repositories.
+
+### Synonyms for Multilingual Search
+
+**OERSI-internal**: we need to add the new language to the Synonyms-process (example-file and/or automatic-process)
+
 ## Multilingual Search
 
 ---
