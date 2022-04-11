@@ -6,7 +6,8 @@
     "es": "Aplicación Informática",
     "fi": "Sovellusohjelma",
     "fr": "Application",
-    "nl": "Applicatie"
+    "nl": "Applicatie",
+    "uk": "Програмне забезпечення"
   },
   "https://w3id.org/kim/hcrt/assessment": {
     "da": "Evaluering",
@@ -15,7 +16,8 @@
     "es": "Evaluación",
     "fi": "Oppimistarkastus",
     "fr": "Évaluation",
-    "nl": "Evaluatie"
+    "nl": "Evaluatie",
+    "uk": "Оцінювання"
   },
   "https://w3id.org/kim/hcrt/audio": {
     "da": "Lydoptagelse",
@@ -24,7 +26,8 @@
     "es": "Grabación de Sonido",
     "fi": "äänen tallennus",
     "fr": "Enregistrement Sonore",
-    "nl": "Geluidsregistratie"
+    "nl": "Geluidsregistratie",
+    "uk": "Аудіозапис"
   },
   "https://w3id.org/kim/hcrt/case_study": {
     "da": "Casestudie",
@@ -33,7 +36,8 @@
     "es": "Estudio de Caso",
     "fi": "Tapaustutkimus",
     "fr": "Étude de Cas",
-    "nl": "Case Study"
+    "nl": "Case Study",
+    "uk": "Приклад"
   },
   "https://w3id.org/kim/hcrt/course": {
     "da": "Kursus",
@@ -42,7 +46,8 @@
     "es": "Curso",
     "fi": "Kurssi",
     "fr": "Cours",
-    "nl": "Cursus"
+    "nl": "Cursus",
+    "uk": "Курс"
   },
   "https://w3id.org/kim/hcrt/data": {
     "da": "Data",
@@ -51,7 +56,8 @@
     "es": "Dato",
     "fi": "datasetti",
     "fr": "Donnée",
-    "nl": "Gegeven"
+    "nl": "Gegeven",
+    "uk": "Дані"
   },
   "https://w3id.org/kim/hcrt/diagram": {
     "da": "Diagram",
@@ -60,7 +66,8 @@
     "es": "Diagrama",
     "fi": "Kaavio",
     "fr": "Diagramme",
-    "nl": "Diagram"
+    "nl": "Diagram",
+    "uk": "Діаграма"
   },
   "https://w3id.org/kim/hcrt/drill_and_practice": {
     "da": "Øvelse",
@@ -69,7 +76,8 @@
     "es": "Práctica",
     "fi": "Harjoitus",
     "fr": "Apprentissage par Répétition",
-    "nl": "Oefenen"
+    "nl": "Oefenen",
+    "uk": "Практика"
   },
   "https://w3id.org/kim/hcrt/educational_game": {
     "da": "Pædagogisk Spil",
@@ -78,7 +86,8 @@
     "es": "Juego Educativo",
     "fi": "Opettavainen peli",
     "fr": "Jeu Éducatif",
-    "nl": "Educatief Spel"
+    "nl": "Educatief Spel",
+    "uk": "Навчальна гра"
   },
   "https://w3id.org/kim/hcrt/experiment": {
     "da": "Eksperiment",
@@ -87,7 +96,8 @@
     "es": "Experimento",
     "fi": "Koe",
     "fr": "Expérimentation",
-    "nl": "Experiment"
+    "nl": "Experiment",
+    "uk": "Експеримент"
   },
   "https://w3id.org/kim/hcrt/image": {
     "da": "Billede",
@@ -96,7 +106,8 @@
     "es": "Imagen",
     "fi": "Kuva",
     "fr": "Image",
-    "nl": "Afbeelding"
+    "nl": "Afbeelding",
+    "uk": "Ілюстрація"
   },
   "https://w3id.org/kim/hcrt/index": {
     "da": "Opslagsværk",
@@ -105,7 +116,8 @@
     "es": "Obra de Referencia",
     "fi": "Hakuteos",
     "fr": "Ouvrage de Référence",
-    "nl": "Naslagwerk"
+    "nl": "Naslagwerk",
+    "uk": "Довідник"
   },
   "https://w3id.org/kim/hcrt/lesson_plan": {
     "da": "Lektionsplan",
@@ -114,7 +126,8 @@
     "es": "Unidad Didáctica",
     "fi": "Oppituntien suunnittelu",
     "fr": "Préparation des Cours",
-    "nl": "Lesplan"
+    "nl": "Lesplan",
+    "uk": "План уроку"
   },
   "https://w3id.org/kim/hcrt/map": {
     "da": "Kort",
@@ -123,7 +136,8 @@
     "es": "Mapa",
     "fi": "Kartta",
     "fr": "Carte Géographique",
-    "nl": "Kaart"
+    "nl": "Kaart",
+    "uk": "Мапа"
   },
   "https://w3id.org/kim/hcrt/other": {
     "da": "Andre",
@@ -132,7 +146,8 @@
     "es": "Diverso",
     "fi": "Muut",
     "fr": "Divers",
-    "nl": "Andere"
+    "nl": "Andere",
+    "uk": "Різне"
   },
   "https://w3id.org/kim/hcrt/portal": {
     "da": "Webportal",
@@ -141,7 +156,8 @@
     "es": "Portal de Internet",
     "fi": "Portaali",
     "fr": "Portail Web",
-    "nl": "Internetportaal"
+    "nl": "Internetportaal",
+    "uk": "Портал"
   },
   "https://w3id.org/kim/hcrt/questionnaire": {
     "da": "Spørgeskema",
@@ -150,7 +166,8 @@
     "es": "Cuestionario",
     "fi": "Kyselytutkimus",
     "fr": "Questionnaire",
-    "nl": "Vragenlijst"
+    "nl": "Vragenlijst",
+    "uk": "Анкета"
   },
   "https://w3id.org/kim/hcrt/script": {
     "da": "Script",
@@ -159,7 +176,8 @@
     "es": "Script",
     "fi": "Käsikirjoitus",
     "fr": "Script",
-    "nl": "Script"
+    "nl": "Script",
+    "uk": "Запис"
   },
   "https://w3id.org/kim/hcrt/sheet_music": {
     "da": "Noter",
@@ -168,7 +186,8 @@
     "es": "Partituras de música",
     "fi": "Nuotit",
     "fr": "Partitions de musique",
-    "nl": "Bladmuziek"
+    "nl": "Bladmuziek",
+    "uk": "Ноти"
   },
   "https://w3id.org/kim/hcrt/simulation": {
     "da": "Simulering",
@@ -177,7 +196,8 @@
     "es": "Simulación",
     "fi": "Simulaatio",
     "fr": "Simulation de Phénomènes",
-    "nl": "Simulatie"
+    "nl": "Simulatie",
+    "uk": "Симуляція"
   },
   "https://w3id.org/kim/hcrt/slide": {
     "da": "Præsentation",
@@ -186,7 +206,8 @@
     "es": "Presentación",
     "fi": "Esitys",
     "fr": "Présentation",
-    "nl": "Presentatie"
+    "nl": "Presentatie",
+    "uk": "Презентація"
   },
   "https://w3id.org/kim/hcrt/text": {
     "da": "Tekst",
@@ -195,7 +216,8 @@
     "es": "Texto",
     "fi": "Teksti",
     "fr": "Texte",
-    "nl": "Tekst"
+    "nl": "Tekst",
+    "uk": "Текстовий документ"
   },
   "https://w3id.org/kim/hcrt/textbook": {
     "da": "Lærebog",
@@ -204,7 +226,8 @@
     "es": "Libro de Texto",
     "fi": "Oppikirja",
     "fr": "Manuel Scolaire",
-    "nl": "Studieboek"
+    "nl": "Studieboek",
+    "uk": "Підручник"
   },
   "https://w3id.org/kim/hcrt/video": {
     "da": "Video",
@@ -213,7 +236,8 @@
     "es": "Video",
     "fi": "Video",
     "fr": "Vidéo",
-    "nl": "Video"
+    "nl": "Video",
+    "uk": "Відео"
   },
   "https://w3id.org/kim/hcrt/web_page": {
     "da": "Hjemmeside",
@@ -222,7 +246,8 @@
     "es": "Página Web",
     "fi": "Verkkosivu",
     "fr": "Page Web",
-    "nl": "Webpagina"
+    "nl": "Webpagina",
+    "uk": "Веб-сайт"
   },
   "https://w3id.org/kim/hcrt/worksheet": {
     "da": "Arbejdsark",
@@ -231,6 +256,7 @@
     "es": "Hoja de Trabajo",
     "fi": "Työarkki",
     "fr": "Feuille de Travail",
-    "nl": "Werkblad"
+    "nl": "Werkblad",
+    "uk": "Робочий матеріал"
   }
 }
