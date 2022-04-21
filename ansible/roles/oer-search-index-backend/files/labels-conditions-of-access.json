@@ -1,10 +1,12 @@
 {
   "https://w3id.org/kim/conditionsOfAccess/login": {
     "de": "Anmeldung erforderlich",
-    "en": "login required"
+    "en": "login required",
+    "uk": "для авторизації вкажіть логін"
   },
   "https://w3id.org/kim/conditionsOfAccess/no_login": {
     "de": "keine Anmeldung erforderlich",
-    "en": "no login required"
+    "en": "no login required",
+    "uk": "вхід без авторизації"
   }
 }

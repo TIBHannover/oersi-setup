@@ -6,7 +6,8 @@
     "es": "administrador",
     "fi": "Järjestelmänvalvoja",
     "fr": "administrateur",
-    "nl": "administrator"
+    "nl": "administrator",
+    "uk": "адміністратор"
   },
   "http://purl.org/dcx/lrmi-vocabs/educationalAudienceRole/generalPublic": {
     "da": "Offentlighed",
@@ -15,7 +16,8 @@
     "es": "público",
     "fi": "Kansalainen",
     "fr": "public",
-    "nl": "publiek"
+    "nl": "publiek",
+    "uk": "громадськість"
   },
   "http://purl.org/dcx/lrmi-vocabs/educationalAudienceRole/mentor": {
     "da": "Mentor",
@@ -24,7 +26,8 @@
     "es": "Mentor",
     "fi": "mentori",
     "fr": "Mentor",
-    "nl": "Mentor"
+    "nl": "Mentor",
+    "uk": "наставник"
   },
   "http://purl.org/dcx/lrmi-vocabs/educationalAudienceRole/parent": {
     "da": "forælder",
@@ -33,7 +36,8 @@
     "es": "progenitor",
     "fi": "Vanhemmat",
     "fr": "parent",
-    "nl": "ouder"
+    "nl": "ouder",
+    "uk": "батьки"
   },
   "http://purl.org/dcx/lrmi-vocabs/educationalAudienceRole/peerTutor": {
     "da": "peer tutor",
@@ -42,7 +46,8 @@
     "es": "tutor de pares",
     "fi": "Vertaistutor",
     "fr": "tuteur de pairs",
-    "nl": "peer tutor"
+    "nl": "peer tutor",
+    "uk": "Учень у ролі наставника"
   },
   "http://purl.org/dcx/lrmi-vocabs/educationalAudienceRole/professional": {
     "da": "professionel",
@@ -51,7 +56,8 @@
     "es": "profesional",
     "fi": "ammattilainen",
     "fr": "professionnel",
-    "nl": "professional"
+    "nl": "professional",
+    "uk": "фахівець"
   },
   "http://purl.org/dcx/lrmi-vocabs/educationalAudienceRole/student": {
     "da": "student/elev",
@@ -60,7 +66,8 @@
     "es": "estudiante",
     "fi": "Oppija",
     "fr": "étudiant",
-    "nl": "student"
+    "nl": "student",
+    "uk": "студент"
   },
   "http://purl.org/dcx/lrmi-vocabs/educationalAudienceRole/teacher": {
     "da": "lærer",
@@ -69,6 +76,7 @@
     "es": "profesor",
     "fi": "Opettaja",
     "fr": "enseignant",
-    "nl": "onderwijzer"
+    "nl": "onderwijzer",
+    "uk": "вчитель"
   }
 }
