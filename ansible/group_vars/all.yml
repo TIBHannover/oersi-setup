@@ -87,11 +87,16 @@ oerindex_import_scripts_enabled_sources_py:  # list of enabled python imports (w
 #  - Aoe
 #  - Hoou
 
+internationalization_tool_install: false # install and configre the TOERN internationalization tool for periodical translations of OERSI-keywords via wikidata
+internationalization_tool_artifact_url: "https://gitlab.com/oersi/internationalization-tool/-/jobs/artifacts/master/download?job=deploy"
+internationalization_tool_dir: "{{ base_dir }}/internationalization-tool"
+
 elasticsearch_host: localhost
 elasticsearch_port: 9200
 elasticsearch_heap_size_min: 2g
 elasticsearch_heap_size_max: 2g
 elasticsearch_home: "/usr/share/elasticsearch"
+elasticsearch_conf_dir: /etc/elasticsearch
 elasticsearch_elastic_username: elastic
 elasticsearch_elastic_password: changeme
 elasticsearch_bootstrap_password: bootstrap

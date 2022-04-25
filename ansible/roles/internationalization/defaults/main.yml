@@ -1,0 +1,32 @@
+---
+internationalization_tool_loglevel: INFO
+
+internationalization_tool_logdir: "{{ base_dir }}/log/internationalization" # directory where to place log-files
+
+internationalization_tool_client_name: "OERSI-Internationalization-{{ oerindex_host }}-Bot"
+internationalization_tool_client_version: "0.1"
+internationalization_tool_client_contact_information: "{{ oerindex_public_base_url }}{{ oerindex_public_base_path }}/services/contact"
+
+internationalization_tool_cache_expiration_time_in_ms: 5184000000 # 60 days in ms - 1000ms * 60s * 60m * 24h * 60d
+internationalization_tool_search_term_preparation_multiple_term_separator_default: "[,]"
+internationalization_tool_search_term_preparation_alternative_term_separator_default: "[/]"
+internationalization_tool_wikidata_exclusions_default:  # exclude specific wikidata types from the search result
+  - "Q5633421"  # no scientific journal
+  - "Q13442814"  # no scholarly article
+  - "Q101352"  # no family name
+  - "Q875538"  # no public university
+  - "Q618779"  # no award
+internationalization_tool_oersi_keyword_substitutions:
+  - regex: "\""
+    value: ""
+  - regex: "#"
+    value: ""
+  - regex: ",$"
+    value: ""
+internationalization_tool_oersi_keyword_skip_values: ["", "-", "@"]  # ignore keywords with this values
+internationalization_tool_oersi_output_languages: ["da", "de", "en", "es", "fr", "nl", "uk"]
+
+internationalization_tool_oersi_keyword_translation_schedule_hour: "20"
+internationalization_tool_oersi_keyword_translation_schedule_minute: "0"
+internationalization_tool_oersi_synonym_creation_schedule_hour: "5"
+internationalization_tool_oersi_synonym_creation_translation_schedule_minute: "0"

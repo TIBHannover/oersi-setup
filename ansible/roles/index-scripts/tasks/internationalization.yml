@@ -1,0 +1,7 @@
+---
+- name: Add create-synonyms-file.sh.j2
+  become: yes
+  template:
+    src: "create-synonyms-file.sh.j2"
+    dest: "{{ base_dir }}/bin/create-synonyms-file.sh"
+    mode: 0544
