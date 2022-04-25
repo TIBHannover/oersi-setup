@@ -1,0 +1,11 @@
+#!/bin/bash
+# {{ ansible_managed }}
+#
+# Create a new synonyms file for elasticsearch based on the translated OERSI keywords
+#
+
+date +"*** %Y-%m-%d %H:%M:%S Creating synonyms file"
+cd {{ internationalization_tool_dir }} && python3 -m internationalization.oersi.KeywordSynonymGenerator {{ elasticsearch_conf_dir }}/synonym.txt
+chmod +r {{ elasticsearch_conf_dir }}/synonym.txt
+{{ base_dir }}/bin/reload-search_analyzer.sh
+date +"*** %Y-%m-%d %H:%M:%S done"
