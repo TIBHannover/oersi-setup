@@ -34,6 +34,7 @@
   loop:
     - create-new-index-and-rebuild.sh.j2
     - create-statistics.sh.j2
+    - create-synonyms-file.sh.j2
     - recreate-index.sh.j2
     - reload-search_analyzer.sh.j2
     - reset-sql-oerdata.sh.j2
@@ -43,7 +44,6 @@
 - include: delete-outdated-data.yml
 
 - include: sitemap.yml
-- include: internationalization.yml
 - include: monitoring.yml
 
 - name: Install sudo
