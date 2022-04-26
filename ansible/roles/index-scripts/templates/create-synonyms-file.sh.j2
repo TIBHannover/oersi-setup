@@ -5,7 +5,7 @@
 #
 
 date +"*** %Y-%m-%d %H:%M:%S Creating synonyms file"
-cd {{ internationalization_tool_dir }} && python3 -m internationalization.oersi.KeywordSynonymGenerator {{ elasticsearch_conf_dir }}/synonym.txt
-chmod +r {{ elasticsearch_conf_dir }}/synonym.txt
+cd {{ internationalization_tool_dir }} && python3 -m internationalization.oersi.KeywordSynonymGenerator {{ base_dir }}/conf/synonym.txt
+chmod +r {{ base_dir }}/conf/synonym.txt
 {{ base_dir }}/bin/reload-search_analyzer.sh
 date +"*** %Y-%m-%d %H:%M:%S done"
