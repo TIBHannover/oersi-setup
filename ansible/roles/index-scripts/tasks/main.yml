@@ -45,17 +45,3 @@
 
 - include: sitemap.yml
 - include: monitoring.yml
-
-- name: Install sudo
-  become: yes
-  package:
-    name: sudo
-    state: present
-
-- name: Create oersi sudoers
-  become: yes
-  template:
-    src: "sudoers-oersi.j2"
-    dest: "/etc/sudoers.d/oersi"
-    mode: 0440
-    validate: '/usr/sbin/visudo -cf %s'
