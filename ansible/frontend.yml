@@ -1,10 +1,6 @@
 ---
 # Playbook: Installation of oersi-frontend module
-- hosts: all
+- hosts: oerindex
   roles:
     - init-facts
-
-- hosts: oerindex
-  become: yes
-  roles:
     - oer-search-index-frontend

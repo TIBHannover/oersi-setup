@@ -16,4 +16,4 @@ do
   cd {{ oerindex_etl_downloaddir }} && ./build/install/oersi-etl/bin/oersi-etl $PROCESS_ARG {{ oerindex_etl_configdir }}/oersi.properties
 done
 
-sudo {{ base_dir }}/bin/create-sitemap.sh
+{{ base_dir }}/bin/create-sitemap.sh
