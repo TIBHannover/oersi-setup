@@ -16,6 +16,7 @@ internationalization_tool_wikidata_exclusions_default:  # exclude specific wikid
   - "Q101352"  # no family name
   - "Q875538"  # no public university
   - "Q618779"  # no award
+  - "Q29654788" # no Unicode character
 internationalization_tool_oersi_keyword_substitutions:
   - regex: "\""
     value: ""
