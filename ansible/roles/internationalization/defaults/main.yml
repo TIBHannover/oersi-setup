@@ -27,7 +27,7 @@ internationalization_tool_oersi_keyword_substitutions:
 internationalization_tool_oersi_keyword_skip_values: ["", "-", "@"]  # ignore keywords with this values
 internationalization_tool_oersi_output_languages: ["da", "de", "en", "es", "fr", "nl", "uk"]
 
-internationalization_tool_oersi_keyword_translation_schedule_hour: "20"
+internationalization_tool_oersi_keyword_translation_schedule_hour: "5"
 internationalization_tool_oersi_keyword_translation_schedule_minute: "0"
-internationalization_tool_oersi_synonym_creation_schedule_hour: "5"
+internationalization_tool_oersi_synonym_creation_schedule_hour: "7"
 internationalization_tool_oersi_synonym_creation_translation_schedule_minute: "0"
