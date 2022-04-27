@@ -17,6 +17,8 @@ internationalization_tool_wikidata_exclusions_default:  # exclude specific wikid
   - "Q875538"  # no public university
   - "Q618779"  # no award
   - "Q29654788" # no Unicode character
+  - "Q482994" # no album
+  - "Q11424" # no film
 internationalization_tool_oersi_keyword_substitutions:
   - regex: '\\'
     value: ""
