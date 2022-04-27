@@ -18,15 +18,15 @@ internationalization_tool_wikidata_exclusions_default:  # exclude specific wikid
   - "Q618779"  # no award
   - "Q29654788" # no Unicode character
 internationalization_tool_oersi_keyword_substitutions:
-  - regex: "\\\\"
+  - regex: '\\'
     value: ""
-  - regex: "\""
+  - regex: '"'
     value: ""
-  - regex: "#"
+  - regex: '#'
     value: ""
-  - regex: ",$"
+  - regex: ',$'
     value: ""
-  - regex: "[[].*[]]$"
+  - regex: '[[].*[]]$'
     value: ""
 internationalization_tool_oersi_keyword_skip_values: ["", "-", "@"]  # ignore keywords with this values
 internationalization_tool_oersi_output_languages: ["da", "de", "en", "es", "fr", "nl", "uk"]

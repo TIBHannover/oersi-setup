@@ -23,7 +23,7 @@ OERSI:
   search-api-url: "{{ oerindex_backend_searchapi_url }}/{{ elasticsearch_oer_index_alias_name }}/_search"
   keyword-substitutions:
 {% for subst in internationalization_tool_oersi_keyword_substitutions %}
-    - regex: {{ subst.regex | to_yaml | trim }}
+    - regex: '{{ subst.regex | trim }}'
       value: {{ subst.value | to_yaml | trim }}
 {% endfor %}
   keyword-skip-values: {{ internationalization_tool_oersi_keyword_skip_values | to_yaml | trim }}
