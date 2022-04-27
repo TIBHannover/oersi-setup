@@ -20,9 +20,7 @@ internationalization_tool_wikidata_exclusions_default:  # exclude specific wikid
 internationalization_tool_oersi_keyword_substitutions:
   - regex: '\\'
     value: ""
-  - regex: '"'
-    value: ""
-  - regex: '#'
+  - regex: '[“#"]'
     value: ""
   - regex: ',$'
     value: ""
