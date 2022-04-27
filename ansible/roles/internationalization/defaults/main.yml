@@ -24,9 +24,11 @@ internationalization_tool_oersi_keyword_substitutions:
     value: ""
   - regex: '[“#"„]'
     value: ""
+  - regex: '^[§]+$'
+    value: ""
   - regex: ',$'
     value: ""
-  - regex: '[[].*[]]$'
+  - regex: '\[.*\]$'
     value: ""
 internationalization_tool_oersi_keyword_skip_values: ["", "-", "@"]  # ignore keywords with this values
 internationalization_tool_oersi_output_languages: ["da", "de", "en", "es", "fr", "nl", "uk"]
