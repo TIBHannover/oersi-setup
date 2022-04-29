@@ -1,0 +1,8 @@
+#!/bin/bash
+# {{ ansible_managed }}
+#
+# Create a report of the internationalization-process and send to stdout.
+#
+
+egrep 'INFO - DURATION:|- ERROR -' {{ internationalization_tool_logdir }}/internationalization.log > {{ internationalization_tool_logdir }}/internationalization-report.txt
+cat {{ internationalization_tool_logdir }}/internationalization-report.txt

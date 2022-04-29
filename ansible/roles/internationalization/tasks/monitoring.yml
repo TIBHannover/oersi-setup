@@ -1,0 +1,6 @@
+---
+- name: Create internationalization script
+  template:
+    src: "monitoring-internationalization.sh.j2"
+    dest: "{{ base_dir }}/bin/monitoring-internationalization.sh"
+    mode: 0700

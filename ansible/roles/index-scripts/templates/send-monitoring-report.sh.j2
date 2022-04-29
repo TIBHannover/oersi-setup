@@ -13,6 +13,7 @@ MAIL_FROM_ADDRESS={{ oerindex_monitoring_from_address }}
 
 ETL_REPORT=$({{ base_dir }}/bin/monitoring-etl.sh)
 IMPORTSCRIPT_REPORT=$({{ base_dir }}/bin/monitoring-import-scripts.sh)
+{% if internationalization_tool_install %}INTERNATIONALIZATION_REPORT=$({{ base_dir }}/bin/monitoring-internationalization.sh){% endif %}
 
 ETL_PROCESSES=$(echo "$ETL_REPORT" | grep 'Import channel' | wc -l)
 ETL_ERRORS=$(echo "$ETL_REPORT" | grep 'FAILED:' | wc -l)
@@ -25,7 +26,12 @@ IMPORTSCRIPT_FAILURES=$(echo "$IMPORTSCRIPT_REPORT" | gawk -v failures='0' 'matc
 IMPORTSCRIPT_SUCCESSES=$(echo "$IMPORTSCRIPT_REPORT" | gawk -v successes='0' 'match($0, /SUCCESS: (.+), FAIL: (.+)/, a) {successes = successes + a[1]}END{print successes}')
 
 REPORT="$ETL_REPORT
-$IMPORTSCRIPT_REPORT"
+$IMPORTSCRIPT_REPORT
+{% if internationalization_tool_install %}
+
+Internationalization-Tool:
+$INTERNATIONALIZATION_REPORT{% endif %}
+"
 PROCESSES=$(($ETL_PROCESSES+$IMPORTSCRIPT_PROCESSES))
 ERRORS=$(($ETL_ERRORS+$IMPORTSCRIPT_ERRORS))
 FAILURES=$(($ETL_FAILURES+$IMPORTSCRIPT_FAILURES))
