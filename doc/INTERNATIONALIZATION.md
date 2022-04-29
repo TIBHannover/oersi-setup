@@ -34,7 +34,7 @@ Vocabularies:
 
 ### Synonyms for Multilingual Search
 
-**OERSI-internal**: we need to add the new language to the Synonyms-process (example-file and/or automatic-process)
+**OERSI-internal**: we need to add the new language to the Synonyms-process (example-file and/or automatic-process). For this: add the new language code to the ansible-variable `internationalization_tool_oersi_output_languages`.
 
 ## Multilingual Search
 
@@ -44,15 +44,22 @@ Vocabularies:
 
 ---
 
-In the future, it will be possible to include translations of the OERSI keywords into other languages in the search. Then, for example, the results of a search for a German keyword will also include the results of the English/Spanish/French/... keyword.
+We implemented a first, experimental feature to include translations of the OERSI keywords into other languages in the search. It can be activated via config in oersi-setup. Then, for example, the results of a search for a German keyword will also include the results of the English/Spanish/French/... keyword.
 
-A tool (tbd) provides the translations of the keywords. From these translations a synonym file for elasticsearch is generated, which can be included in the configuration. An example for such a synonym file can be found [here](../ansible/roles/elasticsearch/files/synonyms-example.txt).
+A tool ([internationalization-tool](https://gitlab.com/oersi/internationalization-tool)) provides the translations of the keywords (based on Wikidata-translations). From these translations a synonym file for elasticsearch is generated, which can be included in the configuration. An example for such a synonym file can be found [here](../ansible/roles/elasticsearch/files/synonyms-example.txt).
 
-The feature can be enabled or disabled via toggle (ansible-variable `oerindex_features_use_synonyms` in [all.yml](../ansible/group_vars/all.yml)). If you change this configuration, the mapping will be adjusted and the index will be reindexed automatically by the setup. The synonym file must be placed in the Elasticsearch configuration directory (usually `/etc/elasticsearch`) and have the filename `synonym.txt`. For testing purposes, the sample file can be used in the first phase of the feature development (set `elasticsearch_synonyms_file: "synonyms-example.txt"` and it will be copied by ansible). So, the following configuration will enable the feature using the example file:
+The feature can be enabled or disabled via toggle (ansible-variable `oerindex_features_use_synonyms` in [all.yml](../ansible/group_vars/all.yml)). If you change this configuration, the mapping will be adjusted and the index will be reindexed automatically by the setup. The synonym file will be placed in the OERSI configuration directory (usually `~/conf`) and have the filename `synonym.txt` (this will be linked into the Elasticsearch-config-dir by the setup). For testing purposes, the sample file can be used in the first phase of the feature development (set `elasticsearch_synonyms_file: "synonyms-example.txt"` and it will be copied by ansible). So, the following configuration will enable the feature using the example file:
 
 ```
 oerindex_features_use_synonyms: true
 elasticsearch_synonyms_file: "synonyms-example.txt"
+```
+
+For now, the tool has to be activated separately. So, the following configuration will enable the feature using automatic keyword-translations via the translation-tool:
+
+```
+oerindex_features_use_synonyms: true
+internationalization_tool_install: "{{ oerindex_features_use_synonyms }}"
 ```
 
 The synonyms are included during the Elasticsearch search (not during indexing). If there are changes to the synonym file, then the search analyzers need to be reloaded so that the changes are taken into account in the search. This can be done with the help of the script `reload-search_analyzer.sh`.
