@@ -26,7 +26,7 @@
     "es": "Grabación de Sonido",
     "fi": "äänen tallennus",
     "fr": "Enregistrement Sonore",
-    "nl": "Geluidsregistratie",
+    "nl": "Geluidsopname",
     "uk": "Аудіозапис"
   },
   "https://w3id.org/kim/hcrt/case_study": {
@@ -56,7 +56,7 @@
     "es": "Dato",
     "fi": "datasetti",
     "fr": "Donnée",
-    "nl": "Gegeven",
+    "nl": "Data",
     "uk": "Дані"
   },
   "https://w3id.org/kim/hcrt/diagram": {
@@ -146,7 +146,7 @@
     "es": "Diverso",
     "fi": "Muut",
     "fr": "Divers",
-    "nl": "Andere",
+    "nl": "Diversen",
     "uk": "Різне"
   },
   "https://w3id.org/kim/hcrt/portal": {
