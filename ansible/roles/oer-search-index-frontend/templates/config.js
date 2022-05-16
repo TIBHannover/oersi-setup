@@ -26,6 +26,7 @@ window['runTimeConfig'] = {
       DARK_MODE: {{ oerindex_frontend_features_dark_mode }},
       CHANGE_FONTSIZE: {{ oerindex_frontend_features_change_font_size }},  // experimental/beta - just to show weaknesses in styling
       EMBED_OER: {{ oerindex_frontend_features_embed_oer }}, // feature toggle: use "embed-oer" button
+      OERSI_THUMBNAILS: {{ oerindex_frontend_features_oersi_thumbnails }}, // feature toggle: use thumbnails from OERSI-thumbnail-generator for resource-preview-images with image-url as fallback
       SCROLL_TOP_BUTTON: {{ oerindex_frontend_features_scroll_top_button }} // feature toggle: use "scroll-to-top" button
     }
   }
