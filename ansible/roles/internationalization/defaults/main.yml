@@ -24,7 +24,7 @@ internationalization_tool_oersi_keyword_substitutions:
     value: ""
   - regex: '[“#"„]'
     value: ""
-  - regex: '^[§]+$'
+  - regex: '^[§$&<>?%!+-]+$'
     value: ""
   - regex: ',$'
     value: ""
