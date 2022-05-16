@@ -1,0 +1,14 @@
+---
+thumbnail_webserver_owner: "{{ oersi_user }}"
+thumbnail_webserver_group: "www-data"
+
+thumbnail_image_width: 560
+thumbnail_image_height: 315
+thumbnail_creation_method: LANCZOS # NEAREST | BILINEAR | BICUBIC | LANCZOS - the method used to create the thumbnail; affects quality and performance; see https://pillow.readthedocs.io/en/stable/handbook/concepts.html#concept-filters
+
+thumbnail_creation_full_schedule_weekday: "Sat"
+thumbnail_creation_full_schedule_hour: "10"
+thumbnail_creation_full_schedule_minute: "0"
+thumbnail_creation_incremental_schedule_weekday: "Mon-Fri"
+thumbnail_creation_incremental_schedule_hour: "7"
+thumbnail_creation_incremental_schedule_minute: "0"

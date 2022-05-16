@@ -1,0 +1,41 @@
+---
+- include: webserver.yml
+  become: true
+  when: oerindex_features_generate_thumbnails
+
+- name: Ensure python packages are present
+  become: true
+  package:
+    name: ["python3", "python3-pip"]
+  when: oerindex_features_generate_thumbnails
+
+- name: install requirements
+  become: true
+  shell:
+    cmd: "python3 -m pip install --upgrade pip && python3 -m pip install --upgrade Pillow"
+    chdir: "{{ base_dir }}"
+  when: oerindex_features_generate_thumbnails
+
+- name: Add script for thumbnail creation.
+  template:
+    src: "create-thumbnails.py"
+    dest: '{{ base_dir }}/bin/create-thumbnails.py'
+  when: oerindex_features_generate_thumbnails
+
+- name: Configure cron for thumbnail-genrator full
+  cron:
+    name: "Generate thumbnails for OERSI images and overwrite existing thumbnails"
+    weekday: "{{ thumbnail_creation_full_schedule_weekday }}"
+    hour: "{{ thumbnail_creation_full_schedule_hour }}"
+    minute: "{{ thumbnail_creation_full_schedule_minute }}"
+    job: "cd {{ base_dir }}/bin && python3 create-thumbnails.py > {{ base_dir }}/log/create-thumbnails-full.log 2>&1"
+    state: "{{ 'present' if oerindex_features_generate_thumbnails else 'absent' }}"
+
+- name: Configure cron for thumbnail-genrator incremental
+  cron:
+    name: "Generate thumbnails for OERSI images and keep existing thumbnails"
+    weekday: "{{ thumbnail_creation_incremental_schedule_weekday }}"
+    hour: "{{ thumbnail_creation_incremental_schedule_hour }}"
+    minute: "{{ thumbnail_creation_incremental_schedule_minute }}"
+    job: "cd {{ base_dir }}/bin && python3 create-thumbnails.py --skip-existing > {{ base_dir }}/log/create-thumbnails-incremental.log 2>&1"
+    state: "{{ 'present' if oerindex_features_generate_thumbnails else 'absent' }}"

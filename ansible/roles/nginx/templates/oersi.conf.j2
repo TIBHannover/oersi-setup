@@ -48,6 +48,13 @@ server {
     expires 1y;
     add_header Cache-Control "public, immutable";
   }
+{% if oerindex_features_generate_thumbnails %}  
+  location {{ oerindex_public_base_path }}/thumbnail {
+    gzip_static on;
+    alias {{ thumbnail_webserver_instdir }};
+    try_files $uri $uri/ =404;
+  }
+{% endif %}
   location {{ oerindex_public_base_path }} {
     gzip_static on;
     alias {{ oerindex_frontend_instdir }}/build;
