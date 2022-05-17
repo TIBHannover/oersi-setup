@@ -23,6 +23,7 @@
 - hosts: oerindex
   roles:
     - tomcat
+    - thumbnails
 
 - hosts: oerindex
   become: yes

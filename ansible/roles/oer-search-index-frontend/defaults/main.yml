@@ -12,6 +12,7 @@ oerindex_frontend_aggregation_search_min_length: 3 #  minimum length of search t
 oerindex_frontend_features_dark_mode: "true"
 oerindex_frontend_features_change_font_size: "false"
 oerindex_frontend_features_embed_oer: "true"
+oerindex_frontend_features_oersi_thumbnails: "{{ 'true' if oerindex_features_generate_thumbnails else 'false' }}"
 oerindex_frontend_features_scroll_top_button: "true"
 
 oerindex_frontend_owner: "{{ oersi_user }}"

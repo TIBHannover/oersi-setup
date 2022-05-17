@@ -91,6 +91,10 @@ internationalization_tool_install: false # install and configre the TOERN intern
 internationalization_tool_artifact_url: "https://gitlab.com/oersi/internationalization-tool/-/jobs/artifacts/master/download?job=deploy"
 internationalization_tool_dir: "{{ base_dir }}/internationalization-tool"
 
+oerindex_features_generate_thumbnails: false  # generate thumbnail-html-preview for non-existing images and thumbnail for existing images (unified size)
+thumbnail_webserver_instdir: "/var/www/thumbnails"
+thumbnail_splash_base_url:  # the url of the splash-service that should be used for html-preview-images (see https://splash.readthedocs.io/en/stable/)
+
 elasticsearch_host: localhost
 elasticsearch_port: 9200
 elasticsearch_heap_size_min: 2g
