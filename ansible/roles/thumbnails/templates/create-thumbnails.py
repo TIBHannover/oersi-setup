@@ -158,7 +158,7 @@ class OersiThumbnailCreator:
         # curl --output test.png 'http://oerrs01.develop.service.tib.eu:8050/render.png?url=your-url&width=320&height=240'
         # https://splash.readthedocs.io/en/stable/api.html#render-png
         splash_image_url = splash_base_url + "/render.png"
-        splash_params = {"engine": "chromium", "url": url, "width": image_width, "height": image_height}
+        splash_params = {"engine": "chromium", "url": url, "width": image_width, "height": image_height, "wait": "0.5"}
         try:
           self.__convert_image_url_to_thumbnail__(splash_image_url, splash_params, [url])
         except Exception as e:
