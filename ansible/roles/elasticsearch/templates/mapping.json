@@ -52,6 +52,23 @@
             }
           }
         },
+        "caption": {
+          "properties": {
+            "id": {
+              "type": "keyword",
+              "index": false
+            },
+            "type": {
+              "type": "keyword"
+            },
+            "encodingFormat": {
+              "type": "keyword"
+            },
+            "inLanguage": {
+              "type": "keyword"
+            }
+          }
+        },
         "conditionsOfAccess": {
           "properties" : {
             "type": {
