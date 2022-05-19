@@ -4,8 +4,7 @@ import io
 import requests
 import getopt, os, sys
 from PIL import Image, ImageOps
-from svglib.svglib import svg2rlg
-from reportlab.graphics import renderPM
+import cairosvg
 
 
 oersi_search_api_url = "{{ oerindex_backend_searchapi_url }}/{{ elasticsearch_oer_index_alias_name }}/_search"
@@ -132,12 +131,7 @@ class OersiThumbnailCreator:
         image_bytes = io.BytesIO(image_respone.content)
         if "Content-Type" in image_respone.headers and image_respone.headers["Content-Type"] == "image/svg+xml":
             print("Received svg -> convert")
-            d = svg2rlg(image_bytes)
-            factor = max([image_width / d.width, image_height / d.height])
-            d.width = d.width * factor
-            d.height = d.height * factor
-            d.scale(factor, factor)
-            image_bytes = io.BytesIO(renderPM.drawToString(d, fmt='PNG'))
+            image_bytes = io.BytesIO(cairosvg.svg2png(file_obj=image_bytes, scale=10))
         with Image.open(image_bytes) as im:
           thumbnail = ImageOps.fit(im, (image_width, image_height), self.method)
           for outfile in outfiles:
