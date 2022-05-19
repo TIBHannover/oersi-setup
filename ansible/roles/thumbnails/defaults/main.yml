@@ -12,3 +12,5 @@ thumbnail_creation_full_schedule_minute: "0"
 thumbnail_creation_incremental_schedule_weekday: "Mon-Fri"
 thumbnail_creation_incremental_schedule_hour: "7"
 thumbnail_creation_incremental_schedule_minute: "0"
+thumbnail_creation_pad_images_regexes:  # image-url which matches one if this regexes will be padded (add padding)
+  - "^https://oer.hessenhub.de/themes/spaeti/images/.+"

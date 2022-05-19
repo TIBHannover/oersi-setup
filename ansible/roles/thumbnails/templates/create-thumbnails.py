@@ -1,6 +1,7 @@
 import base64
 from datetime import datetime
 import io
+import re
 import requests
 import getopt, os, sys
 from PIL import Image, ImageOps
@@ -14,6 +15,7 @@ image_height = {{ thumbnail_image_height }}
 image_creation_method = "{{ thumbnail_creation_method }}"
 splash_base_url = "{{ thumbnail_splash_base_url }}"
 image_output_format = "webp" # | "PNG" | "JPEG"
+pad_image_url_regexes = {{ thumbnail_creation_pad_images_regexes | to_json | trim }}
 
 
 class OersiDataLoader:
@@ -133,6 +135,9 @@ class OersiThumbnailCreator:
             print("Received svg -> convert")
             image_bytes = io.BytesIO(cairosvg.svg2png(file_obj=image_bytes, scale=10))
         with Image.open(image_bytes) as im:
+          for pad_regex in pad_image_url_regexes:
+            if re.match(pad_regex, image_url):
+              im = ImageOps.pad(im, (image_width, image_height))
           thumbnail = ImageOps.fit(im, (image_width, image_height), self.method)
           for outfile in outfiles:
             thumbnail.save(outfile, image_output_format)
