@@ -19,6 +19,7 @@ internationalization_tool_wikidata_exclusions_default:  # exclude specific wikid
   - "Q29654788" # no Unicode character
   - "Q482994" # no album
   - "Q11424" # no film
+  - "Q21092339" # no mathematical symbol
 internationalization_tool_oersi_keyword_substitutions:
   - regex: '\\'
     value: ""
