@@ -16,6 +16,7 @@ image_creation_method = "{{ thumbnail_creation_method }}"
 splash_base_url = "{{ thumbnail_splash_base_url }}"
 image_output_format = "webp" # | "PNG" | "JPEG"
 pad_image_url_regexes = {{ thumbnail_creation_pad_images_regexes | to_json | trim }}
+max_filename_length = 255
 
 
 class OersiDataLoader:
@@ -122,7 +123,10 @@ class OersiThumbnailCreator:
         }.get(image_creation_method)
 
     def __convert_image_url_to_thumbnail__(self, image_url, image_url_params, oersi_ids):
-        outfiles = [thumbnail_webserver_path + base64.urlsafe_b64encode(oersi_id.encode()).decode("ascii") + "." + image_output_format.lower() for oersi_id in oersi_ids]
+        extension = "." + image_output_format.lower()
+        base64_ids = [base64.urlsafe_b64encode(oersi_id.encode()).decode("ascii") for oersi_id in oersi_ids]
+        outfilenames = [file_id[:max_filename_length - len(extension)] if len(file_id) > max_filename_length - len(extension) else file_id for file_id in base64_ids]
+        outfiles = [thumbnail_webserver_path + filename + extension for filename in outfilenames]
         if self.skip_for_existing_files:
             for outfile in outfiles:
                 if os.path.isfile(outfile):
