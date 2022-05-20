@@ -42,6 +42,7 @@ class OersiDataLoader:
                     "aggregations": {
                         "identifier": {
                             "terms": {
+                                "size": 5000,
                                 "field": "id"
                             }
                         }
