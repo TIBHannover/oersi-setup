@@ -7,3 +7,5 @@ oerindex_import_scripts_python_configdir: "{{ oerindex_import_scripts_dir }}/pyt
 oerindex_import_sources_py_scripts_schedule_state: "{{ 'absent' if oerindex_import_scripts_enabled_sources_py is none else oerindex_import_sources_schedule_state }}" # import all configured sources scheduled (absent|present)
 oerindex_import_sources_py_scripts_schedule_hour: "{{ oerindex_import_sources_schedule_hour }}"  # Hour when the job should run - see https://docs.ansible.com/ansible/latest/modules/cron_module.html
 oerindex_import_sources_py_scripts_schedule_minute: "{{ oerindex_import_sources_schedule_minute }}" # Minute when the job should run - see https://docs.ansible.com/ansible/latest/modules/cron_module.html
+
+oerindex_import_scripts_custom_config: ""
