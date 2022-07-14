@@ -48,6 +48,18 @@ server {
     expires 1y;
     add_header Cache-Control "public, immutable";
   }
+  location {{ oerindex_public_base_path }}/footer {
+    gzip_static on;
+    alias {{ oerindex_frontend_instdir }}/build/footer;
+    expires 1d;
+    add_header Cache-Control "public";
+  }
+  location {{ oerindex_public_base_path }}/vocabs {
+    gzip_static on;
+    alias {{ oerindex_frontend_instdir }}/build/vocabs;
+    expires 1d;
+    add_header Cache-Control "public";
+  }
 {% if oerindex_features_generate_thumbnails %}  
   location {{ oerindex_public_base_path }}/thumbnail {
     gzip_static on;

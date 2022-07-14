@@ -1,0 +1,15 @@
+#!/bin/bash
+# {{ ansible_managed }}
+#
+# Updates vocab schemes and creates files used by OERSI-frontend.
+#
+
+{% for scheme_update in (oerindex_frontend_vocab_scheme_updates | default([], true)) %}
+wget -O {{ scheme_update.schemeFile }} {{ scheme_update.schemeUrl }}
+if [ $? -ne 0 ]; then
+  echo "Download of scheme failed"
+else
+  {{ base_dir }}/bin/build-vocab-parent-map.sh {{ scheme_update.schemeFile }} {{ scheme_update.parentMapFile }}
+  gzip -fk {{ scheme_update.parentMapFile }}
+fi
+{% endfor %}
