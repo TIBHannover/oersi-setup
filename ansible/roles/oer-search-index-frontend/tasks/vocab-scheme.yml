@@ -1,0 +1,39 @@
+---
+- name: Ensure wget is present
+  package:
+    name: ["wget"]
+
+- name: Ensures vocabs-dir exists
+  file:
+    path: "{{ oerindex_frontend_instdir }}/build/vocabs"
+    owner: "{{ oerindex_frontend_owner }}"
+    group: "{{ oerindex_frontend_group }}"
+    state: directory
+
+- name: "Build vars necessary for vocab updates"
+  set_fact:
+    oerindex_frontend_vocab_scheme_updates: "{{ oerindex_frontend_vocab_scheme_updates | default([], true) + [{'schemeUrl': item.schemeUrl, 'schemeFile': oerindex_frontend_instdir + '/build/vocabs/' + item.vocabName + '.json', 'parentMapFile': oerindex_frontend_instdir + '/build/vocabs/' + item.vocabName + '-parentMap.json'}] }}"
+  loop: '{{ oerindex_frontend_hierarchical_vocab_filters | default([], true) }}'
+
+- name: Create build-vocab-parent-map script
+  copy:
+    src: "build-vocab-parent-map.sh"
+    dest: "{{ base_dir }}/bin/build-vocab-parent-map.sh"
+    mode: 0700
+
+- name: Create update-vocab-scheme script
+  template:
+    src: "update-vocab-scheme.sh.j2"
+    dest: "{{ base_dir }}/bin/update-vocab-scheme.sh"
+    mode: 0700
+
+- name: Update vocab-schemes immediately
+  shell:
+    cmd: "nohup {{ base_dir }}/bin/update-vocab-scheme.sh >/dev/null 2>&1 & sleep 1"
+
+- name: Configure cron schedule - process vocab scheme updates
+  cron:
+    name: "Update vocab schemes for OERSI frontend"
+    hour: "{{ oerindex_frontend_vocab_scheme_update_schedule_hour }}"
+    minute: "0"
+    job: "{{ base_dir }}/bin/update-vocab-scheme.sh >/dev/null 2>&1"

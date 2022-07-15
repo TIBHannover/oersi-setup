@@ -13,6 +13,11 @@ window['runTimeConfig'] = {
     I18N_CACHE_EXPIRATION: {{ oerindex_frontend_i18n_cache_expiration }},
     I18N_DEBUG: {{ oerindex_frontend_i18n_debug }},
     TRACK_TOTAL_HITS: {{ oerindex_frontend_track_total_hits }},
+    HIERARCHICAL_FILTERS: [
+{% for filter_conf in (oerindex_frontend_hierarchical_vocab_filters | default([], true)) %}
+      {componentId: "{{ filter_conf.filterId }}", schemeParentMap: "/vocabs/{{ filter_conf.vocabName }}-parentMap.json"}{{ ", " if not loop.last else "" }}
+{% endfor %}
+    ],
     AGGREGATION_SEARCH_COMPONENTS: {{ oerindex_frontend_aggregation_search_components }},
     AGGREGATION_SEARCH_DEBOUNCE: {{ oerindex_frontend_aggregation_search_debounce }},
     AGGREGATION_SEARCH_MIN_LENGTH: {{ oerindex_frontend_aggregation_search_min_length }},
