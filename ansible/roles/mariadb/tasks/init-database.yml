@@ -23,5 +23,6 @@
     password: '{{oerindex_db.password}}'
     priv: '{{ oerindex_db.name }}.*:ALL'
   become: yes
+  no_log: true
   tags:
   - root-task
