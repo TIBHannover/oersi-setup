@@ -3,4 +3,4 @@
   set_fact: base_dir="{{ ansible_env.HOME }}"
   when: (base_dir == "") or (base_dir is none)
 
-- set_fact: oersi_user="{{ ansible_user }}"
+- set_fact: oersi_user="{{ ansible_user | default(lookup('env', 'USER')) }}"
