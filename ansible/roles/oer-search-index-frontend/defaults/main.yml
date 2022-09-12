@@ -19,7 +19,7 @@ oerindex_frontend_owner: "{{ oersi_user }}"
 oerindex_frontend_group: "www-data"
 
 oerindex_frontend_hierarchical_vocab_filters: # the vocab-scheme files will be downloaded/updated locally periodically
-#  - filterId: about
-#    schemeUrl: https://w3id.org/kim/hochschulfaechersystematik/scheme.json
-#    vocabName: hochschulfaechersystematik
+  - filterId: about
+    schemeUrl: https://w3id.org/kim/hochschulfaechersystematik/scheme.json
+    vocabName: hochschulfaechersystematik
 oerindex_frontend_vocab_scheme_update_schedule_hour: "22"
