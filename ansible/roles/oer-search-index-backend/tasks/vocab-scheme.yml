@@ -1,0 +1,23 @@
+---
+- name: Ensure wget is present
+  package:
+    name: ["wget"]
+
+- name: Create update-vocab-scheme script
+  template:
+    src: "update-vocab-scheme-backend.sh.j2"
+    dest: "{{ base_dir }}/bin/update-vocab-scheme-backend.sh"
+    mode: 0700
+
+- name: Update vocab-schemes immediately
+  shell:
+    cmd: "nohup {{ base_dir }}/bin/update-vocab-scheme-backend.sh >/dev/null 2>&1 & sleep 1"
+  when: oerindex_backend_features_add_missing_parent_items_of_hierarchical_vocabs == 'true'
+
+- name: Configure cron schedule - process vocab scheme updates
+  cron:
+    name: "Update vocab schemes for OERSI backend"
+    hour: "{{ oerindex_backend_vocab_scheme_update_schedule_hour }}"
+    minute: "0"
+    job: "{{ base_dir }}/bin/update-vocab-scheme-backend.sh >/dev/null 2>&1"
+    state: "{{ 'present' if oerindex_backend_features_add_missing_parent_items_of_hierarchical_vocabs == 'true' else 'absent' }}"
