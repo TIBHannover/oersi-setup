@@ -27,3 +27,8 @@ oerindex_backend_autoupdate_definitions:
     embedUrl: "https://www.youtube-nocookie.com/embed/###1###"
     providerName: "YouTube"
     providerUrl: "https://youtube.com/"
+
+oerindex_backend_vocab_scheme_update_schedule_hour: "21"
+oerindex_backend_vocab_scheme_updates:
+  - schemeUrl: https://w3id.org/kim/hochschulfaechersystematik/scheme.json
+    vocabName: hochschulfaechersystematik
