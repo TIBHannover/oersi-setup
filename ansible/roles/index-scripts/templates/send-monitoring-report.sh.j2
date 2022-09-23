@@ -14,6 +14,7 @@ MAIL_FROM_ADDRESS={{ oerindex_monitoring_from_address }}
 ETL_REPORT=$({{ base_dir }}/bin/monitoring-etl.sh)
 IMPORTSCRIPT_REPORT=$({{ base_dir }}/bin/monitoring-import-scripts.sh)
 {% if internationalization_tool_install %}INTERNATIONALIZATION_REPORT=$({{ base_dir }}/bin/monitoring-internationalization.sh){% endif %}
+INCONSISTENCY_BY_WITHOUT_AUTHOR_REPORT=$(curl --netrc-file {{ base_dir }}/conf/oer_index_access -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' "http://{{ elasticsearch_host }}:{{ elasticsearch_port }}/{{ elasticsearch_oer_index_alias_name }}/_search" -d '{"query": {"bool": { "filter": [{"wildcard": {"license.id": {"value": "*creativecommons.org/*/by*"}}}], "must_not": {"exists": {"field": "creator"}}}}, "size": 0, "aggs": {"providers": { "terms": { "field": "mainEntityOfPage.provider.name" }}}}' | jq -r '.aggregations.providers.buckets[] | "\(.key): \(.doc_count)"')
 
 ETL_PROCESSES=$(echo "$ETL_REPORT" | grep 'Import channel' | wc -l)
 ETL_ERRORS=$(echo "$ETL_REPORT" | grep 'FAILED:' | wc -l)
@@ -31,6 +32,12 @@ $IMPORTSCRIPT_REPORT
 
 Internationalization-Tool:
 $INTERNATIONALIZATION_REPORT{% endif %}
+
+Inconsistencies:
+
+CC-BY-XX without author
+-----------------------
+$INCONSISTENCY_BY_WITHOUT_AUTHOR_REPORT
 "
 PROCESSES=$(($ETL_PROCESSES+$IMPORTSCRIPT_PROCESSES))
 ERRORS=$(($ETL_ERRORS+$IMPORTSCRIPT_ERRORS))
