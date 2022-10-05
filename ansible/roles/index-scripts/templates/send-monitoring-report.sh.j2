@@ -15,7 +15,7 @@ ETL_REPORT=$({{ base_dir }}/bin/monitoring-etl.sh)
 IMPORTSCRIPT_REPORT=$({{ base_dir }}/bin/monitoring-import-scripts.sh)
 {% if internationalization_tool_install %}INTERNATIONALIZATION_REPORT=$({{ base_dir }}/bin/monitoring-internationalization.sh)
 {% endif %}
-INCONSISTENCY_BY_WITHOUT_AUTHOR_REPORT=$(curl --netrc-file {{ base_dir }}/conf/oer_index_access -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' "http://{{ elasticsearch_host }}:{{ elasticsearch_port }}/{{ elasticsearch_oer_index_alias_name }}/_search" -d '{"query": {"bool": { "filter": [{"wildcard": {"license.id": {"value": "*creativecommons.org/*/by*"}}}], "must_not": {"exists": {"field": "creator"}}}}, "size": 0, "aggs": {"providers": { "terms": { "field": "mainEntityOfPage.provider.name" }}}}' | jq -r '.aggregations.providers.buckets[] | "\(.key): \(.doc_count)"')
+INCONSISTENCY_BY_WITHOUT_AUTHOR_REPORT=$(curl --netrc-file {{ base_dir }}/conf/oer_index_access -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' "http://{{ elasticsearch_host }}:{{ elasticsearch_port }}/{{ elasticsearch_oer_index_alias_name }}/_search" -d '{"query": {"bool": { "filter": [{"wildcard": {"license.id": {"value": "*creativecommons.org/*/by*"}}}], "must_not": {"exists": {"field": "creator"}}}}, "size": 0, "aggs": {"providers": { "terms": { "field": "mainEntityOfPage.provider.name", "size": 100 }}}}' | jq -r '.aggregations.providers.buckets[] | "\(.key): \(.doc_count)"')
 
 ETL_PROCESSES=$(echo "$ETL_REPORT" | grep 'Import channel' | wc -l)
 ETL_ERRORS=$(echo "$ETL_REPORT" | grep 'FAILED:' | wc -l)
