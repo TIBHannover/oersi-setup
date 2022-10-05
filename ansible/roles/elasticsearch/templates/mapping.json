@@ -323,6 +323,33 @@
             }
           }
         },
+        "trailer": {
+          "properties": {
+            "type": {
+              "type": "keyword"
+            },
+            "bitrate": {
+              "type": "keyword"
+            },
+            "contentSize": {
+              "type": "keyword"
+            },
+            "contentUrl": {
+              "type": "keyword",
+              "index": false
+            },
+            "embedUrl": {
+              "type": "keyword",
+              "index": false
+            },
+            "encodingFormat": {
+              "type": "keyword"
+            },
+            "sha256": {
+              "type": "keyword"
+            }
+          }
+        },
         "persons" : {
           "properties" : {
             "id" : {
