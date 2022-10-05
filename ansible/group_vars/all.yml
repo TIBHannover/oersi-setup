@@ -165,7 +165,7 @@ logstash_install_plugins:
   - logstash-input-jdbc
   - logstash-filter-jdbc_streaming
   
-tomcat_version: '9.0.62'
+tomcat_version: '9.0.67'
 tomcat_port: 8080
 tomcat_shutdown_port: 8005
 tomcat_ssl_port: 8443
