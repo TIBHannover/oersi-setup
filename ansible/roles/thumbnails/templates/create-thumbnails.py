@@ -131,7 +131,7 @@ class OersiThumbnailCreator:
             for outfile in outfiles:
                 if os.path.isfile(outfile):
                     print("Skipping existing file " + outfile)
-            outfiles = [f for f in outfiles if not os.path.isfile(outfile)]
+            outfiles = [f for f in outfiles if not os.path.isfile(f)]
             if not outfiles:
                 return
         image_respone = requests.get(image_url, params=image_url_params)
