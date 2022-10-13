@@ -142,7 +142,7 @@ class OersiThumbnailCreator:
         with Image.open(image_bytes) as im:
           for pad_regex in pad_image_url_regexes:
             if re.match(pad_regex, image_url):
-              im = im.convert(mode="RGB")   # some images cannot be processed correctly, if not converted to mode RGB first, because most ImageOps-operators only work on L and RGB
+              im = im.convert(mode="RGBA")   # some images cannot be processed correctly, if not converted to mode RGB first, because most ImageOps-operators only work on L and RGB
               im = ImageOps.pad(im, (image_width, image_height))
           thumbnail = ImageOps.fit(im, (image_width, image_height), self.method)
           for outfile in outfiles:
