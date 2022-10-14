@@ -9,10 +9,10 @@
     cmd: "pip3 install -r python/requirements.txt"
     chdir: "{{ oerindex_import_scripts_dir }}"
 
-- name: Create config.ini
+- name: Create config.yml
   template:
-    src: "config.ini.j2"
-    dest: "{{ oerindex_import_scripts_python_configdir }}/config.ini"
+    src: "config.yml.j2"
+    dest: "{{ oerindex_import_scripts_python_configdir }}/config.yml"
     mode: '600'
 
 - name: Create log4j.properties
