@@ -1,72 +1,143 @@
-.header-margin {
-    background-color: transparent;
+* {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Noto Sans",
+  "Ubuntu", "Droid Sans", "Helvetica Neue", sans-serif;
 }
 
-.container-fluid > h3{
-    margin-left: 45%;
+/* Card */
+.card-root {
+  box-shadow: 9px 10px 20px -10px #3f4a4d !important;
+}
+.card-text {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.card-header-title-label {
+  -webkit-line-clamp: 2;
+}
+.card-description {
+  -webkit-line-clamp: 4;
+}
+.card-info {
+  -webkit-line-clamp: 1;
+}
+/* Minimal height of all cards */
+.card-header-title {
+  min-height: 84px;
+}
+.card-infos {
+  min-height: 181px;
+}
+.card-actions {
+  min-height: 60px;
 }
 
-.card-item .card {
-    border-radius: 4px;
-    margin-bottom: 30px;
-}   
-
-.no-gutters {
-    margin-right: 0;
-    margin-left: 0;
+/* Search Field */
+svg.search-icon {
+  fill: #e86161 !important;
+  height: 1.2em;
 }
-.no-gutters > div:first-of-type {
-    background-color: none;
+/* workaround: suggestion-list for "no suggestion" remains with white background in reactivesearch-dark-mode */
+.search-component-dark li {
+  background-color: rgb(66,66,66);
 }
-
-.no-gutters > div:last-of-type {
-    background-color: none;
+/* workaround: suggestion-list uses light-mode scrollbars in reactivesearch-dark-mode */
+.search-component-dark ul {
+  scrollbar-color: grey rgb(66,66,66);
 }
-
+.search-component-input {
+  border-radius: 1em;
+}
+.search-component-input:focus {
+  box-shadow: 0 0 0 0.2rem rgba(232, 97, 97, 0.25);
+}
 
 /* Footer Style */
 
 .footer {
-    background-color: white;
-    margin-top: 6%;
-    width: 95%;
-    margin-left: 2%;
-    border-radius: 10px;
-    box-shadow: 9px 10px 20px -10px #3f4a4d;
-    color: #606668;
-    height: 300px;
-    margin-bottom: 50px;
+  font-size: 120%;
+  margin-top: 6%;
+}
+.footer-content {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1.5rem 15px;
+}
+@media(min-width: 576px) {
+  .footer-content {
+    max-width: 540px;
   }
-  .footer-block > h5 {
-    /* color: #a9a9a9; */
-    font-size: 1.1rem;
+}
+@media(min-width: 768px) {
+  .footer-content {
+    max-width: 720px;
   }
-  .footer-block > hr {
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    width: 50%;
-    margin-left: unset;
+}
+@media(min-width: 992px) {
+  .footer-content {
+    max-width: 960px;
   }
-  
-  .fotter-p {
-    /* color: #a9a9a9; */
-    width: 270px;
+}
+@media(min-width: 1200px) {
+  .footer-content {
+    max-width: 1140px;
   }
-  .footer-block > ul {
-    padding: 0px;
-    list-style: none;
-    display: block;
-    float: left;
-    line-height: 30px;
-    width: 260px;
+}
+.footer-content-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px;
+}
+@media(max-width: 960px) {
+  .footer-content-row {
+    grid-template-columns: repeat(2, 1fr);
   }
-  
-  .img-block {
-    height: 60px;
-  }
-  
-  @media (max-width: 581px) {
-    .footer {
-      height: 520px;
-    }
-  }
-  
+}
+.footer-description-block {
+  grid-column: span 2;
+}
+.footer-links-block {
+  grid-column: span 1;
+}
+.footer-logos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.footer-logo {
+  padding: 1rem;
+}
+.footer-title-divider {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  margin-right: 3rem;
+  border-width: 0 0 thin;
+  border-style: solid;
+}
+.footer-full-divider {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 100%;
+  border-width: 0 0 thin;
+  border-style: solid;
+}
+
+.footer-block > ul {
+  padding: 0;
+  list-style: none;
+}
+.footer-block > ul > li {
+  padding: 2px 0 2px 0;
+}
+.footer-block > ul > li > a {
+  padding: 5px 0 5px 0;
+}
+.footer-block a {
+  display: inline-block;
+  width: 100%;
+  text-decoration: none;
+}
+.footer-block a:hover, .footer-block a:focus {
+  text-decoration: underline;
+}
