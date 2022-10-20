@@ -69,6 +69,9 @@ server {
     add_header Cache-Control "public";
   }
 {% endif %}
+  location {{ oerindex_public_base_path }}/api-internal/versions.json {
+    alias /var/www/oersi/versions.json;
+  }
   location {{ oerindex_public_base_path }} {
     gzip_static on;
     alias {{ oerindex_frontend_instdir }}/build;
