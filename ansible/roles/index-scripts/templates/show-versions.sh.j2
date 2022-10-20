@@ -4,38 +4,20 @@
 # Show versions of oersi modules
 #
 
-echo "---"
-echo "ETL"
-echo "---"
-cat {{ oerindex_etl_downloaddir }}/build.info
 ETL_COMMIT_SHA=$(grep "COMMIT_SHA=" {{ oerindex_etl_downloaddir }}/build.info | cut -d'=' -f2)
 ETL_BUILDNUMBER=$(grep "BUILDNUMBER=" {{ oerindex_etl_downloaddir }}/build.info | cut -d'=' -f2)
-echo "SOURCE: https://gitlab.com/oersi/oersi-etl/-/tree/${ETL_COMMIT_SHA}"
-echo "BUILD-JOB: https://gitlab.com/oersi/oersi-etl/-/jobs/${ETL_BUILDNUMBER}"
+ETL_VERSIONS=$(cat {{ oerindex_etl_downloaddir }}/build.info | jq -sR "[split(\"\n\")[:-1][], \"SOURCE=https://gitlab.com/oersi/oersi-etl/-/tree/${ETL_COMMIT_SHA}\", \"BUILD-JOB=https://gitlab.com/oersi/oersi-etl/-/jobs/${ETL_BUILDNUMBER}\" | split(\"=\") | {(.[0]): .[1]}] | add")
 
-echo "--------------"
-echo "Import Scripts"
-echo "--------------"
-cat {{ oerindex_import_scripts_dir }}/build.info
 IMPORTSCRIPTS_COMMIT_SHA=$(grep "COMMIT_SHA=" {{ oerindex_import_scripts_dir }}/build.info | cut -d'=' -f2)
 IMPORTSCRIPTS_BUILDNUMBER=$(grep "BUILDNUMBER=" {{ oerindex_import_scripts_dir }}/build.info | cut -d'=' -f2)
-echo "SOURCE: https://gitlab.com/oersi/oersi-import-scripts/-/tree/${IMPORTSCRIPTS_COMMIT_SHA}"
-echo "BUILD-JOB: https://gitlab.com/oersi/oersi-import-scripts/-/jobs/${IMPORTSCRIPTS_BUILDNUMBER}"
+IMPORTSCRIPTS_VERSIONS=$(cat {{ oerindex_import_scripts_dir }}/build.info | jq -sR "[split(\"\n\")[:-1][], \"SOURCE=https://gitlab.com/oersi/oersi-import-scripts/-/tree/${IMPORTSCRIPTS_COMMIT_SHA}\", \"BUILD-JOB=https://gitlab.com/oersi/oersi-import-scripts/-/jobs/${IMPORTSCRIPTS_BUILDNUMBER}\" | split(\"=\") | {(.[0]): .[1]}] | add")
 
-echo "-------"
-echo "Backend"
-echo "-------"
-cat {{ tomcat_home }}/webapps/oersi/WEB-INF/classes/build.info
 BACKEND_COMMIT_SHA=$(grep "COMMIT_SHA=" {{ tomcat_home }}/webapps/oersi/WEB-INF/classes/build.info | cut -d'=' -f2)
 BACKEND_BUILDNUMBER=$(grep "BUILDNUMBER=" {{ tomcat_home }}/webapps/oersi/WEB-INF/classes/build.info | cut -d'=' -f2)
-echo "SOURCE: https://gitlab.com/oersi/oersi-backend/-/tree/${BACKEND_COMMIT_SHA}"
-echo "BUILD-JOB: https://gitlab.com/oersi/oersi-backend/-/jobs/${BACKEND_BUILDNUMBER}"
+BACKEND_VERSIONS=$(cat {{ tomcat_home }}/webapps/oersi/WEB-INF/classes/build.info | jq -sR "[split(\"\n\")[:-1][], \"SOURCE=https://gitlab.com/oersi/oersi-backend/-/tree/${BACKEND_COMMIT_SHA}\", \"BUILD-JOB=https://gitlab.com/oersi/oersi-backend/-/jobs/${BACKEND_BUILDNUMBER}\" | split(\"=\") | {(.[0]): .[1]}] | add")
 
-echo "--------"
-echo "Frontend"
-echo "--------"
-cat {{ oerindex_frontend_instdir }}/build.info
 FRONTEND_COMMIT_SHA=$(grep "COMMIT_SHA=" {{ oerindex_frontend_instdir }}/build.info | cut -d'=' -f2)
 FRONTEND_BUILDNUMBER=$(grep "BUILDNUMBER=" {{ oerindex_frontend_instdir }}/build.info | cut -d'=' -f2)
-echo "SOURCE: https://gitlab.com/oersi/oersi-frontend/-/tree/${FRONTEND_COMMIT_SHA}"
-echo "BUILD-JOB: https://gitlab.com/oersi/oersi-frontend/-/jobs/${FRONTEND_BUILDNUMBER}"
+FRONTEND_VERSIONS=$(cat {{ oerindex_frontend_instdir }}/build.info | jq -sR "[split(\"\n\")[:-1][], \"SOURCE=https://gitlab.com/oersi/oersi-frontend/-/tree/${FRONTEND_COMMIT_SHA}\", \"BUILD-JOB=https://gitlab.com/oersi/oersi-frontend/-/jobs/${FRONTEND_BUILDNUMBER}\" | split(\"=\") | {(.[0]): .[1]}] | add")
+
+jq -n "{\"ETL\": $ETL_VERSIONS, \"Import Scripts\": $IMPORTSCRIPTS_VERSIONS, \"Backend\": $BACKEND_VERSIONS, \"Frontend\": $FRONTEND_VERSIONS}"

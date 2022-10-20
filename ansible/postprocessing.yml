@@ -3,6 +3,7 @@
 - hosts: all
   roles:
     - init-facts
+    - build-info-update
 
 - hosts: oerindex
   become: yes
