@@ -1,12 +1,26 @@
 {
+  "http://w3id.org/kim/conditionsOfAccess/login": {
+    "de": "Anmeldung erforderlich",
+    "en": "login required",
+    "nl": "login vereist",
+    "uk": "для авторизації вкажіть логін"
+  },
+  "http://w3id.org/kim/conditionsOfAccess/no_login": {
+    "de": "keine Anmeldung erforderlich",
+    "en": "no login required",
+    "nl": "geen login vereist",
+    "uk": "вхід без авторизації"
+  },
   "https://w3id.org/kim/conditionsOfAccess/login": {
     "de": "Anmeldung erforderlich",
     "en": "login required",
+    "nl": "login vereist",
     "uk": "для авторизації вкажіть логін"
   },
   "https://w3id.org/kim/conditionsOfAccess/no_login": {
     "de": "keine Anmeldung erforderlich",
     "en": "no login required",
+    "nl": "geen login vereist",
     "uk": "вхід без авторизації"
   }
 }
