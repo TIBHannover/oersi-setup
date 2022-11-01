@@ -8,6 +8,7 @@ oerindex_frontend_theme_colors_dark: "null" # customize colors of the dark theme
 oerindex_frontend_aggregation_search_components: '["author"]' # filters/components that should update the aggregation on typing in the filter search field
 oerindex_frontend_aggregation_search_debounce: 150 # sets the milliseconds to wait before executing an aggregation search (search inside filters)
 oerindex_frontend_aggregation_search_min_length: 3 #  minimum length of search term in aggregation search (search inside filters)
+oerindex_frontend_enabled_filters: ["about", "learningResourceType", "license", "author", "sourceOrganization", "language", "provider"] # filters that should be used in the UI
 
 oerindex_frontend_features_dark_mode: "true"
 oerindex_frontend_features_change_font_size: "false"
