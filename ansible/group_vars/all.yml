@@ -35,6 +35,7 @@ oerindex_frontend_custom_files:         # example entry: {source: 'path/example.
 # "oerindex_frontend_custom_cookie_links" accept a list of custom links (or Files ) for Cookie notification 'link', 
 # Each entry must have: "path" (path or link to your data-protection), "language" (languageCode)
 oerindex_frontend_custom_cookie_links:  # example entry: {path: 'path/policy.html',language: 'en'}
+oerindex_frontend_custom_info_links: # by language; example: en: "https://oersi.org/resources/pages/en"
 
 oerindex_backend_downloaddir: "{{ base_dir }}/oersi-backend"
 oerindex_backend_artifact_url: 'https://gitlab.com/oersi/oersi-backend/-/jobs/artifacts/master/download?job=deploy+branch'

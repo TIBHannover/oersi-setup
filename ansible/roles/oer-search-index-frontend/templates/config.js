@@ -10,6 +10,7 @@ window['runTimeConfig'] = {
     THEME_COLORS: {{ oerindex_frontend_theme_colors }},
     THEME_COLORS_DARK: {{ oerindex_frontend_theme_colors_dark }},
     PRIVACY_POLICY_LINK: {{oerindex_frontend_custom_cookie_links | default([], true) | to_json(ensure_ascii=False,indent=0) }},
+    EXTERNAL_INFO_LINK: {{oerindex_frontend_custom_info_links| default({}, true) | to_json(ensure_ascii=False,indent=0) }},
     I18N_CACHE_EXPIRATION: {{ oerindex_frontend_i18n_cache_expiration }},
     I18N_DEBUG: {{ oerindex_frontend_i18n_debug }},
     TRACK_TOTAL_HITS: {{ oerindex_frontend_track_total_hits }},
