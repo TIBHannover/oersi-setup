@@ -14,3 +14,6 @@ thumbnail_creation_incremental_schedule_hour: "7"
 thumbnail_creation_incremental_schedule_minute: "0"
 thumbnail_creation_pad_images_regexes:  # image-url which matches one if this regexes will be padded (add padding)
   - "^https://oer.hessenhub.de/themes/spaeti/images/.+"
+  - "^https://open.umn.edu/assets/library/otl_logo.*"
+  - "^https://openlibrary.ecampusontario.ca/wp-content/themes/eco-openlibrary-portal/images/open-library-logo.svg"
+  - "^https://ocw.tudelft.nl/wp-content/uploads/.+"
