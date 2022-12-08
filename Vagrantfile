@@ -4,7 +4,9 @@ settings = YAML.load_file 'ansible/group_vars/all.yml'
 Vagrant.configure("2") do |config|
 
   config.vm.define "oerindex-vm" do |srv|
-    srv.vm.box = "debian/buster64"
+    # Update to bullseye, because buster has bugs with vagrant & ansible currently - see https://github.com/hashicorp/vagrant/issues/13016
+    #srv.vm.box = "debian/buster64"
+    srv.vm.box = "debian/bullseye64"
     srv.ssh.insert_key = false
     srv.vm.hostname = "oerindex.box"
     srv.vm.network :private_network, ip: settings['oerindex_host']
