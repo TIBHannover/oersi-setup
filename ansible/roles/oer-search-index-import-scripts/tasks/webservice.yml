@@ -9,12 +9,12 @@
 
 - name: Install Flask and gunicorn in virtualenv
   pip:
-    name: ["Flask", "gunicorn"]
+    name: ["Flask", "Flask-Limiter", "gunicorn"]
     virtualenv: "{{ oerindex_import_scripts_dir }}/python/venv"
     virtualenv_command: 'python3 -m venv'
   notify: restart gunicorn
   when: oerindex_import_scripts_python_webservice_install
-    
+
 - name: Install oersi import scripts in virtualenv
   pip:
     chdir: "{{ oerindex_import_scripts_dir }}/python"
@@ -23,7 +23,7 @@
     virtualenv_command: 'python3 -m venv'
   notify: restart gunicorn
   when: oerindex_import_scripts_python_webservice_install
-  
+
 - name: install gunicorn-service systemd unit file
   become: true
   template:
