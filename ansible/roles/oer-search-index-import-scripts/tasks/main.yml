@@ -24,3 +24,4 @@
 
 - include: python.yml
 - include: monitoring.yml
+- include: webservice.yml

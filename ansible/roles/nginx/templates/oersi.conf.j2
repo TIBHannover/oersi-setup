@@ -1,3 +1,8 @@
+{% if oerindex_import_scripts_python_webservice_install %}
+upstream import_scripts_gunicorn {
+  server unix:/run/gunicorn.sock;
+}
+{% endif %}
 server {
   listen       80;
   server_name  localhost;
@@ -19,6 +24,15 @@ server {
   location {{ oerindex_backend_oembedapi_root_path }} {
     proxy_pass {{ oerindex_backend_internal_api_base_url }}/oembed-json/;
   }
+{% if oerindex_import_scripts_python_webservice_install %}
+  location {{ oerindex_public_base_path }}/api-internal/import-scripts/python/ {
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_set_header Host $http_host;
+    proxy_redirect off;
+    proxy_pass http://import_scripts_gunicorn/;
+  }
+{% endif %}
   location ~ "^{{ oerindex_public_base_path }}/((?:[A-Za-z0-9-_]{4}+){4,}(?:[A-Za-z0-9-_]{3}=|[A-Za-z0-9-_]{2}==)?)$" {
     # if-workaround, see https://www.nginx.com/resources/wiki/start/topics/depth/ifisevil/
     error_page 418 = @json_resource;
@@ -60,7 +74,7 @@ server {
     expires 1d;
     add_header Cache-Control "public";
   }
-{% if oerindex_features_generate_thumbnails %}  
+{% if oerindex_features_generate_thumbnails %}
   location {{ oerindex_public_base_path }}/thumbnail {
     gzip_static on;
     alias {{ thumbnail_webserver_instdir }};
