@@ -1,5 +1,7 @@
 ---
 - name: Install dependencies in virtualenv for gunicorn and flask
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
   pip:
     requirements: "{{ oerindex_import_scripts_dir }}/python/requirements.txt"
     virtualenv: "{{ oerindex_import_scripts_dir }}/python/venv"
@@ -8,6 +10,8 @@
   when: oerindex_import_scripts_python_webservice_install
 
 - name: Install Flask and gunicorn in virtualenv
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
   pip:
     name: ["Flask", "Flask-Limiter", "gunicorn"]
     virtualenv: "{{ oerindex_import_scripts_dir }}/python/venv"
@@ -16,6 +20,8 @@
   when: oerindex_import_scripts_python_webservice_install
 
 - name: Install oersi import scripts in virtualenv
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
   pip:
     chdir: "{{ oerindex_import_scripts_dir }}/python"
     name: .
