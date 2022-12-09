@@ -1,0 +1,59 @@
+---
+- name: Install dependencies in virtualenv for gunicorn and flask
+  pip:
+    requirements: "{{ oerindex_import_scripts_dir }}/python/requirements.txt"
+    virtualenv: "{{ oerindex_import_scripts_dir }}/python/venv"
+    virtualenv_command: 'python3 -m venv'
+  notify: restart gunicorn
+  when: oerindex_import_scripts_python_webservice_install
+
+- name: Install Flask and gunicorn in virtualenv
+  pip:
+    name: ["Flask", "Flask-Limiter", "gunicorn"]
+    virtualenv: "{{ oerindex_import_scripts_dir }}/python/venv"
+    virtualenv_command: 'python3 -m venv'
+  notify: restart gunicorn
+  when: oerindex_import_scripts_python_webservice_install
+
+- name: Install oersi import scripts in virtualenv
+  pip:
+    chdir: "{{ oerindex_import_scripts_dir }}/python"
+    name: .
+    virtualenv: "{{ oerindex_import_scripts_dir }}/python/venv"
+    virtualenv_command: 'python3 -m venv'
+  notify: restart gunicorn
+  when: oerindex_import_scripts_python_webservice_install
+
+- name: install gunicorn-service systemd unit file
+  become: true
+  template:
+    src: gunicorn.systemd.service.j2
+    dest: /etc/systemd/system/gunicorn.service
+  notify: restart gunicorn
+  when: oerindex_import_scripts_python_webservice_install
+
+- name: install gunicorn-socket systemd unit file
+  become: true
+  template:
+    src: gunicorn.systemd.socket.j2
+    dest: /etc/systemd/system/gunicorn.socket
+  notify: restart gunicorn
+  when: oerindex_import_scripts_python_webservice_install
+
+- name: Check if Service Exists
+  stat: path=/etc/systemd/system/gunicorn.socket
+  register: gunicorn_service_status
+
+- name: Stop gunicorn service if uninstalled
+  become: true
+  service:
+    name: gunicorn.socket
+    state: stopped
+  when: gunicorn_service_status.stat.exists and not oerindex_import_scripts_python_webservice_install
+
+- name: Enable or disable gunicorn service
+  become: true
+  service:
+    name: gunicorn.socket
+    enabled: "{{ oerindex_import_scripts_python_webservice_install }}"
+  when: gunicorn_service_status.stat.exists

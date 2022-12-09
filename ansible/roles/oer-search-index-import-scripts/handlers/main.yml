@@ -1,0 +1,4 @@
+---
+- name: restart gunicorn
+  become: true
+  service: name=gunicorn.socket state=restarted
