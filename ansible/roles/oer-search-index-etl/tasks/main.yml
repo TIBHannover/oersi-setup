@@ -52,6 +52,12 @@
     dest: "{{ oerindex_etl_downloaddir }}/etl.sh"
     mode: 0700
 
+- name: Remove oersi-etl custom cleanup files
+  file:
+    path: "{{ item }}"
+    state: absent
+  loop: '{{ oerindex_etl_cleanupfiles | default([], true) }}'
+
 - name: Copy oersi-etl custom config files
   copy:
     src: "{{ item }}"
