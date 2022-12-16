@@ -17,3 +17,4 @@ thumbnail_creation_pad_images_regexes:  # image-url which matches one if this re
   - "^https://open.umn.edu/assets/library/otl_logo.*"
   - "^https://openlibrary.ecampusontario.ca/wp-content/themes/eco-openlibrary-portal/images/open-library-logo.svg"
   - "^https://ocw.tudelft.nl/wp-content/uploads/.+"
+  - "^https://lernfunk.de/logos/UOSde.svg"
