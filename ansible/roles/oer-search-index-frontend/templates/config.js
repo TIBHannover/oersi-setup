@@ -1,5 +1,10 @@
 window['runTimeConfig'] = {
-  BACKEND_API_URL: "{{ oerindex_public_base_url }}{{ oerindex_public_base_path }}/api-internal",
+  BACKEND_API: {
+    BASE_URL: "{{ oerindex_public_base_url }}",
+    PATH_CONTACT: "{{ oerindex_backend_contactapi_root_path }}",
+    PATH_LABEL: "{{ oerindex_backend_labelapi_root_path }}",
+    PATH_SEARCH: "{{ oerindex_backend_searchapi_root_path }}"
+  },
   ELASTIC_SEARCH_INDEX_NAME: "{{ elasticsearch_oer_index_internal_alias_name }}",
   GENERAL_CONFIGURATION: {
     AVAILABLE_LANGUAGES: {{ oerindex_frontend_available_languages }},
