@@ -12,6 +12,10 @@ server {
   location {{ oerindex_backend_searchapi_root_path }} {
     proxy_pass {{ oerindex_backend_internal_api_base_url }}/search/;
   }
+  # DEPRECATED: search via "api-internal/search" will be removed soon, please use search via "api/search" instead
+  location {{ oerindex_public_base_path }}/api-internal/search/ {
+    proxy_pass {{ oerindex_backend_internal_api_base_url }}/search/;
+  }
   location {{ oerindex_backend_labelapi_root_path }} {
     proxy_pass {{ oerindex_backend_internal_api_base_url }}/label/;
   }
