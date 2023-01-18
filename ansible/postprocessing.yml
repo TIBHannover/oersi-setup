@@ -9,3 +9,9 @@
   become: yes
   roles:
     - index-update
+
+- hosts: oerindex
+  become: yes
+  tasks:
+    - name: Restart nginx
+      service: name=nginx state=restarted

@@ -57,7 +57,6 @@ oerindex_etl_input_limit: -1
 oerindex_etl_orca_auth: changeme
 # List all standard files from oersi-etl/data/production/ that should be used for the ETL-process here.
 oerindex_etl_configfiles:
-  - twillo
 #  - detmoldMusicTools
 #  - digill
 #  - duepublico
@@ -104,6 +103,7 @@ oerindex_import_scripts_enabled_sources_py:  # list of enabled python imports (w
 #  - Hoou
 #  - Olw
 #  - TUDelftOpenCourseWare
+  - twillo
 #  - Vhb
 #  - Vlc
 
