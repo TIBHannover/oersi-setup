@@ -54,21 +54,22 @@
     password: "{{elasticsearch_elastic_password}}"
     force_basic_auth: yes
   with_items:
-    - name: oer_logstash_writer
-      role_definition:
-        cluster: [ "manage_index_templates", "monitor" ]
-        indices:
-          - names: "logstash-*"
-            privileges: [ "write","create","delete","create_index","manage" ]
-          - names: '[ "{{ elasticsearch_oer_index_internal_name_prefix }}*", "{{ elasticsearch_oer_index_internal_alias_name }}", "{{ elasticsearch_oer_index_name_prefix }}*", "{{ elasticsearch_oer_index_alias_name }}" ]'
-            privileges:
-              - all
     - name: oer_readonly
       role_definition:
         indices:
           - names: '[ "{{ elasticsearch_oer_index_internal_name_prefix }}*", "{{ elasticsearch_oer_index_internal_alias_name }}", "{{ elasticsearch_oer_index_name_prefix }}*", "{{ elasticsearch_oer_index_alias_name }}" ]'
             privileges:
               - read
+    - name: oersi_backend_management
+      role_definition:
+        cluster: [ "manage_index_templates" ]
+        indices:
+          - names: "oersi_backend_*"
+            privileges:
+              - all
+          - names: '[ "{{ elasticsearch_oer_index_internal_name_prefix }}*", "{{ elasticsearch_oer_index_internal_alias_name }}", "{{ elasticsearch_oer_index_name_prefix }}*", "{{ elasticsearch_oer_index_alias_name }}" ]'
+            privileges:
+              - all
 
 - name: Create or update oer users
   uri:
@@ -85,11 +86,11 @@
     force_basic_auth: yes
   no_log: true
   with_items:
-    - name: "{{ elasticsearch_oersi_logstash_username }}"
-      password: "{{ elasticsearch_oersi_logstash_password }}"
-      roles: "oer_logstash_writer"
     - name: "{{ elasticsearch_oersi_viewer_username }}"
       password: "{{ elasticsearch_oersi_viewer_password }}"
       roles: "oer_readonly"
+    - name: "{{ elasticsearch_oersi_backend_manager_username }}"
+      password: "{{ elasticsearch_oersi_backend_manager_password }}"
+      roles: "oersi_backend_management"
   
   

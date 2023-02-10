@@ -142,12 +142,12 @@ elasticsearch_oer_index_internal_alias_name: "{{ elasticsearch_oer_index_alias_n
 elasticsearch_oer_index_internal_name_prefix: "{{ elasticsearch_oer_index_name_prefix }}internal_"
 elasticsearch_oer_index_number_of_shards: 1
 elasticsearch_oer_index_number_of_replicas: "{{ elasticsearch_oer_index_number_of_shards - 1 }}"
-# logstash-user that writes to the oer-index
-elasticsearch_oersi_logstash_username: oersi_logstash
-elasticsearch_oersi_logstash_password: ch@ngeMe
 # user with read-only access to oer-index
 elasticsearch_oersi_viewer_username: oersi_viewer
 elasticsearch_oersi_viewer_password: ch@ngeMe
+# user with access to the oersi backend indices
+elasticsearch_oersi_backend_manager_username: oersi_backend_manager
+elasticsearch_oersi_backend_manager_password: ch@ngeMe
 
 elasticsearch_api_url: "http://{{ elasticsearch_host }}:{{ elasticsearch_port }}"
 
@@ -162,11 +162,6 @@ kibana_install: false
 kibana_elasticsearch_username: 'kibana_system'
 kibana_elasticsearch_password: '{{ (elasticsearch_builtin_users | selectattr("name", "equalto", "kibana_system")  | list)[0].password }}'
 
-logstash_monitor_local_syslog: false
-logstash_install_plugins:
-  - logstash-input-jdbc
-  - logstash-filter-jdbc_streaming
-  
 tomcat_version: '9.0.70'
 tomcat_port: 8080
 tomcat_shutdown_port: 8005

@@ -3,7 +3,5 @@
   version: 2.2.0
 - src: geerlingguy.elasticsearch
   version: 5.0.1
-- src: geerlingguy.logstash
-  version: 5.2.0
 - src: geerlingguy.kibana
   version: 4.0.1

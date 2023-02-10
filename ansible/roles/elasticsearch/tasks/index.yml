@@ -30,7 +30,6 @@
     owner: "{{ oersi_user }}"
     group: "{{ oersi_user }}"
     mode: 0644
-  notify: restart logstash
 
 - name: Update oer_data template
   uri:

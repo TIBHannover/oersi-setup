@@ -25,12 +25,12 @@ example:
           password: changeme
         - name: remote_monitoring_user
           password: changeme
-      # logstash-user that writes to the oer-index
-      elasticsearch_oersi_logstash_username: oersi_logstash
-      elasticsearch_oersi_logstash_password: ch@ngeMe
       # user with read-only access to oer-index
       elasticsearch_oersi_viewer_username: oersi_viewer
       elasticsearch_oersi_viewer_password: ch@ngeMe
+      # user with access to the oersi backend indices
+      elasticsearch_oersi_backend_manager_username: oersi_backend_manager
+      elasticsearch_oersi_backend_manager_password: ch@ngeMe
       oerindex_backend_oermetadata_manage_user: changeme
       oerindex_backend_oermetadata_manage_password: changeme
 

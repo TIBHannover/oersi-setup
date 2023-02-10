@@ -1,7 +1,0 @@
-#!/bin/bash
-# {{ ansible_managed }}
-
-# old location (logstash-integration-jdbc version <= 5.2.5)
-test -w {{ logstash_dir }}/.logstash_jdbc_last_run && rm {{ logstash_dir }}/.logstash_jdbc_last_run
-# new location (logstash-integration-jdbc version >= 5.2.6 - see https://github.com/logstash-plugins/logstash-integration-jdbc/pull/106)
-test -w /var/lib/logstash/plugins/inputs/jdbc/logstash_jdbc_last_run && rm /var/lib/logstash/plugins/inputs/jdbc/logstash_jdbc_last_run

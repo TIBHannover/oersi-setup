@@ -22,7 +22,7 @@ The same index can also be reused at the level of a federal state (or generally 
 
 * **ETL**: The ETL-module (extract, transform, load) connects to the individual repositories and fetches metadata updates according to a configured schedule (e.g. daily).
 * **Import Scripts**: Another channel to connect individual OER repositories and import metadata according to a configured schedule (e.g. daily). Contains scripted imports (e.g. Python)
-* **API / Backend**: Provides interfaces to retrieve data from the index (external) and to import / update data into the index (internal). A read-only user is used to retrieve data. When creating / updating the data, the data is first written into an SQL database and from there written into an elasticsearch index with the help of logstash.
+* **API / Backend**: Provides interfaces to retrieve data from the index (external) and to import / update data into the index (internal). A read-only user is used to retrieve data. When creating / updating the data, the data is written into an elasticsearch index.
 * **Frontend**: Website that displays the data from the index and offers the possibility to search
 * **User Management**: (TDB) _Optional_ - only needed if the index is used as a (local) standalone solution. So users can be given access to manually update the data via a UI.
 
@@ -32,7 +32,7 @@ The same index can also be reused at the level of a federal state (or generally 
 
 The latest stable version is available in the master-branch. There are also tagged stable versions (0.7.0 and later).
 
-The installation processes will install all components that are necessary to run _oersi_ (sql-db, elasticsearch, logstash, tomcat, nginx, etc). To avoid conflicts, it is recommended that no other applications / processes are running on the target system.
+The installation processes will install all components that are necessary to run _oersi_ (sql-db, elasticsearch, tomcat, nginx, etc). To avoid conflicts, it is recommended that no other applications / processes are running on the target system.
 
 Depending on the scenario, there are different possibilities to install _oersi_. To test the index a little bit with minimal effort, you can use a [local installation in the local VirtualBox VM](#run-it-locally-with-virtualbox) via vargant. The other installation methods are suitable for installing the index on an existing system that is accessible via ansible. Of these, the [installation via gitlab-ci](#automatic-installation-via-gitlab-ci) is clearly recommended.
 
@@ -123,8 +123,7 @@ Contributions are welcome. Please read [CONTRIBUTING.md](CONTRIBUTING.md) for fu
 ## Technologies
 
 - **MariaDB**: Used to store the imported data.
-- **Logstash**: Logstash is regulary checking the MariaDB database, if any new items are added or changes are made to existing entries.
-- **Elasticsearch**: Elasticsearch is the search engine and indexes the input it gets from Logstash.
+- **Elasticsearch**: Elasticsearch is the search engine and indexes the input it gets from the backend.
 - **Kibana**: For development or monitoring of Elasticsearch Kibana can be installed optionally (activate in _ansible/group_vars_ -> _kibana_install_)
 - **Backend**: The backend is the interface for read/write access to the index, see https://gitlab.com/oersi/oersi-backend
 - **Frontend**: The frontend is used from https://gitlab.com/oersi/oersi-frontend
