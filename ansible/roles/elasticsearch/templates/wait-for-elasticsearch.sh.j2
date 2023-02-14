@@ -4,7 +4,7 @@
 # Make sure Elasticsearch is running.
 #
 
-NUMBER_OF_ATTEMPTS=10
+NUMBER_OF_ATTEMPTS=20
 HOST={{ elasticsearch_host }}
 PORT={{ elasticsearch_port }}
 
@@ -19,7 +19,7 @@ wait_for() {
       break
     fi
     date +"*** %Y-%m-%d %H:%M:%S waiting"
-    sleep 2
+    sleep 3
   done
   return $RESULT
 }
