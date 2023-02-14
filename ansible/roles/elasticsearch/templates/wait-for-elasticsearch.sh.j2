@@ -31,3 +31,4 @@ if [[ $WAIT_FOR_RESULT -eq 0 ]]; then
 else
   date +"*** %Y-%m-%d %H:%M:%S elasticsearch not available"
 fi
+exit $WAIT_FOR_RESULT
