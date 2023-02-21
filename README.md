@@ -122,7 +122,6 @@ Contributions are welcome. Please read [CONTRIBUTING.md](CONTRIBUTING.md) for fu
 
 ## Technologies
 
-- **MariaDB**: Used to store the imported data.
 - **Elasticsearch**: Elasticsearch is the search engine and indexes the input it gets from the backend.
 - **Kibana**: For development or monitoring of Elasticsearch Kibana can be installed optionally (activate in _ansible/group_vars_ -> _kibana_install_)
 - **Backend**: The backend is the interface for read/write access to the index, see https://gitlab.com/oersi/oersi-backend

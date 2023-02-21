@@ -1,16 +1,10 @@
 ---
 oerindex_host: 192.168.98.115
 
-mariadb_host: localhost
 mariadb_port: 3306
 
 base_dir:   # base directory for oersi components; default to HOME-dir of ansible user
 oersi_user: # default to ansible user
-
-oerindex_db:
-  name: oerindex_db
-  user: oerindex
-  password: oerindexpw
 
 oerindex_features_use_synonyms: false   # activate/deactivate synonyms feature
 

@@ -8,10 +8,6 @@ example:
   hosts:
     192.168.98.115:
       oerindex_host: 192.168.98.115
-      oerindex_db:
-        name: oerindex_db
-        user: oerindex
-        password: oerindexpw
       elasticsearch_elastic_password: changeme
       elasticsearch_bootstrap_password: bootstrap
       elasticsearch_builtin_users:

@@ -7,10 +7,6 @@ oerindex:
       oersi_setup_branch: master
 
       oerindex_host: your.oersi.test.host
-      oerindex_db:
-        name: oerindex_db
-        user: oerindex
-        password: oerindexpw
       elasticsearch_elastic_password: changeme
       elasticsearch_bootstrap_password: bootstrap
       elasticsearch_builtin_users:

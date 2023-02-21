@@ -15,7 +15,6 @@
 - hosts: oerindex
   become: yes
   roles:
-    - mariadb
     - geerlingguy.java
     - elasticsearch
 
@@ -30,6 +29,9 @@
     - nginx
     - role: kibana
       when: kibana_install
+    - role: mariadb
+      tags: matomo
+      when: matomo_install
     - role: matomo
       tags: matomo
       when: matomo_install
