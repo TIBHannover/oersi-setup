@@ -1,10 +1,10 @@
 ---
 oerindex_backend_loglevel: INFO
 oerindex_backend_label_files:
-  - labels-conditions-of-access.json
-  - labels-educational-audience.json
-  - labels-hcrt.json
-  - labels-hochschulfaechersystematik.json
+  - labels-002-conditions-of-access.json
+  - labels-002-educational-audience.json
+  - labels-002-hcrt.json
+  - labels-002-hochschulfaechersystematik.json
 
 oerindex_backend_configdir: "{{ oerindex_backend_downloaddir }}/config"
 
