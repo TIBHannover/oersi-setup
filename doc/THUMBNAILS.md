@@ -1,3 +1,7 @@
+> **_DEPRECATED:_** This page has been moved to our documentation
+>
+> Please use the following link instead: https://oersi.org/resources/pages/en/docs/
+
 # Thumbnail Generator
 
 Sometimes OERSI resources do not have an image or the images are very large and therefore cause unnecessary overhead when rendering in the frontend.

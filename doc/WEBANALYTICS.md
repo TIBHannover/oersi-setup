@@ -1,3 +1,7 @@
+> **_DEPRECATED:_** This page has been moved to our documentation
+>
+> Please use the following link instead: https://oersi.org/resources/pages/en/docs/
+
 # Analysis of the use of the Search Index
 
 To get an overview of how the Search Index is used (e.g. number of visits in a period etc), an analysis of the Nginx Access Logs can be activated. For this purpose [Matomo](https://matomo.org) is installed and a cron job is set up to analyze the access logs once a day. The overview of the analysis can then be viewed in the Matomo-UI via the browser:

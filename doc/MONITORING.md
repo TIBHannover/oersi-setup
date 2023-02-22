@@ -1,3 +1,7 @@
+> **_DEPRECATED:_** This page has been moved to our documentation
+>
+> Please use the following link instead: https://oersi.org/resources/pages/en/docs/
+
 # Monitoring
 
 ## Monitoring Import workflows
