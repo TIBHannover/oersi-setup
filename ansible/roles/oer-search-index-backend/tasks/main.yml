@@ -91,4 +91,5 @@
   shell: '{{tomcat_start_command}}'
 
 - include: import-labels.yml
+- include: import-custom-config.yml
 - include: vocab-scheme.yml

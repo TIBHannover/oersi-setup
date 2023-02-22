@@ -25,5 +25,3 @@
     enabled: true
   tags:
     - root-task
-
-- include: init-database.yml

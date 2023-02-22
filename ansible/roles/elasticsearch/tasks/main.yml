@@ -24,5 +24,13 @@
       xpack.security.enabled: true
       action.destructive_requires_name: true
 
+- name: Add wait for script
+  template:
+    src: "wait-for-elasticsearch.sh.j2"
+    dest: "{{ base_dir }}/bin/wait-for-elasticsearch.sh"
+    owner: "{{ oersi_user }}"
+    group: "{{ oersi_user }}"
+    mode: 0700
+
 - include: users.yml
 - include: index.yml

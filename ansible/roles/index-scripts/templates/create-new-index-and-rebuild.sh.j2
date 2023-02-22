@@ -1,25 +1,8 @@
 #!/bin/bash
 # {{ ansible_managed }}
 #
-# Create and use a new oer_data index and force a rebuild from the sql-data.
+# Create and use a new oer_data index and force a rebuild from the backend-data.
 #
-
-if [ -z "$1" ]; then
-  if [ $(systemctl list-unit-files "logstash*" | grep logstash | wc -l) -gt 0 ]; then
-    PROCESS_LOGSTASH=true
-  else
-    PROCESS_LOGSTASH=false
-  fi
-else
-  PROCESS_LOGSTASH=$1
-fi
-if [ "$PROCESS_LOGSTASH" = true ]; then
-  date +"*** %Y-%m-%d %H:%M:%S logstash processing activated"
-else
-  date +"*** %Y-%m-%d %H:%M:%S logstash processing deactivated"
-fi  
-
-test "$PROCESS_LOGSTASH" = true && date +"*** %Y-%m-%d %H:%M:%S stop logstash" && sudo systemctl stop logstash.service
 
 TIMESTAMP=$(date +'%Y%m%d%H%M%S')
 INDEX_VERSION={{ elasticsearch_oer_index_version }}
@@ -31,15 +14,34 @@ for INDEX in $INDEX_NAME $INDEX_INTERNAL_NAME; do
   echo ""
 done
 
-date +"*** %Y-%m-%d %H:%M:%S write conf file"
-cat >{{ base_dir }}/conf/oer_index.conf <<EOL
-OER_INDEX_VERSION=$INDEX_VERSION
-OER_INDEX_TIMESTAMP=$TIMESTAMP
-OER_INDEX_NAME=${INDEX_NAME}
-OER_INDEX_INTERNAL_NAME=${INDEX_INTERNAL_NAME}
-OER_INDEX_FEATURE_SYNONYM={{ oerindex_features_use_synonyms | string }}
-EOL
+date +"*** %Y-%m-%d %H:%M:%S write conf"
+read -r -d '' QUERY << EOC
+{
+  "metadataIndexName": "${INDEX_NAME}",
+  "additionalMetadataIndexName": "${INDEX_INTERNAL_NAME}"
+}
+EOC
+curl --netrc-file {{ base_dir }}/conf/oer_backend_access --header 'Content-Type: application/json' -H 'Accept: application/json' -d "$QUERY" -XPOST "{{ oerindex_backend_internal_api_base_url }}/metadata-config"
 
-test "$PROCESS_LOGSTASH" = true && date +"*** %Y-%m-%d %H:%M:%S reset jdbc-lastrun" && sudo /usr/share/logstash/bin/reset-jdbc-lastrun.sh
-test "$PROCESS_LOGSTASH" = true && date +"*** %Y-%m-%d %H:%M:%S run logstash pipeline once" && sudo /usr/share/logstash/bin/run-oersi-pipeline-once.sh
-test "$PROCESS_LOGSTASH" = true && date +"*** %Y-%m-%d %H:%M:%S start logstash" && sudo systemctl start logstash.service
+reindex() {
+  date +"*** %Y-%m-%d %H:%M:%S reindex $1"
+  read -r -d '' REINDEX_QUERY << EOC
+{
+  "source": {
+    "index": "oersi_backend_metadata",
+    "_source": ["$2"]
+  },
+  "dest": {
+    "index": "$1"
+  },
+  "script": {
+    "source": "ctx._source = ctx._source.$2"
+  }
+}
+EOC
+  curl --netrc-file {{ base_dir }}/conf/oer_index_access -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' -d "$REINDEX_QUERY" "http://{{ elasticsearch_host }}:{{ elasticsearch_port }}/_reindex"
+  echo ""
+}
+reindex ${INDEX_NAME} data
+reindex ${INDEX_INTERNAL_NAME} additionalData
+date +"*** %Y-%m-%d %H:%M:%S reindex done"

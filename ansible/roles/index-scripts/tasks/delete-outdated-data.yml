@@ -1,11 +1,16 @@
 ---
-- name: Clear SQL database via cron
+- name: Cleanup deprecated job
   cron:
     name: "Clear SQL database"
+    state: "absent"
+
+- name: Clear backend metadata via cron
+  cron:
+    name: "Clear backend metadata database"
     weekday: "{{ oerindex_delete_sql_data_schedule_weekday }}"
     hour: "{{ oerindex_delete_sql_data_schedule_hour }}"
     minute: "{{ oerindex_delete_sql_data_schedule_minute }}"
-    job: "{{ base_dir }}/bin/reset-sql-oerdata.sh > {{ oerindex_logdir }}/reset-sql-data.log 2>&1"
+    job: "{{ base_dir }}/bin/reset-backend-metadata.sh > {{ oerindex_logdir }}/reset-backend-metadata.log 2>&1"
     state: "{{ 'present' if oerindex_delete_outdated_data_periodically else 'absent' }}"
 
 - name: Recreate oerdata index via cron

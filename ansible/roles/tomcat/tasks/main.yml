@@ -47,7 +47,7 @@
   cron:
     name: "tomcat start at reboot"
     special_time: reboot
-    job: "{{tomcat_bin}}/tomcat.sh start"
+    job: "{{ base_dir }}/bin/wait-for-elasticsearch.sh && {{tomcat_bin}}/tomcat.sh start"
 
 - include: cleanup-logs.yml
 

@@ -1,12 +1,13 @@
 #!/bin/bash
 # {{ ansible_managed }}
 #
-# Set alias {{ elasticsearch_oer_index_alias_name }} for current index that is defined in "{{ base_dir }}/conf/oer_index.conf".
+# Set alias {{ elasticsearch_oer_index_alias_name }} for current index that is defined in "oersi_backend_config".
 # Also remove old aliases and indices.
 #
 
-CURRENT_INDEX_NAME=$(grep "OER_INDEX_NAME=" {{ base_dir }}/conf/oer_index.conf | cut -d'=' -f2)
-CURRENT_INDEX_INTERNAL_NAME=$(grep "OER_INDEX_INTERNAL_NAME=" {{ base_dir }}/conf/oer_index.conf | cut -d'=' -f2)
+
+CURRENT_INDEX_NAME=$(curl --netrc-file {{ base_dir }}/conf/oer_index_access http://{{ elasticsearch_host }}:{{ elasticsearch_port }}/oersi_backend_config/_doc/oersi_backend_config/_source/ | jq -r .metadataIndexName)
+CURRENT_INDEX_INTERNAL_NAME=$(curl --netrc-file {{ base_dir }}/conf/oer_index_access http://{{ elasticsearch_host }}:{{ elasticsearch_port }}/oersi_backend_config/_doc/oersi_backend_config/_source/ | jq -r .additionalMetadataIndexName)
 date +"*** %Y-%m-%d %H:%M:%S start update alias to current index $CURRENT_INDEX_NAME"
 
 update() {

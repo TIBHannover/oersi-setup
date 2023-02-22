@@ -1,0 +1,34 @@
+#!/bin/bash
+# {{ ansible_managed }}
+#
+# Make sure Elasticsearch is running.
+#
+
+NUMBER_OF_ATTEMPTS=20
+HOST={{ elasticsearch_host }}
+PORT={{ elasticsearch_port }}
+
+wait_for() {
+  date +"*** %Y-%m-%d %H:%M:%S wait for elasticsearch"
+  for (( i=1; i <= $NUMBER_OF_ATTEMPTS; ++i ))
+  do
+    (echo -n > /dev/tcp/$HOST/$PORT) >/dev/null 2>&1
+    RESULT=$?
+    if [[ $RESULT -eq 0 ]]; then
+      date +"*** %Y-%m-%d %H:%M:%S elasticsearch is up"
+      break
+    fi
+    date +"*** %Y-%m-%d %H:%M:%S waiting"
+    sleep 3
+  done
+  return $RESULT
+}
+
+wait_for
+WAIT_FOR_RESULT=$?
+if [[ $WAIT_FOR_RESULT -eq 0 ]]; then
+  date +"*** %Y-%m-%d %H:%M:%S elasticsearch available"
+else
+  date +"*** %Y-%m-%d %H:%M:%S elasticsearch not available"
+fi
+exit $WAIT_FOR_RESULT
