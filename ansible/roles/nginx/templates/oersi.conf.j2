@@ -19,6 +19,10 @@ server {
   location {{ oerindex_backend_labelapi_root_path }} {
     proxy_pass {{ oerindex_backend_internal_api_base_url }}/label/;
   }
+  # DEPRECATED: search via "api-internal/label" will be removed soon, please use search via "api/label" instead
+  location {{ oerindex_public_base_path }}/api-internal/label/ {
+    proxy_pass {{ oerindex_backend_internal_api_base_url }}/deprecated/label/;
+  }
   location {{ oerindex_backend_oembedapi_root_path }}-json {
     proxy_pass {{ oerindex_backend_internal_api_base_url }}/oembed-json/;
   }
