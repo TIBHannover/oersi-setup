@@ -5,6 +5,7 @@ oerindex_backend_label_files:
   - labels-002-educational-audience.json
   - labels-002-hcrt.json
   - labels-002-hochschulfaechersystematik.json
+  - labels-002-educational-level.json
 
 oerindex_backend_configdir: "{{ oerindex_backend_downloaddir }}/config"
 
@@ -39,6 +40,11 @@ oerindex_backend_labelled_concept_fields:
   - about
   - audience
   - conditionsOfAccess
+# TODO: unsure if teaches,assesses,competencyRequired should be here as well
+#  - teaches
+#  - assesses
+#  - competencyRequired
+  - educationalLevel
   - learningResourceType
 oersi_backend_custom_config:
   publisherToInstitutionWhitelist: "{{ institution_from_publisher_whitelist | default([], true) }}"
