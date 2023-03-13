@@ -1,0 +1,15 @@
+server {
+  listen      {{ oerindex_schemas_port }};
+  root {{ oerindex_schemas_instdir }};
+  index index.php index.html index.htm;
+  server_name localhost;
+
+  location /schemas {
+    alias {{ oerindex_schemas_instdir }};
+  }
+  location / {
+    deny  all;
+  }
+
+  access_log  /var/log/nginx/oersi-schemas-access.log  main;
+}

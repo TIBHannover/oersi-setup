@@ -1,0 +1,45 @@
+---
+- name: Ensures inst-dir exists
+  become: true
+  file:
+    path: "{{ oerindex_schemas_instdir }}"
+    owner: "{{ oerindex_schemas_owner }}"
+    group: "{{ oerindex_schemas_group }}"
+    state: directory
+
+- name: download OER search index schema files
+  get_url:
+    url: "{{ oerindex_metadata_schema_artifact_url }}"
+    force: yes
+    dest: "{{ base_dir }}/metadata-schema.zip"
+
+- name: Ensure packages are present
+  become: true
+  package:
+    name: ["unzip"]
+
+- name: extract OER search index schema files
+  become: true
+  unarchive:
+    remote_src: yes
+    src: '{{ base_dir }}/metadata-schema.zip'
+    dest: "{{ oerindex_schemas_instdir }}"
+    owner: "{{ oerindex_schemas_owner }}"
+    group: "{{ oerindex_schemas_group }}"
+
+- name: Configure nginx.
+  become: true
+  template:
+    src: nginx.conf.j2
+    dest: /etc/nginx/sites-available/schemas.conf
+  notify:
+    - restart nginx
+
+- name: enable nginx config
+  become: true
+  file:
+    path: '/etc/nginx/sites-enabled/schemas.conf'
+    src: '/etc/nginx/sites-available/schemas.conf'
+    state: link
+  notify:
+    - restart nginx

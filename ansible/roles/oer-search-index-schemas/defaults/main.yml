@@ -1,0 +1,3 @@
+---
+oerindex_schemas_owner: "{{ oersi_user }}"
+oerindex_schemas_group: "www-data"

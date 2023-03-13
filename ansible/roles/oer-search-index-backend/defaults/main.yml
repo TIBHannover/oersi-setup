@@ -8,6 +8,8 @@ oerindex_backend_label_files:
 
 oerindex_backend_configdir: "{{ oerindex_backend_downloaddir }}/config"
 
+oerindex_backend_metadata_custom_processor: amb
+
 oerindex_backend_features_add_missing_labels: "true" # add missing labels of known vocabularies
 oerindex_backend_features_add_missing_parent_items_of_hierarchical_vocabs: "true" # add missing parent items in hierarchical vocabularies
 oerindex_backend_features_add_missing_metadata_infos: "true" # add missing infos like embedUrl, image width and height to metadata

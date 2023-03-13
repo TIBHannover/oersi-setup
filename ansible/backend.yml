@@ -3,4 +3,5 @@
 - hosts: oerindex
   roles:
     - init-facts
+    - oer-search-index-schemas
     - oer-search-index-backend

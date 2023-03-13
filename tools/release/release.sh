@@ -19,6 +19,7 @@ GITLAB_ACCESS_TOKEN=SET-YOUR-TOKEN         # set your gitlab access token here; 
 RELEASE_BACKEND=true
 RELEASE_ETL=true
 RELEASE_IMPORTSCRIPTS=true
+RELEASE_SCHEMA=true
 RELEASE_FRONTEND=true
 WAIT_FOR_RELEASE_ARTIFACTS=${PUSH_TO_ORIGIN} # wait until all artifacts are available before releasing oersi-setup
 BACKEND_RELEASE_VERSION=${RELEASE_VERSION}
@@ -27,12 +28,15 @@ ETL_RELEASE_VERSION=${RELEASE_VERSION}
 ETL_NEXT_VERSION=${NEXT_VERSION}
 IMPORTSCRIPTS_RELEASE_VERSION=${RELEASE_VERSION}
 IMPORTSCRIPTS_NEXT_VERSION=${NEXT_VERSION}
+SCHEMA_RELEASE_VERSION=${RELEASE_VERSION}
+SCHEMA_NEXT_VERSION=${NEXT_VERSION}
 FRONTEND_RELEASE_VERSION=${RELEASE_VERSION}
 FRONTEND_NEXT_VERSION=${NEXT_VERSION}
 GITLAB_BACKEND_API=https://gitlab.com/api/v4/projects/16856715
 GITLAB_FRONTEND_API=https://gitlab.com/api/v4/projects/16666399
 GITLAB_ETL_API=https://gitlab.com/api/v4/projects/17726912
 GITLAB_IMPORTSCRIPTS_API=https://gitlab.com/api/v4/projects/26258348
+GITLAB_SCHEMA_API=https://gitlab.com/api/v4/projects/44205972
 GITLAB_SETUP_API=https://gitlab.com/api/v4/projects/16999502
 SCRIPT=$(readlink -f "$0")
 SCRIPT_DIR=$(dirname "$SCRIPT")
@@ -49,6 +53,9 @@ fi
 if [ "$RELEASE_IMPORTSCRIPTS" = true ] ; then
   $SCRIPT_DIR/release-import-scripts.sh $IMPORTSCRIPTS_RELEASE_VERSION $IMPORTSCRIPTS_NEXT_VERSION $RELEASE_ISSUE_URL $PUSH_TO_ORIGIN $WORKING_DIR
 fi
+if [ "$RELEASE_SCHEMA" = true ] ; then
+  $SCRIPT_DIR/release-schema.sh $SCHEMA_RELEASE_VERSION $SCHEMA_NEXT_VERSION $RELEASE_ISSUE_URL $PUSH_TO_ORIGIN $WORKING_DIR
+fi
 if [ "$RELEASE_FRONTEND" = true ] ; then
   $SCRIPT_DIR/release-frontend.sh $FRONTEND_RELEASE_VERSION $FRONTEND_NEXT_VERSION $RELEASE_ISSUE_URL $PUSH_TO_ORIGIN $WORKING_DIR
 fi
@@ -61,8 +68,9 @@ if [ "$WAIT_FOR_RELEASE_ARTIFACTS" = true ] ; then
     FRONTEND_PACKAGE_ID=$(curl -s "${GITLAB_FRONTEND_API}/packages" | jq ".[] | select(.version == \"$FRONTEND_RELEASE_VERSION\") | .id")
     ETL_PACKAGE_ID=$(curl -s "${GITLAB_ETL_API}/packages" | jq ".[] | select(.version == \"$ETL_RELEASE_VERSION\") | .id")
     IMPORTSCRIPTS_PACKAGE_ID=$(curl -s "${GITLAB_IMPORTSCRIPTS_API}/packages" | jq ".[] | select(.version == \"$IMPORTSCRIPTS_RELEASE_VERSION\") | .id")
-    date +"%Y-%m-%d %H:%M:%S package ids: backend $BACKEND_PACKAGE_ID, etl $ETL_PACKAGE_ID, frontend $FRONTEND_PACKAGE_ID, import-scripts $IMPORTSCRIPTS_PACKAGE_ID"
-    if [ -z "$BACKEND_PACKAGE_ID" ] || [ -z "$ETL_PACKAGE_ID" ] || [ -z "$FRONTEND_PACKAGE_ID" ] || [ -z "$IMPORTSCRIPTS_PACKAGE_ID" ] ; then
+    SCHEMA_PACKAGE_ID=$(curl -s "${GITLAB_SCHEMA_API}/packages" | jq ".[] | select(.version == \"$SCHEMA_RELEASE_VERSION\") | .id")
+    date +"%Y-%m-%d %H:%M:%S package ids: backend $BACKEND_PACKAGE_ID, etl $ETL_PACKAGE_ID, frontend $FRONTEND_PACKAGE_ID, import-scripts $IMPORTSCRIPTS_PACKAGE_ID, schema $SCHEMA_PACKAGE_ID"
+    if [ -z "$BACKEND_PACKAGE_ID" ] || [ -z "$ETL_PACKAGE_ID" ] || [ -z "$FRONTEND_PACKAGE_ID" ] || [ -z "$IMPORTSCRIPTS_PACKAGE_ID" ] || [ -z "$SCHEMA_PACKAGE_ID" ] ; then
       echo "wait for packages"
       sleep 60
     else
@@ -96,6 +104,12 @@ IMPORTSCRIPTS_PACKAGE_FILE_ID=$(curl "${GITLAB_IMPORTSCRIPTS_API}/packages/${IMP
 IMPORTSCRIPTS_RELEASE_ARTIFACT_URL="https://gitlab.com/oersi/oersi-import-scripts/-/package_files/${IMPORTSCRIPTS_PACKAGE_FILE_ID}/download"
 echo $IMPORTSCRIPTS_RELEASE_ARTIFACT_URL
 
+# SCHEMA
+SCHEMA_PACKAGE_ID=$(curl "${GITLAB_SCHEMA_API}/packages" | jq ".[] | select(.version == \"$SCHEMA_RELEASE_VERSION\") | .id")
+SCHEMA_PACKAGE_FILE_ID=$(curl "${GITLAB_SCHEMA_API}/packages/${SCHEMA_PACKAGE_ID}/package_files" | jq ".[] | select(.file_name == \"schema.zip\") | .id")
+SCHEMA_RELEASE_ARTIFACT_URL="https://gitlab.com/oersi/oersi-schema/-/package_files/${SCHEMA_PACKAGE_FILE_ID}/download"
+echo $SCHEMA_RELEASE_ARTIFACT_URL
+
 if [ -z "$BACKEND_PACKAGE_FILE_ID" ] ; then
   echo "Missing backend artifact for version $BACKEND_RELEASE_VERSION"
 fi
@@ -108,7 +122,10 @@ fi
 if [ -z "$IMPORTSCRIPTS_PACKAGE_FILE_ID" ] ; then
   echo "Missing import-scripts artifact for version $IMPORTSCRIPTS_RELEASE_VERSION"
 fi
-if [ -z "$BACKEND_PACKAGE_FILE_ID" ] || [ -z "$FRONTEND_PACKAGE_FILE_ID" ] || [ -z "$ETL_PACKAGE_FILE_ID" ] || [ -z "$IMPORTSCRIPTS_PACKAGE_FILE_ID" ] ; then
+if [ -z "$SCHEMA_PACKAGE_FILE_ID" ] ; then
+  echo "Missing schema artifact for version $SCHEMA_RELEASE_VERSION"
+fi
+if [ -z "$BACKEND_PACKAGE_FILE_ID" ] || [ -z "$FRONTEND_PACKAGE_FILE_ID" ] || [ -z "$ETL_PACKAGE_FILE_ID" ] || [ -z "$IMPORTSCRIPTS_PACKAGE_FILE_ID" ] || [ -z "$SCHEMA_PACKAGE_FILE_ID" ] ; then
   exit 1
 fi
 
@@ -126,6 +143,11 @@ if [ "$RELEASE_IMPORTSCRIPTS" = true ] && [ "$PUSH_TO_ORIGIN" = true ] ; then
   curl --header 'Content-Type: application/json' --header "PRIVATE-TOKEN: $GITLAB_ACCESS_TOKEN" \
        --data "{ \"name\": \"$IMPORTSCRIPTS_RELEASE_VERSION\", \"tag_name\": \"$IMPORTSCRIPTS_RELEASE_VERSION\", \"description\": \"Release $IMPORTSCRIPTS_RELEASE_VERSION\", \"milestones\": [\"$MILESTONE\"], \"assets\": { \"links\": [{ \"name\": \"package\", \"url\": \"$IMPORTSCRIPTS_RELEASE_ARTIFACT_URL\", \"filepath\": \"/package\", \"link_type\":\"package\" }] } }" \
        --request POST "$GITLAB_IMPORTSCRIPTS_API/releases"
+fi
+if [ "$RELEASE_SCHEMA" = true ] && [ "$PUSH_TO_ORIGIN" = true ] ; then
+  curl --header 'Content-Type: application/json' --header "PRIVATE-TOKEN: $GITLAB_ACCESS_TOKEN" \
+       --data "{ \"name\": \"$SCHEMA_RELEASE_VERSION\", \"tag_name\": \"$SCHEMA_RELEASE_VERSION\", \"description\": \"Release $SCHEMA_RELEASE_VERSION\", \"milestones\": [\"$MILESTONE\"], \"assets\": { \"links\": [{ \"name\": \"package\", \"url\": \"$SCHEMA_RELEASE_ARTIFACT_URL\", \"filepath\": \"/package\", \"link_type\":\"package\" }] } }" \
+       --request POST "$GITLAB_SCHEMA_API/releases"
 fi
 if [ "$RELEASE_FRONTEND" = true ] && [ "$PUSH_TO_ORIGIN" = true ] ; then
   curl --header 'Content-Type: application/json' --header "PRIVATE-TOKEN: $GITLAB_ACCESS_TOKEN" \
