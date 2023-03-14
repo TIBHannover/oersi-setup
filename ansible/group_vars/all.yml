@@ -31,6 +31,11 @@ oerindex_frontend_custom_files:         # example entry: {source: 'path/example.
 oerindex_frontend_custom_cookie_links:  # example entry: {path: 'path/policy.html',language: 'en'}
 oerindex_frontend_custom_info_links: # by language; example: en: "https://oersi.org/resources/pages/en"
 
+oerindex_metadata_schema_artifact_url: https://gitlab.com/oersi/oersi-schema/-/jobs/artifacts/main/download?job=deploy
+oerindex_schemas_instdir: "/var/www/oersi-schemas"
+oerindex_schemas_port: 51734
+oerindex_backend_metadata_schema_location: "http://localhost:{{ oerindex_schemas_port }}/schemas/metadata/schema.json"
+oerindex_backend_metadata_schema_resolution_scope: "http://localhost:{{ oerindex_schemas_port }}/schemas/metadata/"
 oerindex_backend_downloaddir: "{{ base_dir }}/oersi-backend"
 oerindex_backend_artifact_url: 'https://gitlab.com/oersi/oersi-backend/-/jobs/artifacts/master/download?job=deploy+branch'
 oerindex_backend_contactapi_root_path: '{{ oerindex_public_base_path }}/api-internal/contact'
