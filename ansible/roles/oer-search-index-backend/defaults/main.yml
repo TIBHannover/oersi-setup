@@ -40,10 +40,9 @@ oerindex_backend_labelled_concept_fields:
   - about
   - audience
   - conditionsOfAccess
-# TODO: unsure if teaches,assesses,competencyRequired should be here as well
-#  - teaches
-#  - assesses
-#  - competencyRequired
+  - teaches
+  - assesses
+  - competencyRequired
   - educationalLevel
   - learningResourceType
 oersi_backend_custom_config:
