@@ -29,6 +29,10 @@ oerindex_statistics_fields: # fields for metadata statistics
   - inLanguage
   - keywords
   - learningResourceType
+  - educationalLevel
+  - teaches
+  - assesses
+  - competencyRequired
   - license
   - sourceOrganization
   - institutions

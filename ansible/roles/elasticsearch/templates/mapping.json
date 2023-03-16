@@ -190,6 +190,50 @@
         "isAccessibleForFree": {
           "type": "boolean"
         },
+        "educationalLevel" : {
+          "properties" : {
+            "id" : {
+            "type" : "keyword"
+            },
+            "prefLabel" : {
+              "dynamic" : "true",
+              "properties" : {}
+            }
+          }
+        },
+        "teaches" : {
+          "properties" : {
+            "id" : {
+            "type" : "keyword"
+            },
+            "prefLabel" : {
+              "dynamic" : "true",
+              "properties" : {}
+            }
+          }
+        },
+        "assesses" : {
+          "properties" : {
+            "id" : {
+            "type" : "keyword"
+            },
+            "prefLabel" : {
+              "dynamic" : "true",
+              "properties" : {}
+            }
+          }
+        },
+        "competencyRequired" : {
+          "properties" : {
+            "id" : {
+              "type" : "keyword"
+            },
+            "prefLabel" : {
+              "dynamic" : "true",
+              "properties" : {}
+            }
+          }
+        },
         "learningResourceType" : {
           "properties" : {
             "id" : {

@@ -1,0 +1,50 @@
+{
+  "https://w3id.org/kim/educationalLevel/level_0": {
+    "de": "Elementarbereich",
+    "en": "Early childhood education"
+  },
+  "https://w3id.org/kim/educationalLevel/level_1": {
+    "de": "Primarbereich",
+    "en": "Primary education"
+  },
+  "https://w3id.org/kim/educationalLevel/level_2": {
+    "de": "Sekundarbereich I",
+    "en": "Lower secondary education"
+  },
+  "https://w3id.org/kim/educationalLevel/level_3": {
+    "de": "Sekundarbereich II",
+    "en": "Upper secondary education"
+  },
+  "https://w3id.org/kim/educationalLevel/level_4": {
+    "de": "Postsekundarer nicht-tertiärer Bereich",
+    "en": "Post-secondary non-tertiary education"
+  },
+  "https://w3id.org/kim/educationalLevel/level_5": {
+    "de": "Kurzes tertiäres Bildungsprogramm",
+    "en": "Short-cycle tertiary education"
+  },
+  "https://w3id.org/kim/educationalLevel/level_A": {
+    "de": "Hochschule",
+    "en": "University"
+  },
+  "https://w3id.org/kim/educationalLevel/level_6": {
+    "de": "Bachelor oder äquivalent",
+    "en": "Bachelor or equivalent"
+  },
+  "https://w3id.org/kim/educationalLevel/level_7": {
+    "de": "Master oder äquivalent",
+    "en": "Master or equivalent"
+  },
+  "https://w3id.org/kim/educationalLevel/level_8": {
+    "de": "Promotion oder äquivalent",
+    "en": "Doctoral or equivalent"
+  },
+  "https://w3id.org/kim/educationalLevel/level_B": {
+    "de": "Vorbereitungsdienst",
+    "en": "Preparatory service"
+  },
+  "https://w3id.org/kim/educationalLevel/level_C": {
+    "de": "Fortbildung",
+    "en": "Advanced training"
+  }
+}

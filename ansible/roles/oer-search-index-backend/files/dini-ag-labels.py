@@ -30,6 +30,9 @@ def format_labels(url):
 #format_labels('https://raw.githubusercontent.com/acka47/lrmi-audience-role/master/educationalAudienceRole.ttl')
 #format_labels('https://raw.githubusercontent.com/dini-ag-kim/hcrt/master/hcrt.ttl')
 #format_labels('https://raw.githubusercontent.com/dini-ag-kim/value-lists/main/conditionsOfAccess.ttl')
+#format_labels('https://raw.githubusercontent.com/dini-ag-kim/educationalLevel/main/educationalLevel.ttl')
+
+# TODO: Shouldn't this be labels-002-hochschulfaechersystematik.json?
 json_labels = get_json_from_file('labels-hochschulfaechersystematik.json')
 data = format_labels('https://raw.githubusercontent.com/dini-ag-kim/hochschulfaechersystematik/21-ukrainische-label-hinzuf%C3%BCgen/hochschulfaechersystematik.ttl')
 
