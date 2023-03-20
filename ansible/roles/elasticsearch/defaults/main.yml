@@ -2,3 +2,5 @@
 elasticsearch_serviced_conf_dir: /etc/systemd/system/elasticsearch.service.d
 elasticsearch_serviced_timeout_start_sec: 500
 elasticsearch_synonyms_file: #"synonyms-example.txt"
+elasticsearch_metadata_mapping_file: mapping.json
+  

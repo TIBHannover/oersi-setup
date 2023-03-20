@@ -25,7 +25,7 @@
 
 - name: Configure mapping.
   template:
-    src: "mapping.json"
+    src: "{{ elasticsearch_metadata_mapping_file }}"
     dest: "{{ base_dir }}/conf/mapping.json"
     owner: "{{ oersi_user }}"
     group: "{{ oersi_user }}"
@@ -36,7 +36,7 @@
     url: "{{elasticsearch_api_url}}/_index_template/oer_data"
     method: PUT
     body_format: json
-    body: "{{ lookup('template','mapping.json') }}"
+    body: "{{ lookup('template','{{ elasticsearch_metadata_mapping_file }}') }}"
     status_code: 200
     user: "{{elasticsearch_elastic_username}}"
     password: "{{elasticsearch_elastic_password}}"
