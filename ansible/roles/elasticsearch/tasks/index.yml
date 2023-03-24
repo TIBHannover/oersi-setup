@@ -42,3 +42,15 @@
     password: "{{elasticsearch_elastic_password}}"
     force_basic_auth: yes
   no_log: true
+
+- name: Update oersi_backend_elasticsearch_request_log template
+  uri:
+    url: "{{elasticsearch_api_url}}/_index_template/oersi_backend_elasticsearch_request_log"
+    method: PUT
+    body_format: json
+    body: "{{ lookup('template','request-log-template.json') }}"
+    status_code: 200
+    user: "{{elasticsearch_elastic_username}}"
+    password: "{{elasticsearch_elastic_password}}"
+    force_basic_auth: yes
+  no_log: true
