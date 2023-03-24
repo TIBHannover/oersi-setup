@@ -7,6 +7,8 @@ base_dir:   # base directory for oersi components; default to HOME-dir of ansibl
 oersi_user: # default to ansible user
 
 oerindex_features_use_synonyms: false   # activate/deactivate synonyms feature
+oerindex_backend_features_log_elasticsearch_requests: "false"
+oerindex_backend_log_elasticsearch_requests_cleanup_age: "180d"   # cleanup (remove) logged requests after older than this via elasticsearch Index Lifecycle Management - see also https://www.elastic.co/guide/en/elasticsearch/reference/current/overview-index-lifecycle-management.html
 
 oerindex_public_scheme: 'http'
 oerindex_public_base_path: '/resources'
