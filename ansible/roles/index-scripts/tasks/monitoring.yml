@@ -24,3 +24,11 @@
     minute: "{{ oerindex_statistics_schedule_minute }}"
     job: "{{ base_dir }}/bin/create-statistics.sh"
     state: "{{ 'present' if oerindex_statistics else 'absent' }}"
+
+- name: Configure cron schedule - request analysis
+  cron:
+    name: "Elasticsearch request log analysis"
+    hour: "1"
+    minute: "0"
+    job: "python3 {{ base_dir }}/bin/analyze-requests.py `date +'\\%Y-\\%m-\\%d' -d 'yesterday'` > {{ oerindex_logdir }}/analyze-es-requests.log 2>&1"
+    state: "{{ 'present' if oerindex_backend_features_log_elasticsearch_requests == 'true' else 'absent' }}"

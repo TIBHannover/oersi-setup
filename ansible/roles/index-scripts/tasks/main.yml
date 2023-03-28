@@ -32,6 +32,7 @@
     dest: "{{ base_dir }}/bin/{{ item | regex_replace('.j2$', '') }}"
     mode: 0700
   loop:
+    - analyze-requests.py
     - create-new-index-and-rebuild.sh.j2
     - create-statistics.sh.j2
     - create-synonyms-file.sh.j2
