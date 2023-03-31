@@ -1,7 +1,8 @@
 # {{ ansible_managed }}
 log4j.rootLogger=ERROR, file
 
-# Set oersi logger to DEBUG or TRACE to see detailed output from the ETL processes
+# Set loggers to DEBUG or TRACE to see detailed output from the ETL processes
+log4j.logger.org.metafacture={{ oerindex_etl_loglevel }}
 log4j.logger.oersi={{ oerindex_etl_loglevel }}
 
 log4j.appender.file=org.apache.log4j.DailyRollingFileAppender
