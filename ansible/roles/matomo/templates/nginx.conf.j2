@@ -4,13 +4,27 @@ server {
   index index.php index.html index.htm;
   server_name localhost;
 
-  location ~ "^/matomo/.*\.php$" {
+  location ~ "^/matomo/(index|matomo|piwik|js/index|plugins/HeatmapSessionRecording/configs)\.php$" {
       include snippets/fastcgi-php.conf;
       fastcgi_pass unix:{{ fpm_socket }};
   }
+  ## deny access to all other .php files
+  location ~* ^.+\.php$ {
+      deny all;
+      return 403;
+  }  
   location /matomo {
     alias /var/www/matomo/matomo;
     index index.php;
+  }
+  ## disable all access to the following directories
+  location ~ ^/matomo/(config|tmp|core|lang) {
+      deny all;
+      return 403; # replace with 404 to not show these directories exist
+  }  
+  location ~ /\.ht {
+      deny  all;
+      return 403;
   }
   location / {
     deny  all;
