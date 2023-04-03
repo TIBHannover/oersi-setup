@@ -1,4 +1,9 @@
 ---
+- name: Ensure python packages are present
+  package:
+    name: ["python3-venv"]
+  become: yes
+
 - name: Install dependencies in virtualenv for gunicorn and flask
   vars:
     ansible_python_interpreter: /usr/bin/python3
