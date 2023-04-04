@@ -23,6 +23,13 @@ read -r -d '' QUERY << EOC
 EOC
 curl --netrc-file {{ base_dir }}/conf/oer_backend_access --header 'Content-Type: application/json' -H 'Accept: application/json' -d "$QUERY" -XPOST "{{ oerindex_backend_internal_api_base_url }}/metadata-config"
 
+date +"*** %Y-%m-%d %H:%M:%S write conf file"
+# necessary for create/recreate-index-check during installation
+cat >{{ base_dir }}/conf/oer_index.conf <<EOL
+OER_INDEX_VERSION=$INDEX_VERSION
+OER_INDEX_FEATURE_SYNONYM={{ oerindex_features_use_synonyms | string }}
+EOL
+
 reindex() {
   date +"*** %Y-%m-%d %H:%M:%S reindex $1"
   read -r -d '' REINDEX_QUERY << EOC
