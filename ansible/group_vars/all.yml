@@ -163,7 +163,7 @@ kibana_install: false
 kibana_elasticsearch_username: 'kibana_system'
 kibana_elasticsearch_password: '{{ (elasticsearch_builtin_users | selectattr("name", "equalto", "kibana_system")  | list)[0].password }}'
 
-tomcat_version: '9.0.70'
+tomcat_version: '10.1.7'
 tomcat_port: 8080
 tomcat_shutdown_port: 8005
 tomcat_ssl_port: 8443
