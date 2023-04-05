@@ -1,6 +1,6 @@
 ---
 - src: geerlingguy.java
-  version: 2.2.0
+  version: 2.3.0
 - src: geerlingguy.elasticsearch
   version: 5.0.1
 - src: geerlingguy.kibana
