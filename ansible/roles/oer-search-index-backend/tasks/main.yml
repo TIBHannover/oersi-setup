@@ -56,6 +56,7 @@
     path: "{{ item }}"
     state: absent
   with_items:
+    - "{{ tomcat_home }}/webapps-javaee/oersi.war"
     - "{{ tomcat_home }}/webapps/oersi.war"
     - "{{ tomcat_home }}/webapps/oersi"
     - "{{ tomcat_home }}/work/Catalina/localhost/oersi"
@@ -79,10 +80,16 @@
     src: "context.xml.default"
     dest: "{{ tomcat_home }}/conf/Catalina/localhost/context.xml.default"
 
+- set_fact:
+    tomcat_deploy_dir: "{{ 'webapps-javaee' if tomcat_version is version('10.0', '>=') else 'webapps' }}"
+
+- name: Ensures tomcat-deploy-dir exists
+  file: path='{{ tomcat_home }}/{{ tomcat_deploy_dir }}' state=directory
+
 - name: copy war-files to tomcat
   copy:
     src: "{{ item.path }}"
-    dest: "{{tomcat_home}}/webapps/oersi.war"
+    dest: "{{tomcat_home}}/{{ tomcat_deploy_dir }}/oersi.war"
     remote_src: yes
   with_items:
     - "{{ oersi_war_find_result.files }}"
