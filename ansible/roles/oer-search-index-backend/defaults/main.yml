@@ -1,11 +1,10 @@
 ---
 oerindex_backend_loglevel: INFO
 oerindex_backend_label_files:
-  - labels-002-conditions-of-access.json
-  - labels-002-educational-audience.json
-  - labels-002-hcrt.json
-  - labels-002-hochschulfaechersystematik.json
-  - labels-002-educational-level.json
+  - custom-labels-conditionsOfAccess.json
+  - custom-labels-educationalAudience.json
+  - custom-labels-hcrt.json
+  - custom-labels-hochschulfaechersystematik.json
 
 oerindex_backend_configdir: "{{ oerindex_backend_downloaddir }}/config"
 
@@ -33,8 +32,16 @@ oerindex_backend_autoupdate_definitions:
 
 oerindex_backend_vocab_scheme_update_schedule_hour: "21"
 oerindex_backend_vocab_scheme_updates:
-  - schemeUrl: https://w3id.org/kim/hochschulfaechersystematik/scheme.json
+  - schemeUrl: https://raw.githubusercontent.com/dini-ag-kim/value-lists/main/conditionsOfAccess.ttl
+    vocabName: conditionsOfAccess
+  - schemeUrl: https://purl.org/dcx/lrmi-vocabs/educationalAudienceRole
+    vocabName: educationalAudience
+  - schemeUrl: https://raw.githubusercontent.com/dini-ag-kim/educationalLevel/main/educationalLevel.ttl
+    vocabName: educationalLevel
+  - schemeUrl: https://raw.githubusercontent.com/dini-ag-kim/hochschulfaechersystematik/master/hochschulfaechersystematik.ttl
     vocabName: hochschulfaechersystematik
+  - schemeUrl: https://raw.githubusercontent.com/dini-ag-kim/hcrt/master/hcrt.ttl
+    vocabName: hcrt
 
 # create a mapping from publisher to the OERSI-institution-filter (format: regex - has to match the publisher-name; name - name that should be used in the institution-filter, capturing groups from the regex may be used (default: 1st capturing group))
 institution_from_publisher_whitelist: []

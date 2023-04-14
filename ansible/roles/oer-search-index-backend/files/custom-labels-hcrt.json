@@ -1,262 +1,184 @@
 {
   "https://w3id.org/kim/hcrt/application": {
     "da": "Softwareapplikation",
-    "de": "Softwareanwendung",
-    "en": "Software Application",
     "es": "Aplicación Informática",
     "fi": "Sovellusohjelma",
     "fr": "Application",
-    "nl": "Applicatie",
-    "uk": "Програмне забезпечення"
+    "nl": "Applicatie"
   },
   "https://w3id.org/kim/hcrt/assessment": {
     "da": "Evaluering",
-    "de": "Lernkontrolle",
-    "en": "Assessment",
     "es": "Evaluación",
     "fi": "Oppimistarkastus",
     "fr": "Évaluation",
-    "nl": "Evaluatie",
-    "uk": "Оцінювання"
+    "nl": "Evaluatie"
   },
   "https://w3id.org/kim/hcrt/audio": {
     "da": "Lydoptagelse",
-    "de": "Audio",
-    "en": "Audio Recording",
     "es": "Grabación de Sonido",
     "fi": "äänen tallennus",
     "fr": "Enregistrement Sonore",
-    "nl": "Geluidsopname",
-    "uk": "Аудіозапис"
+    "nl": "Geluidsopname"
   },
   "https://w3id.org/kim/hcrt/case_study": {
     "da": "Casestudie",
-    "de": "Fallstudie",
-    "en": "Case Study",
     "es": "Estudio de Caso",
     "fi": "Tapaustutkimus",
     "fr": "Étude de Cas",
-    "nl": "Case Study",
-    "uk": "Приклад"
+    "nl": "Case Study"
   },
   "https://w3id.org/kim/hcrt/course": {
     "da": "Kursus",
-    "de": "Kurs",
-    "en": "Course",
     "es": "Curso",
     "fi": "Kurssi",
     "fr": "Cours",
-    "nl": "Cursus",
-    "uk": "Курс"
+    "nl": "Cursus"
   },
   "https://w3id.org/kim/hcrt/data": {
     "da": "Data",
-    "de": "Daten",
-    "en": "Data",
     "es": "Dato",
     "fi": "datasetti",
     "fr": "Donnée",
-    "nl": "Data",
-    "uk": "Дані"
+    "nl": "Data"
   },
   "https://w3id.org/kim/hcrt/diagram": {
     "da": "Diagram",
-    "de": "Diagramm",
-    "en": "Diagram",
     "es": "Diagrama",
     "fi": "Kaavio",
     "fr": "Diagramme",
-    "nl": "Diagram",
-    "uk": "Діаграма"
+    "nl": "Diagram"
   },
   "https://w3id.org/kim/hcrt/drill_and_practice": {
     "da": "Øvelse",
-    "de": "Übung",
-    "en": "Drill and Practice",
     "es": "Práctica",
     "fi": "Harjoitus",
     "fr": "Apprentissage par Répétition",
-    "nl": "Oefenen",
-    "uk": "Практика"
+    "nl": "Oefenen"
   },
   "https://w3id.org/kim/hcrt/educational_game": {
     "da": "Pædagogisk Spil",
-    "de": "Lernspiel",
-    "en": "Game",
     "es": "Juego Educativo",
     "fi": "Opettavainen peli",
     "fr": "Jeu Éducatif",
-    "nl": "Educatief Spel",
-    "uk": "Навчальна гра"
+    "nl": "Educatief Spel"
   },
   "https://w3id.org/kim/hcrt/experiment": {
     "da": "Eksperiment",
-    "de": "Experiment",
-    "en": "Experiment",
     "es": "Experimento",
     "fi": "Koe",
     "fr": "Expérimentation",
-    "nl": "Experiment",
-    "uk": "Експеримент"
+    "nl": "Experiment"
   },
   "https://w3id.org/kim/hcrt/image": {
     "da": "Billede",
-    "de": "Abbildung",
-    "en": "Image",
     "es": "Imagen",
     "fi": "Kuva",
     "fr": "Image",
-    "nl": "Afbeelding",
-    "uk": "Ілюстрація"
+    "nl": "Afbeelding"
   },
   "https://w3id.org/kim/hcrt/index": {
     "da": "Opslagsværk",
-    "de": "Nachschlagewerk",
-    "en": "Reference Work",
     "es": "Obra de Referencia",
     "fi": "Hakuteos",
     "fr": "Ouvrage de Référence",
-    "nl": "Naslagwerk",
-    "uk": "Довідник"
+    "nl": "Naslagwerk"
   },
   "https://w3id.org/kim/hcrt/lesson_plan": {
     "da": "Lektionsplan",
-    "de": "Unterrichtsplanung",
-    "en": "Lesson Plan",
     "es": "Unidad Didáctica",
     "fi": "Oppituntien suunnittelu",
     "fr": "Préparation des Cours",
-    "nl": "Lesplan",
-    "uk": "План уроку"
+    "nl": "Lesplan"
   },
   "https://w3id.org/kim/hcrt/map": {
     "da": "Kort",
-    "de": "Karte",
-    "en": "Map",
     "es": "Mapa",
     "fi": "Kartta",
     "fr": "Carte Géographique",
-    "nl": "Kaart",
-    "uk": "Мапа"
+    "nl": "Kaart"
   },
   "https://w3id.org/kim/hcrt/other": {
     "da": "Andre",
-    "de": "Sonstiges",
-    "en": "Other",
     "es": "Diverso",
     "fi": "Muut",
     "fr": "Divers",
-    "nl": "Diversen",
-    "uk": "Різне"
+    "nl": "Diversen"
   },
   "https://w3id.org/kim/hcrt/portal": {
     "da": "Webportal",
-    "de": "Portal",
-    "en": "Web Portal",
     "es": "Portal de Internet",
     "fi": "Portaali",
     "fr": "Portail Web",
-    "nl": "Internetportaal",
-    "uk": "Портал"
+    "nl": "Internetportaal"
   },
   "https://w3id.org/kim/hcrt/questionnaire": {
     "da": "Spørgeskema",
-    "de": "Fragebogen",
-    "en": "Questionnaire",
     "es": "Cuestionario",
     "fi": "Kyselytutkimus",
     "fr": "Questionnaire",
-    "nl": "Vragenlijst",
-    "uk": "Анкета"
+    "nl": "Vragenlijst"
   },
   "https://w3id.org/kim/hcrt/script": {
     "da": "Script",
-    "de": "Skript",
-    "en": "Script",
     "es": "Script",
     "fi": "Käsikirjoitus",
     "fr": "Script",
-    "nl": "Script",
-    "uk": "Запис"
+    "nl": "Script"
   },
   "https://w3id.org/kim/hcrt/sheet_music": {
     "da": "Noter",
-    "de": "Musiknoten",
-    "en": "Sheet Music",
     "es": "Partituras de música",
     "fi": "Nuotit",
     "fr": "Partitions de musique",
-    "nl": "Bladmuziek",
-    "uk": "Ноти"
+    "nl": "Bladmuziek"
   },
   "https://w3id.org/kim/hcrt/simulation": {
     "da": "Simulering",
-    "de": "Simulation",
-    "en": "Simulation",
     "es": "Simulación",
     "fi": "Simulaatio",
     "fr": "Simulation de Phénomènes",
-    "nl": "Simulatie",
-    "uk": "Симуляція"
+    "nl": "Simulatie"
   },
   "https://w3id.org/kim/hcrt/slide": {
     "da": "Præsentation",
-    "de": "Präsentation",
-    "en": "Presentation",
     "es": "Presentación",
     "fi": "Esitys",
     "fr": "Présentation",
-    "nl": "Presentatie",
-    "uk": "Презентація"
+    "nl": "Presentatie"
   },
   "https://w3id.org/kim/hcrt/text": {
     "da": "Tekst",
-    "de": "Textdokument",
-    "en": "Text",
     "es": "Texto",
     "fi": "Teksti",
     "fr": "Texte",
-    "nl": "Tekst",
-    "uk": "Текстовий документ"
+    "nl": "Tekst"
   },
   "https://w3id.org/kim/hcrt/textbook": {
     "da": "Lærebog",
-    "de": "Lehrbuch",
-    "en": "Textbook",
     "es": "Libro de Texto",
     "fi": "Oppikirja",
     "fr": "Manuel Scolaire",
-    "nl": "Studieboek",
-    "uk": "Підручник"
+    "nl": "Studieboek"
   },
   "https://w3id.org/kim/hcrt/video": {
     "da": "Video",
-    "de": "Video",
-    "en": "Video",
     "es": "Video",
     "fi": "Video",
     "fr": "Vidéo",
-    "nl": "Video",
-    "uk": "Відео"
+    "nl": "Video"
   },
   "https://w3id.org/kim/hcrt/web_page": {
     "da": "Hjemmeside",
-    "de": "Webseite",
-    "en": "Web Page",
     "es": "Página Web",
     "fi": "Verkkosivu",
     "fr": "Page Web",
-    "nl": "Webpagina",
-    "uk": "Веб-сайт"
+    "nl": "Webpagina"
   },
   "https://w3id.org/kim/hcrt/worksheet": {
     "da": "Arbejdsark",
-    "de": "Arbeitsmaterial",
-    "en": "Worksheet",
     "es": "Hoja de Trabajo",
     "fi": "Työarkki",
     "fr": "Feuille de Travail",
-    "nl": "Werkblad",
-    "uk": "Робочий матеріал"
+    "nl": "Werkblad"
   }
 }
