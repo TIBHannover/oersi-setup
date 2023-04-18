@@ -1,3 +1,4 @@
 {
-  "customConfig": {{ oersi_backend_custom_config | to_json(ensure_ascii=False, indent=2) }}
+  "customConfig": {{ oersi_backend_custom_config | to_json(ensure_ascii=False, indent=2) }},
+  "fieldProperties": {{ oerindex_backend_field_properties | to_json(ensure_ascii=False, indent=2) }}
 }

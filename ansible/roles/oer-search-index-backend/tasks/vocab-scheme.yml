@@ -3,21 +3,49 @@
   package:
     name: ["wget"]
 
+- name: Install rdflib
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
+  pip:
+    name: ["rdflib"]
+
+- name: Delete old unused scripts
+  file:
+    path: "{{ base_dir }}/bin/{{ item }}"
+    state: absent
+  loop:
+    - update-vocab-scheme-backend.sh
+
+- name: Ensures custom-label-dir exists
+  file: path='{{ oerindex_backend_configdir }}/labels' state=directory
+
+- name: copy custom label config-files
+  copy:
+    src: "{{ item }}"
+    dest: "{{ oerindex_backend_configdir }}/labels/"
+  loop: "{{ oerindex_backend_label_files }}"
+  register: copy_labels_result
+
 - name: Create update-vocab-scheme script
   template:
-    src: "update-vocab-scheme-backend.sh.j2"
-    dest: "{{ base_dir }}/bin/update-vocab-scheme-backend.sh"
+    src: "update-vocab-scheme-backend.py.j2"
+    dest: "{{ base_dir }}/bin/update-vocab-scheme-backend.py"
     mode: 0700
-
-- name: Update vocab-schemes immediately
-  shell:
-    cmd: "nohup {{ base_dir }}/bin/update-vocab-scheme-backend.sh >/dev/null 2>&1 & sleep 1"
-  when: oerindex_backend_features_add_missing_parent_items_of_hierarchical_vocabs == 'true'
 
 - name: Configure cron schedule - process vocab scheme updates
   cron:
     name: "Update vocab schemes for OERSI backend"
     hour: "{{ oerindex_backend_vocab_scheme_update_schedule_hour }}"
     minute: "0"
-    job: "{{ base_dir }}/bin/update-vocab-scheme-backend.sh >/dev/null 2>&1"
-    state: "{{ 'present' if oerindex_backend_features_add_missing_parent_items_of_hierarchical_vocabs == 'true' else 'absent' }}"
+    job: "python3 {{ base_dir }}/bin/update-vocab-scheme-backend.py >/dev/null 2>&1"
+
+- name: Make sure Tomcat is running before proceeding.
+  wait_for:
+    host: "localhost"
+    port: "{{ tomcat_port }}"
+    delay: 1
+    timeout: 30
+      
+- name: Update vocab-schemes immediately
+  shell:
+    cmd: "nohup python3 {{ base_dir }}/bin/update-vocab-scheme-backend.py >/dev/null 2>&1 & sleep 1"
