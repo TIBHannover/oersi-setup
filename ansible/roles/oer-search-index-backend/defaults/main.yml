@@ -13,7 +13,6 @@ oerindex_backend_metadata_custom_processor: amb
 oerindex_backend_features_add_missing_labels: "true" # add missing labels of known vocabularies
 oerindex_backend_features_add_missing_parent_items_of_hierarchical_vocabs: "true" # add missing parent items in hierarchical vocabularies
 oerindex_backend_features_add_missing_metadata_infos: "true" # add missing infos like embedUrl, image width and height to metadata
-oerindex_backend_internal_labeldefinition_api_url: '{{ oerindex_backend_internal_api_base_url }}/labeldefinition'
 
 # config of feature "add_missing_metadata_infos"
 # regex - (required) identifier of the data must match this regex to apply the definition
@@ -43,6 +42,17 @@ oerindex_backend_vocab_scheme_updates:
   - schemeUrl: https://raw.githubusercontent.com/dini-ag-kim/hcrt/master/hcrt.ttl
     vocabName: hcrt
 
+oerindex_backend_field_properties:
+  - fieldName: conditionsOfAccess
+    vocabIdentifier: conditionsOfAccess    
+  - fieldName: audience
+    vocabIdentifier: educationalAudience
+  - fieldName: educationalLevel
+    vocabIdentifier: educationalLevel    
+  - fieldName: about
+    vocabIdentifier: hochschulfaechersystematik
+  - fieldName: learningResourceType
+    vocabIdentifier: hcrt
 # create a mapping from publisher to the OERSI-institution-filter (format: regex - has to match the publisher-name; name - name that should be used in the institution-filter, capturing groups from the regex may be used (default: 1st capturing group))
 institution_from_publisher_whitelist: []
 oerindex_backend_labelled_concept_fields:
