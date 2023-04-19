@@ -42,6 +42,18 @@ Please also refer the [development documentation](doc/DEVELOPMENT.md).
 
 When you select tasks for development, you can either search the repository for existing issues to work on, or you can submit your own issues if you don't find any that cover the topic of your interest (see the [Submitting an Issue](#submitting-an-issue) section of this guide). Issues that you want to work on should first be marked with the label `approval requested` and then wait for one of the core developers to discuss and approve the development with you.
 
+### Issue workflow
+
+* The [OERSI Issue Board](https://gitlab.com/groups/oersi/-/boards) gives an overview of which issues are currently being worked on.
+* Open issues may have to be evaluated and discussed by the OERSI Core Team first - especially issues with status `approval requested` or `specification`. If it is decided that an issue can be implemented, the label `Ready` is set by the OERSI Core Team.
+* Issues with label `Ready` are ready for implementation - as soon as someone starts implementation, the issue is assigned to the developer and the status is set to `Doing` (`Ready` is removed).
+* Once all changes for the issue are fully ready in one (or more) merge requests, the status is set to `Review` (and `Doing` is removed) by the current assignee.
+    * If possible (and useful), the MR is assigned to a reviewer for code review. If necessary, iterative changes are made until the code review is successful and can be merged.
+    * A member of the OERSI Core Team merges the MRs as soon as the current deployment schedule allows.
+    * After all MRs have been merged, the configuration for the Dev-System is adjusted (if necessary - ping a TIB-member for this) and the changes are deployed (ideally automatically) to the Dev-System and the issue is assigned to a reviewer for functional review. If necessary, iterative changes are made until the functional review is successful.
+* If necessary, configurations for the production-system are adjusted (ping a TIB-member for this). The issue is now ready for installation on the production system. The status is set to `Deploy` (and `Review` is removed). The issue's assignee is removed and the issue's milestone is set to the currently pending milestone.
+* A TIB member will perform the next production installation soon, if no issue blocks this (consider issues with label `blocks deployment`). After the installation, all issues with status `Deploy` are closed (and the label `Deploy` is removed). Depending on the implemented change, it may be necessary to wait for the next nightly import before the changes become visible.
+
 ### Workflow for external contributers
 
 * Fork the project into your personal namespace (or group).
