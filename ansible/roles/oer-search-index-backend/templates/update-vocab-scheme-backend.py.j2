@@ -7,6 +7,7 @@ import json
 import logging
 import netrc
 import os.path
+import re
 import requests
 import rdflib
 
@@ -61,7 +62,8 @@ def load_vocab_items_from_turtle(ttl_url):
     for concept in g.query(sparql_query):
       labels = {}
       for label in g.objects(subject=concept["item"], predicate=label_pred):
-        labels[label.language] = str(label)
+        lng = re.search("[a-z]+", label.language).group()
+        labels[lng] = str(label)
       items.append({"key": str(concept["item"]), "parentKey": str(concept["parent"]) if concept["parent"] else None, "prefLabels": labels})
     return items
 
