@@ -33,7 +33,8 @@ window['runTimeConfig'] = {
       CHANGE_FONTSIZE: {{ oerindex_frontend_features_change_font_size }},
       EMBED_OER: {{ oerindex_frontend_features_embed_oer }},
       OERSI_THUMBNAILS: {{ oerindex_frontend_features_oersi_thumbnails }},
-      SCROLL_TOP_BUTTON: {{ oerindex_frontend_features_scroll_top_button }}
+      SCROLL_TOP_BUTTON: {{ oerindex_frontend_features_scroll_top_button }},
+      SHOW_ENCODING_DOWNLOADS: {{ oerindex_frontend_features_show_encoding_downloads }} 
     }
   }
 }
