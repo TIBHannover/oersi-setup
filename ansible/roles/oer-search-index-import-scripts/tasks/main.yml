@@ -22,6 +22,12 @@
     src: '{{ oerindex_import_scripts_dir }}/oersi-import-scripts.zip'
     dest: "{{ oerindex_import_scripts_dir }}"
 
+- name: Copy import scripts custom config files
+  copy:
+    src: "{{ item.src }}"
+    dest: "{{ oerindex_import_scripts_dir }}/{{ item.script_dir_dest }}"
+  loop: '{{ oerindex_import_scripts_customfiles | default([], true) }}'
+
 - include: python.yml
 - include: monitoring.yml
 - include: webservice.yml
