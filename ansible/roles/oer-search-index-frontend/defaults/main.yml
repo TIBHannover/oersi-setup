@@ -16,6 +16,7 @@ oerindex_frontend_features_embed_oer: "true"
 oerindex_frontend_features_oersi_thumbnails: "{{ 'true' if oerindex_features_generate_thumbnails else 'false' }}"
 oerindex_frontend_features_scroll_top_button: "true"
 oerindex_frontend_features_show_encoding_downloads: "false"
+oerindex_frontend_features_show_rating: "false"
 
 oerindex_frontend_owner: "{{ oersi_user }}"
 oerindex_frontend_group: "www-data"
