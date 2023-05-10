@@ -107,6 +107,9 @@ oerindex_import_scripts_enabled_sources_py:  # list of enabled python imports (w
   - twillo
 #  - Vhb
 #  - Vlc
+oerindex_import_scripts_customfiles:
+  # - src: "your/local/path/python-file.py"
+  #   script_dir_dest: "python/python-file.py"
 
 internationalization_tool_install: false # install and configre the TOERN internationalization tool for periodical translations of OERSI-keywords via wikidata
 internationalization_tool_artifact_url: "https://gitlab.com/oersi/internationalization-tool/-/jobs/artifacts/master/download?job=deploy"
