@@ -35,7 +35,8 @@ window['runTimeConfig'] = {
       OERSI_THUMBNAILS: {{ oerindex_frontend_features_oersi_thumbnails }},
       SCROLL_TOP_BUTTON: {{ oerindex_frontend_features_scroll_top_button }},
       SHOW_ENCODING_DOWNLOADS: {{ oerindex_frontend_features_show_encoding_downloads }},
-      SHOW_RATING: {{ oerindex_frontend_features_show_rating }}
+      SHOW_RATING: {{ oerindex_frontend_features_show_rating }},
+      SHOW_VERSIONS: {{ oerindex_frontend_features_show_versions }}
     }
   }
 }
