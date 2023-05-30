@@ -17,6 +17,7 @@ IMPORTSCRIPT_REPORT=$({{ base_dir }}/bin/monitoring-import-scripts.sh)
 {% endif %}
 INCONSISTENCY_BY_WITHOUT_AUTHOR_REPORT=$(curl --netrc-file {{ base_dir }}/conf/oer_index_access -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' "http://{{ elasticsearch_host }}:{{ elasticsearch_port }}/{{ elasticsearch_oer_index_alias_name }}/_search" -d '{"query": {"bool": { "filter": [{"wildcard": {"license.id": {"value": "*creativecommons.org/*/by*"}}}], "must_not": {"exists": {"field": "creator"}}}}, "size": 0, "aggs": {"providers": { "terms": { "field": "mainEntityOfPage.provider.name", "size": 100 }}}}' | jq -r '.aggregations.providers.buckets[] | "\(.key): \(.doc_count)"')
 MULTI_PROVIDER_RESOURCES_REPORT=$(curl --netrc-file {{ base_dir }}/conf/oer_index_access -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' "http://{{ elasticsearch_host }}:{{ elasticsearch_port }}/{{ elasticsearch_oer_index_alias_name }}/_search" -d '{"size": 0,"query": {"bool": {"filter": {"script": {"script": "doc.containsKey(\u0027mainEntityOfPage.provider.name\u0027) && doc[\u0027mainEntityOfPage.provider.name\u0027].length > 1"}}}},"aggs": {"providers": {"terms": {"script": {"source": "def list = new ArrayList();for(int i=0; i<doc[\u0027mainEntityOfPage.provider.name\u0027].length; i++){list.add(doc[\u0027mainEntityOfPage.provider.name\u0027][i]);}Collections.sort(list);return list.join(\u0027 / \u0027);"}}}}}' | jq -r '.aggregations.providers.buckets[] | "\(.key): \(.doc_count)"')
+MISSING_OPEN_LICENSE_REPORT=$(curl --netrc-file {{ base_dir }}/conf/oer_index_access -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' "http://{{ elasticsearch_host }}:{{ elasticsearch_port }}/{{ elasticsearch_oer_index_alias_name }}/_search" -d '{"size": 0, "aggs": {"providers": {"terms": {"field": "mainEntityOfPage.provider.name", "size": 1000}, "aggs": {"without_license": {"filter": {"bool": {"must_not": [{"exists": {"field": "license"}}]}}}}}}}' | jq -r '[.aggregations.providers.buckets[] | select(.without_license.doc_count > 0)] | sort_by(.without_license.doc_count) | reverse[] | "\(.key): \(.without_license.doc_count) / \(.doc_count)"')
 
 ETL_PROCESSES=$(echo "$ETL_REPORT" | grep 'Import channel' | wc -l)
 ETL_ERRORS=$(echo "$ETL_REPORT" | grep 'FAILED:' | wc -l)
@@ -35,6 +36,10 @@ $IMPORTSCRIPT_REPORT
 Internationalization-Tool:
 $INTERNATIONALIZATION_REPORT
 {% endif %}
+
+-----------------------
+Resources without open license
+$MISSING_OPEN_LICENSE_REPORT
 
 -----------------------
 Resources offered by multiple providers
