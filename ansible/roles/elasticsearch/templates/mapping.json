@@ -169,6 +169,10 @@
           "type" : "date",
           "index" : true
         },
+        "dateModified" : {
+          "type" : "date",
+          "index" : true
+        },
         "description" : {
 {% if oerindex_features_use_synonyms %}
           "analyzer": "standard",
@@ -186,6 +190,17 @@
         },
         "inLanguage" : {
           "type" : "keyword"
+        },
+        "interactivityType" : {
+          "properties" : {
+            "id" : {
+              "type" : "keyword"
+            },
+            "prefLabel" : {
+              "dynamic" : "true",
+              "properties" : {}
+            }
+          }
         },
         "isAccessibleForFree": {
           "type": "boolean"
