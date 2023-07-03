@@ -6,8 +6,8 @@
 #
 
 
-CURRENT_INDEX_NAME=$(curl --netrc-file {{ base_dir }}/conf/oer_index_access http://{{ elasticsearch_host }}:{{ elasticsearch_port }}/oersi_backend_config/_doc/oersi_backend_config/_source/ | jq -r .metadataIndexName)
-CURRENT_INDEX_INTERNAL_NAME=$(curl --netrc-file {{ base_dir }}/conf/oer_index_access http://{{ elasticsearch_host }}:{{ elasticsearch_port }}/oersi_backend_config/_doc/oersi_backend_config/_source/ | jq -r .additionalMetadataIndexName)
+CURRENT_INDEX_NAME=$(curl --netrc-file {{ base_dir }}/conf/oer_index_access http://{{ elasticsearch_host }}:{{ elasticsearch_port }}/oersi_backend_config/_source/oersi_backend_config | jq -r .metadataIndexName)
+CURRENT_INDEX_INTERNAL_NAME=$(curl --netrc-file {{ base_dir }}/conf/oer_index_access http://{{ elasticsearch_host }}:{{ elasticsearch_port }}/oersi_backend_config/_source/oersi_backend_config | jq -r .additionalMetadataIndexName)
 date +"*** %Y-%m-%d %H:%M:%S start update alias to current index $CURRENT_INDEX_NAME"
 
 update() {
