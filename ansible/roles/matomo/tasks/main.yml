@@ -3,10 +3,10 @@
 # - MariaDB has to be installed
 # - nginx has to be installed
 
-- include: php.yml
-- include: init-database.yml
-- include: matomo.yml
-- include: nginx-config.yml
+- include_tasks: php.yml
+- include_tasks: init-database.yml
+- include_tasks: matomo.yml
+- include_tasks: nginx-config.yml
 
 - name: Check if the config.ini.php exists
   become: true
@@ -14,5 +14,5 @@
     path: "{{ matomo_inst_dir }}/matomo/config/config.ini.php"
   register: matomo_config_ini_stat_result
         
-- include: matomo-init.yml
+- include_tasks: matomo-init.yml
   when: not matomo_config_ini_stat_result.stat.exists

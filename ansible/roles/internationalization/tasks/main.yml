@@ -1,5 +1,5 @@
 ---
-- include: tool.yml
+- include_tasks: tool.yml
   when: internationalization_tool_install
 
 - name: Configure cron schedule - process translation of OERSI keywords
@@ -18,4 +18,4 @@
     job: "{{ base_dir }}/bin/create-synonyms-file.sh > {{ base_dir }}/log/create-synonyms-file.log 2>&1"
     state: "{{ 'present' if internationalization_tool_install else 'absent' }}"
 
-- include: monitoring.yml
+- include_tasks: monitoring.yml

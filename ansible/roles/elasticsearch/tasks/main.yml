@@ -32,5 +32,5 @@
     group: "{{ oersi_user }}"
     mode: 0700
 
-- include: users.yml
-- include: index.yml
+- include_tasks: users.yml
+- include_tasks: index.yml

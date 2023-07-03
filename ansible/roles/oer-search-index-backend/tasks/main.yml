@@ -97,5 +97,5 @@
 - name: start tomcat
   shell: '{{tomcat_start_command}}'
 
-- include: import-custom-config.yml
-- include: vocab-scheme.yml
+- include_tasks: import-custom-config.yml
+- include_tasks: vocab-scheme.yml

@@ -28,6 +28,6 @@
     dest: "{{ oerindex_import_scripts_dir }}/{{ item.script_dir_dest }}"
   loop: '{{ oerindex_import_scripts_customfiles | default([], true) }}'
 
-- include: python.yml
-- include: monitoring.yml
-- include: webservice.yml
+- include_tasks: python.yml
+- include_tasks: monitoring.yml
+- include_tasks: webservice.yml

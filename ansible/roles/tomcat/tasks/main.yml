@@ -21,7 +21,7 @@
     src: '{{tomcat_name}}'
     state: link
 
-- include: general-log-dir.yml
+- include_tasks: general-log-dir.yml
   when: (tomcat_log_dir is defined) and (tomcat_log_dir != "") and (tomcat_log_dir is not none)
 
 - name: Configure tomcat-users.xml
@@ -49,7 +49,7 @@
     special_time: reboot
     job: "{{ base_dir }}/bin/wait-for-elasticsearch.sh && {{tomcat_bin}}/tomcat.sh start"
 
-- include: cleanup-logs.yml
+- include_tasks: cleanup-logs.yml
 
 - name: start tomcat
   shell: '{{tomcat_start_command}}'

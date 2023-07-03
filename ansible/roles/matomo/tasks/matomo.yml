@@ -30,7 +30,7 @@
     group: '{{ matomo_group }}'
     creates: '{{ matomo_inst_dir }}/matomo'
 
-- include: geo-ip.yml
+- include_tasks: geo-ip.yml
 
 - name: Ensures bin dir exists
   become: true

@@ -94,5 +94,5 @@
     job: '{{ oerindex_etl_downloaddir }}/etl.sh'
     state: '{{ oerindex_import_sources_schedule_state }}'
 
-- include: monitoring.yml
-- include: cleanup-logs.yml
+- include_tasks: monitoring.yml
+- include_tasks: cleanup-logs.yml

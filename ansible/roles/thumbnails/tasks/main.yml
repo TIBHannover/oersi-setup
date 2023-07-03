@@ -1,6 +1,5 @@
 ---
-- include: webserver.yml
-  become: true
+- include_tasks: webserver.yml
   when: oerindex_features_generate_thumbnails
 
 - name: Ensure python packages are present

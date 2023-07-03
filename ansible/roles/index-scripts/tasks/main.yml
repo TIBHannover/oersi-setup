@@ -42,10 +42,10 @@
     - show-versions.sh.j2
     - update-index-alias.sh.j2
 
-- include: delete-outdated-data.yml
+- include_tasks: delete-outdated-data.yml
 
-- include: sitemap.yml
-- include: monitoring.yml
+- include_tasks: sitemap.yml
+- include_tasks: monitoring.yml
 
 - name: Delete unused scripts
   file:

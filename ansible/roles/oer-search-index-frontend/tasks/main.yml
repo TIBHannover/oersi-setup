@@ -1,6 +1,4 @@
 ---
-- include: webpage.yml
-  become: true
-
-- include: sitemap.yml
-- include: vocab-scheme.yml
+- include_tasks: webpage.yml
+- include_tasks: sitemap.yml
+- include_tasks: vocab-scheme.yml
