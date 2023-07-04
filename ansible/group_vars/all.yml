@@ -166,7 +166,7 @@ kibana_install: false
 kibana_elasticsearch_username: 'kibana_system'
 kibana_elasticsearch_password: '{{ (elasticsearch_builtin_users | selectattr("name", "equalto", "kibana_system")  | list)[0].password }}'
 
-java_packages: [ openjdk-17-jdk ] # debian (>= Bullseye) package
+java_packages: [ ca-certificates-java, openjdk-17-jdk ] # debian (>= Bullseye) package
 tomcat_version: '10.1.10'
 tomcat_port: 8080
 tomcat_shutdown_port: 8005
