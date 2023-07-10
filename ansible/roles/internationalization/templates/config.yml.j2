@@ -27,4 +27,5 @@ OERSI:
       value: {{ subst.value | to_yaml | trim }}
 {% endfor %}
   keyword-skip-values: {{ internationalization_tool_oersi_keyword_skip_values | to_yaml | trim }}
+  valid_keyword_translation_regex: {{ internationalization_tool_oersi_valid_keyword_translation_regex }}
   output_languages: {{ internationalization_tool_oersi_output_languages | to_yaml | trim }}
