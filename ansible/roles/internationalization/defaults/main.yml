@@ -32,6 +32,7 @@ internationalization_tool_oersi_keyword_substitutions:
   - regex: '\[.*\]$'
     value: ""
 internationalization_tool_oersi_keyword_skip_values: ["", "-", "@"]  # ignore keywords with this values
+internationalization_tool_oersi_valid_keyword_translation_regex: '.*\w.*' # translated keywords must match this, otherwise they will be skipped. If omitted: keep all translations
 internationalization_tool_oersi_output_languages: ["da", "de", "en", "es", "fr", "nl", "uk"]
 
 internationalization_tool_oersi_keyword_translation_schedule_hour: "5"
