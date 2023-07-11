@@ -22,7 +22,7 @@ window['runTimeConfig'] = {
     ENABLED_FILTERS: {{oerindex_frontend_enabled_filters | default([], true) | to_json(ensure_ascii=False) }},
     HIERARCHICAL_FILTERS: [
 {% for filter_conf in (oerindex_frontend_hierarchical_vocab_filters | default([], true)) %}
-      {componentId: "{{ filter_conf.filterId }}", schemeParentMap: "/vocabs/{{ filter_conf.vocabName }}-parentMap.json"}{{ ", " if not loop.last else "" }}
+      {componentId: "{{ filter_conf.filterId }}", schemeParentMap: "/vocabs/{{ filter_conf.vocabName }}-parentMap.json"{% if filter_conf.selectionApproach is defined %}, selectionApproach: {{ filter_conf.selectionApproach }}{% endif %}}{{ ", " if not loop.last else "" }}
 {% endfor %}
     ],
     AGGREGATION_SEARCH_COMPONENTS: {{ oerindex_frontend_aggregation_search_components }},
