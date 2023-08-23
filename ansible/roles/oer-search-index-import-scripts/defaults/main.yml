@@ -9,3 +9,11 @@ oerindex_import_sources_py_scripts_schedule_hour: "{{ oerindex_import_sources_sc
 oerindex_import_sources_py_scripts_schedule_minute: "{{ oerindex_import_sources_schedule_minute }}" # Minute when the job should run - see https://docs.ansible.com/ansible/latest/modules/cron_module.html
 
 oerindex_import_scripts_custom_config: ""
+
+oerindex_source_gitrepo_allowed_statuses:   # define CreativeWorkStauses which should be considered for import
+  - Published
+
+oerindex_youtube_api_key: ""  # YouTube-API-key for youtube-features
+oerindex_features_gitrepo_youtube_playlist: False   # Feature: parse youtube-playlist and create an OERSI-entry for every video of the playlist (needs a valid "oerindex_youtube_api_key")
+oerindex_features_gitrepo_versions: False   # Feature: use versions (tags) from git repos in metadata
+oerindex_features_gitrepo_rating: False   # Feature: use rating (stars) from git repos
