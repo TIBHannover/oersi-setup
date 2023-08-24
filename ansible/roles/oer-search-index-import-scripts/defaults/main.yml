@@ -14,6 +14,6 @@ oerindex_source_gitrepo_allowed_statuses:   # define CreativeWorkStauses which s
   - Published
 
 oerindex_youtube_api_key: ""  # YouTube-API-key for youtube-features
-oerindex_features_gitrepo_youtube_playlist: False   # Feature: parse youtube-playlist and create an OERSI-entry for every video of the playlist (needs a valid "oerindex_youtube_api_key")
+oerindex_features_gitrepo_youtube_extract_videos_from_playlist: False   # Feature: parse youtube-playlist and create an OERSI-entry for every video of the playlist (needs a valid "oerindex_youtube_api_key")
 oerindex_features_gitrepo_versions: False   # Feature: use versions (tags) from git repos in metadata
 oerindex_features_gitrepo_rating: False   # Feature: use rating (stars) from git repos
