@@ -6,4 +6,14 @@ OERSI_BACKEND:
 http:
   useragent: "OERSI-MetadataImportBot/0.1 ({{ oerindex_host }}, https://oersi.org/resources/services/contact) OERSI-Import/0.1"
 
+git:
+  allowed_statuses: {{ oerindex_source_gitrepo_allowed_statuses | to_yaml(indent=4) }}
+  features:
+    rating: {{ oerindex_features_gitrepo_rating }}
+    youtube_extract_videos_from_playlist: {{ oerindex_features_gitrepo_youtube_extract_videos_from_playlist}}
+    versions: {{ oerindex_features_gitrepo_versions }}
+
+youtube:
+  api_key: {{ oerindex_youtube_api_key }}
+
 {{ oerindex_import_scripts_custom_config }}
