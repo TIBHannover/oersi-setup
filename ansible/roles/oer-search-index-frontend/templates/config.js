@@ -7,9 +7,9 @@ window['runTimeConfig'] = {
   },
   ELASTIC_SEARCH_INDEX_NAME: "{{ elasticsearch_oer_index_internal_alias_name }}",
   GENERAL_CONFIGURATION: {
-    AVAILABLE_LANGUAGES: {{ oerindex_frontend_available_languages }},
+    AVAILABLE_LANGUAGES: {{ oerindex_frontend_available_languages  | default([], true) | to_json(ensure_ascii=False) }},
     PUBLIC_URL: "{{ oerindex_public_base_url }}{{ oerindex_public_base_path }}",
-    RESULT_PAGE_SIZE_OPTIONS: {{oerindex_frontend_page_size}},
+    RESULT_PAGE_SIZE_OPTIONS: {{ oerindex_frontend_page_size  | default([], true) | to_json(ensure_ascii=False) }},
     NR_OF_RESULT_PER_PAGE: {{oerindex_frontend_nr_result_page_default}},
     HEADER_LOGO_URL: "{{ oerindex_frontend_header_logo_url }}",
     THEME_COLORS: {{ oerindex_frontend_theme_colors }},
@@ -25,7 +25,7 @@ window['runTimeConfig'] = {
       {componentId: "{{ filter_conf.filterId }}", schemeParentMap: "/vocabs/{{ filter_conf.vocabName }}-parentMap.json"}{{ ", " if not loop.last else "" }}
 {% endfor %}
     ],
-    AGGREGATION_SEARCH_COMPONENTS: {{ oerindex_frontend_aggregation_search_components }},
+    AGGREGATION_SEARCH_COMPONENTS: {{ oerindex_frontend_aggregation_search_components | default([], true) | to_json(ensure_ascii=False) }},
     AGGREGATION_SEARCH_DEBOUNCE: {{ oerindex_frontend_aggregation_search_debounce }},
     AGGREGATION_SEARCH_MIN_LENGTH: {{ oerindex_frontend_aggregation_search_min_length }},
     FEATURES: {
