@@ -2,15 +2,15 @@
 - name: Set sticky bit for webpage root dir
   become: true
   file:
-    path: "{{ oerindex_frontend_instdir }}/build"
+    path: "{{ oerindex_frontend_sitemap_dir }}"
     owner: "{{ oerindex_frontend_owner }}"
     group: "{{ oerindex_frontend_group }}"
-    state: touch
+    state: directory
     mode: g+s
 
 - name: Check if sitemap.xml exists
   stat:
-    path: "{{ oerindex_frontend_instdir }}/build/sitemap.xml"
+    path: "{{ oerindex_frontend_sitemap_dir }}/sitemap.xml"
   register: sitemap_stat_result
 
 - name: Create sitemap, if it does not exist
@@ -20,7 +20,7 @@
 - name: adjust robots.txt
   become: true
   lineinfile:    
-    path: '{{ oerindex_frontend_instdir }}/build/robots.txt'
+    path: '{{ oerindex_frontend_public_dir }}/robots.txt'
     line: 'Sitemap: {{ oerindex_public_base_url }}{{ oerindex_public_base_path }}/sitemap.xml'
     regexp: '^Sitemap:.*$'
     owner: "{{ oerindex_frontend_owner }}"

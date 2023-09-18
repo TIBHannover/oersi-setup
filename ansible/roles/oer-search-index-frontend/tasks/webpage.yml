@@ -35,7 +35,7 @@
   become: true
   template:
     src: "config.js"
-    dest: '{{ oerindex_frontend_instdir }}/build/config/config.js'
+    dest: '{{ oerindex_frontend_public_dir }}/config/config.js'
     owner: "{{ oerindex_frontend_owner }}"
     group: "{{ oerindex_frontend_group }}"
 
@@ -43,7 +43,7 @@
   become: true
   copy:
     src: '{{ oerindex_frontend_custom_style_css }}'
-    dest: '{{ oerindex_frontend_instdir }}/build/css/style-override.css'
+    dest: '{{ oerindex_frontend_public_dir }}/css/style-override.css'
     owner: "{{ oerindex_frontend_owner }}"
     group: "{{ oerindex_frontend_group }}"
   when: (oerindex_frontend_custom_style_css is defined) and (oerindex_frontend_custom_style_css != "") and (oerindex_frontend_custom_style_css is not none)
@@ -51,7 +51,7 @@
 - name: Ensures the folder for the custom translations exists 
   become: true
   file: 
-    path: "{{ oerindex_frontend_instdir }}/build/locales/{{ item.language }}"
+    path: "{{ oerindex_frontend_public_dir }}/locales/{{ item.language }}"
     state: directory
     owner: "{{ oerindex_frontend_owner }}"
     group: "{{ oerindex_frontend_group }}"
@@ -61,7 +61,7 @@
   become: true
   copy:
     src: '{{ item.path }}'
-    dest: '{{ oerindex_frontend_instdir }}/build/locales/{{ item.language }}/{{ item.path | basename }}'
+    dest: '{{ oerindex_frontend_public_dir }}/locales/{{ item.language }}/{{ item.path | basename }}'
     owner: "{{ oerindex_frontend_owner }}"
     group: "{{ oerindex_frontend_group }}"
   loop: '{{ oerindex_frontend_custom_translations | default([], true) }}'
@@ -69,7 +69,7 @@
 - name: Ensures the folder for the custom footer  exists 
   become: true
   file:
-    path: "{{ oerindex_frontend_instdir }}/build/footer/{{ item.language }}"
+    path: "{{ oerindex_frontend_public_dir }}/footer/{{ item.language }}"
     state: directory
     owner: "{{ oerindex_frontend_owner }}"
     group: "{{ oerindex_frontend_group }}"
@@ -79,7 +79,7 @@
   become: true
   copy:
     src: '{{ item.path }}'
-    dest: '{{ oerindex_frontend_instdir }}/build/footer/{{ item.language }}/{{ item.path | basename }}'
+    dest: '{{ oerindex_frontend_public_dir }}/footer/{{ item.language }}/{{ item.path | basename }}'
     owner: "{{ oerindex_frontend_owner }}"
     group: "{{ oerindex_frontend_group }}"
   loop: '{{ oerindex_frontend_custom_footers | default([], true) }}'
@@ -87,7 +87,7 @@
 - name: Ensures the folder for the custom files exists
   become: true
   file:
-    path: "{{ oerindex_frontend_instdir }}/build/{{ item.destination | dirname }}"
+    path: "{{ oerindex_frontend_public_dir }}/{{ item.destination | dirname }}"
     state: directory
     owner: "{{ oerindex_frontend_owner }}"
     group: "{{ oerindex_frontend_group }}"
@@ -97,7 +97,7 @@
   become: true
   copy:
     src: '{{ item.source }}'
-    dest: '{{ oerindex_frontend_instdir }}/build/{{ item.destination}}'
+    dest: '{{ oerindex_frontend_public_dir }}/{{ item.destination}}'
     owner: "{{ oerindex_frontend_owner }}"
     group: "{{ oerindex_frontend_group }}"
   loop: '{{ oerindex_frontend_custom_files | default([], true) }}'

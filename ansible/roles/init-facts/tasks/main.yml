@@ -4,3 +4,6 @@
   when: (base_dir == "") or (base_dir is none)
 
 - set_fact: oersi_user="{{ ansible_user | default(lookup('env', 'USER')) }}"
+
+- name: Setting frontend specific config
+  set_fact: oerindex_frontend_public_dir="{{ oerindex_frontend_instdir }}/build"
