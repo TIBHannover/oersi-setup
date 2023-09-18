@@ -4,15 +4,16 @@
     name: ["wget"]
 
 - name: Ensures vocabs-dir exists
+  become: true
   file:
-    path: "{{ oerindex_frontend_instdir }}/build/vocabs"
+    path: "{{ oerindex_frontend_vocabs_dir }}"
     owner: "{{ oerindex_frontend_owner }}"
     group: "{{ oerindex_frontend_group }}"
     state: directory
 
 - name: "Build vars necessary for vocab updates"
   set_fact:
-    oerindex_frontend_vocab_scheme_updates: "{{ oerindex_frontend_vocab_scheme_updates | default([], true) + [{'schemeUrl': item.schemeUrl, 'schemeFile': oerindex_frontend_instdir + '/build/vocabs/' + item.vocabName + '.json', 'parentMapFile': oerindex_frontend_instdir + '/build/vocabs/' + item.vocabName + '-parentMap.json'}] }}"
+    oerindex_frontend_vocab_scheme_updates: "{{ oerindex_frontend_vocab_scheme_updates | default([], true) + [{'schemeUrl': item.schemeUrl, 'schemeFile': oerindex_frontend_vocabs_dir + '/' + item.vocabName + '.json', 'parentMapFile': oerindex_frontend_vocabs_dir + '/' + item.vocabName + '-parentMap.json'}] }}"
   loop: '{{ oerindex_frontend_hierarchical_vocab_filters | default([], true) }}'
 
 - name: Create build-vocab-parent-map script
@@ -26,6 +27,18 @@
     src: "update-vocab-scheme-frontend.sh.j2"
     dest: "{{ base_dir }}/bin/update-vocab-scheme-frontend.sh"
     mode: 0700
+
+- name: Find default vocabs files
+  find: path='{{ oerindex_frontend_public_dir }}/vocabs'
+  register: vocabs_stat_result
+
+- name: Init default files, if not exists yet
+  copy:
+    remote_src: true
+    src: "{{ item.path }}"
+    dest: "{{ oerindex_frontend_vocabs_dir }}"
+    force: false
+  loop: '{{ vocabs_stat_result.files }}'
 
 - name: Update vocab-schemes immediately
   shell:
