@@ -1,4 +1,6 @@
 ---
+- include_tasks: nextjs.yml
+  when: oerindex_frontend_features_use_ssr
 - include_tasks: webpage.yml
-- include_tasks: sitemap.yml
+  when: not oerindex_frontend_features_use_ssr
 - include_tasks: vocab-scheme.yml

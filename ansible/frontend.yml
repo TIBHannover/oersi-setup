@@ -3,4 +3,16 @@
 - hosts: oerindex
   roles:
     - init-facts
+
+- hosts: oerindex
+  roles:
+    - role: geerlingguy.docker
+      become: yes
+      vars:
+        docker_users:
+          - "{{ oersi_user }}"
+      when: oerindex_frontend_features_use_ssr
+
+- hosts: oerindex
+  roles:
     - oer-search-index-frontend

@@ -14,7 +14,8 @@ oerindex_public_scheme: 'http'
 oerindex_public_base_path: '/resources'
 oerindex_public_base_url: '{{ oerindex_public_scheme }}://{{ oerindex_host }}'
 
-oerindex_frontend_instdir: "/var/www/oersi-frontend"
+oerindex_frontend_features_use_ssr: false # experimental: use SSR frontend (nextjs) instead of SPA
+oerindex_frontend_instdir: "{{ (base_dir + '/oersi-frontend-next') if oerindex_frontend_features_use_ssr else '/var/www/oersi-frontend' }}"
 oerindex_frontend_vocabs_dir: "/var/www/oersi-vocabs"
 oerindex_frontend_sitemap_dir: "/var/www/oersi-sitemap"
 oerindex_frontend_artifact_url: 'https://gitlab.com/oersi/oersi-frontend/-/jobs/artifacts/master/download?job=build'
