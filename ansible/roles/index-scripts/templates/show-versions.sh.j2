@@ -26,7 +26,11 @@ else
 fi
 
 FRONTEND_COMMIT_SHA=$(grep "COMMIT_SHA=" {{ oerindex_frontend_instdir }}/build.info | cut -d'=' -f2)
+{% if oerindex_frontend_features_use_ssr %}
+FRONTEND_VERSIONS=$(cat {{ oerindex_frontend_instdir }}/build.info | jq -sR "[split(\"\n\")[:-1][], \"SOURCE=https://gitlab.com/oersi/oersi-frontend/-/tree/${FRONTEND_COMMIT_SHA}\" | split(\"=\") | {(.[0]): .[1]}] | add")
+{% else %}
 FRONTEND_BUILDNUMBER=$(grep "BUILDNUMBER=" {{ oerindex_frontend_instdir }}/build.info | cut -d'=' -f2)
 FRONTEND_VERSIONS=$(cat {{ oerindex_frontend_instdir }}/build.info | jq -sR "[split(\"\n\")[:-1][], \"SOURCE=https://gitlab.com/oersi/oersi-frontend/-/tree/${FRONTEND_COMMIT_SHA}\", \"BUILD-JOB=https://gitlab.com/oersi/oersi-frontend/-/jobs/${FRONTEND_BUILDNUMBER}\" | split(\"=\") | {(.[0]): .[1]}] | add")
+{% endif %}
 
 jq -n "{\"ETL\": $ETL_VERSIONS, \"Import Scripts\": $IMPORTSCRIPTS_VERSIONS, \"Backend\": $BACKEND_VERSIONS, \"Schemas\": $SCHEMAS_VERSIONS, \"Frontend\": $FRONTEND_VERSIONS}"
