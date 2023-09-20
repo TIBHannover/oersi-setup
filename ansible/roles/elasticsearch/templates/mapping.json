@@ -6,13 +6,16 @@
 {% if oerindex_features_use_synonyms %}
         "analysis": {
           "analyzer": {
-            "synonym": {
+            "default": {
+              "type": "standard"
+            },
+            "default_search": {
               "tokenizer": "standard",
               "filter": [ 
                 "lowercase",
                 "graph_synonyms"
               ]
-            }
+            }            
           },
           "filter": {
             "graph_synonyms": {
@@ -174,10 +177,6 @@
           "index" : true
         },
         "description" : {
-{% if oerindex_features_use_synonyms %}
-          "analyzer": "standard",
-          "search_analyzer": "synonym",
-{% endif %}
           "type" : "text"
         },
         "id" : {
@@ -268,10 +267,6 @@
           }
         },
         "name" : {
-{% if oerindex_features_use_synonyms %}
-          "analyzer": "standard",
-          "search_analyzer": "synonym",
-{% endif %}
           "type" : "text"
         },
         "mainEntityOfPage" : {
@@ -344,10 +339,6 @@
           "type" : "keyword"
         },
         "keywords" : {
-{% if oerindex_features_use_synonyms %}
-          "analyzer": "standard",
-          "search_analyzer": "synonym",
-{% endif %}
           "type" : "text",
           "fields" : {
             "keyword" : {
