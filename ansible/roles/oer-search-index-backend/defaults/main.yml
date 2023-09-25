@@ -13,6 +13,8 @@ oerindex_backend_metadata_custom_processor: amb
 oerindex_backend_features_add_missing_labels: "true" # add missing labels of known vocabularies
 oerindex_backend_features_add_missing_parent_items_of_hierarchical_vocabs: "true" # add missing parent items in hierarchical vocabularies
 oerindex_backend_features_add_missing_metadata_infos: "true" # add missing infos like embedUrl, image width and height to metadata
+oerindex_backend_features_amb_add_external_organization_info: "false" # add info about organizations from external API like ror
+oerindex_backend_external_organization_info_cache_expiration_in_minutes: 14400 # expiration time of the organization-info-cache in minutes
 
 # config of feature "add_missing_metadata_infos"
 # regex - (required) identifier of the data must match this regex to apply the definition
