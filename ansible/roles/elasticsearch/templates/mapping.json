@@ -455,6 +455,36 @@
             },
             "name" : {
               "type" : "keyword"
+            },
+            "location": {
+              "properties": {
+                "geo": {
+                  "type": "geo_point"
+                },
+                "address": {
+                  "properties": {
+                    "addressCountry": {
+                      "type" : "keyword"
+                    },
+                    "addressLocality": {
+                      "type" : "text",
+                      "fields" : {
+                        "keyword" : {
+                          "type" : "keyword"
+                        }
+                      }
+                    },
+                    "addressRegion": {
+                      "type" : "text",
+                      "fields" : {
+                        "keyword" : {
+                          "type" : "keyword"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
             }
           }
         }
