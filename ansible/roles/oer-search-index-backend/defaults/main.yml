@@ -55,8 +55,8 @@ oerindex_backend_field_properties:
     vocabIdentifier: hochschulfaechersystematik
   - fieldName: learningResourceType
     vocabIdentifier: hcrt
-# create a mapping from publisher to the OERSI-institution-filter (format: regex - has to match the publisher-name; name - name that should be used in the institution-filter, capturing groups from the regex may be used (default: 1st capturing group))
-institution_from_publisher_whitelist: []
+# create a mapping for institutions (format: regex - has to match the institution-name; internalName - name that should be used in the OERSI-institution-filter, default: 1st capturing group from the regex; copyFromPublisher (true/false) - should this institution be used in the OERSI-institution-filter; defaultId - id to use for the institution, if not present)
+institution_mapping: []
 oerindex_backend_labelled_concept_fields:
   - about
   - audience
@@ -67,5 +67,5 @@ oerindex_backend_labelled_concept_fields:
   - educationalLevel
   - learningResourceType
 oersi_backend_custom_config:
-  publisherToInstitutionWhitelist: "{{ institution_from_publisher_whitelist | default([], true) }}"
+  institutionMapping: "{{ institution_mapping | default([], true) }}"
   labelledConceptFields: "{{ oerindex_backend_labelled_concept_fields | default([], true) }}"
