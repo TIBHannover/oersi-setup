@@ -13,6 +13,15 @@
     job: "{{ base_dir }}/bin/reset-backend-metadata.sh > {{ oerindex_logdir }}/reset-backend-metadata.log 2>&1"
     state: "{{ 'present' if oerindex_delete_outdated_data_periodically else 'absent' }}"
 
+- name: Cleanup inaccessible backend metadata via cron
+  cron:
+    name: "Cleanup inaccessible backend metadata"
+    weekday: "{{ oerindex_delete_inaccessible_data_schedule_weekday }}"
+    hour: "{{ oerindex_delete_inaccessible_data_schedule_hour }}"
+    minute: "{{ oerindex_delete_inaccessible_data_schedule_minute }}"
+    job: "python3 {{ base_dir }}/bin/oersi-cleanup-process.py > {{ oerindex_logdir }}/cleanup-inaccessible-backend-metadata.log 2>&1"
+    state: "{{ 'present' if oerindex_delete_inaccessible_data_periodically else 'absent' }}"
+
 - name: Recreate oerdata index via cron
   cron:
     name: "Recreate oerdata index"

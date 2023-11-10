@@ -36,6 +36,7 @@
     - create-new-index-and-rebuild.sh.j2
     - create-statistics.sh.j2
     - create-synonyms-file.sh.j2
+    - oersi-cleanup-process.py
     - recreate-index.sh.j2
     - reload-search_analyzer.sh.j2
     - reset-backend-metadata.sh.j2
