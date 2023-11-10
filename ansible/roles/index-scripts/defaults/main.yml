@@ -6,6 +6,11 @@ oerindex_delete_outdated_data_periodically: true   # delete outdated data automa
 oerindex_delete_sql_data_schedule_weekday: "Fri"
 oerindex_delete_sql_data_schedule_hour: "19"
 oerindex_delete_sql_data_schedule_minute: "30"
+# delete inaccessible data automatically via cron (true | false)
+oerindex_delete_inaccessible_data_periodically: false
+oerindex_delete_inaccessible_data_schedule_weekday: "*"
+oerindex_delete_inaccessible_data_schedule_hour: "5"
+oerindex_delete_inaccessible_data_schedule_minute: "30"
 # schedule for recreation of index data
 oerindex_recreate_index_schedule_weekday: "Mon"
 oerindex_recreate_index_schedule_hour: "5"
