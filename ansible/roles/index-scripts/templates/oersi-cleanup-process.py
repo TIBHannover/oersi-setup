@@ -27,7 +27,7 @@ def remove_resource(elasticsearch_id):
 
 def cleanup_inaccessible_oersi_resources():
     oersi_query_params = {"query":{"match_all":{}}, "size": cleanup_limit, "_source": "id"}
-    oersi_data_resp = requests.post(es_url + "/{{ elasticsearch_oer_index_alias_name }}/_search", json=oersi_query_params, auth=es_auth)
+    oersi_data_resp = requests.post(es_url + "/{{ elasticsearch_oer_index_internal_alias_name }}/_search", json=oersi_query_params, auth=es_auth)
     for data in oersi_data_resp.json()["hits"]["hits"]:
         resource_url = data["_source"]["id"]
         if has_valid_http_status_code(resource_url):
