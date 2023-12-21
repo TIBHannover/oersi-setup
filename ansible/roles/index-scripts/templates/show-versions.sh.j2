@@ -8,9 +8,7 @@ ETL_COMMIT_SHA=$(grep "COMMIT_SHA=" {{ oerindex_etl_downloaddir }}/build.info | 
 ETL_BUILDNUMBER=$(grep "BUILDNUMBER=" {{ oerindex_etl_downloaddir }}/build.info | cut -d'=' -f2)
 ETL_VERSIONS=$(cat {{ oerindex_etl_downloaddir }}/build.info | jq -sR "[split(\"\n\")[:-1][], \"SOURCE=https://gitlab.com/oersi/oersi-etl/-/tree/${ETL_COMMIT_SHA}\", \"BUILD-JOB=https://gitlab.com/oersi/oersi-etl/-/jobs/${ETL_BUILDNUMBER}\" | split(\"=\") | {(.[0]): .[1]}] | add")
 
-IMPORTSCRIPTS_COMMIT_SHA=$(grep "COMMIT_SHA=" {{ oerindex_import_scripts_dir }}/build.info | cut -d'=' -f2)
-IMPORTSCRIPTS_BUILDNUMBER=$(grep "BUILDNUMBER=" {{ oerindex_import_scripts_dir }}/build.info | cut -d'=' -f2)
-IMPORTSCRIPTS_VERSIONS=$(cat {{ oerindex_import_scripts_dir }}/build.info | jq -sR "[split(\"\n\")[:-1][], \"SOURCE=https://gitlab.com/oersi/oersi-import-scripts/-/tree/${IMPORTSCRIPTS_COMMIT_SHA}\", \"BUILD-JOB=https://gitlab.com/oersi/oersi-import-scripts/-/jobs/${IMPORTSCRIPTS_BUILDNUMBER}\" | split(\"=\") | {(.[0]): .[1]}] | add")
+IMPORTSCRIPTS_VERSIONS=$(cat {{ oerindex_import_scripts_dir }}/build.info | jq -sR "[split(\"\n\")[:-1][] | split(\"=\") | {(.[0]): .[1]}] | add")
 
 BACKEND_COMMIT_SHA=$(grep "COMMIT_SHA=" {{ tomcat_home }}/webapps/oersi/WEB-INF/classes/build.info | cut -d'=' -f2)
 BACKEND_BUILDNUMBER=$(grep "BUILDNUMBER=" {{ tomcat_home }}/webapps/oersi/WEB-INF/classes/build.info | cut -d'=' -f2)

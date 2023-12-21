@@ -1,5 +1,6 @@
 ---
 oerindex_host: 192.168.98.115
+application_name: "OERSI"
 
 mariadb_port: 3306
 
@@ -95,7 +96,7 @@ oerindex_import_sources_schedule_hour: '0'  # Hour when the job should run - see
 oerindex_import_sources_schedule_minute: '0' # Minute when the job should run - see https://docs.ansible.com/ansible/latest/modules/cron_module.html
 
 oerindex_import_scripts_artifact_url: 'https://gitlab.com/oersi/oersi-import-scripts/-/jobs/artifacts/master/download?job=deploy'
-oerindex_import_scripts_dir: "{{ base_dir }}/oersi-import-scripts"
+oerindex_import_scripts_dir: "{{ base_dir }}/search-index-import-scripts"
 oerindex_import_scripts_python_webservice_install: false  # enable/disable python script access via webservice
 oerindex_import_scripts_enabled_sources_py:  # list of enabled python imports (will be imported scheduled)
 #  - Aoe

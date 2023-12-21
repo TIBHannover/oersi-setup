@@ -1,10 +1,10 @@
-OERSI_BACKEND:
+SEARCH_INDEX_BACKEND:
   url: {{ oerindex_backend_internal_metadataapi_url }}
   user: {{ oerindex_backend_oermetadata_manage_user }}
   password: {{ oerindex_backend_oermetadata_manage_password }}
 
 http:
-  useragent: "OERSI-MetadataImportBot/0.1 ({{ oerindex_host }}, https://oersi.org/resources/services/contact) OERSI-Import/0.1"
+  useragent: "{{ application_name }}-MetadataImportBot/0.1 ({{ oerindex_host }}, https://oersi.org/resources/services/contact) {{ application_name }}-Import/0.1"
 
 git:
   allowed_statuses: {{ oerindex_source_gitrepo_allowed_statuses | to_yaml(indent=4) }}

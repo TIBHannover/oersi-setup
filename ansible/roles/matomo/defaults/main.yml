@@ -19,7 +19,7 @@ matomo_port: 8923
 matomo_url_local: 'http://localhost:{{ matomo_port }}/matomo'
 
 matomo_init_website:
-  name: OERSI
+  name: '{{ application_name }}'
   url: '{{ oerindex_public_base_url }}'
   timezone: '{{ timezone if (timezone is defined and timezone) else "Europe/Berlin" }}'
   idsite: 1
