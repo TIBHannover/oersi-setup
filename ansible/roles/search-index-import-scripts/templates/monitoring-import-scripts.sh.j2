@@ -4,5 +4,5 @@
 # Create a report of the oersi-import-scripts-process and send to stdout.
 #
 
-egrep 'Import channel.*(SUCCESS.*FAIL.*DURATION)|(FAILED:)' {{ oerindex_import_scripts_logdir }}/oersi-py-import.log > {{ oerindex_import_scripts_logdir }}/py-import-report.txt
+egrep 'Import channel.*(SUCCESS.*FAIL.*DURATION)|(FAILED:)' {{ oerindex_import_scripts_logdir }}/py-import.log > {{ oerindex_import_scripts_logdir }}/py-import-report.txt
 cat {{ oerindex_import_scripts_logdir }}/py-import-report.txt

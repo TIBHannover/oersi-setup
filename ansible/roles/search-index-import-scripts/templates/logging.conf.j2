@@ -14,7 +14,7 @@ handlers=fileHandler
 [handler_fileHandler]
 class=handlers.TimedRotatingFileHandler
 formatter=simpleFormatter
-args=('{{ oerindex_import_scripts_logdir }}/oersi-py-import.log', 'midnight', 1, 5) # (<filename>, <when>, <interval>, <backupCount>) - see https://docs.python.org/3/library/logging.handlers.html#logging.handlers.TimedRotatingFileHandler
+args=('{{ oerindex_import_scripts_logdir }}/py-import.log', 'midnight', 1, 5) # (<filename>, <when>, <interval>, <backupCount>) - see https://docs.python.org/3/library/logging.handlers.html#logging.handlers.TimedRotatingFileHandler
 
 [handler_consoleHandler]
 class=StreamHandler
