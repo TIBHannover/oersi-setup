@@ -4,6 +4,12 @@
     name: ["python3", "python3-pip"]
   become: yes
 
+- name: Create import.sh
+  copy:
+    src: "import.sh"
+    dest: "{{ oerindex_import_scripts_dir }}/python/import.sh"
+    mode: '700'
+
 - name: install requirements
   command:
     cmd: "pip3 install -r python/requirements.txt"

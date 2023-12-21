@@ -58,7 +58,7 @@ ERRORS=$(($ETL_ERRORS+$IMPORTSCRIPT_ERRORS))
 FAILURES=$(($ETL_FAILURES+$IMPORTSCRIPT_FAILURES))
 SUCCESSES=$(($ETL_SUCCESSES+$IMPORTSCRIPT_SUCCESSES))
 
-SUBJECT="OERSI Import Monitoring - processes $(($PROCESSES-$ERRORS)) ok, $ERRORS error (data $SUCCESSES ok, $FAILURES failed)"
+SUBJECT="{{ application_name }} Import Monitoring - processes $(($PROCESSES-$ERRORS)) ok, $ERRORS error (data $SUCCESSES ok, $FAILURES failed)"
 
 if [ "$FAILURES" -ge "$FAILURE_BOUND" ] || [ "$ERRORS" -gt "0" ]; then
   echo "Sending report ($SUBJECT)"

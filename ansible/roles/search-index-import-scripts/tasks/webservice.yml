@@ -24,6 +24,12 @@
   notify: restart gunicorn
   when: oerindex_import_scripts_python_webservice_install
 
+- name: Create dummy setup.py to be able to install locally
+  copy:
+    src: "setup-dummy.py"
+    dest: "{{ oerindex_import_scripts_dir }}/python/setup.py"
+    mode: '400'
+
 - name: Install oersi import scripts in virtualenv
   vars:
     ansible_python_interpreter: /usr/bin/python3
