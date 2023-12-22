@@ -46,7 +46,9 @@
   template:
     src: gunicorn.systemd.service.j2
     dest: /etc/systemd/system/gunicorn.service
-  notify: restart gunicorn
+  notify:
+    - reload gunicorn
+    - restart gunicorn
   when: oerindex_import_scripts_python_webservice_install
 
 - name: install gunicorn-socket systemd unit file
@@ -54,7 +56,9 @@
   template:
     src: gunicorn.systemd.socket.j2
     dest: /etc/systemd/system/gunicorn.socket
-  notify: restart gunicorn
+  notify:
+    - reload gunicorn
+    - restart gunicorn
   when: oerindex_import_scripts_python_webservice_install
 
 - name: Check if Service Exists

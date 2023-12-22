@@ -1,4 +1,8 @@
 ---
+- name: reload gunicorn
+  become: true
+  systemd_service: daemon_reload=true
+
 - name: restart gunicorn
   become: true
   service: name=gunicorn.socket state=restarted
