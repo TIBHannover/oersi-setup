@@ -2,14 +2,14 @@
 - name: Ensures inst-dir exists
   become: true
   file:
-    path: "{{ oerindex_schemas_instdir }}"
-    owner: "{{ oerindex_schemas_owner }}"
-    group: "{{ oerindex_schemas_group }}"
+    path: "{{ search_index_schemas_instdir }}"
+    owner: "{{ search_index_schemas_owner }}"
+    group: "{{ search_index_schemas_group }}"
     state: directory
 
-- name: download OER search index schema files
+- name: download search index schema files
   get_url:
-    url: "{{ oerindex_metadata_schema_artifact_url }}"
+    url: "{{ search_index_metadata_schema_artifact_url }}"
     force: yes
     dest: "{{ base_dir }}/metadata-schema.zip"
 
@@ -18,14 +18,14 @@
   package:
     name: ["unzip"]
 
-- name: extract OER search index schema files
+- name: extract search index schema files
   become: true
   unarchive:
     remote_src: yes
     src: '{{ base_dir }}/metadata-schema.zip'
-    dest: "{{ oerindex_schemas_instdir }}"
-    owner: "{{ oerindex_schemas_owner }}"
-    group: "{{ oerindex_schemas_group }}"
+    dest: "{{ search_index_schemas_instdir }}"
+    owner: "{{ search_index_schemas_owner }}"
+    group: "{{ search_index_schemas_group }}"
 
 - name: Configure nginx.
   become: true

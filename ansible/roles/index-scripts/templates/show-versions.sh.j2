@@ -14,11 +14,11 @@ BACKEND_COMMIT_SHA=$(grep "COMMIT_SHA=" {{ tomcat_home }}/webapps/oersi/WEB-INF/
 BACKEND_BUILDNUMBER=$(grep "BUILDNUMBER=" {{ tomcat_home }}/webapps/oersi/WEB-INF/classes/build.info | cut -d'=' -f2)
 BACKEND_VERSIONS=$(cat {{ tomcat_home }}/webapps/oersi/WEB-INF/classes/build.info | jq -sR "[split(\"\n\")[:-1][], \"SOURCE=https://gitlab.com/oersi/oersi-backend/-/tree/${BACKEND_COMMIT_SHA}\", \"BUILD-JOB=https://gitlab.com/oersi/oersi-backend/-/jobs/${BACKEND_BUILDNUMBER}\" | split(\"=\") | {(.[0]): .[1]}] | add")
 
-if [ -f {{ oerindex_schemas_instdir }}/build.info ]; then
-  SCHEMAS_COMMIT_SHA=$(grep "COMMIT_SHA=" {{ oerindex_schemas_instdir }}/build.info | cut -d'=' -f2)
-  SCHEMAS_BUILDNUMBER=$(grep "BUILDNUMBER=" {{ oerindex_schemas_instdir }}/build.info | cut -d'=' -f2)
-  SCHEMAS_REPO_URL=$(grep "REPO_URL=" {{ oerindex_schemas_instdir }}/build.info | cut -d'=' -f2)
-  SCHEMAS_VERSIONS=$(grep -v "^REPO_URL=" {{ oerindex_schemas_instdir }}/build.info | jq -sR "[split(\"\n\")[:-1][], \"SOURCE=${SCHEMAS_REPO_URL}/-/tree/${SCHEMAS_COMMIT_SHA}\", \"BUILD-JOB=${SCHEMAS_REPO_URL}/-/jobs/${SCHEMAS_BUILDNUMBER}\" | split(\"=\") | {(.[0]): .[1]}] | add")
+if [ -f {{ search_index_schemas_instdir }}/build.info ]; then
+  SCHEMAS_COMMIT_SHA=$(grep "COMMIT_SHA=" {{ search_index_schemas_instdir }}/build.info | cut -d'=' -f2)
+  SCHEMAS_BUILDNUMBER=$(grep "BUILDNUMBER=" {{ search_index_schemas_instdir }}/build.info | cut -d'=' -f2)
+  SCHEMAS_REPO_URL=$(grep "REPO_URL=" {{ search_index_schemas_instdir }}/build.info | cut -d'=' -f2)
+  SCHEMAS_VERSIONS=$(grep -v "^REPO_URL=" {{ search_index_schemas_instdir }}/build.info | jq -sR "[split(\"\n\")[:-1][], \"SOURCE=${SCHEMAS_REPO_URL}/-/tree/${SCHEMAS_COMMIT_SHA}\", \"BUILD-JOB=${SCHEMAS_REPO_URL}/-/jobs/${SCHEMAS_BUILDNUMBER}\" | split(\"=\") | {(.[0]): .[1]}] | add")
 else
   SCHEMAS_VERSIONS="{}"
 fi
