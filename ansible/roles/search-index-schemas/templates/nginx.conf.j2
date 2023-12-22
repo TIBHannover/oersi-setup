@@ -1,0 +1,15 @@
+server {
+  listen      {{ search_index_schemas_port }};
+  root {{ search_index_schemas_instdir }};
+  index index.php index.html index.htm;
+  server_name localhost;
+
+  location /schemas {
+    alias {{ search_index_schemas_instdir }};
+  }
+  location / {
+    deny  all;
+  }
+
+  access_log  /var/log/nginx/search-index-schemas-access.log  main;
+}
