@@ -2,6 +2,12 @@
 - fail: msg='Missing mandatory variables "oerindex_monitoring_recipients" and "oerindex_monitoring_from_address"'
   when: (oerindex_monitoring) and ((oerindex_monitoring_recipients == "") or (oerindex_monitoring_recipients is none) or (oerindex_monitoring_from_address == "") or (oerindex_monitoring_from_address is none))
 
+- name: Install gawk
+  become: yes
+  package:
+    name: ["gawk"]
+    state: present
+
 - name: Create send-monitoring-report.sh
   template:
     src: "send-monitoring-report.sh.j2"
