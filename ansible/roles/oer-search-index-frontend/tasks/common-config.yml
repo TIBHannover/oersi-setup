@@ -18,15 +18,22 @@
     group: "{{ oerindex_frontend_group }}"
   loop: '{{ oerindex_frontend_custom_translations | default([], true) }}'
 
-- name: Copy custom translations
+- name: Copy custom translations as override file
   become: true
   copy:
     src: '{{ item.path }}'
-    dest: '{{ oerindex_frontend_public_dir }}/locales/{{ item.language }}/{{ item.path | basename }}'
+    dest: '{{ oerindex_frontend_public_dir }}/locales/{{ item.language }}/{{ item.path | basename }}.override'
     owner: "{{ oerindex_frontend_owner }}"
     group: "{{ oerindex_frontend_group }}"
   loop: '{{ oerindex_frontend_custom_translations | default([], true) }}'
-  
+
+- name: Merge custom translations into original translations and cleanup
+  become: true
+  shell:
+    cmd: "((cat {{ item.path | basename }} ; cat {{ item.path | basename }}.override) | jq '. * input') > {{ item.path | basename }}.tmp && cp --no-preserve=ownership {{ item.path | basename }}.tmp {{ item.path | basename }} && rm {{ item.path | basename }}.tmp {{ item.path | basename }}.override"
+    chdir: "{{ oerindex_frontend_public_dir }}/locales/{{ item.language }}"
+  loop: '{{ oerindex_frontend_custom_translations | default([], true) }}'
+
 - name: Ensures the folder for the custom footer  exists 
   become: true
   file:
