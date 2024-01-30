@@ -15,9 +15,9 @@ oerindex_frontend_features_change_font_size: "false"
 oerindex_frontend_features_embed_oer: "true"
 oerindex_frontend_features_oersi_thumbnails: "{{ 'true' if oerindex_features_generate_thumbnails else 'false' }}"
 oerindex_frontend_features_scroll_top_button: "true"
-oerindex_frontend_features_show_encoding_downloads: "false"
-oerindex_frontend_features_show_rating: "false"
-oerindex_frontend_features_show_versions: "false"
+oerindex_frontend_features_show_encoding_downloads: "false" # deprecated, covered in frontend via field-config; still used in nextjs-frontend
+oerindex_frontend_features_show_rating: "false" # deprecated, covered in frontend via field-config; still used in nextjs-frontend
+oerindex_frontend_features_show_versions: "false" # deprecated, covered in frontend via field-config; still used in nextjs-frontend
 
 oerindex_frontend_ssr_repo_url: https://gitlab.com/oersi/oersi-frontend.git
 oerindex_frontend_ssr_repo_version: minimal-nextjs-example
@@ -30,3 +30,33 @@ oerindex_frontend_hierarchical_vocab_filters: # the vocab-scheme files will be d
     schemeUrl: https://w3id.org/kim/hochschulfaechersystematik/scheme.json
     vocabName: hochschulfaechersystematik
 oerindex_frontend_vocab_scheme_update_schedule_hour: "22"
+
+search_index_frontend_base_field_configuration:  # see Frontend-Readme -> General field configuration
+  - dataField: about.id
+    translationNamespace: labelledConcept
+  - dataField: audience.id
+    translationNamespace: labelledConcept
+  - dataField: inLanguage
+    translationNamespace: language
+  - dataField: learningResourceType.id
+    translationNamespace: labelledConcept
+
+search_index_frontend_detail_page_configuration:
+  content:
+    - field: creator.name
+    - field: description
+    - field: about.id
+    - field: learningResourceType.id
+    - field: sourceOrganization.name
+    - field: publisher.name
+    - field: datePublished
+      type: date
+    - field: inLanguage
+    - field: keywords
+      type: chips
+    - field: license.id
+      type: license
+    - field: audience.id
+    - field: mainEntityOfPage.provider.name
+      type: link
+      externalLinkField: mainEntityOfPage.id

@@ -34,9 +34,8 @@ window['runTimeConfig'] = {
       EMBED_OER: {{ oerindex_frontend_features_embed_oer }},
       OERSI_THUMBNAILS: {{ oerindex_frontend_features_oersi_thumbnails }},
       SCROLL_TOP_BUTTON: {{ oerindex_frontend_features_scroll_top_button }},
-      SHOW_ENCODING_DOWNLOADS: {{ oerindex_frontend_features_show_encoding_downloads }},
-      SHOW_RATING: {{ oerindex_frontend_features_show_rating }},
-      SHOW_VERSIONS: {{ oerindex_frontend_features_show_versions }}
-    }
+    },
+    FIELDS: {{ search_index_frontend_base_field_configuration | default([], true) | to_json(ensure_ascii=False) }},
+    DETAIL_PAGE: {{ search_index_frontend_detail_page_configuration | default([], true) | to_json(ensure_ascii=False) }}
   }
 }
