@@ -35,7 +35,7 @@ window['runTimeConfig'] = {
       OERSI_THUMBNAILS: {{ oerindex_frontend_features_oersi_thumbnails }},
       SCROLL_TOP_BUTTON: {{ oerindex_frontend_features_scroll_top_button }},
     },
-    FIELDS: {{ search_index_frontend_base_field_configuration | default([], true) | to_json(ensure_ascii=False) }},
-    DETAIL_PAGE: {{ search_index_frontend_detail_page_configuration | default([], true) | to_json(ensure_ascii=False) }}
+    fieldConfiguration: {{ search_index_frontend_field_configuration | default([], true) | to_json(ensure_ascii=False) }},
+    detailPage: {{ search_index_frontend_detail_page_configuration | default([], true) | to_json(ensure_ascii=False) }}
   }
 }
