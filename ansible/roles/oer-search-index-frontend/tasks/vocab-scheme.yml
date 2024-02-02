@@ -3,6 +3,14 @@
   package:
     name: ["wget"]
 
+- name: Delete old unused scripts
+  file:
+    path: "{{ base_dir }}/bin/{{ item }}"
+    state: absent
+  loop:
+    - update-vocab-scheme.sh
+    - build-vocab-parent-map.sh
+
 - name: Ensures vocabs-dir exists
   become: true
   file:
@@ -13,14 +21,8 @@
 
 - name: "Build vars necessary for vocab updates"
   set_fact:
-    oerindex_frontend_vocab_scheme_updates: "{{ oerindex_frontend_vocab_scheme_updates | default([], true) + [{'schemeUrl': item.schemeUrl, 'schemeFile': oerindex_frontend_vocabs_dir + '/' + item.vocabName + '.json', 'parentMapFile': oerindex_frontend_vocabs_dir + '/' + item.vocabName + '-parentMap.json'}] }}"
+    search_index_frontend_vocab_scheme_updates: "{{ search_index_frontend_vocab_scheme_updates | default([], true) + [{'vocabName': item.vocabName, 'parentMapFile': oerindex_frontend_vocabs_dir + '/' + item.vocabName + '-parentMap.json'}] }}"
   loop: '{{ oerindex_frontend_hierarchical_vocab_filters | default([], true) }}'
-
-- name: Create build-vocab-parent-map script
-  copy:
-    src: "build-vocab-parent-map.sh"
-    dest: "{{ base_dir }}/bin/build-vocab-parent-map.sh"
-    mode: 0700
 
 - name: Create update-vocab-scheme script
   template:
