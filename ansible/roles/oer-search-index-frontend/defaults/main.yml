@@ -38,6 +38,8 @@ search_index_frontend_field_configuration:  # see Frontend-Readme -> General fie
     licenseUrl: license.id
     author: creator.name
     thumbnailUrl: image
+    description: description
+    keywords: keywords
   embedding:
     mediaUrl: trailer.embedUrl
     fallbackMediaUrl:
