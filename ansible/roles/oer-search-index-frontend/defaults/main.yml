@@ -73,3 +73,8 @@ search_index_frontend_detail_page_configuration:  # see Frontend-Readme -> Detai
     - field: mainEntityOfPage.provider.name
       type: link
       externalLinkField: mainEntityOfPage.id
+
+search_index_frontend_embedded_structured_data_adjustments:  # see Frontend-Readme -> Embedded structured data adjustments
+  - fieldName: "@context"
+    action: replace
+    value: https://schema.org/

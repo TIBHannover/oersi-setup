@@ -36,6 +36,7 @@ window['runTimeConfig'] = {
       SCROLL_TOP_BUTTON: {{ oerindex_frontend_features_scroll_top_button }},
     },
     fieldConfiguration: {{ search_index_frontend_field_configuration | default([], true) | to_json(ensure_ascii=False) }},
-    detailPage: {{ search_index_frontend_detail_page_configuration | default([], true) | to_json(ensure_ascii=False) }}
+    detailPage: {{ search_index_frontend_detail_page_configuration | default([], true) | to_json(ensure_ascii=False) }},
+    embeddedStructuredDataAdjustments: {{ search_index_frontend_embedded_structured_data_adjustments | default([], true) | to_json(ensure_ascii=False) }}
   }
 }
