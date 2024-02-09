@@ -54,6 +54,18 @@ search_index_frontend_field_configuration:  # see Frontend-Readme -> General fie
     - dataField: learningResourceType.id
       translationNamespace: labelledConcept
 
+search_index_frontend_result_card_configuration:  # see Frontend-Readme -> Result Card configuration
+  subtitle:
+    field: creator.name
+  content:
+    - field: description
+      maxLines: 4
+      bold: true
+      fallback:
+        - keywords
+    - field: about.id
+    - field: learningResourceType.id
+
 search_index_frontend_detail_page_configuration:  # see Frontend-Readme -> Detail page configuration
   content:
     - field: creator.name
