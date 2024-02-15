@@ -8,7 +8,7 @@ oerindex_frontend_theme_colors_dark: "" # customize colors of the dark theme; fo
 oerindex_frontend_aggregation_search_components: ["author"] # filters/components that should update the aggregation on typing in the filter search field
 oerindex_frontend_aggregation_search_debounce: 150 # sets the milliseconds to wait before executing an aggregation search (search inside filters)
 oerindex_frontend_aggregation_search_min_length: 3 #  minimum length of search term in aggregation search (search inside filters)
-oerindex_frontend_enabled_filters: ["about", "learningResourceType", "license", "author", "sourceOrganization", "language", "provider"] # filters that should be used in the UI
+oerindex_frontend_enabled_filters: ["about", "learningResourceType", "license", "author", "sourceOrganization", "language", "provider"] # deprecated, covered in frontend via field-config; still used in nextjs-frontend
 
 oerindex_frontend_features_dark_mode: "true"
 oerindex_frontend_features_change_font_size: "false"
@@ -49,10 +49,68 @@ search_index_frontend_field_configuration:  # see Frontend-Readme -> General fie
       translationNamespace: labelledConcept
     - dataField: audience.id
       translationNamespace: labelledConcept
+    - dataField: conditionsOfAccess.id
+      translationNamespace: labelledConcept
     - dataField: inLanguage
       translationNamespace: language
     - dataField: learningResourceType.id
       translationNamespace: labelledConcept
+    - dataField: license.id
+      defaultDisplayType: licenseGroup
+
+search_index_frontend_search_configuration:
+  searchField:
+    dataField:
+      - name
+      - creator.name
+      - description
+      - keywords
+      - about.prefLabel_full
+      - learningResourceType.prefLabel_full
+    fieldWeights:
+      - 1
+      - 3
+  filters:
+    - componentId: about
+      dataField: about.id
+      showSearch: true
+      allowedSearchRegex: ^[\u00C0-\u017Fa-zA-Z .-]*$
+      size: 1000
+    - componentId: learningResourceType
+      dataField: learningResourceType.id
+    - componentId: license
+      dataField: license.id
+      prefixAggregationQueryPrefixes:
+        - https://creativecommons.org/licenses/by/
+        - https://creativecommons.org/licenses/by-sa/
+        - https://creativecommons.org/licenses/by-nd/
+        - https://creativecommons.org/licenses/by-nc-sa/
+        - https://creativecommons.org/licenses/by-nc/
+        - https://creativecommons.org/licenses/by-nc-nd/
+        - https://creativecommons.org/publicdomain/zero/
+        - https://creativecommons.org/publicdomain/mark
+        - https://www.apache.org/licenses/LICENSE-2.0
+        - https://www.gnu.org/licenses/fdl
+        - https://www.gnu.org/licenses/gpl
+      prefixAggregationQueryAdditions:
+        - value: "https:/"
+          replacement: "http:/"
+    - componentId: author
+      dataField: persons.name.keyword
+      labelKey: creator.name
+      showSearch: true
+      allowedSearchRegex: ^[\u00C0-\u017Fa-zA-Z .-]*$
+      size: 1000
+    - componentId: sourceOrganization
+      dataField: institutions.name
+      labelKey: sourceOrganization.name
+      showSearch: true
+      size: 1000
+    - componentId: language
+      dataField: inLanguage
+    - componentId: provider
+      dataField: mainEntityOfPage.provider.name
+      showSearch: true
 
 search_index_frontend_result_card_configuration:  # see Frontend-Readme -> Result Card configuration
   subtitle:
