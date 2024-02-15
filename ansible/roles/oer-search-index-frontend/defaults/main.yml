@@ -26,7 +26,7 @@ oerindex_frontend_owner: "{{ oersi_user }}"
 oerindex_frontend_group: "{{ oersi_user if oerindex_frontend_features_use_ssr else 'www-data' }}"
 
 oerindex_frontend_hierarchical_vocab_filters: # the vocab-scheme files will be downloaded/updated locally periodically
-  - filterId: about
+  - filterId: about # filterId deprecated, covered in frontend via field-config; still used in nextjs-frontend
     schemeUrl: https://w3id.org/kim/hochschulfaechersystematik/scheme.json
     vocabName: hochschulfaechersystematik
 oerindex_frontend_vocab_scheme_update_schedule_hour: "22"
@@ -46,6 +46,8 @@ search_index_frontend_field_configuration:  # see Frontend-Readme -> General fie
       - encoding.embedUrl
   options:
     - dataField: about.id
+      isHierarchicalConcept: true
+      schemeParentMap: /vocabs/hochschulfaechersystematik-parentMap.json
       translationNamespace: labelledConcept
     - dataField: audience.id
       translationNamespace: labelledConcept
