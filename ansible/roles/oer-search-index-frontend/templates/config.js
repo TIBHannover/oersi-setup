@@ -24,9 +24,6 @@ window['runTimeConfig'] = {
       {componentId: "{{ filter_conf.filterId }}", schemeParentMap: "/vocabs/{{ filter_conf.vocabName }}-parentMap.json"}{{ ", " if not loop.last else "" }}
 {% endfor %}
     ],
-    AGGREGATION_SEARCH_COMPONENTS: {{ oerindex_frontend_aggregation_search_components | default([], true) | to_json(ensure_ascii=False) }},
-    AGGREGATION_SEARCH_DEBOUNCE: {{ oerindex_frontend_aggregation_search_debounce }},
-    AGGREGATION_SEARCH_MIN_LENGTH: {{ oerindex_frontend_aggregation_search_min_length }},
     FEATURES: {
       DARK_MODE: {{ oerindex_frontend_features_dark_mode }},
       CHANGE_FONTSIZE: {{ oerindex_frontend_features_change_font_size }},
