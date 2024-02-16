@@ -5,19 +5,12 @@ oerindex_frontend_track_total_hits: "true" # track number of total hits from ela
 oerindex_frontend_header_logo_url: "" # if set, use this URL for the logo in the header and include your custom svg or similar; default is "logo-192.png". You may use placeholders {{dark}} and {{small}} to use different logo-versions for dark/mobile mode (they will be replaced by "_dark" and "_small").
 oerindex_frontend_theme_colors: "" # customize colors of the theme; format: {primary: {main: "#000"}, secondary: {main: "#000"}}
 oerindex_frontend_theme_colors_dark: "" # customize colors of the dark theme; format: {primary: {main: "#000"}, secondary: {main: "#000"}}
-oerindex_frontend_aggregation_search_components: ["author"] # deprecated, covered in frontend via filter-config; still used in nextjs-frontend
-oerindex_frontend_aggregation_search_debounce: 150 # deprecated, covered in frontend via filter-config; still used in nextjs-frontend
-oerindex_frontend_aggregation_search_min_length: 3 # deprecated, covered in frontend via filter-config; still used in nextjs-frontend
-oerindex_frontend_enabled_filters: ["about", "learningResourceType", "license", "author", "sourceOrganization", "language", "provider"] # deprecated, covered in frontend via field-config; still used in nextjs-frontend
 
 oerindex_frontend_features_dark_mode: "true"
 oerindex_frontend_features_change_font_size: "false"
 oerindex_frontend_features_embed_oer: "true"
 oerindex_frontend_features_oersi_thumbnails: "{{ 'true' if oerindex_features_generate_thumbnails else 'false' }}"
 oerindex_frontend_features_scroll_top_button: "true"
-oerindex_frontend_features_show_encoding_downloads: "false" # deprecated, covered in frontend via field-config; still used in nextjs-frontend
-oerindex_frontend_features_show_rating: "false" # deprecated, covered in frontend via field-config; still used in nextjs-frontend
-oerindex_frontend_features_show_versions: "false" # deprecated, covered in frontend via field-config; still used in nextjs-frontend
 
 oerindex_frontend_ssr_repo_url: https://gitlab.com/oersi/oersi-frontend.git
 oerindex_frontend_ssr_repo_version: minimal-nextjs-example
@@ -26,8 +19,7 @@ oerindex_frontend_owner: "{{ oersi_user }}"
 oerindex_frontend_group: "{{ oersi_user if oerindex_frontend_features_use_ssr else 'www-data' }}"
 
 oerindex_frontend_hierarchical_vocab_filters: # the vocab-scheme files will be downloaded/updated locally periodically
-  - filterId: about # filterId deprecated, covered in frontend via field-config; still used in nextjs-frontend
-    schemeUrl: https://w3id.org/kim/hochschulfaechersystematik/scheme.json
+  - schemeUrl: https://w3id.org/kim/hochschulfaechersystematik/scheme.json
     vocabName: hochschulfaechersystematik
 oerindex_frontend_vocab_scheme_update_schedule_hour: "22"
 
@@ -60,7 +52,7 @@ search_index_frontend_field_configuration:  # see Frontend-Readme -> General fie
     - dataField: license.id
       defaultDisplayType: licenseGroup
 
-search_index_frontend_search_configuration:
+search_index_frontend_search_configuration:  # see Frontend-Readme -> Search configuration
   searchField:
     dataField:
       - name
