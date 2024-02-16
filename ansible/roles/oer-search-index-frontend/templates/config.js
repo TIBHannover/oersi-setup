@@ -19,24 +19,17 @@ window['runTimeConfig'] = {
     I18N_CACHE_EXPIRATION: {{ oerindex_frontend_i18n_cache_expiration }},
     I18N_DEBUG: {{ oerindex_frontend_i18n_debug }},
     TRACK_TOTAL_HITS: {{ oerindex_frontend_track_total_hits }},
-    ENABLED_FILTERS: {{oerindex_frontend_enabled_filters | default([], true) | to_json(ensure_ascii=False) }},
-    HIERARCHICAL_FILTERS: [
-{% for filter_conf in (oerindex_frontend_hierarchical_vocab_filters | default([], true)) %}
-      {componentId: "{{ filter_conf.filterId }}", schemeParentMap: "/vocabs/{{ filter_conf.vocabName }}-parentMap.json"}{{ ", " if not loop.last else "" }}
-{% endfor %}
-    ],
-    AGGREGATION_SEARCH_COMPONENTS: {{ oerindex_frontend_aggregation_search_components | default([], true) | to_json(ensure_ascii=False) }},
-    AGGREGATION_SEARCH_DEBOUNCE: {{ oerindex_frontend_aggregation_search_debounce }},
-    AGGREGATION_SEARCH_MIN_LENGTH: {{ oerindex_frontend_aggregation_search_min_length }},
     FEATURES: {
       DARK_MODE: {{ oerindex_frontend_features_dark_mode }},
       CHANGE_FONTSIZE: {{ oerindex_frontend_features_change_font_size }},
       EMBED_OER: {{ oerindex_frontend_features_embed_oer }},
       OERSI_THUMBNAILS: {{ oerindex_frontend_features_oersi_thumbnails }},
       SCROLL_TOP_BUTTON: {{ oerindex_frontend_features_scroll_top_button }},
-      SHOW_ENCODING_DOWNLOADS: {{ oerindex_frontend_features_show_encoding_downloads }},
-      SHOW_RATING: {{ oerindex_frontend_features_show_rating }},
-      SHOW_VERSIONS: {{ oerindex_frontend_features_show_versions }}
-    }
+    },
+    fieldConfiguration: {{ search_index_frontend_field_configuration | default({}, true) | to_json(ensure_ascii=False) }},
+    search: {{ search_index_frontend_search_configuration | default({}, true) | to_json(ensure_ascii=False) }},
+    resultCard: {{ search_index_frontend_result_card_configuration | default({}, true) | to_json(ensure_ascii=False) }},
+    detailPage: {{ search_index_frontend_detail_page_configuration | default({}, true) | to_json(ensure_ascii=False) }},
+    embeddedStructuredDataAdjustments: {{ search_index_frontend_embedded_structured_data_adjustments | default([], true) | to_json(ensure_ascii=False) }}
   }
 }
