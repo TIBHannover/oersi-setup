@@ -6,7 +6,7 @@
 
 - hosts: oerindex
   roles:
-    - role: geerlingguy.docker
+    - role: docker
       become: yes
       vars:
         docker_users:

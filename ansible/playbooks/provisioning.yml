@@ -15,7 +15,7 @@
 - hosts: oerindex
   become: yes
   roles:
-    - geerlingguy.java
+    - java
     - elasticsearch
 
 - hosts: oerindex
