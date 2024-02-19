@@ -1,0 +1,196 @@
+---
+oerindex_host: 192.168.98.115
+application_name: "OERSI"
+
+mariadb_port: 3306
+
+base_dir:   # base directory for oersi components; default to HOME-dir of ansible user
+oersi_user: # default to ansible user
+
+oerindex_features_use_synonyms: false   # activate/deactivate synonyms feature
+oerindex_backend_features_log_elasticsearch_requests: "false"
+oerindex_backend_log_elasticsearch_requests_cleanup_age: "180d"   # cleanup (remove) logged requests after older than this via elasticsearch Index Lifecycle Management - see also https://www.elastic.co/guide/en/elasticsearch/reference/current/overview-index-lifecycle-management.html
+
+oerindex_public_scheme: 'http'
+oerindex_public_base_path: '/resources'
+oerindex_public_base_url: '{{ oerindex_public_scheme }}://{{ oerindex_host }}'
+
+oerindex_frontend_features_use_ssr: false # experimental: use SSR frontend (nextjs) instead of SPA
+oerindex_frontend_instdir: "{{ (base_dir + '/oersi-frontend-next') if oerindex_frontend_features_use_ssr else '/var/www/oersi-frontend' }}"
+oerindex_frontend_vocabs_dir: "/var/www/oersi-vocabs"
+oerindex_frontend_sitemap_dir: "/var/www/oersi-sitemap"
+oerindex_frontend_artifact_url: 'https://gitlab.com/oersi/oersi-frontend/-/jobs/artifacts/master/download?job=build'
+oerindex_frontend_available_languages: ["de", "en"]
+oerindex_frontend_page_size: ["12", "24", "48", "96"] # Page size options .
+oerindex_frontend_nr_result_page_default: 12
+oerindex_frontend_custom_style_css:     # path to a custom style-override.css file
+# list to custom footer.html files; required in each entry: "path" (path to your footer file), "language" (languagecode)
+oerindex_frontend_custom_footers:       # example entry: {path: 'path/footer.html',language: 'en'}
+# path to a custom translations- required in each entry: "path" (path to your tanslation file), "language" (languagecode)
+oerindex_frontend_custom_translations:  # example entry:  path: translation.json, language: de 
+# A list of custom files that should be copied for oersi-frontend
+# Each entry must have: "source" (specifies the path where the custom files are located), "destination" (specifies the target path under the frontend-root)
+oerindex_frontend_custom_files:         # example entry: {source: 'path/example.html',destination: 'path/example/example.html'}
+# Each cookies notification has a link which can give more info about the data we collect
+# "oerindex_frontend_custom_cookie_links" accept a list of custom links (or Files ) for Cookie notification 'link', 
+# Each entry must have: "path" (path or link to your data-protection), "language" (languageCode)
+oerindex_frontend_custom_cookie_links:  # example entry: {path: 'path/policy.html',language: 'en'}
+oerindex_frontend_custom_info_links: # by language; example: en: "https://oersi.org/resources/pages/en"
+
+oerindex_metadata_schema_artifact_url: https://gitlab.com/oersi/oersi-schema/-/jobs/artifacts/main/download?job=deploy  # deprecated - use "search_index_metadata_schema_artifact_url" instead
+search_index_metadata_schema_artifact_url: "{{ oerindex_metadata_schema_artifact_url }}"
+search_index_schemas_instdir: "/var/www/oersi-schemas"
+search_index_schemas_port: 51734
+oerindex_backend_metadata_schema_location: "http://localhost:{{ search_index_schemas_port }}/schemas/metadata/schema.json"
+oerindex_backend_metadata_schema_resolution_scope: "http://localhost:{{ search_index_schemas_port }}/schemas/metadata/"
+oerindex_backend_downloaddir: "{{ base_dir }}/oersi-backend"
+oerindex_backend_artifact_url: 'https://gitlab.com/oersi/oersi-backend/-/jobs/artifacts/master/download?job=deploy+branch'
+oerindex_backend_contactapi_root_path: '{{ oerindex_public_base_path }}/api-internal/contact'
+oerindex_backend_searchapi_root_path: '{{ oerindex_public_base_path }}/api/search/'
+oerindex_backend_labelapi_root_path: '{{ oerindex_public_base_path }}/api/label/'
+oerindex_backend_oembedapi_root_path: '{{ oerindex_public_base_path }}/api/oembed'
+oerindex_backend_searchapi_url: "{{ oerindex_public_base_url }}{{ oerindex_backend_searchapi_root_path }}"
+oerindex_backend_internal_api_base_url: 'http://localhost:{{ tomcat_port }}/oersi/api'
+oerindex_backend_internal_metadataapi_url: '{{ oerindex_backend_internal_api_base_url }}/metadata'
+oerindex_backend_support_mail: "changeme@oersi.org"
+oerindex_backend_mail_config:  # "spring.mail"-configuration (property - name of the property, value - value)
+  - property: host
+    value: changeme
+
+oerindex_etl_downloaddir: "{{ base_dir }}/oersi-etl"
+oerindex_etl_artifact_url: 'https://gitlab.com/oersi/oersi-etl/-/jobs/artifacts/master/download?job=deploy'
+oerindex_etl_input_limit: -1
+oerindex_etl_orca_auth: changeme
+# List all standard files from oersi-etl/data/production/ that should be used for the ETL-process here.
+oerindex_etl_configfiles:
+#  - detmoldMusicTools
+#  - digill
+#  - duepublico
+#  - eGov
+#  - foerde
+#  - hhu
+#  - hoou
+#  - iMoox
+#  - kiCampus
+#  - oncampus
+#  - openHpi
+#  - openMusicAcademy
+#  - openRub
+#  - openVhb
+#  - orca_educast
+#  - orca_toScience
+#  - orca_spreadsheet
+#  - tibav
+#  - zoerr
+# List all your custom files that should be used for the ETL-process here.
+# The file path has to be relative to 'ansible/roles/oer-search-index-etl/files' or an absolute path.
+oerindex_etl_customfiles:
+#  - '../../../my-conf-dir/my-etl.flux'
+
+oerindex_monitoring: false  # activate the monitoring process; true|false
+oerindex_monitoring_recipients:   # mail recipients of the monitoring report (comma separated)
+oerindex_monitoring_from_address:   # mail sender address for the monitoring report
+  
+oerindex_import_sources_immediately: true # import configured sources immediately at the installation process (true|false)
+oerindex_import_sources_schedule_state: 'present' # import all configured sources scheduled (absent|present)
+oerindex_import_sources_schedule_hour: '0'  # Hour when the job should run - see https://docs.ansible.com/ansible/latest/modules/cron_module.html
+oerindex_import_sources_schedule_minute: '0' # Minute when the job should run - see https://docs.ansible.com/ansible/latest/modules/cron_module.html
+
+oerindex_import_scripts_artifact_url: 'https://gitlab.com/oersi/oersi-import-scripts/-/jobs/artifacts/master/download?job=deploy'
+oerindex_import_scripts_dir: "{{ base_dir }}/search-index-import-scripts"
+oerindex_import_scripts_python_webservice_install: false  # enable/disable python script access via webservice
+oerindex_import_scripts_enabled_sources_py:  # list of enabled python imports (will be imported scheduled)
+#  - Aoe
+#  - eadnurt
+#  - GitHub
+#  - GitLab
+#  - GitLabRWTHAachen
+#  - HessenHub
+#  - Hoou
+#  - Olw
+#  - TUDelftOpenCourseWare
+  - twillo
+#  - Vhb
+#  - Vlc
+oerindex_import_scripts_customfiles:
+  # - src: "your/local/path/python-file.py"
+  #   script_dir_dest: "python/python-file.py"
+
+internationalization_tool_install: false # install and configre the TOERN internationalization tool for periodical translations of OERSI-keywords via wikidata
+internationalization_tool_artifact_url: "https://gitlab.com/oersi/internationalization-tool/-/jobs/artifacts/master/download?job=deploy"
+internationalization_tool_dir: "{{ base_dir }}/internationalization-tool"
+
+oerindex_features_generate_thumbnails: false  # generate thumbnail-html-preview for non-existing images and thumbnail for existing images (unified size)
+thumbnail_webserver_instdir: "/var/www/thumbnails"
+thumbnail_splash_base_url:  # the url of the splash-service that should be used for html-preview-images (see https://splash.readthedocs.io/en/stable/)
+
+elasticsearch_host: localhost
+elasticsearch_port: 9200
+elasticsearch_heap_size_min: 2g
+elasticsearch_heap_size_max: 2g
+elasticsearch_home: "/usr/share/elasticsearch"
+elasticsearch_conf_dir: /etc/elasticsearch
+elasticsearch_elastic_username: elastic
+elasticsearch_elastic_password: changeme
+elasticsearch_bootstrap_password: bootstrap
+elasticsearch_builtin_users:
+  - name: apm_system
+    password: changeme
+  - name: beats_system
+    password: changeme
+  - name: logstash_system
+    password: changeme
+  - name: kibana_system
+    password: changeme
+  - name: remote_monitoring_user
+    password: changeme
+elasticsearch_oer_index_alias_name: oer_data # main alias; use external
+elasticsearch_oer_index_version: 28 # internal use
+elasticsearch_oer_index_name_prefix: oer_data_ # internal use
+elasticsearch_oer_index_internal_alias_name: "{{ elasticsearch_oer_index_alias_name }}_internal"
+elasticsearch_oer_index_internal_name_prefix: "{{ elasticsearch_oer_index_name_prefix }}internal_"
+elasticsearch_oer_index_number_of_shards: 1
+elasticsearch_oer_index_number_of_replicas: "{{ elasticsearch_oer_index_number_of_shards - 1 }}"
+# user with read-only access to oer-index
+elasticsearch_oersi_viewer_username: oersi_viewer
+elasticsearch_oersi_viewer_password: ch@ngeMe
+# user with access to the oersi backend indices
+elasticsearch_oersi_backend_manager_username: oersi_backend_manager
+elasticsearch_oersi_backend_manager_password: ch@ngeMe
+
+elasticsearch_api_url: "http://{{ elasticsearch_host }}:{{ elasticsearch_port }}"
+
+#elasticsearch_network_host: "0.0.0.0"
+#elasticsearch_http_port: 9200
+#elasticsearch_heap_size_min: 1g
+#elasticsearch_heap_size_max: 2g
+
+# install kibana true/false
+kibana_install: false
+# insternal geerlingguy.kibana properties
+kibana_elasticsearch_username: 'kibana_system'
+kibana_elasticsearch_password: '{{ (elasticsearch_builtin_users | selectattr("name", "equalto", "kibana_system")  | list)[0].password }}'
+
+java_packages: [ ca-certificates-java, openjdk-17-jdk ] # debian (>= Bullseye) package
+tomcat_version: '10.1.15'
+tomcat_port: 8080
+tomcat_shutdown_port: 8005
+tomcat_ssl_port: 8443
+tomcat_ajp_port: 8009
+tomcat_inst_dir: "{{base_dir}}"
+tomcat_bin: "{{tomcat_inst_dir}}/bin"
+tomcat_home: "{{tomcat_inst_dir}}/tomcat"
+tomcat_start_command: "nohup {{tomcat_bin}}/tomcat.sh start </dev/null >/dev/null 2>&1 &"
+tomcat_stop_command: "{{tomcat_bin}}/tomcat.sh stop"
+
+oerindex_backend_oermetadata_manage_user: changeme
+oerindex_backend_oermetadata_manage_password: changeme
+
+# matomo - analysis of user statistics see https://gitlab.com/oersi/oersi-setup/-/tree/master/doc/WEBANALYTICS.md
+matomo_install: false # install matomo true|false
+matomo_superuser_name: admin
+matomo_superuser_password: changeme
+matomo_superuser_mail: xyz@example.org
+matomo_dbname: matomo
+matomo_dbuser: matomo
+matomo_dbpassword: changeme
