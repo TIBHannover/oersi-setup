@@ -12,18 +12,18 @@
   tags:
     - root-task
 
-- hosts: oerindex
+- hosts: all
   become: yes
   roles:
     - java
     - elasticsearch
 
-- hosts: oerindex
+- hosts: all
   roles:
     - tomcat
     - thumbnails
 
-- hosts: oerindex
+- hosts: all
   become: yes
   roles:
     - nginx

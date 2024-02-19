@@ -5,12 +5,12 @@
     - init-facts
     - build-info-update
 
-- hosts: oerindex
+- hosts: all
   become: yes
   roles:
     - index-update
 
-- hosts: oerindex
+- hosts: all
   become: yes
   tasks:
     - name: Restart nginx
