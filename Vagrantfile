@@ -25,8 +25,8 @@ Vagrant.configure("2") do |config|
     ansible.pip_install_cmd = "sudo apt-get install -y python3-distutils && curl -s https://bootstrap.pypa.io/get-pip.py | sudo python3"
     ansible.pip_args = "ansible-core==2.13.7"
     #ansible.version = "2.13.7"
-    ansible.playbook = "ansible/system.yml"
-    ansible.galaxy_role_file = "requirements.yml"
+    ansible.playbook = "ansible/playbooks/system.yml"
+    ansible.galaxy_role_file = "ansible/requirements.yml"
     ansible.verbose = "true"
     ansible.groups = {
       "oerindex" => ["oerindex-vm"],
