@@ -13,13 +13,13 @@ stages:
     - echo "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
   script:
-    - ansible-playbook -v -i ${INVENTORY_FILE} prerequisites.yml
+    - ansible-galaxy install -r requirements.yml
     - ansible-playbook -v -i ${INVENTORY_FILE} ${PLAYBOOK}
 
 #scheduled deploy to Develop:
 #  variables:
 #    INVENTORY_FILE: inventory_DEV.yml
-#    PLAYBOOK: oersi-playbook.yml
+#    PLAYBOOK: search_index.setup.system
 #  extends: .deploy_job
 #  only:
 #    - schedules
@@ -27,7 +27,7 @@ stages:
 deploy to Develop:
   variables:
     INVENTORY_FILE: inventory_DEV.yml
-    PLAYBOOK: oersi-playbook.yml
+    PLAYBOOK: search_index.setup.system
   extends: .deploy_job
   only:
     - master
@@ -36,7 +36,7 @@ deploy to Develop:
 Develop Backend Deployment:
   variables:
     INVENTORY_FILE: inventory_DEV.yml
-    PLAYBOOK: oersi-backend.yml
+    PLAYBOOK: search_index.setup.backend
   extends: .deploy_job
   only:
     - master
@@ -45,7 +45,7 @@ Develop Backend Deployment:
 Develop ETL Deployment:
   variables:
     INVENTORY_FILE: inventory_DEV.yml
-    PLAYBOOK: oersi-etl.yml
+    PLAYBOOK: search_index.setup.etl
   extends: .deploy_job
   only:
     - master
@@ -54,7 +54,7 @@ Develop ETL Deployment:
 Develop Frontend Deployment:
   variables:
     INVENTORY_FILE: inventory_DEV.yml
-    PLAYBOOK: oersi-frontend.yml
+    PLAYBOOK: search_index.setup.frontend
   extends: .deploy_job
   only:
     - master
@@ -63,7 +63,7 @@ Develop Frontend Deployment:
 deploy to Test:
   variables:
     INVENTORY_FILE: inventory_TEST.yml
-    PLAYBOOK: oersi-playbook.yml
+    PLAYBOOK: search_index.setup.system
   extends: .deploy_job
   only:
     - master

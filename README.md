@@ -53,11 +53,11 @@ Scenario: Install _oersi_ on an existing system. Can be controlled via the UI of
      * go to **Settings** -> **CI / CD** -> **Variables** of your project in gitlab and add variables
           * **SSH_KNOWN_HOSTS** - contains entries for your oersi-systems
           * **SSH_PRIVATE_KEY** - your private ssh-key
-* Use _.gitlab-ci.yml_, _oersi-playbook.yml_ and _prerequisites.yml_ from the [gitlab-config-example](doc/gitlab-config-example)
+* Use _.gitlab-ci.yml_ and _requirements.yml_ from the [gitlab-config-example](doc/gitlab-config-example)
+     * use branch _master_ in _requirements.yml_ for latest stable version
 * Create your own inventory-files with help of _inventory_DEV.yml_ and _inventory_TEST.yml_
      * When you adjust the filenames of your inventory-files, please assure to also adjust the filenames in _.gitlab-ci.yml_
      * Assure root access via [ansible connection variables](https://docs.ansible.com/ansible/latest/user_guide/become.html#become-connection-variables) like _ansible_become_password_.
-     * **oersi_setup_branch** - _master_ for latest stable version
 * Now you should be able to update your systems via your gitlab-project
      * Call: **CI / CD** -> **Pipelines** -> **Latest**
      * Click the "Play"-Button for the system you want to update
@@ -113,10 +113,10 @@ Scenario: Install _oersi_ on an existing system directly via the ansible-playboo
      * [ansible](https://docs.ansible.com/) installed on the local computer
 * clone project
 * install ansible galaxy roles:
-     * ```ansible-galaxy install -r requirements.yml```
-* create ansible inventory _config.yml_ (see [config-example.yml](config-example.yml)) and adjust all variables to your installation (see variables in _ansible/group_vars_)
-* run ```ansible-playbook -v -i config.yml ansible/system.yml```
-     * you can also install single modules via ```ansible-playbook -v -i config.yml ansible/<MODULE>.yml```
+     * ```ansible-galaxy install -r ansible/requirements.yml```
+* create ansible inventory _config.yml_ (see [config-example.yml](config-example.yml)) and adjust all variables to your installation (see variables in _ansible/playbooks/group_vars_)
+* run ```ansible-playbook -v -i config.yml ansible/playbooks/system.yml```
+     * you can also install single modules via ```ansible-playbook -v -i config.yml ansible/playbooks/<MODULE>.yml```
 
 ## Web analytics
 

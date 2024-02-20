@@ -1,0 +1,6 @@
+---
+
+collections:
+- source: https://gitlab.com/oersi/oersi-setup/-/jobs/artifacts/master/raw/search_index-setup.tar.gz?job=deploy
+  type: url
+  name: search_index.setup

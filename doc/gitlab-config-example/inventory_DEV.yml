@@ -3,8 +3,6 @@ oerindex:
     your.oersi.develop.host:
       ansible_ssh_user: your_user
       ansible_become_password: changeme
-      
-      oersi_setup_branch: master
 
       oerindex_host: your.oersi.develop.host
       elasticsearch_elastic_password: changeme
@@ -33,7 +31,4 @@ oerindex:
 
       oerindex_import_sources_immediately: false # import configured sources immediately at the installation process (true|false)
       oerindex_etl_configfiles:
-        - twillo-to-oersi.flux
-        - edu-sharing.fix
-        - digill-to-oersi.flux
-        - digill.fix
+        - twillo
