@@ -1,0 +1,13 @@
+stages:
+  - deploy
+
+deploy:
+  image: willhallonline/ansible:2.13-alpine-3.16
+  stage: deploy
+  script:
+    - ansible-galaxy install -r requirements.yml
+
+  artifacts:
+    name: ansible-collection
+    paths:
+      - ansible
