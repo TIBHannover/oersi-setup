@@ -6,7 +6,7 @@ deploy:
   stage: deploy
   script:
     - ansible-galaxy install -r requirements.yml --roles-path ansible/roles
-    - tar czf ansible-collection.tar.gz -C ansible .
+    - tar czf ansible-collection.tar.gz -C ansible *
 
   artifacts:
     name: ansible-collection
