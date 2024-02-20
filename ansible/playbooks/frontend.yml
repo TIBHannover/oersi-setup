@@ -6,7 +6,7 @@
 
 - hosts: all
   roles:
-    - role: docker
+    - role: geerlingguy.docker
       become: yes
       vars:
         docker_users:
