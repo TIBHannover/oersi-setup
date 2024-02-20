@@ -1,5 +1,5 @@
 require 'yaml'
-settings = YAML.load_file 'ansible/group_vars/all.yml'
+settings = YAML.load_file 'ansible/playbooks/group_vars/all.yml'
 
 Vagrant.configure("2") do |config|
 
@@ -27,6 +27,7 @@ Vagrant.configure("2") do |config|
     #ansible.version = "2.13.7"
     ansible.playbook = "ansible/playbooks/system.yml"
     ansible.galaxy_role_file = "ansible/requirements.yml"
+    ansible.galaxy_roles_path = "ansible/roles"
     ansible.verbose = "true"
     ansible.groups = {
       "oerindex" => ["oerindex-vm"],
