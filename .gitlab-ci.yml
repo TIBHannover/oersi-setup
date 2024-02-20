@@ -5,7 +5,7 @@ deploy:
   image: willhallonline/ansible:2.13-alpine-3.16
   stage: deploy
   script:
-    - ansible-galaxy install -r requirements.yml
+    - ansible-galaxy install -r requirements.yml --roles-path ansible/roles
 
   artifacts:
     name: ansible-collection
