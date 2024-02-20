@@ -6,7 +6,7 @@ deploy:
   stage: deploy
   script:
     - ansible-galaxy install -r requirements.yml --roles-path ansible/roles
-    - cd ansible && ansible-galaxy collection build && ls -l
+    - cd ansible && ansible-galaxy collection build && cd ..
     - mv ansible/search_index-setup-*.tar.gz .
 
   artifacts:
