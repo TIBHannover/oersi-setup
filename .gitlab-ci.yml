@@ -5,7 +5,11 @@ deploy:
   image: willhallonline/ansible:2.13-alpine-3.16
   stage: deploy
   script:
-    - ansible-galaxy install -r requirements.yml --roles-path ansible/roles
+    - "PROJECTVERSION=$(grep 'version: ' ansible/galaxy.yml | awk '{print $2}')"
+    - "TIMESTAMP=$(date +'%Y%m%d%H%M%S')"
+    - '[[ "$PROJECTVERSION" == *-SNAPSHOT ]] && PROJECTVERSION=${PROJECTVERSION::-9}-${TIMESTAMP}'
+    - 'sed -i -r "s/version: .+/version: $PROJECTVERSION/g" ansible/galaxy.yml'
+    - ansible-galaxy install -r ansible/requirements.yml --roles-path ansible/roles
     - cd ansible && ansible-galaxy collection build && cd ..
     - mv ansible/search_index-setup-*.tar.gz search_index-setup.tar.gz
 
