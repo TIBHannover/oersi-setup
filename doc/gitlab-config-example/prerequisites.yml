@@ -1,0 +1,13 @@
+- hosts: all
+  tasks:
+    - name: checkout setup-repo locally
+      git:
+        repo: 'https://gitlab.com/oersi/oersi-setup.git'
+        dest: '{{ inventory_dir }}/default-setup'
+        force: yes
+        version: '{{ default_setup_branch | default("master") }}'
+      delegate_to: localhost
+    
+    - name: install required ansible-galaxy roles
+      shell: ansible-galaxy install -r default-setup/requirements.yml
+      delegate_to: localhost

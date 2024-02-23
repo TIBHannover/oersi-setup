@@ -1,0 +1,29 @@
+---
+search_index_host: your.oersi.develop.host
+elasticsearch_elastic_password: changeme
+elasticsearch_bootstrap_password: bootstrap
+elasticsearch_builtin_users:
+  - name: apm_system
+    password: changeme
+  - name: beats_system
+    password: changeme
+  - name: logstash_system
+    password: changeme
+  - name: kibana_system
+    password: changeme
+  - name: remote_monitoring_user
+    password: changeme
+# user with read-only access to oer-index
+elasticsearch_oersi_viewer_username: oersi_viewer
+elasticsearch_oersi_viewer_password: ch@ngeMe
+# user with access to the oersi backend indices
+elasticsearch_oersi_backend_manager_username: oersi_backend_manager
+elasticsearch_oersi_backend_manager_password: ch@ngeMe
+oerindex_backend_oermetadata_manage_user: changeme
+oerindex_backend_oermetadata_manage_password: changeme
+
+oerindex_frontend_custom_style_css: '../../frontend/style-override.css'
+
+oerindex_import_sources_immediately: false # import configured sources immediately at the installation process (true|false)
+oerindex_import_scripts_enabled_sources_py:  # list of enabled python imports (will be imported scheduled)
+  - twillo

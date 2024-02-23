@@ -53,10 +53,9 @@ Scenario: Install _oersi_ on an existing system. Can be controlled via the UI of
      * go to **Settings** -> **CI / CD** -> **Variables** of your project in gitlab and add variables
           * **SSH_KNOWN_HOSTS** - contains entries for your oersi-systems
           * **SSH_PRIVATE_KEY** - your private ssh-key
-* Use _.gitlab-ci.yml_ and _requirements.yml_ from the [gitlab-config-example](doc/gitlab-config-example)
-     * use branch _master_ in _requirements.yml_ for latest stable version
-* Create your own inventory-files with help of _inventory_DEV.yml_ and _inventory_TEST.yml_
-     * When you adjust the filenames of your inventory-files, please assure to also adjust the filenames in _.gitlab-ci.yml_
+* Use _.gitlab-ci.yml_ and _prerequisites.yml_ from the [gitlab-config-example](doc/gitlab-config-example)
+* Create your own inventory-files and config-files with help of _inventory_DEV.yml_, _config_DEV.yml_, _inventory_TEST.yml_ and _config_TEST.yml_
+     * When you adjust the filenames of your files, please assure to also adjust the filenames in _.gitlab-ci.yml_
      * Assure root access via [ansible connection variables](https://docs.ansible.com/ansible/latest/user_guide/become.html#become-connection-variables) like _ansible_become_password_.
 * Now you should be able to update your systems via your gitlab-project
      * Call: **CI / CD** -> **Pipelines** -> **Latest**
@@ -112,11 +111,11 @@ Scenario: Install _oersi_ on an existing system directly via the ansible-playboo
 * requirements:
      * [ansible](https://docs.ansible.com/) installed on the local computer
 * clone project
-* install ansible galaxy roles:
-     * ```ansible-galaxy install -r ansible/requirements.yml```
-* create ansible inventory _config.yml_ (see [config-example.yml](config-example.yml)) and adjust all variables to your installation (see variables in _ansible/playbooks/group_vars_)
-* run ```ansible-playbook -v -i config.yml ansible/playbooks/system.yml```
-     * you can also install single modules via ```ansible-playbook -v -i config.yml ansible/playbooks/<MODULE>.yml```
+* install ansible galaxy dependencies:
+     * ```ansible-galaxy install -r requirements.yml```
+* create ansible inventory and config files (see [gitlab-config-example](doc/gitlab-config-example) for an example) and adjust all variables to your installation (see variables in _ansible/playbooks/group_vars_)
+* run ```ansible-playbook -v -i inventory.yml --extra-vars @default-config.yml --extra-vars @config.yml search_index.setup.system```
+     * you can also install single modules via ```ansible-playbook -v -i inventory.yml --extra-vars @default-config.yml --extra-vars @config.yml search_index.setup.<MODULE>```
 
 ## Web analytics
 

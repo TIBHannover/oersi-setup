@@ -13,11 +13,12 @@ stages:
     - echo "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
   script:
-    - ansible-galaxy install -r requirements.yml
-    - ansible-playbook -v -i ${INVENTORY_FILE} ${PLAYBOOK}
+    - ansible-playbook -v -i ${INVENTORY_FILE} prerequisites.yml
+    - ansible-playbook -v -i ${INVENTORY_FILE} ${PLAYBOOK} --extra-vars @default-setup/default-config.yml --extra-vars "@${CONFIG_FILE}"
 
 #scheduled deploy to Develop:
 #  variables:
+#    CONFIG_FILE: config_DEV.yml
 #    INVENTORY_FILE: inventory_DEV.yml
 #    PLAYBOOK: search_index.setup.system
 #  extends: .deploy_job
@@ -26,6 +27,7 @@ stages:
 
 deploy to Develop:
   variables:
+    CONFIG_FILE: config_DEV.yml
     INVENTORY_FILE: inventory_DEV.yml
     PLAYBOOK: search_index.setup.system
   extends: .deploy_job
@@ -35,6 +37,7 @@ deploy to Develop:
 
 Develop Backend Deployment:
   variables:
+    CONFIG_FILE: config_DEV.yml
     INVENTORY_FILE: inventory_DEV.yml
     PLAYBOOK: search_index.setup.backend
   extends: .deploy_job
@@ -44,6 +47,7 @@ Develop Backend Deployment:
 
 Develop ETL Deployment:
   variables:
+    CONFIG_FILE: config_DEV.yml
     INVENTORY_FILE: inventory_DEV.yml
     PLAYBOOK: search_index.setup.etl
   extends: .deploy_job
@@ -53,6 +57,7 @@ Develop ETL Deployment:
 
 Develop Frontend Deployment:
   variables:
+    CONFIG_FILE: config_DEV.yml
     INVENTORY_FILE: inventory_DEV.yml
     PLAYBOOK: search_index.setup.frontend
   extends: .deploy_job
@@ -62,6 +67,7 @@ Develop Frontend Deployment:
 
 deploy to Test:
   variables:
+    CONFIG_FILE: config_TEST.yml
     INVENTORY_FILE: inventory_TEST.yml
     PLAYBOOK: search_index.setup.system
   extends: .deploy_job
