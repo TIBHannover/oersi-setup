@@ -2,7 +2,7 @@ stages:
   - deploy
 
 deploy:
-  image: willhallonline/ansible:2.13-alpine-3.16
+  image: willhallonline/ansible:2.15-alpine-3.17
   stage: deploy
   script:
     - "PROJECTVERSION=$(grep 'version: ' ansible/galaxy.yml | awk '{print $2}')"
