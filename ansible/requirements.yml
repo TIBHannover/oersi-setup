@@ -1,9 +1,9 @@
 ---
 - src: geerlingguy.java
-  version: 2.3.0
+  version: 2.3.3
 - src: geerlingguy.elasticsearch
-  version: 5.1.1
+  version: 5.1.2
 - src: geerlingguy.kibana
-  version: 4.0.1
+  version: 4.0.2
 - src: geerlingguy.docker
-  version: 6.2.0
+  version: 7.1.0
