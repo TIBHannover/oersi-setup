@@ -1,6 +1,6 @@
 ---
 # Playbook: Installation of internationalization module
-- hosts: oerindex
+- hosts: all
   roles:
     - init-facts
     - internationalization

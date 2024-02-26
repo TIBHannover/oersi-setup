@@ -1,3 +1,0 @@
-
-- name: Include oersi-setup playbook
-  import_playbook: oersi-setup/ansible/system.yml

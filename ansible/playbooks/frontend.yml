@@ -1,10 +1,10 @@
 ---
 # Playbook: Installation of oersi-frontend module
-- hosts: oerindex
+- hosts: all
   roles:
     - init-facts
 
-- hosts: oerindex
+- hosts: all
   roles:
     - role: geerlingguy.docker
       become: yes
@@ -13,6 +13,6 @@
           - "{{ oersi_user }}"
       when: oerindex_frontend_features_use_ssr
 
-- hosts: oerindex
+- hosts: all
   roles:
     - oer-search-index-frontend

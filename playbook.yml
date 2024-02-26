@@ -1,0 +1,2 @@
+---
+- import_playbook: search_index.setup.system
