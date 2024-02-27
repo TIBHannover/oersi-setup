@@ -1,8 +1,0 @@
-#!/bin/bash
-# {{ ansible_managed }}
-#
-# Create a report of the ETL-process and send to stdout.
-#
-
-egrep 'Import channel.*(SUCCESS.*FAIL.*DURATION)|(FAILED:)' {{ oerindex_etl_logdir }}/etl.log > {{ oerindex_etl_logdir }}/etl-report.txt
-cat {{ oerindex_etl_logdir }}/etl-report.txt

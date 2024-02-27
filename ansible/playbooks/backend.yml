@@ -1,7 +1,0 @@
----
-# Playbook: Installation of oersi-backend module
-- hosts: all
-  roles:
-    - init-facts
-    - search-index-schemas
-    - oer-search-index-backend

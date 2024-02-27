@@ -1,8 +1,0 @@
----
-- name: Ensures inst-dir exists
-  become: true
-  file:
-    path: "{{ thumbnail_webserver_instdir }}"
-    owner: "{{ thumbnail_webserver_owner }}"
-    group: "{{ thumbnail_webserver_group }}"
-    state: directory

@@ -1,9 +1,0 @@
----
-# Playbook: install everything that is needed for oersi
-- import_playbook: provisioning.yml
-- import_playbook: backend.yml
-- import_playbook: frontend.yml
-- import_playbook: etl.yml
-- import_playbook: import_scripts.yml
-- import_playbook: internationalization.yml
-- import_playbook: postprocessing.yml

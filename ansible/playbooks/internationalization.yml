@@ -1,6 +1,0 @@
----
-# Playbook: Installation of internationalization module
-- hosts: all
-  roles:
-    - init-facts
-    - internationalization

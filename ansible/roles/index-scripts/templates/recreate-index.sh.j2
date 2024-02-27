@@ -1,8 +1,0 @@
-#!/bin/bash
-# {{ ansible_managed }}
-#
-# Create and use a new oer_data index and force a rebuild from the sql-data. Switch alias to this new index and delete the old index afterwards.
-#
-
-{{ base_dir }}/bin/create-new-index-and-rebuild.sh
-{{ base_dir }}/bin/update-index-alias.sh

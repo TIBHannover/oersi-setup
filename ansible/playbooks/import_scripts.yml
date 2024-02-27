@@ -1,6 +1,0 @@
----
-# Playbook: Installation of search-index-import-scripts module
-- hosts: all
-  roles:
-    - init-facts
-    - search-index-import-scripts
