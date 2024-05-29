@@ -7,3 +7,12 @@ oerindex_import_scripts_artifact_url: https://gitlab.com/oersi/oersi-import-scri
 oerindex_etl_configfiles: []
 oerindex_import_scripts_enabled_sources_py:  # list of enabled python imports (will be imported scheduled)
   - twillo
+
+oerindex_monitoring_metadata_reports:
+  - description: "CC-BY-XX without author"
+    query: '{"query": {"bool": { "filter": [{"wildcard": {"license.id": {"value": "*creativecommons.org/*/by*"}}}], "must_not": {"exists": {"field": "creator"}}}}, "size": 0, "aggs": {"providers": { "terms": { "field": "mainEntityOfPage.provider.name", "size": 100 }}}}'
+  - description: "Resources offered by multiple providers"    
+    query: '{"size": 0,"query": {"bool": {"filter": {"script": {"script": "doc.containsKey(\u0027mainEntityOfPage.provider.name\u0027) && doc[\u0027mainEntityOfPage.provider.name\u0027].length > 1"}}}},"aggs": {"providers": {"terms": {"script": {"source": "def list = new ArrayList();for(int i=0; i<doc[\u0027mainEntityOfPage.provider.name\u0027].length; i++){list.add(doc[\u0027mainEntityOfPage.provider.name\u0027][i]);}Collections.sort(list);return list.join(\u0027 / \u0027);"}}}}}'
+  - description: "Resources without open license"    
+    query: '{"size": 0, "aggs": {"providers": {"terms": {"field": "mainEntityOfPage.provider.name", "size": 1000}, "aggs": {"without_license": {"filter": {"bool": {"must_not": [{"exists": {"field": "license"}}]}}}}}}}'
+    jq_selection: '[.aggregations.providers.buckets[] | select(.without_license.doc_count > 0)] | sort_by(.without_license.doc_count) | reverse[] | "\(.key): \(.without_license.doc_count) / \(.doc_count)"'
