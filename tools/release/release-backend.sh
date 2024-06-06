@@ -19,14 +19,14 @@ echo "---------------"
 echo "Release backend"
 echo "---------------"
 echo "Cleanup WORKING_DIR"
-rm -rf $WORKING_DIR/oersi-backend
+rm -rf $WORKING_DIR/sidre-backend
 cd $WORKING_DIR
-git clone git@gitlab.com:oersi/oersi-backend.git -b master
+git clone git@gitlab.com:oersi/sidre/sidre-backend.git -b master
 if [ $? -ne 0 ] ; then
   echo "Cloning failed."
   exit 1
 fi
-cd $WORKING_DIR/oersi-backend
+cd $WORKING_DIR/sidre-backend
 mvn versions:set -DnewVersion=$RELEASE_VERSION
 git add pom.xml
 git commit -m "release $RELEASE_VERSION (Ref $RELEASE_ISSUE_URL)"

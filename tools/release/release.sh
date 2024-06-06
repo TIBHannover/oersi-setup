@@ -83,7 +83,7 @@ echo "Determine artifacts"
 # Backend
 BACKEND_PACKAGE_ID=$(curl "${GITLAB_BACKEND_API}/packages" | jq ".[] | select(.version == \"$BACKEND_RELEASE_VERSION\") | .id")
 BACKEND_PACKAGE_FILE_ID=$(curl "${GITLAB_BACKEND_API}/packages/${BACKEND_PACKAGE_ID}/package_files" | jq ".[] | select(.file_name | endswith(\".war\")) | .id")
-BACKEND_RELEASE_ARTIFACT_URL="https://gitlab.com/oersi/oersi-backend/-/package_files/${BACKEND_PACKAGE_FILE_ID}/download"
+BACKEND_RELEASE_ARTIFACT_URL="https://gitlab.com/oersi/sidre/sidre-backend/-/package_files/${BACKEND_PACKAGE_FILE_ID}/download"
 echo $BACKEND_RELEASE_ARTIFACT_URL
 
 # Frontend
