@@ -1,1 +1,1 @@
-see https://gitlab.com/oersi/disresi/disresi-setup/-/blob/main/CONTRIBUTING.md
+see https://gitlab.com/oersi/sidre/sidre-setup/-/blob/main/CONTRIBUTING.md
