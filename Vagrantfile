@@ -11,6 +11,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "oerindex-vm" do |srv|
     srv.vm.box = "debian/bullseye64"
     srv.ssh.insert_key = false
+    config.ssh.keep_alive = true
     srv.vm.hostname = "oerindex.box"
     srv.vm.network :private_network, ip: vm_host
 
