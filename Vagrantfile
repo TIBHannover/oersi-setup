@@ -9,7 +9,7 @@ SCRIPT
 Vagrant.configure("2") do |config|
 
   config.vm.define "oerindex-vm" do |srv|
-    srv.vm.box = "debian/bullseye64"
+    srv.vm.box = "debian/bookworm64"
     srv.ssh.insert_key = false
     srv.vm.hostname = "oerindex.box"
     srv.vm.network :private_network, ip: vm_host
@@ -26,8 +26,8 @@ Vagrant.configure("2") do |config|
     ansible.install = true
     ansible.compatibility_mode = "2.0"
     ansible.install_mode = "pip"
-    ansible.pip_install_cmd = "sudo apt-get install -y python3-distutils && curl -s https://bootstrap.pypa.io/get-pip.py | sudo python3"
-    ansible.pip_args = "ansible-core==2.15.9"
+    ansible.pip_install_cmd = "sudo apt update && sudo apt install python3-pip -y"
+    ansible.pip_args = "ansible-core==2.16.10 --break-system-packages"
     ansible.playbook = "playbook.yml"
     ansible.galaxy_command = "ansible-galaxy collection install -r %{role_file} -p ./collections --force"
     ansible.galaxy_role_file = "requirements.yml"
