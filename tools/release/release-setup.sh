@@ -20,7 +20,7 @@ echo "WORKING_DIR=$WORKING_DIR"
 BACKEND_SNAPSHOT_ARTIFACT_URL=https://gitlab.com/oersi/sidre/sidre-backend/-/jobs/artifacts/master/download?job=deploy+branch
 ETL_SNAPSHOT_ARTIFACT_URL=https://gitlab.com/oersi/oersi-etl/-/jobs/artifacts/master/download?job=deploy
 IMPORTSCRIPTS_SNAPSHOT_ARTIFACT_URL=https://gitlab.com/oersi/oersi-import-scripts/-/jobs/artifacts/master/download?job=deploy
-FRONTEND_SNAPSHOT_ARTIFACT_URL=https://gitlab.com/oersi/oersi-frontend/-/jobs/artifacts/master/download?job=build
+FRONTEND_SNAPSHOT_ARTIFACT_URL=https://gitlab.com/oersi/sidre/sidre-frontend/-/jobs/artifacts/master/download?job=build
 
 echo "---------------"
 echo "Release Setup"

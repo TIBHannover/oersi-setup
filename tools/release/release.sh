@@ -89,7 +89,7 @@ echo $BACKEND_RELEASE_ARTIFACT_URL
 # Frontend
 FRONTEND_PACKAGE_ID=$(curl "${GITLAB_FRONTEND_API}/packages" | jq ".[] | select(.version == \"$FRONTEND_RELEASE_VERSION\") | .id")
 FRONTEND_PACKAGE_FILE_ID=$(curl "${GITLAB_FRONTEND_API}/packages/${FRONTEND_PACKAGE_ID}/package_files" | jq ".[] | select(.file_name == \"frontend.zip\") | .id")
-FRONTEND_RELEASE_ARTIFACT_URL="https://gitlab.com/oersi/oersi-frontend/-/package_files/${FRONTEND_PACKAGE_FILE_ID}/download"
+FRONTEND_RELEASE_ARTIFACT_URL="https://gitlab.com/oersi/sidre/sidre-frontend/-/package_files/${FRONTEND_PACKAGE_FILE_ID}/download"
 echo $FRONTEND_RELEASE_ARTIFACT_URL
 
 # ETL
