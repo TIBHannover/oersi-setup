@@ -1,14 +1,14 @@
 application_name: "OERSI"
 
 search_index_metadata_schema_artifact_url: https://gitlab.com/oersi/oersi-schema/-/jobs/artifacts/main/download?job=deploy
-oerindex_etl_artifact_url: https://gitlab.com/oersi/oersi-etl/-/jobs/artifacts/master/download?job=deploy
-oerindex_import_scripts_artifact_url: https://gitlab.com/oersi/oersi-import-scripts/-/jobs/artifacts/master/download?job=deploy
+search_index_etl_artifact_url: https://gitlab.com/oersi/oersi-etl/-/jobs/artifacts/master/download?job=deploy
+search_index_import_scripts_artifact_url: https://gitlab.com/oersi/oersi-import-scripts/-/jobs/artifacts/master/download?job=deploy
 
-oerindex_etl_configfiles: []
-oerindex_import_scripts_enabled_sources_py:  # list of enabled python imports (will be imported scheduled)
+search_index_etl_configfiles: []
+search_index_import_scripts_enabled_sources_py:  # list of enabled python imports (will be imported scheduled)
   - twillo
 
-oerindex_monitoring_metadata_reports:
+search_index_monitoring_metadata_reports:
   - description: "CC-BY-XX without author"
     query: '{"query": {"bool": { "filter": [{"wildcard": {"license.id": {"value": "*creativecommons.org/*/by*"}}}], "must_not": {"exists": {"field": "creator"}}}}, "size": 0, "aggs": {"providers": { "terms": { "field": "mainEntityOfPage.provider.name", "size": 100 }}}}'
   - description: "Resources offered by multiple providers"    
