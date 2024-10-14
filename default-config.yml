@@ -3,6 +3,7 @@ default_config_files_dir: '../../../../../../default-config'
 application_name: "OERSI"
 
 search_index_metadata_schema_artifact_url: https://gitlab.com/oersi/oersi-schema/-/jobs/artifacts/main/download?job=deploy
+elasticsearch_metadata_mapping_file: "{{ default_config_files_dir }}/backend/elasticsearch-mapping.json.j2"
 search_index_etl_artifact_url: https://gitlab.com/oersi/oersi-etl/-/jobs/artifacts/master/download?job=deploy
 search_index_import_scripts_artifact_url: https://gitlab.com/oersi/oersi-import-scripts/-/jobs/artifacts/master/download?job=deploy
 
