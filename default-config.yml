@@ -57,10 +57,8 @@ search_index_etl_configfiles: # List all standard files from <etl-dir>/data/prod
   # - tuDelftOpenTextbooks
 
 ### BACKEND ###
-search_index_backend_metadata_custom_processor: amb
-
 elasticsearch_metadata_index_alias_name: oer_data # main alias; use external
-
+search_index_backend_metadata_custom_processor: amb
 search_index_monitoring_metadata_reports:
   - description: "CC-BY-XX without author"
     query: '{"query": {"bool": { "filter": [{"wildcard": {"license.id": {"value": "*creativecommons.org/*/by*"}}}], "must_not": {"exists": {"field": "creator"}}}}, "size": 0, "aggs": {"providers": { "terms": { "field": "mainEntityOfPage.provider.name", "size": 100 }}}}'
@@ -69,6 +67,54 @@ search_index_monitoring_metadata_reports:
   - description: "Resources without open license"    
     query: '{"size": 0, "aggs": {"providers": {"terms": {"field": "mainEntityOfPage.provider.name", "size": 1000}, "aggs": {"without_license": {"filter": {"bool": {"must_not": [{"exists": {"field": "license"}}]}}}}}}}'
     jq_selection: '[.aggregations.providers.buckets[] | select(.without_license.doc_count > 0)] | sort_by(.without_license.doc_count) | reverse[] | "\(.key): \(.without_license.doc_count) / \(.doc_count)"'
+search_index_backend_vocab_scheme_updates:
+  - schemeUrl: https://raw.githubusercontent.com/dini-ag-kim/value-lists/main/conditionsOfAccess.ttl
+    vocabName: conditionsOfAccess
+  - schemeUrl: https://purl.org/dcx/lrmi-vocabs/educationalAudienceRole
+    vocabName: educationalAudience
+  - schemeUrl: https://raw.githubusercontent.com/dini-ag-kim/educationalLevel/main/educationalLevel.ttl
+    vocabName: educationalLevel
+  - schemeUrl: https://raw.githubusercontent.com/dini-ag-kim/hochschulfaechersystematik/master/hochschulfaechersystematik.ttl
+    vocabName: hochschulfaechersystematik
+  - schemeUrl: https://raw.githubusercontent.com/dini-ag-kim/hcrt/master/hcrt.ttl
+    vocabName: hcrt
+search_index_backend_metadata_field_configuration:
+  baseFields:
+    resourceIdentifier: id
+    metadataSource:
+      field: mainEntityOfPage
+      isObject: "true"
+      useMultipleItems: "true"
+      objectIdentifier: id
+      queries:
+        - name: providerName
+          field: provider.name
+  options:
+    - fieldName: about
+      vocabIdentifier: hochschulfaechersystematik
+      addMissingVocabLabels: true
+      addMissingVocabParents: true
+    - fieldName: audience
+      vocabIdentifier: educationalAudience
+      addMissingVocabLabels: true
+    - fieldName: assesses
+      addMissingVocabLabels: true
+    - fieldName: competencyRequired
+      addMissingVocabLabels: true
+    - fieldName: conditionsOfAccess
+      vocabIdentifier: conditionsOfAccess
+      addMissingVocabLabels: true
+    - fieldName: educationalLevel
+      vocabIdentifier: educationalLevel
+      addMissingVocabLabels: true
+    - fieldName: learningResourceType
+      vocabIdentifier: hcrt
+      addMissingVocabLabels: true
+    - fieldName: teaches
+      addMissingVocabLabels: true
+  defaultOptions:
+    vocabItemIdentifierField: id
+    vocabItemLabelField: prefLabel
 
 ### FRONTEND ###
 search_index_frontend_available_languages: ["cs", "de", "en", "nl", "uk"]
