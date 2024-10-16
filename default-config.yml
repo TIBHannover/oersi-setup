@@ -1,14 +1,65 @@
+default_config_files_dir: '../../../../../../default-config'
+
 application_name: "OERSI"
 
 search_index_metadata_schema_artifact_url: https://gitlab.com/oersi/oersi-schema/-/jobs/artifacts/main/download?job=deploy
-oerindex_etl_artifact_url: https://gitlab.com/oersi/oersi-etl/-/jobs/artifacts/master/download?job=deploy
-oerindex_import_scripts_artifact_url: https://gitlab.com/oersi/oersi-import-scripts/-/jobs/artifacts/master/download?job=deploy
+elasticsearch_metadata_mapping_file: "{{ default_config_files_dir }}/backend/elasticsearch-mapping.json.j2"
+search_index_etl_artifact_url: https://gitlab.com/oersi/oersi-etl/-/jobs/artifacts/master/download?job=deploy
+search_index_import_scripts_artifact_url: https://gitlab.com/oersi/oersi-import-scripts/-/jobs/artifacts/master/download?job=deploy
 
-oerindex_etl_configfiles: []
-oerindex_import_scripts_enabled_sources_py:  # list of enabled python imports (will be imported scheduled)
+search_index_etl_configfiles: []
+search_index_import_scripts_enabled_sources_py:  # list of enabled python imports (will be imported scheduled)
+  # - Aoe
+  # - ComeIn
+  # - digiLL
+  # - eadnurt
+  # - eCampusOntario
+  # - edusources
+  # - GAUSpatialDataScienceStatisticalLearningShinyApps
+  # - GitHub
+  # - GitLab
+  # - HessenHub
+  # - Kallipos
+  # - MitOcw
+  # - OEPMS
+  # - oerPortalUniGraz
+  # - oerRepoInnsbruck
+  # - Phet
+  # - PressbooksDirectory
+  # - TUDelftOpenCourseWare
+  # - TIBAVPortal
   - twillo
+  # - UOSOpencast
+  # - Vcrp
+  # - Vhb
+  # - Vlc
+  # - Zoerr
+search_index_etl_configfiles: # List all standard files from <etl-dir>/data/production/ that should be used for the ETL-process here.
+  # - bcCampus_courses
+  # - bcCampus_textbooks
+  # - detmoldMusicTools
+  # - duepublico
+  # - eGov
+  # - hhu
+  # - hoou
+  # - iMoox
+  # - kiCampus
+  # - langSciPress
+  # - lecture2go_hamburg
+  # - openHpi
+  # - openMusicAcademy
+  # - openRub
+  # - openStax
+  # - openTextbookLibrary
+  # - openVhb
+  # - phaidraUniWien
+  # - repositoryTUGraz
+  # - tuDelftOpenTextbooks
 
-oerindex_monitoring_metadata_reports:
+### BACKEND ###
+elasticsearch_metadata_index_alias_name: oer_data # main alias; use external
+search_index_backend_metadata_custom_processor: amb
+search_index_monitoring_metadata_reports:
   - description: "CC-BY-XX without author"
     query: '{"query": {"bool": { "filter": [{"wildcard": {"license.id": {"value": "*creativecommons.org/*/by*"}}}], "must_not": {"exists": {"field": "creator"}}}}, "size": 0, "aggs": {"providers": { "terms": { "field": "mainEntityOfPage.provider.name", "size": 100 }}}}'
   - description: "Resources offered by multiple providers"    
@@ -16,3 +67,187 @@ oerindex_monitoring_metadata_reports:
   - description: "Resources without open license"    
     query: '{"size": 0, "aggs": {"providers": {"terms": {"field": "mainEntityOfPage.provider.name", "size": 1000}, "aggs": {"without_license": {"filter": {"bool": {"must_not": [{"exists": {"field": "license"}}]}}}}}}}'
     jq_selection: '[.aggregations.providers.buckets[] | select(.without_license.doc_count > 0)] | sort_by(.without_license.doc_count) | reverse[] | "\(.key): \(.without_license.doc_count) / \(.doc_count)"'
+search_index_backend_vocab_scheme_updates:
+  - schemeUrl: https://raw.githubusercontent.com/dini-ag-kim/value-lists/main/conditionsOfAccess.ttl
+    vocabName: conditionsOfAccess
+  - schemeUrl: https://purl.org/dcx/lrmi-vocabs/educationalAudienceRole
+    vocabName: educationalAudience
+  - schemeUrl: https://raw.githubusercontent.com/dini-ag-kim/educationalLevel/main/educationalLevel.ttl
+    vocabName: educationalLevel
+  - schemeUrl: https://raw.githubusercontent.com/dini-ag-kim/hochschulfaechersystematik/master/hochschulfaechersystematik.ttl
+    vocabName: hochschulfaechersystematik
+  - schemeUrl: https://raw.githubusercontent.com/dini-ag-kim/hcrt/master/hcrt.ttl
+    vocabName: hcrt
+search_index_backend_metadata_field_configuration:
+  baseFields:
+    resourceIdentifier: id
+    metadataSource:
+      field: mainEntityOfPage
+      isObject: "true"
+      useMultipleItems: "true"
+      objectIdentifier: id
+      queries:
+        - name: providerName
+          field: provider.name
+  options:
+    - fieldName: about
+      vocabIdentifier: hochschulfaechersystematik
+      addMissingVocabLabels: true
+      addMissingVocabParents: true
+    - fieldName: audience
+      vocabIdentifier: educationalAudience
+      addMissingVocabLabels: true
+    - fieldName: assesses
+      addMissingVocabLabels: true
+    - fieldName: competencyRequired
+      addMissingVocabLabels: true
+    - fieldName: conditionsOfAccess
+      vocabIdentifier: conditionsOfAccess
+      addMissingVocabLabels: true
+    - fieldName: educationalLevel
+      vocabIdentifier: educationalLevel
+      addMissingVocabLabels: true
+    - fieldName: learningResourceType
+      vocabIdentifier: hcrt
+      addMissingVocabLabels: true
+    - fieldName: teaches
+      addMissingVocabLabels: true
+  defaultOptions:
+    vocabItemIdentifierField: id
+    vocabItemLabelField: prefLabel
+
+### FRONTEND ###
+search_index_frontend_available_languages: ["cs", "de", "en", "nl", "uk"]
+# common custom translations for every configured language
+search_index_frontend_default_custom_translations: "{{ search_index_frontend_available_languages | difference(['cs', 'nl', 'uk']) | map('regex_replace', '^(.*)$', \"language: \\1\") | map('from_yaml') | product([{'path': '{{ default_config_files_dir }}/frontend/common/translation.json'}]) | map('combine') }}"
+search_index_frontend_additional_custom_translations:
+  - {path: '{{ default_config_files_dir }}/frontend/cs/translation.json', language: 'cs'}
+  - {path: '{{ default_config_files_dir }}/frontend/nl/translation.json', language: 'nl'}
+  - {path: '{{ default_config_files_dir }}/frontend/uk/translation.json', language: 'uk'}
+search_index_frontend_custom_translations: "{{ search_index_frontend_default_custom_translations + search_index_frontend_additional_custom_translations }}"
+search_index_frontend_hierarchical_vocab_filters: # the vocab-scheme files will be downloaded/updated locally periodically
+  - vocabName: hochschulfaechersystematik
+search_index_frontend_index_name: "{{ elasticsearch_metadata_index_internal_alias_name }}"
+
+search_index_frontend_field_configuration:  # see Frontend-Readme -> General field configuration
+  baseFields:
+    title: name
+    resourceLink: id
+    licenseUrl: license.id
+    author: creator.name
+    thumbnailUrl: image
+    description: description
+    keywords: keywords
+  embedding:
+    mediaUrl: trailer.embedUrl
+    fallbackMediaUrl:
+      - encoding.embedUrl
+  options:
+    - dataField: about.id
+      isHierarchicalConcept: true
+      schemeParentMap: /vocabs/hochschulfaechersystematik-parentMap.json
+      translationNamespace: labelledConcept
+    - dataField: audience.id
+      translationNamespace: labelledConcept
+    - dataField: conditionsOfAccess.id
+      translationNamespace: labelledConcept
+    - dataField: inLanguage
+      translationNamespace: language
+    - dataField: learningResourceType.id
+      translationNamespace: labelledConcept
+    - dataField: license.id
+      defaultDisplayType: licenseGroup
+      grouping: "{{ search_index_frontend_license_grouping }}"
+      collectOthersInSeparateGroup: true
+
+search_index_frontend_search_configuration:  # see Frontend-Readme -> Search configuration
+  searchField:
+    dataField:
+      - name
+      - creator.name
+      - description
+      - keywords
+      - about.prefLabel_full
+      - learningResourceType.prefLabel_full
+    fieldWeights:
+      - 1
+      - 3
+  filters:
+    - componentId: about
+      dataField: about.id
+      showSearch: true
+      allowedSearchRegex: ^[\u00C0-\u017Fa-zA-Z .-]*$
+      size: 1000
+    - componentId: learningResourceType
+      dataField: learningResourceType.id
+    - componentId: license
+      dataField: license.id
+    - componentId: author
+      dataField: persons.name.keyword
+      labelKey: creator.name
+      showSearch: true
+      reloadFilterOnSearchTermChange: true
+      allowedSearchRegex: ^[\u00C0-\u017Fa-zA-Z .-]*$
+      size: 1000
+    - componentId: sourceOrganization
+      dataField: institutions.name
+      labelKey: sourceOrganization.name
+      showSearch: true
+      reloadFilterOnSearchTermChange: true
+      size: 1000
+    - componentId: language
+      dataField: inLanguage
+    - componentId: provider
+      dataField: mainEntityOfPage.provider.name
+      showSearch: true
+
+search_index_frontend_result_card_configuration:  # see Frontend-Readme -> Result Card configuration
+  subtitle:
+    field: creator.name
+  content:
+    - field: description
+      maxLines: 4
+      bold: true
+      fallback:
+        - keywords
+    - field: about.id
+    - field: learningResourceType.id
+
+search_index_frontend_detail_page_configuration:  # see Frontend-Readme -> Detail page configuration
+  content:
+    - field: creator.name
+    - field: description
+    - field: about.id
+    - field: learningResourceType.id
+    - field: sourceOrganization.name
+    - field: publisher.name
+    - field: datePublished
+      type: date
+    - field: inLanguage
+    - field: keywords
+      type: chips
+    - field: license.id
+      type: license
+    - field: audience.id
+    - field: hasPart.name
+      type: link
+      externalLinkField: hasPart.id
+      multiItemsDisplay: ul
+    - field: isBasedOn
+      type: nestedObjects
+      content:
+        - field: name
+          type: link
+          externalLinkField: id
+        - field: creator.name
+        - field: license.id
+          type: license
+    - field: mainEntityOfPage.provider.name
+      type: link
+      externalLinkField: mainEntityOfPage.id
+
+search_index_frontend_embedded_structured_data_adjustments:  # see Frontend-Readme -> Embedded structured data adjustments
+  - fieldName: "@context"
+    action: replace
+    value: https://schema.org/
+
