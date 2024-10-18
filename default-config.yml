@@ -246,8 +246,60 @@ search_index_frontend_detail_page_configuration:  # see Frontend-Readme -> Detai
       type: link
       externalLinkField: mainEntityOfPage.id
 
+frontend_structured_data_adjustments_defined_term:
+  - fieldName: type
+    action: replace
+    value: DefinedTerm
+  - fieldName: termCode
+    action: copy
+    src: id
 search_index_frontend_embedded_structured_data_adjustments:  # see Frontend-Readme -> Embedded structured data adjustments
   - fieldName: "@context"
     action: replace
-    value: https://schema.org/
-
+    value:
+      id: "@id"
+      type: "@type"
+      "@vocab": "https://schema.org/"
+      skos: "http://www.w3.org/2004/02/skos/core#"
+      prefLabel:
+        "@id": "skos:prefLabel"
+        "@container": "@language"
+      inScheme: "skos:inScheme"
+      Concept: "skos:Concept"
+  - fieldName: institutions
+    action: remove
+  - fieldName: persons
+    action: remove
+  - fieldName: conditionsOfAccess
+    action: map
+    attribute: id
+  - fieldName: interactivityType
+    action: map
+    attribute: id
+  - fieldName: about
+    action: map
+    adjustments: "{{ frontend_structured_data_adjustments_defined_term }}"
+  - fieldName: assesses
+    action: map
+    adjustments: "{{ frontend_structured_data_adjustments_defined_term }}"
+  - fieldName: competencyRequired
+    action: map
+    adjustments: "{{ frontend_structured_data_adjustments_defined_term }}"
+  - fieldName: educationalLevel
+    action: map
+    adjustments: "{{ frontend_structured_data_adjustments_defined_term }}"
+  - fieldName: learningResourceType
+    action: map
+    adjustments: "{{ frontend_structured_data_adjustments_defined_term }}"
+  - fieldName: teaches
+    action: map
+    adjustments: "{{ frontend_structured_data_adjustments_defined_term }}"
+  - fieldName: audience
+    action: map
+    adjustments:
+      - fieldName: type
+        action: replace
+        value: EducationalAudience
+      - fieldName: educationalRole
+        action: copy
+        src: id
