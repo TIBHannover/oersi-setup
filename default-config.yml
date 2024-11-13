@@ -58,6 +58,7 @@ search_index_etl_configfiles: # List all standard files from <etl-dir>/data/prod
 
 ### BACKEND ###
 elasticsearch_metadata_index_alias_name: oer_data # main alias; use external
+elasticsearch_metadata_index_version: 30 # internal use
 search_index_backend_metadata_custom_processor: amb
 search_index_monitoring_metadata_reports:
   - description: "CC-BY-XX without author"
