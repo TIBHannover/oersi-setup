@@ -7,7 +7,6 @@ elasticsearch_metadata_mapping_file: "{{ default_config_files_dir }}/backend/ela
 search_index_etl_artifact_url: https://gitlab.com/oersi/oersi-etl/-/jobs/artifacts/master/download?job=deploy
 search_index_import_scripts_artifact_url: https://gitlab.com/oersi/oersi-import-scripts/-/jobs/artifacts/master/download?job=deploy
 
-search_index_etl_configfiles: []
 search_index_import_scripts_enabled_sources_py:  # list of enabled python imports (will be imported scheduled)
   # - Aoe
   # - ComeIn
