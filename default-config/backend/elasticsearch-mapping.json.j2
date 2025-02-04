@@ -182,6 +182,60 @@
                       "type" : "keyword"
                     }
                   }
+                },
+                "location": {
+                  "properties": {
+                    "address": {
+                      "properties": {
+                        "addressCountry": {
+                          "type" : "keyword"
+                        },
+                        "addressLocality": {
+                          "type" : "text",
+                          "fields" : {
+                            "keyword" : {
+                              "type" : "keyword"
+                            }
+                          }
+                        },
+                        "addressRegion": {
+                          "type" : "text",
+                          "fields" : {
+                            "keyword" : {
+                              "type" : "keyword"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "location": {
+              "properties": {
+                "address": {
+                  "properties": {
+                    "addressCountry": {
+                      "type" : "keyword"
+                    },
+                    "addressLocality": {
+                      "type" : "text",
+                      "fields" : {
+                        "keyword" : {
+                          "type" : "keyword"
+                        }
+                      }
+                    },
+                    "addressRegion": {
+                      "type" : "text",
+                      "fields" : {
+                        "keyword" : {
+                          "type" : "keyword"
+                        }
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -342,6 +396,33 @@
                   "type" : "keyword"
                 }
               }
+            },
+            "location": {
+              "properties": {
+                "address": {
+                  "properties": {
+                    "addressCountry": {
+                      "type" : "keyword"
+                    },
+                    "addressLocality": {
+                      "type" : "text",
+                      "fields" : {
+                        "keyword" : {
+                          "type" : "keyword"
+                        }
+                      }
+                    },
+                    "addressRegion": {
+                      "type" : "text",
+                      "fields" : {
+                        "keyword" : {
+                          "type" : "keyword"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
             }
           }
         },
@@ -355,6 +436,33 @@
             },
             "name" : {
               "type" : "keyword"
+            },
+            "location": {
+              "properties": {
+                "address": {
+                  "properties": {
+                    "addressCountry": {
+                      "type" : "keyword"
+                    },
+                    "addressLocality": {
+                      "type" : "text",
+                      "fields" : {
+                        "keyword" : {
+                          "type" : "keyword"
+                        }
+                      }
+                    },
+                    "addressRegion": {
+                      "type" : "text",
+                      "fields" : {
+                        "keyword" : {
+                          "type" : "keyword"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
             }
           }
         },
