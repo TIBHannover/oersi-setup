@@ -57,7 +57,7 @@ search_index_etl_configfiles: # List all standard files from <etl-dir>/data/prod
 
 ### BACKEND ###
 elasticsearch_metadata_index_alias_name: oer_data # main alias; use external
-elasticsearch_metadata_index_version: 31 # internal use
+elasticsearch_metadata_index_version: 32 # internal use
 search_index_backend_metadata_custom_processor: amb
 search_index_monitoring_metadata_reports:
   - description: "Resources with URL about-prefLabel"
