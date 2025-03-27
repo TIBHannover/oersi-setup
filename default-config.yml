@@ -211,7 +211,6 @@ search_index_frontend_result_card_configuration:  # see Frontend-Readme -> Resul
   content:
     - field: description
       maxLines: 4
-      bold: true
       fallback:
         - keywords
     - field: about.id
