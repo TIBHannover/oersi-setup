@@ -6,6 +6,7 @@
         "TAGLINE": "Discover educational resources from higher education",
         "KEYWORDS": ["free to use", "Open Educational Resources", "a wide range of resource types and subjects", "higher education"],
         "SEARCH_PLACEHOLDER": "Search for Educational Resources...",
+        "SEARCH_PLACEHOLDER_WITH_STATS": "Search in {{total}} educational resources from {{queryResult}} providers...",
         "FEATURE_1": {
             "TITLE": "Include more educational resources",
             "DESCRIPTION": "Integrate further educational resources into the index and make them searchable via the central OERSI search.",
