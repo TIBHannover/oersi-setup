@@ -306,3 +306,15 @@ search_index_frontend_embedded_structured_data_adjustments:  # see Frontend-Read
       - fieldName: educationalRole
         action: copy
         src: id
+
+search_index_metadata_optimization_config_prompt_files:
+- "{{ default_config_files_dir }}/metadata-optimization/prompts/basic_with_type.txt"
+- "{{ default_config_files_dir }}/metadata-optimization/prompts/detailed_description.txt"
+- "{{ default_config_files_dir }}/metadata-optimization/prompts/detailed_instructions.txt"
+- "{{ default_config_files_dir }}/metadata-optimization/prompts/detailed_keywords.txt"
+- "{{ default_config_files_dir }}/metadata-optimization/prompts/detailed_title_engaging.txt"
+- "{{ default_config_files_dir }}/metadata-optimization/prompts/detailed_title.txt"
+- "{{ default_config_files_dir }}/metadata-optimization/prompts/short_description.txt"
+- "{{ default_config_files_dir }}/metadata-optimization/prompts/simple_description.txt"
+- "{{ default_config_files_dir }}/metadata-optimization/prompts/simple_instructions.txt"
+- "{{ default_config_files_dir }}/metadata-optimization/prompts/simple_title.txt"

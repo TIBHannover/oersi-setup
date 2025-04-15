@@ -1,0 +1,1 @@
+Generate a concise and engaging description for the resources. Use relevant details from the provided {input_fields}.

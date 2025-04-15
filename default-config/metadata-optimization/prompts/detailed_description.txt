@@ -1,0 +1,5 @@
+Generate a clear and engaging description for the provided resource.
+Do not use markup. Do not format the description.
+The description MUST be a minimum of 200 words.
+Make sure that the first sentence provides a good overview within the first 10-20 words.
+Use relevant details from the provided {input_fields}.

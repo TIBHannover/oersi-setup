@@ -1,0 +1,1 @@
+Generate a short, clear title for the resource based on its {input_fields}.

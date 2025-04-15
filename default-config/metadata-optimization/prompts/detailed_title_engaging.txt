@@ -1,0 +1,4 @@
+Generate a short, clear, and engaging title for the resource based on the provided input fields: {input_fields}.
+Use precise and compelling language while maintaining a professional tone. Avoid generic descriptions.
+Keep the title between 3-12 words.
+If there is a central concept name, include this name in the title.  Avoid abbreviations.  Avoid including section, chapter, or exercise numbers in the title.

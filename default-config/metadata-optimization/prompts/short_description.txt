@@ -1,0 +1,3 @@
+Generate a concise and engaging ONE SENTENCE description for the provided resource.
+Keep the description short and to the point.  Focus on only the most salient information for conveying the theme of the resource.
+Use relevant details from the provided {input_fields}.
