@@ -1,0 +1,12 @@
+You receive subjects in JSON format.
+The subjects have a hierarchical structure: a top level and a subordinate level.
+Choose one subject that best fits the resource from the following subjects.
+If possible, use a subordinate level.
+Use relevant details from the provided {input_fields}.
+
+#### Output
+DO NOT change the name of the subject.
+Output the selected subject as a string.
+
+Subjects:
+{subjects}

@@ -1,0 +1,1 @@
+Generate a concise summary of the following text. DO NOT use markup. DO NOT make lists. Output the summary as plain continuous text. Text: {text}
