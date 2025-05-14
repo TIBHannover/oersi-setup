@@ -219,20 +219,32 @@ search_index_frontend_result_card_configuration:  # see Frontend-Readme -> Resul
 
 search_index_frontend_detail_page_configuration:  # see Frontend-Readme -> Detail page configuration
   content:
-    - field: creator.name
-    - field: description
-    - field: about.id
-    - field: learningResourceType.id
+    - type: group
+      weight: 2
+      content:
+        - field: description
+        - field: keywords
+          type: chips
+    - type: group
+      weight: 1
+      content:
+        - field: creator.name
+        - field: about.id
+        - field: learningResourceType.id
     - field: sourceOrganization.name
+      weight: 1
     - field: publisher.name
+      weight: 1
     - field: datePublished
       type: date
+      weight: 1
     - field: inLanguage
-    - field: keywords
-      type: chips
+      weight: 1
     - field: license.id
       type: license
+      weight: 1
     - field: audience.id
+      weight: 1
     - field: hasPart.name
       type: link
       externalLinkField: hasPart.id
@@ -249,6 +261,7 @@ search_index_frontend_detail_page_configuration:  # see Frontend-Readme -> Detai
     - field: mainEntityOfPage.provider.name
       type: link
       externalLinkField: mainEntityOfPage.id
+      weight: 1
 
 frontend_structured_data_adjustments_defined_term:
   - fieldName: type
