@@ -231,12 +231,11 @@ search_index_frontend_detail_page_configuration:  # see Frontend-Readme -> Detai
         - field: creator.name
         - field: about.id
         - field: learningResourceType.id
+        - field: datePublished
+          type: date
     - field: sourceOrganization.name
       weight: 1
     - field: publisher.name
-      weight: 1
-    - field: datePublished
-      type: date
       weight: 1
     - field: inLanguage
       weight: 1
