@@ -214,6 +214,7 @@ search_index_frontend_result_card_configuration:  # see Frontend-Readme -> Resul
     - field: description
       maxLines: 4
       fallback:
+        - description_generated
         - keywords
     - field: about.id
     - field: learningResourceType.id
@@ -224,6 +225,7 @@ search_index_frontend_detail_page_configuration:  # see Frontend-Readme -> Detai
       weight: 2
       content:
         - field: description
+        - field: description_generated
         - field: keywords
           type: chips
     - type: group
