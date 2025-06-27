@@ -1,0 +1,28 @@
+{
+    "HEADER": {
+        "TITLE": "OERSI"
+    },
+    "HOME": {
+        "TAGLINE": "Bildungsmaterialien aus dem Hochschulbereich entdecken",
+        "KEYWORDS": [],
+        "SEARCH_PLACEHOLDER": "Suche nach Lehr- und Lernmaterialien...",
+        "SEARCH_PLACEHOLDER_WITH_STATS": "Suche in {{total}} Lehr- und Lernmaterialien ...",
+        "FEATURE_1": {
+            "TITLE": "OER hinzufügen",
+            "DESCRIPTION": "Kriterien, Anleitung",
+            "LINK_1": "Weiterlesen"
+        },
+        "FEATURE_2": {
+            "TITLE": "OERSI integrieren",
+            "DESCRIPTION": "Metadaten, API, Plugins",
+            "LINK_1": "Weiterlesen"
+        }
+    },
+    "META": {
+        "DESCRIPTION": "The Open Educational Resources Search Index (OERSI) provides a central point for searching for open educational resources in higher education by bringing together the content of distributed OER repositories and other sources of open educational resources.",
+        "TITLE": "Open Educational Resources Search Index"
+    },
+    "SEARCH_COMPONENT": {
+        "PLACEHOLDER": "Suche nach Bildungsmaterialien..."
+    }
+}

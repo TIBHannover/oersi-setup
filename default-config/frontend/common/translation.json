@@ -3,25 +3,26 @@
         "TITLE": "OERSI"
     },
     "HOME": {
-        "TAGLINE": "Discover educational resources from higher education",
-        "KEYWORDS": ["free to use", "Open Educational Resources", "a wide range of resource types and subjects", "higher education"],
-        "SEARCH_PLACEHOLDER": "Search for Educational Resources...",
-        "SEARCH_PLACEHOLDER_WITH_STATS": "Search in {{total}} educational resources from {{queryResult}} providers...",
+        "TAGLINE": "Discover Open Educational Resources from Higher Education",
+        "KEYWORDS": [],
+        "SEARCH_PLACEHOLDER": "Search for educational resources...",
+        "SEARCH_PLACEHOLDER_WITH_STATS": "Search in {{total}} Educational Resources ...",
         "FEATURE_1": {
-            "TITLE": "Include more educational resources",
-            "DESCRIPTION": "Integrate further educational resources into the index and make them searchable via the central OERSI search.",
-            "LINK_1": "Inclusion criteria",
-            "LINK_2": "Add OER guide"
+            "TITLE": "Add OER",
+            "DESCRIPTION": "criteria, guide",
+            "LINK_1": "Read more"
         },
         "FEATURE_2": {
-            "TITLE": "Integrate the search into your site or app",
-            "DESCRIPTION": "OERSI's open API enables easy integration of the search into any website or application. Use the provided plugins or develop your own solution directly via the API.",
-            "LINK_1": "Plugins",
-            "LINK_2": "API documentation"
+            "TITLE": "Integrate OERSI",
+            "DESCRIPTION": "metadata, API, plugins",
+            "LINK_1": "Read more"
         }
     },
     "META": {
         "DESCRIPTION": "The Open Educational Resources Search Index (OERSI) provides a central point for searching for open educational resources in higher education by bringing together the content of distributed OER repositories and other sources of open educational resources.",
         "TITLE": "Open Educational Resources Search Index"
+    },
+    "SEARCH_COMPONENT": {
+        "PLACEHOLDER": "Search for Educational Resources..."
     }
 }
