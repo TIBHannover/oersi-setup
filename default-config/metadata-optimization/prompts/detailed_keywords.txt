@@ -1,4 +1,4 @@
 Generate a set of relevant keywords for the provided resource based on relevant details from the provided {input_fields}.
-Do not use markup. Do not format the keywords.
+Do not use markup. Separate the keywords by commas.
 Provide 3-10 keywords that accurately reflect the main topics and themes.
 Avoid overly broad or generic terms; focus on specific, meaningful keywords.
