@@ -7,14 +7,19 @@
         "KEYWORDS": [],
         "SEARCH_PLACEHOLDER": "Search for educational resources...",
         "SEARCH_PLACEHOLDER_WITH_STATS": "Search in {{total}} Educational Resources ...",
+        "FEATURE_3": {
+            "TITLE": "Discover OER",
+            "DESCRIPTION": "Search for OER from all over the web",
+            "LINK_1": "Go to search"
+        },
         "FEATURE_1": {
             "TITLE": "Add OER",
-            "DESCRIPTION": "criteria, guide",
+            "DESCRIPTION": "Make OER discoverable in OERSI",
             "LINK_1": "Read more"
         },
         "FEATURE_2": {
             "TITLE": "Integrate OERSI",
-            "DESCRIPTION": "metadata, API, plugins",
+            "DESCRIPTION": "Utilize OERSI search in your application",
             "LINK_1": "Read more"
         }
     },
