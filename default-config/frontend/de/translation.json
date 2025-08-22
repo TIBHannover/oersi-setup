@@ -7,14 +7,19 @@
         "KEYWORDS": [],
         "SEARCH_PLACEHOLDER": "Suche nach Lehr- und Lernmaterialien...",
         "SEARCH_PLACEHOLDER_WITH_STATS": "Suche in {{total}} Lehr- und Lernmaterialien ...",
+        "FEATURE_3": {
+            "TITLE": "OER entdecken",
+            "DESCRIPTION": "Nach Bildungsmaterialien aus der ganzen Welt suchen",
+            "LINK_1": "Zur Suche"
+        },
         "FEATURE_1": {
             "TITLE": "OER hinzufügen",
-            "DESCRIPTION": "Kriterien, Anleitung",
+            "DESCRIPTION": "Bildungsmaterialien in OERSI auffindbar machen",
             "LINK_1": "Weiterlesen"
         },
         "FEATURE_2": {
             "TITLE": "OERSI integrieren",
-            "DESCRIPTION": "Metadaten, API, Plugins",
+            "DESCRIPTION": "OERSI Suche in beliebigen Anwendungen nutzen",
             "LINK_1": "Weiterlesen"
         }
     },
