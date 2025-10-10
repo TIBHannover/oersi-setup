@@ -10,152 +10,151 @@
 
 RELEASE_VERSION=0.9.0
 NEXT_VERSION=1.0.0
+SIDRE_VERSION=0.9.0
 RELEASE_ISSUE_URL=https://gitlab.com/oersi/oersi-setup/-/issues/xxx
 #MILESTONE="OERSI prototype release"       # optional
 MILESTONE=                                 # optional
-PUSH_TO_ORIGIN=true                        # true | false
+DRY_RUN=false                              # true | false - if true all changes are applied only locally, nothing is pushed to origin
 GITLAB_ACCESS_TOKEN=SET-YOUR-TOKEN         # set your gitlab access token here; necessary to create release entries
 
-RELEASE_BACKEND=true
 RELEASE_ETL=true
 RELEASE_IMPORTSCRIPTS=true
 RELEASE_SCHEMA=true
-RELEASE_FRONTEND=true
-WAIT_FOR_RELEASE_ARTIFACTS=${PUSH_TO_ORIGIN} # wait until all artifacts are available before releasing oersi-setup
-BACKEND_RELEASE_VERSION=${RELEASE_VERSION}
-BACKEND_NEXT_VERSION=${NEXT_VERSION}
-ETL_RELEASE_VERSION=${RELEASE_VERSION}
-ETL_NEXT_VERSION=${NEXT_VERSION}
-IMPORTSCRIPTS_RELEASE_VERSION=${RELEASE_VERSION}
-IMPORTSCRIPTS_NEXT_VERSION=${NEXT_VERSION}
-SCHEMA_RELEASE_VERSION=${RELEASE_VERSION}
-SCHEMA_NEXT_VERSION=${NEXT_VERSION}
-FRONTEND_RELEASE_VERSION=${RELEASE_VERSION}
-FRONTEND_NEXT_VERSION=${NEXT_VERSION}
-GITLAB_BACKEND_API=https://gitlab.com/api/v4/projects/16856715
-GITLAB_FRONTEND_API=https://gitlab.com/api/v4/projects/16666399
-GITLAB_ETL_API=https://gitlab.com/api/v4/projects/17726912
-GITLAB_IMPORTSCRIPTS_API=https://gitlab.com/api/v4/projects/26258348
-GITLAB_SCHEMA_API=https://gitlab.com/api/v4/projects/44205972
-GITLAB_SETUP_API=https://gitlab.com/api/v4/projects/16999502
+RELEASE_MARC_TRANSFORMATION=true
+GITLAB_PROJECT_ID_ETL="17726912"
+GITLAB_PROJECT_ID_IMPORTSCRIPTS="26258348"
+GITLAB_PROJECT_ID_OERSI_SETUP="16999502"
+GITLAB_PROJECT_ID_SCHEMA="44205972"
+GITLAB_PROJECT_ID_MARC_TRANSFORMATION="51597408"
+GITLAB_PROJECT_ID_SIDRE_SETUP="55327433"
+GITLAB_PROJECT_ID_SIDRE_IMPORTSCRIPTS_COMMONS="52881614"
+GITLAB_API_URL=https://gitlab.com/api/v4
 SCRIPT=$(readlink -f "$0")
 SCRIPT_DIR=$(dirname "$SCRIPT")
 WORKING_DIR=/tmp/oersi-release
-
-mkdir $WORKING_DIR
-
-if [ "$RELEASE_BACKEND" = true ] ; then
-  $SCRIPT_DIR/release-backend.sh $BACKEND_RELEASE_VERSION $BACKEND_NEXT_VERSION $RELEASE_ISSUE_URL $PUSH_TO_ORIGIN $WORKING_DIR
-fi
-if [ "$RELEASE_ETL" = true ] ; then
-  $SCRIPT_DIR/release-etl.sh $ETL_RELEASE_VERSION $ETL_NEXT_VERSION $RELEASE_ISSUE_URL $PUSH_TO_ORIGIN $WORKING_DIR
-fi
-if [ "$RELEASE_IMPORTSCRIPTS" = true ] ; then
-  $SCRIPT_DIR/release-import-scripts.sh $IMPORTSCRIPTS_RELEASE_VERSION $IMPORTSCRIPTS_NEXT_VERSION $RELEASE_ISSUE_URL $PUSH_TO_ORIGIN $WORKING_DIR
-fi
-if [ "$RELEASE_SCHEMA" = true ] ; then
-  $SCRIPT_DIR/release-schema.sh $SCHEMA_RELEASE_VERSION $SCHEMA_NEXT_VERSION $RELEASE_ISSUE_URL $PUSH_TO_ORIGIN $WORKING_DIR
-fi
-if [ "$RELEASE_FRONTEND" = true ] ; then
-  $SCRIPT_DIR/release-frontend.sh $FRONTEND_RELEASE_VERSION $FRONTEND_NEXT_VERSION $RELEASE_ISSUE_URL $PUSH_TO_ORIGIN $WORKING_DIR
+if [ "$DRY_RUN" = true ] ; then
+  PUSH_TO_ORIGIN=false
+else
+  PUSH_TO_ORIGIN=true
 fi
 
-if [ "$WAIT_FOR_RELEASE_ARTIFACTS" = true ] ; then
-  while :
-  do
-    date +"%Y-%m-%d %H:%M:%S Searching for release artifacts"
-    BACKEND_PACKAGE_ID=$(curl -s "${GITLAB_BACKEND_API}/packages" | jq ".[] | select(.version == \"$BACKEND_RELEASE_VERSION\") | .id")
-    FRONTEND_PACKAGE_ID=$(curl -s "${GITLAB_FRONTEND_API}/packages" | jq ".[] | select(.version == \"$FRONTEND_RELEASE_VERSION\") | .id")
-    ETL_PACKAGE_ID=$(curl -s "${GITLAB_ETL_API}/packages" | jq ".[] | select(.version == \"$ETL_RELEASE_VERSION\") | .id")
-    IMPORTSCRIPTS_PACKAGE_ID=$(curl -s "${GITLAB_IMPORTSCRIPTS_API}/packages" | jq ".[] | select(.version == \"$IMPORTSCRIPTS_RELEASE_VERSION\") | .id")
-    SCHEMA_PACKAGE_ID=$(curl -s "${GITLAB_SCHEMA_API}/packages" | jq ".[] | select(.version == \"$SCHEMA_RELEASE_VERSION\") | .id")
-    date +"%Y-%m-%d %H:%M:%S package ids: backend $BACKEND_PACKAGE_ID, etl $ETL_PACKAGE_ID, frontend $FRONTEND_PACKAGE_ID, import-scripts $IMPORTSCRIPTS_PACKAGE_ID, schema $SCHEMA_PACKAGE_ID"
-    if [ -z "$BACKEND_PACKAGE_ID" ] || [ -z "$ETL_PACKAGE_ID" ] || [ -z "$FRONTEND_PACKAGE_ID" ] || [ -z "$IMPORTSCRIPTS_PACKAGE_ID" ] || [ -z "$SCHEMA_PACKAGE_ID" ] ; then
-      echo "wait for packages"
-      sleep 60
-    else
-      break
-    fi
-  done
-fi
+date +"%Y-%m-%d %H:%M:%S Starting OERSI release process for version $RELEASE_VERSION - SIDRE version $SIDRE_VERSION, dry run: $DRY_RUN, push to origin: $PUSH_TO_ORIGIN"
 
-echo "Determine artifacts"
-# Backend
-BACKEND_PACKAGE_ID=$(curl "${GITLAB_BACKEND_API}/packages" | jq ".[] | select(.version == \"$BACKEND_RELEASE_VERSION\") | .id")
-BACKEND_PACKAGE_FILE_ID=$(curl "${GITLAB_BACKEND_API}/packages/${BACKEND_PACKAGE_ID}/package_files" | jq ".[] | select(.file_name | endswith(\".war\")) | .id")
-BACKEND_RELEASE_ARTIFACT_URL="https://gitlab.com/oersi/sidre/sidre-backend/-/package_files/${BACKEND_PACKAGE_FILE_ID}/download"
-echo $BACKEND_RELEASE_ARTIFACT_URL
+mkdir -p $WORKING_DIR
 
-# Frontend
-FRONTEND_PACKAGE_ID=$(curl "${GITLAB_FRONTEND_API}/packages" | jq ".[] | select(.version == \"$FRONTEND_RELEASE_VERSION\") | .id")
-FRONTEND_PACKAGE_FILE_ID=$(curl "${GITLAB_FRONTEND_API}/packages/${FRONTEND_PACKAGE_ID}/package_files" | jq ".[] | select(.file_name == \"frontend.zip\") | .id")
-FRONTEND_RELEASE_ARTIFACT_URL="https://gitlab.com/oersi/sidre/sidre-frontend/-/package_files/${FRONTEND_PACKAGE_FILE_ID}/download"
-echo $FRONTEND_RELEASE_ARTIFACT_URL
+release_module() {
+  RELEASE_SCRIPT_NAME=$1
+  RELEASE_FLAG=$2
+  shift 2
+  REMAINING_PARAMS="$@"
+  if [ "$RELEASE_FLAG" = true ] ; then
+    $SCRIPT_DIR/$RELEASE_SCRIPT_NAME $RELEASE_VERSION $NEXT_VERSION $RELEASE_ISSUE_URL $PUSH_TO_ORIGIN $WORKING_DIR $REMAINING_PARAMS
+  fi
+}
+get_release_package_id() {
+  PROJECT_ID=$1
+  SEARCH_VERSION=$2
+  PACKAGE_ID=$(curl -s "${GITLAB_API_URL}/projects/${PROJECT_ID}/packages" | jq ".[] | select(.version == \"$SEARCH_VERSION\") | .id")
+  echo $PACKAGE_ID
+}
+get_release_artifact_url() {
+  PROJECT_ID=$1
+  ARTIFACT_NAME_ENDING=$2
+  SEARCH_VERSION=$3
+  if [ -z "$SEARCH_VERSION" ] ; then
+    SEARCH_VERSION=$RELEASE_VERSION
+  fi
+  if [ "$DRY_RUN" = true ] ; then
+    echo "https://example.com/artifact-$PROJECT_ID-$ARTIFACT_NAME_ENDING"
+    return
+  fi
+  PACKAGE_ID=$(get_release_package_id $PROJECT_ID $SEARCH_VERSION)
+  PACKAGE_FILE_ID=$(curl -s "${GITLAB_API_URL}/projects/${PROJECT_ID}/packages/${PACKAGE_ID}/package_files" | jq ".[] | select(.file_name | endswith(\"${ARTIFACT_NAME_ENDING}\")) | .id")
+  if [ -n "$PACKAGE_FILE_ID" ] ; then
+    REPO_URL=$(curl -s "${GITLAB_API_URL}/projects/${PROJECT_ID}" | jq -r ".web_url")
+    RELEASE_ARTIFACT_URL="${REPO_URL}/-/package_files/${PACKAGE_FILE_ID}/download"
+    echo $RELEASE_ARTIFACT_URL
+  fi
+}
 
-# ETL
-ETL_PACKAGE_ID=$(curl "${GITLAB_ETL_API}/packages" | jq ".[] | select(.version == \"$ETL_RELEASE_VERSION\") | .id")
-ETL_PACKAGE_FILE_ID=$(curl "${GITLAB_ETL_API}/packages/${ETL_PACKAGE_ID}/package_files" | jq ".[] | select(.file_name == \"etl.zip\") | .id")
-ETL_RELEASE_ARTIFACT_URL="https://gitlab.com/oersi/oersi-etl/-/package_files/${ETL_PACKAGE_FILE_ID}/download"
-echo $ETL_RELEASE_ARTIFACT_URL
-
-# IMPORTSCRIPTS
-IMPORTSCRIPTS_PACKAGE_ID=$(curl "${GITLAB_IMPORTSCRIPTS_API}/packages" | jq ".[] | select(.version == \"$IMPORTSCRIPTS_RELEASE_VERSION\") | .id")
-IMPORTSCRIPTS_PACKAGE_FILE_ID=$(curl "${GITLAB_IMPORTSCRIPTS_API}/packages/${IMPORTSCRIPTS_PACKAGE_ID}/package_files" | jq ".[] | select(.file_name == \"import-scripts.zip\") | .id")
-IMPORTSCRIPTS_RELEASE_ARTIFACT_URL="https://gitlab.com/oersi/oersi-import-scripts/-/package_files/${IMPORTSCRIPTS_PACKAGE_FILE_ID}/download"
-echo $IMPORTSCRIPTS_RELEASE_ARTIFACT_URL
-
-# SCHEMA
-SCHEMA_PACKAGE_ID=$(curl "${GITLAB_SCHEMA_API}/packages" | jq ".[] | select(.version == \"$SCHEMA_RELEASE_VERSION\") | .id")
-SCHEMA_PACKAGE_FILE_ID=$(curl "${GITLAB_SCHEMA_API}/packages/${SCHEMA_PACKAGE_ID}/package_files" | jq ".[] | select(.file_name == \"schema.zip\") | .id")
-SCHEMA_RELEASE_ARTIFACT_URL="https://gitlab.com/oersi/oersi-schema/-/package_files/${SCHEMA_PACKAGE_FILE_ID}/download"
-echo $SCHEMA_RELEASE_ARTIFACT_URL
-
-if [ -z "$BACKEND_PACKAGE_FILE_ID" ] ; then
-  echo "Missing backend artifact for version $BACKEND_RELEASE_VERSION"
-fi
-if [ -z "$FRONTEND_PACKAGE_FILE_ID" ] ; then
-  echo "Missing frontend artifact for version $FRONTEND_RELEASE_VERSION"
-fi
-if [ -z "$ETL_PACKAGE_FILE_ID" ] ; then
-  echo "Missing etl artifact for version $ETL_RELEASE_VERSION"
-fi
-if [ -z "$IMPORTSCRIPTS_PACKAGE_FILE_ID" ] ; then
-  echo "Missing import-scripts artifact for version $IMPORTSCRIPTS_RELEASE_VERSION"
-fi
-if [ -z "$SCHEMA_PACKAGE_FILE_ID" ] ; then
-  echo "Missing schema artifact for version $SCHEMA_RELEASE_VERSION"
-fi
-if [ -z "$BACKEND_PACKAGE_FILE_ID" ] || [ -z "$FRONTEND_PACKAGE_FILE_ID" ] || [ -z "$ETL_PACKAGE_FILE_ID" ] || [ -z "$IMPORTSCRIPTS_PACKAGE_FILE_ID" ] || [ -z "$SCHEMA_PACKAGE_FILE_ID" ] ; then
+date +"%Y-%m-%d %H:%M:%S Determine SIDRE release artifact URLs"
+SIDRE_SETUP_RELEASE_ARTIFACT_URL=$(get_release_artifact_url $GITLAB_PROJECT_ID_SIDRE_SETUP "search_index-setup.tar.gz" $SIDRE_VERSION)
+SIDRE_IMPORTSCRIPTS_COMMONS_RELEASE_ARTIFACT_URL=$(get_release_artifact_url $GITLAB_PROJECT_ID_SIDRE_IMPORTSCRIPTS_COMMONS "import-scripts.zip" $SIDRE_VERSION)
+echo "SIDRE_SETUP_RELEASE_ARTIFACT_URL=$SIDRE_SETUP_RELEASE_ARTIFACT_URL"
+echo "SIDRE_IMPORTSCRIPTS_COMMONS_RELEASE_ARTIFACT_URL=$SIDRE_IMPORTSCRIPTS_COMMONS_RELEASE_ARTIFACT_URL"
+if [ -z "$SIDRE_SETUP_RELEASE_ARTIFACT_URL" ] || [ -z "$SIDRE_IMPORTSCRIPTS_COMMONS_RELEASE_ARTIFACT_URL" ] ; then
+  date +"%Y-%m-%d %H:%M:%S Missing SIDRE release artifacts"
   exit 1
 fi
 
-if [ "$RELEASE_BACKEND" = true ] && [ "$PUSH_TO_ORIGIN" = true ] ; then
-  curl --header 'Content-Type: application/json' --header "PRIVATE-TOKEN: $GITLAB_ACCESS_TOKEN" \
-       --data "{ \"name\": \"$BACKEND_RELEASE_VERSION\", \"tag_name\": \"$BACKEND_RELEASE_VERSION\", \"description\": \"Release $BACKEND_RELEASE_VERSION\", \"milestones\": [\"$MILESTONE\"], \"assets\": { \"links\": [{ \"name\": \"package\", \"url\": \"$BACKEND_RELEASE_ARTIFACT_URL\", \"filepath\": \"/package\", \"link_type\":\"package\" }] } }" \
-       --request POST "$GITLAB_BACKEND_API/releases"
-fi
-if [ "$RELEASE_ETL" = true ] && [ "$PUSH_TO_ORIGIN" = true ] ; then
-  curl --header 'Content-Type: application/json' --header "PRIVATE-TOKEN: $GITLAB_ACCESS_TOKEN" \
-       --data "{ \"name\": \"$ETL_RELEASE_VERSION\", \"tag_name\": \"$ETL_RELEASE_VERSION\", \"description\": \"Release $ETL_RELEASE_VERSION\", \"milestones\": [\"$MILESTONE\"], \"assets\": { \"links\": [{ \"name\": \"package\", \"url\": \"$ETL_RELEASE_ARTIFACT_URL\", \"filepath\": \"/package\", \"link_type\":\"package\" }] } }" \
-       --request POST "$GITLAB_ETL_API/releases"
-fi
-if [ "$RELEASE_IMPORTSCRIPTS" = true ] && [ "$PUSH_TO_ORIGIN" = true ] ; then
-  curl --header 'Content-Type: application/json' --header "PRIVATE-TOKEN: $GITLAB_ACCESS_TOKEN" \
-       --data "{ \"name\": \"$IMPORTSCRIPTS_RELEASE_VERSION\", \"tag_name\": \"$IMPORTSCRIPTS_RELEASE_VERSION\", \"description\": \"Release $IMPORTSCRIPTS_RELEASE_VERSION\", \"milestones\": [\"$MILESTONE\"], \"assets\": { \"links\": [{ \"name\": \"package\", \"url\": \"$IMPORTSCRIPTS_RELEASE_ARTIFACT_URL\", \"filepath\": \"/package\", \"link_type\":\"package\" }] } }" \
-       --request POST "$GITLAB_IMPORTSCRIPTS_API/releases"
-fi
-if [ "$RELEASE_SCHEMA" = true ] && [ "$PUSH_TO_ORIGIN" = true ] ; then
-  curl --header 'Content-Type: application/json' --header "PRIVATE-TOKEN: $GITLAB_ACCESS_TOKEN" \
-       --data "{ \"name\": \"$SCHEMA_RELEASE_VERSION\", \"tag_name\": \"$SCHEMA_RELEASE_VERSION\", \"description\": \"Release $SCHEMA_RELEASE_VERSION\", \"milestones\": [\"$MILESTONE\"], \"assets\": { \"links\": [{ \"name\": \"package\", \"url\": \"$SCHEMA_RELEASE_ARTIFACT_URL\", \"filepath\": \"/package\", \"link_type\":\"package\" }] } }" \
-       --request POST "$GITLAB_SCHEMA_API/releases"
-fi
-if [ "$RELEASE_FRONTEND" = true ] && [ "$PUSH_TO_ORIGIN" = true ] ; then
-  curl --header 'Content-Type: application/json' --header "PRIVATE-TOKEN: $GITLAB_ACCESS_TOKEN" \
-       --data "{ \"name\": \"$FRONTEND_RELEASE_VERSION\", \"tag_name\": \"$FRONTEND_RELEASE_VERSION\", \"description\": \"Release $FRONTEND_RELEASE_VERSION\", \"milestones\": [\"$MILESTONE\"], \"assets\": { \"links\": [{ \"name\": \"package\", \"url\": \"$FRONTEND_RELEASE_ARTIFACT_URL\", \"filepath\": \"/package\", \"link_type\":\"package\" }] } }" \
-       --request POST "$GITLAB_FRONTEND_API/releases"
-fi
+date +"%Y-%m-%d %H:%M:%S Process module releases"
+release_module "release-etl.sh" $RELEASE_ETL
+release_module "release-import-scripts.sh" $RELEASE_IMPORTSCRIPTS $SIDRE_IMPORTSCRIPTS_COMMONS_RELEASE_ARTIFACT_URL
+release_module "release-marc-transformation.sh" $RELEASE_MARC_TRANSFORMATION
+release_module "release-schema.sh" $RELEASE_SCHEMA
 
-$SCRIPT_DIR/release-setup.sh $RELEASE_VERSION $NEXT_VERSION $RELEASE_ISSUE_URL $PUSH_TO_ORIGIN $WORKING_DIR $BACKEND_RELEASE_ARTIFACT_URL $ETL_RELEASE_ARTIFACT_URL $FRONTEND_RELEASE_ARTIFACT_URL $IMPORTSCRIPTS_RELEASE_ARTIFACT_URL
-curl --header 'Content-Type: application/json' --header "PRIVATE-TOKEN: $GITLAB_ACCESS_TOKEN" \
-     --data "{ \"name\": \"$RELEASE_VERSION\", \"tag_name\": \"$RELEASE_VERSION\", \"description\": \"Release $RELEASE_VERSION\", \"milestones\": [\"$MILESTONE\"] }" \
-     --request POST "$GITLAB_SETUP_API/releases"
+date +"%Y-%m-%d %H:%M:%S Determine release artifact URLs"
+for run in {1..30}; do
+  date +"%Y-%m-%d %H:%M:%S Searching for release artifacts"
+  ETL_RELEASE_ARTIFACT_URL=$(get_release_artifact_url $GITLAB_PROJECT_ID_ETL "etl.zip")
+  IMPORTSCRIPTS_RELEASE_ARTIFACT_URL=$(get_release_artifact_url $GITLAB_PROJECT_ID_IMPORTSCRIPTS "import-scripts.zip")
+  MARC_TRANSFORMATION_RELEASE_ARTIFACT_URL=$(get_release_artifact_url $GITLAB_PROJECT_ID_MARC_TRANSFORMATION "oersi-marc.zip")
+  SCHEMA_RELEASE_ARTIFACT_URL=$(get_release_artifact_url $GITLAB_PROJECT_ID_SCHEMA "schema.zip")
+
+  date +"%Y-%m-%d %H:%M:%S package urls: etl $ETL_RELEASE_ARTIFACT_URL, import-scripts $IMPORTSCRIPTS_RELEASE_ARTIFACT_URL, marc-transformation $MARC_TRANSFORMATION_RELEASE_ARTIFACT_URL, schema $SCHEMA_RELEASE_ARTIFACT_URL"
+  if [ -z "$ETL_RELEASE_ARTIFACT_URL" ] || [ -z "$IMPORTSCRIPTS_RELEASE_ARTIFACT_URL" ] || [ -z "$MARC_TRANSFORMATION_RELEASE_ARTIFACT_URL" ] || [ -z "$SCHEMA_RELEASE_ARTIFACT_URL" ] ; then
+    date +"%Y-%m-%d %H:%M:%S wait for packages"
+    sleep 60
+  else
+    break
+  fi
+done
+
+if [ -z "$ETL_RELEASE_ARTIFACT_URL" ] ; then
+  echo "Missing etl artifact for version $RELEASE_VERSION"
+fi
+if [ -z "$MARC_TRANSFORMATION_RELEASE_ARTIFACT_URL" ] ; then
+  echo "Missing marc-transformation artifact for version $RELEASE_VERSION"
+fi
+if [ -z "$IMPORTSCRIPTS_RELEASE_ARTIFACT_URL" ] ; then
+  echo "Missing import-scripts artifact for version $RELEASE_VERSION"
+fi
+if [ -z "$SCHEMA_RELEASE_ARTIFACT_URL" ] ; then
+  echo "Missing schema artifact for version $RELEASE_VERSION"
+fi
+if [ -z "$ETL_RELEASE_ARTIFACT_URL" ] || [ -z "$MARC_TRANSFORMATION_RELEASE_ARTIFACT_URL" ] || [ -z "$IMPORTSCRIPTS_RELEASE_ARTIFACT_URL" ] || [ -z "$SCHEMA_RELEASE_ARTIFACT_URL" ] ; then
+  exit 1
+fi
+echo $ETL_RELEASE_ARTIFACT_URL
+echo $MARC_TRANSFORMATION_RELEASE_ARTIFACT_URL
+echo $IMPORTSCRIPTS_RELEASE_ARTIFACT_URL
+echo $SCHEMA_RELEASE_ARTIFACT_URL
+
+date +"%Y-%m-%d %H:%M:%S Release setup"
+# RELEASE SETUP -> no need to wait for artifact, as setup release does not produce artifacts
+release_module "release-setup.sh" true $ETL_RELEASE_ARTIFACT_URL $IMPORTSCRIPTS_RELEASE_ARTIFACT_URL $SCHEMA_RELEASE_ARTIFACT_URL $SIDRE_SETUP_RELEASE_ARTIFACT_URL
+
+date +"%Y-%m-%d %H:%M:%S Create gitlab release entries"
+create_gitlab_release_entry() {
+  PROJECT_ID=$1
+  RELEASE_FLAG=$2
+  ARTIFACT_URL=$3
+  if [ "$RELEASE_FLAG" = true ] && [ "$PUSH_TO_ORIGIN" = true ] ; then
+    if [ -z "$ARTIFACT_URL" ] ; then
+      curl --header 'Content-Type: application/json' --header "PRIVATE-TOKEN: $GITLAB_ACCESS_TOKEN" \
+          --data "{ \"name\": \"$RELEASE_VERSION\", \"tag_name\": \"$RELEASE_VERSION\", \"description\": \"Release $RELEASE_VERSION\", \"milestones\": [\"$MILESTONE\"] }" \
+          --request POST "${GITLAB_API_URL}/projects/${PROJECT_ID}/releases"
+    else
+      curl --header 'Content-Type: application/json' --header "PRIVATE-TOKEN: $GITLAB_ACCESS_TOKEN" \
+          --data "{ \"name\": \"$RELEASE_VERSION\", \"tag_name\": \"$RELEASE_VERSION\", \"description\": \"Release $RELEASE_VERSION\", \"milestones\": [\"$MILESTONE\"], \"assets\": { \"links\": [{ \"name\": \"package\", \"url\": \"$ARTIFACT_URL\", \"filepath\": \"/package\", \"link_type\":\"package\" }] } }" \
+          --request POST "${GITLAB_API_URL}/projects/${PROJECT_ID}/releases"
+    fi
+  fi
+}
+create_gitlab_release_entry $GITLAB_PROJECT_ID_ETL $RELEASE_ETL $ETL_RELEASE_ARTIFACT_URL
+create_gitlab_release_entry $GITLAB_PROJECT_ID_IMPORTSCRIPTS $RELEASE_IMPORTSCRIPTS $IMPORTSCRIPTS_RELEASE_ARTIFACT_URL
+create_gitlab_release_entry $GITLAB_PROJECT_ID_MARC_TRANSFORMATION $RELEASE_MARC_TRANSFORMATION $MARC_TRANSFORMATION_RELEASE_ARTIFACT_URL
+create_gitlab_release_entry $GITLAB_PROJECT_ID_SCHEMA $RELEASE_SCHEMA $SCHEMA_RELEASE_ARTIFACT_URL
+create_gitlab_release_entry $GITLAB_PROJECT_ID_OERSI_SETUP true
+
+date +"%Y-%m-%d %H:%M:%S Finished OERSI release process for version $RELEASE_VERSION"
