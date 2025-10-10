@@ -15,27 +15,20 @@ echo "WORKING_DIR=$WORKING_DIR"
 
 NEXT_SNAPSHOT_VERSION=${NEXT_VERSION}-SNAPSHOT
 
-echo "---------------"
-echo "Release backend"
-echo "---------------"
+echo "---------------------------"
+echo "Release Marc Transformation"
+echo "---------------------------"
 echo "Cleanup WORKING_DIR"
-rm -rf $WORKING_DIR/sidre-backend
+rm -rf $WORKING_DIR/oersi-marc
 cd $WORKING_DIR
-git clone git@gitlab.com:oersi/sidre/sidre-backend.git -b master
+git clone git@gitlab.com:oersi/oersi-marc.git -b main
 if [ $? -ne 0 ] ; then
   echo "Cloning failed."
   exit 1
 fi
-cd $WORKING_DIR/sidre-backend
-mvn versions:set -DnewVersion=$RELEASE_VERSION
-git add pom.xml
-git commit -m "release $RELEASE_VERSION (Ref $RELEASE_ISSUE_URL)"
+cd $WORKING_DIR/oersi-marc
 git tag -a $RELEASE_VERSION -m "release $RELEASE_VERSION (Ref $RELEASE_ISSUE_URL)"
-mvn versions:set -DnewVersion=$NEXT_SNAPSHOT_VERSION
-git add pom.xml
-git commit -m "next snapshot (Ref $RELEASE_ISSUE_URL)"
 if [ "$PUSH_TO_ORIGIN" = true ] ; then
   echo "push to origin"
-  git push origin master
   git push origin $RELEASE_VERSION
 fi
