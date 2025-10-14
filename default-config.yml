@@ -74,7 +74,7 @@ search_index_monitoring_metadata_reports:
 search_index_backend_vocab_scheme_updates:
   - schemeUrl: https://raw.githubusercontent.com/dini-ag-kim/value-lists/main/conditionsOfAccess.ttl
     vocabName: conditionsOfAccess
-  - schemeUrl: https://purl.org/dcx/lrmi-vocabs/educationalAudienceRole
+  - schemeUrl: https://raw.githubusercontent.com/dcmi/lrmi/main/lrmi_vocabs/educationalAudienceRole/educationalAudienceRole.ttl
     vocabName: educationalAudience
   - schemeUrl: https://raw.githubusercontent.com/dini-ag-kim/educationalLevel/main/educationalLevel.ttl
     vocabName: educationalLevel
