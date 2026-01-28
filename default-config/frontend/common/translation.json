@@ -21,7 +21,13 @@
             "TITLE": "Integrate OERSI",
             "DESCRIPTION": "Utilize OERSI search in your application",
             "LINK_1": "Read more"
-        }
+        },
+        "STAT_PROVIDER_COUNT": "Providers",
+        "STAT_PROVIDER_COUNT_TOOLTIP": "Number of connected metadata providers",
+        "STAT_ROR_INSTITUTION_COUNT": "Institutions",
+        "STAT_ROR_INSTITUTION_COUNT_TOOLTIP": "Institutions with an existing ROR identifier are counted",
+        "STAT_COUNTRY_COUNT": "Countries",
+        "STAT_COUNTRY_COUNT_TOOLTIP": "Countries are counted by institutions with an existing ROR identifier"
     },
     "META": {
         "DESCRIPTION": "The Open Educational Resources Search Index (OERSI) provides a central point for searching for open educational resources in higher education by bringing together the content of distributed OER repositories and other sources of open educational resources.",
