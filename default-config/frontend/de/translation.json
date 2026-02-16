@@ -35,5 +35,12 @@
     },
     "SEARCH_COMPONENT": {
         "PLACEHOLDER": "Suche nach Bildungsmaterialien..."
+    },
+    "FOOTER": {
+        "HEADING": "OERSI - Open Educational Resources Search Index",
+        "DESCRIPTION": "Ein Suchindex für Open Educational Resources in der Hochschullehre",
+        "IMPRINT": "Impressum",
+        "PRIVACY_POLICY": "Datenschutz",
+        "ACCESSIBILITY": "Barrierefreiheit"
     }
 }
