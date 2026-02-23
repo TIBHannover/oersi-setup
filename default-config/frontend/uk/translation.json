@@ -8,9 +8,6 @@
     },
     "FOOTER": {
         "HEADING": "OERSI - Open Educational Resources Search Index",
-        "DESCRIPTION": "Пошуковий індекс відкритих освітніх ресурсів серед закладів вищої освіти",
-        "IMPRINT": "Детальна інформація",
-        "PRIVACY_POLICY": "Політика конфіденційності",
-        "ACCESSIBILITY": "Умови доступу"
+        "DESCRIPTION": "Пошуковий індекс відкритих освітніх ресурсів серед закладів вищої освіти"
     }
 }
