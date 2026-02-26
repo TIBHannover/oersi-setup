@@ -1,0 +1,43 @@
+{
+    "HEADER": {
+        "TITLE": "OERSI"
+    },
+    "HOME": {
+        "TAGLINE": "Objavte otvorené vzdelávacie zdroje z vysokoškolského prostredia",
+        "KEYWORDS": [],
+        "SEARCH_PLACEHOLDER": "Vyhľadať vzdelávacie zdroje...",
+        "SEARCH_PLACEHOLDER_WITH_STATS": "Vyhľadávať v {{total}} vzdelávacích zdrojoch ...",
+        "FEATURE_3": {
+            "TITLE": "Objaviť OER",
+            "DESCRIPTION": "Vyhľadávajte OER z celého webu",
+            "LINK_1": "Prejsť na vyhľadávanie"
+        },
+        "FEATURE_1": {
+            "TITLE": "Pridať OER",
+            "DESCRIPTION": "Urobte OER vyhľadateľné v OERSI",
+            "LINK_1": "Čítať viac"
+        },
+        "FEATURE_2": {
+            "TITLE": "Integrovať OERSI",
+            "DESCRIPTION": "Využite vyhľadávanie OERSI vo svojej aplikácii",
+            "LINK_1": "Čítať viac"
+        },
+        "STAT_PROVIDER_COUNT": "Poskytovatelia",
+        "STAT_PROVIDER_COUNT_TOOLTIP": "Počet pripojených poskytovateľov metadát",
+        "STAT_ROR_INSTITUTION_COUNT": "Inštitúcie",
+        "STAT_ROR_INSTITUTION_COUNT_TOOLTIP": "Započítavajú sa inštitúcie s existujúcim identifikátorom ROR",
+        "STAT_COUNTRY_COUNT": "Krajiny",
+        "STAT_COUNTRY_COUNT_TOOLTIP": "Krajiny sa počítajú podľa inštitúcií s existujúcim identifikátorom ROR"
+    },
+    "META": {
+        "DESCRIPTION": "Open Educational Resources Search Index (OERSI) poskytuje centrálne miesto na vyhľadávanie otvorených vzdelávacích zdrojov vo vysokoškolskom vzdelávaní tým, že zhromažďuje obsah distribuovaných OER repozitárov a ďalších zdrojov otvorených vzdelávacích materiálov.",
+        "TITLE": "Vyhľadávací index otvorených vzdelávacích zdrojov"
+    },
+    "SEARCH_COMPONENT": {
+        "PLACEHOLDER": "Vyhľadať vzdelávacie zdroje..."
+    },
+    "FOOTER": {
+        "HEADING": "OERSI - Vyhľadávací index otvorených vzdelávacích zdrojov",
+        "DESCRIPTION": "Vyhľadávací index pre otvorené vzdelávacie zdroje vo vysokoškolskom vzdelávaní"
+    }
+}
