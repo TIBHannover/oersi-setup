@@ -2,9 +2,39 @@
     "HEADER": {
         "TITLE": "OERSI"
     },
+    "HOME": {
+        "TAGLINE": "Objevujte otevřené vzdělávací zdroje z vysokého školství",
+        "KEYWORDS": [],
+        "SEARCH_PLACEHOLDER": "Hledat vzdělávací zdroje...",
+        "SEARCH_PLACEHOLDER_WITH_STATS": "Hledat v {{total}} vzdělávacích zdrojích...",
+        "FEATURE_3": {
+            "TITLE": "Objevujte OER",
+            "DESCRIPTION": "Vyhledávejte OER z celého webu",
+            "LINK_1": "Přejít na vyhledávání"
+        },
+        "FEATURE_1": {
+            "TITLE": "Přidat OER",
+            "DESCRIPTION": "Zpřístupněte OER k vyhledávání v OERSI",
+            "LINK_1": "Zjistit více"
+        },
+        "FEATURE_2": {
+            "TITLE": "Integrovat OERSI",
+            "DESCRIPTION": "Využijte vyhledávání OERSI ve své aplikaci",
+            "LINK_1": "Zjistit více"
+        },
+        "STAT_PROVIDER_COUNT": "Poskytovatelé",
+        "STAT_PROVIDER_COUNT_TOOLTIP": "Počet připojených poskytovatelů metadat",
+        "STAT_ROR_INSTITUTION_COUNT": "Instituce",
+        "STAT_ROR_INSTITUTION_COUNT_TOOLTIP": "Počítají se instituce s existujícím identifikátorem ROR",
+        "STAT_COUNTRY_COUNT": "Země",
+        "STAT_COUNTRY_COUNT_TOOLTIP": "Země jsou počítány podle institucí s existujícím identifikátorem ROR"
+    },
     "META": {
         "DESCRIPTION": "The Open Educational Resources Search Index (OERSI) nabízí centrální místo pro hledání v otevřených vzdělávacích zdrojích vyššího vzdělání tím, že spojuje obsah distribuovaný v repozitářích OER a dalších otevřených zdrojích.",
         "TITLE": "Open Educational Resources Search Index"
+    },
+    "SEARCH_COMPONENT": {
+        "PLACEHOLDER": "Hledat vzdělávací zdroje..."
     },
     "FOOTER": {
         "HEADING": "OERSI - Open Educational Resources Search Index",
