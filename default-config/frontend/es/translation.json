@@ -1,0 +1,43 @@
+{
+    "HEADER": {
+        "TITLE": "OERSI"
+    },
+    "HOME": {
+        "TAGLINE": "Descubre Recursos Educativos Abiertos de la educación superior",
+        "KEYWORDS": [],
+        "SEARCH_PLACEHOLDER": "Buscar recursos educativos...",
+        "SEARCH_PLACEHOLDER_WITH_STATS": "Buscar en {{total}} recursos educativos ...",
+        "FEATURE_3": {
+            "TITLE": "Descubrir REA",
+            "DESCRIPTION": "Buscar REA en toda la web",
+            "LINK_1": "Ir a la búsqueda"
+        },
+        "FEATURE_1": {
+            "TITLE": "Añadir REA",
+            "DESCRIPTION": "Hacer que los REA sean descubribles en OERSI",
+            "LINK_1": "Leer más"
+        },
+        "FEATURE_2": {
+            "TITLE": "Integrar OERSI",
+            "DESCRIPTION": "Utilizar la búsqueda de OERSI en tu aplicación",
+            "LINK_1": "Leer más"
+        },
+        "STAT_PROVIDER_COUNT": "Proveedores",
+        "STAT_PROVIDER_COUNT_TOOLTIP": "Número de proveedores de metadatos conectados",
+        "STAT_ROR_INSTITUTION_COUNT": "Instituciones",
+        "STAT_ROR_INSTITUTION_COUNT_TOOLTIP": "Se cuentan las instituciones con un identificador ROR existente",
+        "STAT_COUNTRY_COUNT": "Países",
+        "STAT_COUNTRY_COUNT_TOOLTIP": "Los países se cuentan según las instituciones con un identificador ROR existente"
+    },
+    "META": {
+        "DESCRIPTION": "El Índice de Búsqueda de Recursos Educativos Abiertos (OERSI) proporciona un punto central para buscar recursos educativos abiertos en la educación superior al reunir el contenido de repositorios de REA distribuidos y otras fuentes de recursos educativos abiertos.",
+        "TITLE": "Índice de Búsqueda de Recursos Educativos Abiertos"
+    },
+    "SEARCH_COMPONENT": {
+        "PLACEHOLDER": "Buscar recursos educativos..."
+    },
+    "FOOTER": {
+        "HEADING": "OERSI - Índice de Búsqueda de Recursos Educativos Abiertos",
+        "DESCRIPTION": "Un índice de búsqueda de Recursos Educativos Abiertos en la educación superior"
+    }
+}
