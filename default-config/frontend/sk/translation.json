@@ -14,7 +14,7 @@
         },
         "FEATURE_1": {
             "TITLE": "Pridať OER",
-            "DESCRIPTION": "Urobte OER vyhľadateľné v OERSI",
+            "DESCRIPTION": "Sprístupnite OER na vyhľadávanie v OERSI",
             "LINK_1": "Čítať viac"
         },
         "FEATURE_2": {
@@ -30,7 +30,7 @@
         "STAT_COUNTRY_COUNT_TOOLTIP": "Krajiny sa počítajú podľa inštitúcií s existujúcim identifikátorom ROR"
     },
     "META": {
-        "DESCRIPTION": "Open Educational Resources Search Index (OERSI) poskytuje centrálne miesto na vyhľadávanie otvorených vzdelávacích zdrojov vo vysokoškolskom vzdelávaní tým, že zhromažďuje obsah distribuovaných OER repozitárov a ďalších zdrojov otvorených vzdelávacích materiálov.",
+        "DESCRIPTION": "Open Educational Resources Search Index (OERSI) poskytuje ústredný bod pre vyhľadávanie otvorených vzdelávacích zdrojov (OER) vo vysokoškolskom prostredí tým, že spája obsah vzdialených OER repozitárov a ďalších zdrojov otvorených vzdelávacích materiálov.",
         "TITLE": "Vyhľadávací index otvorených vzdelávacích zdrojov"
     },
     "SEARCH_COMPONENT": {
@@ -38,6 +38,6 @@
     },
     "FOOTER": {
         "HEADING": "OERSI - Vyhľadávací index otvorených vzdelávacích zdrojov",
-        "DESCRIPTION": "Vyhľadávací index pre otvorené vzdelávacie zdroje vo vysokoškolskom vzdelávaní"
+        "DESCRIPTION": "Vyhľadávací index pre otvorené vzdelávacie zdroje vo vysokoškolskom prostredí"
     }
 }
