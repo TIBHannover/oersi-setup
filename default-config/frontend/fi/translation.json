@@ -1,0 +1,43 @@
+{
+    "HEADER": {
+        "TITLE": "OERSI"
+    },
+    "HOME": {
+        "TAGLINE": "Löydä avoimia oppimateriaaleja korkeakoulutuksesta",
+        "KEYWORDS": [],
+        "SEARCH_PLACEHOLDER": "Hae oppimateriaaleja...",
+        "SEARCH_PLACEHOLDER_WITH_STATS": "Hae {{total}} oppimateriaalin joukosta ...",
+        "FEATURE_3": {
+            "TITLE": "Löydä OER-materiaaleja",
+            "DESCRIPTION": "Hae avoimia oppimateriaaleja kaikkialta verkosta",
+            "LINK_1": "Siirry hakuun"
+        },
+        "FEATURE_1": {
+            "TITLE": "Lisää OER-materiaaleja",
+            "DESCRIPTION": "Tee OER-materiaaleista löydettäviä OERSI:ssä",
+            "LINK_1": "Lue lisää"
+        },
+        "FEATURE_2": {
+            "TITLE": "Integroi OERSI",
+            "DESCRIPTION": "Hyödynnä OERSI-hakua omassa sovelluksessasi",
+            "LINK_1": "Lue lisää"
+        },
+        "STAT_PROVIDER_COUNT": "Tarjoajat",
+        "STAT_PROVIDER_COUNT_TOOLTIP": "Yhdistettyjen metatietotarjoajien määrä",
+        "STAT_ROR_INSTITUTION_COUNT": "Instituutiot",
+        "STAT_ROR_INSTITUTION_COUNT_TOOLTIP": "Lasketaan instituutiot, joilla on olemassa oleva ROR-tunniste",
+        "STAT_COUNTRY_COUNT": "Maat",
+        "STAT_COUNTRY_COUNT_TOOLTIP": "Maat lasketaan instituutioiden perusteella, joilla on olemassa oleva ROR-tunniste"
+    },
+    "META": {
+        "DESCRIPTION": "Open Educational Resources Search Index (OERSI) tarjoaa keskitetyn paikan avoimien oppimateriaalien etsimiseen korkeakoulutuksessa yhdistämällä hajautettujen OER-arkistojen sekä muiden avoimien oppimateriaalien lähteiden sisältöä.",
+        "TITLE": "Open Educational Resources -hakemisto"
+    },
+    "SEARCH_COMPONENT": {
+        "PLACEHOLDER": "Hae oppimateriaaleja..."
+    },
+    "FOOTER": {
+        "HEADING": "OERSI – Open Educational Resources -hakemisto",
+        "DESCRIPTION": "Hakemisto avoimille oppimateriaaleille korkeakoulutuksessa"
+    }
+}
