@@ -1,0 +1,1 @@
+Detect the language of the following text and return only the ISO 639-1 language code as a string (e.g., "en", "es", "zh"): {text}
