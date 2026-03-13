@@ -1,0 +1,43 @@
+{
+    "HEADER": {
+        "TITLE": "OERSI"
+    },
+    "HOME": {
+        "TAGLINE": "Upptäck öppna utbildningsresurser från högre utbildning",
+        "KEYWORDS": [],
+        "SEARCH_PLACEHOLDER": "Sök efter utbildningsresurser...",
+        "SEARCH_PLACEHOLDER_WITH_STATS": "Sök i {{total}} utbildningsresurser ...",
+        "FEATURE_3": {
+            "TITLE": "Upptäck OER",
+            "DESCRIPTION": "Sök efter OER från hela webben",
+            "LINK_1": "Gå till sökning"
+        },
+        "FEATURE_1": {
+            "TITLE": "Lägg till OER",
+            "DESCRIPTION": "Gör OER sökbar i OERSI",
+            "LINK_1": "Läs mer"
+        },
+        "FEATURE_2": {
+            "TITLE": "Integrera OERSI",
+            "DESCRIPTION": "Använd OERSI-sökning i din applikation",
+            "LINK_1": "Läs mer"
+        },
+        "STAT_PROVIDER_COUNT": "Leverantörer",
+        "STAT_PROVIDER_COUNT_TOOLTIP": "Antal anslutna metadataleverantörer",
+        "STAT_ROR_INSTITUTION_COUNT": "Institutioner",
+        "STAT_ROR_INSTITUTION_COUNT_TOOLTIP": "Institutioner med befintlig ROR-identifierare räknas",
+        "STAT_COUNTRY_COUNT": "Länder",
+        "STAT_COUNTRY_COUNT_TOOLTIP": "Länder räknas efter institutioner med befintlig ROR-identifierare"
+    },
+    "META": {
+        "DESCRIPTION": "Open Educational Resources Search Index (OERSI) tillhandahåller en central plats för sökning efter öppna utbildningsresurser inom högre utbildning genom att samla innehåll från distribuerade OER-databaser och andra källor för öppna utbildningsresurser.",
+        "TITLE": "Open Educational Resources Search Index"
+    },
+    "SEARCH_COMPONENT": {
+        "PLACEHOLDER": "Sök efter utbildningsresurser..."
+    },
+    "FOOTER": {
+        "HEADING": "OERSI - Open Educational Resources Search Index",
+        "DESCRIPTION": "Ett sökindex för öppna utbildningsresurser inom högre utbildning"
+    }
+}
