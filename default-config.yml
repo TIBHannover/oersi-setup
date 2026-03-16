@@ -124,13 +124,16 @@ search_index_backend_metadata_field_configuration:
 search_index_frontend_features_homepage: "true"
 search_index_frontend_available_languages: ["cs", "de", "en", "nl", "uk"]
 # common custom translations for every configured language
-search_index_frontend_default_custom_translations: "{{ search_index_frontend_available_languages | difference(['cs', 'de', 'nl', 'uk']) | map('regex_replace', '^(.*)$', \"language: \\1\") | map('from_yaml') | product([{'path': '{{ default_config_files_dir }}/frontend/common/translation.json'}]) | map('combine') }}"
-search_index_frontend_additional_custom_translations:
+search_index_frontend_default_custom_translations: "{{ search_index_frontend_available_languages | difference(['cs', 'de', 'es', 'nl', 'sk', 'sv', 'uk']) | map('regex_replace', '^(.*)$', \"language: \\1\") | map('from_yaml') | product([{'path': '{{ default_config_files_dir }}/frontend/common/translation.json'}]) | map('combine') }}"
+search_index_frontend_additional_oersi_translations:
   - {path: '{{ default_config_files_dir }}/frontend/cs/translation.json', language: 'cs'}
   - {path: '{{ default_config_files_dir }}/frontend/de/translation.json', language: 'de'}
+  - {path: '{{ default_config_files_dir }}/frontend/es/translation.json', language: 'es'}
   - {path: '{{ default_config_files_dir }}/frontend/nl/translation.json', language: 'nl'}
+  - {path: '{{ default_config_files_dir }}/frontend/sk/translation.json', language: 'sk'}
+  - {path: '{{ default_config_files_dir }}/frontend/sv/translation.json', language: 'sv'}
   - {path: '{{ default_config_files_dir }}/frontend/uk/translation.json', language: 'uk'}
-search_index_frontend_custom_translations: "{{ search_index_frontend_default_custom_translations + search_index_frontend_additional_custom_translations }}"
+search_index_frontend_custom_translations: "{{ search_index_frontend_default_custom_translations + search_index_frontend_additional_oersi_translations }}"
 search_index_frontend_hierarchical_vocab_filters: # the vocab-scheme files will be downloaded/updated locally periodically
   - vocabName: hochschulfaechersystematik
 search_index_frontend_index_name: "{{ elasticsearch_metadata_index_internal_alias_name }}"
