@@ -119,6 +119,7 @@ search_index_backend_metadata_field_configuration:
   defaultOptions:
     vocabItemIdentifierField: id
     vocabItemLabelField: prefLabel
+institution_mapping: "{{ (lookup('file', '{{ default_config_files_dir }}/backend/institution-mapping.yml') | from_yaml)['institution_mapping_pre'] | product([{'copyFromPublisher':true}]) | map('combine') }}"
 
 ### FRONTEND ###
 search_index_frontend_features_homepage: "true"
