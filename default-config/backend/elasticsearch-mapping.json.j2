@@ -267,6 +267,21 @@
         "inLanguage" : {
           "type" : "keyword"
         },
+        "isPartOf": {
+          "properties" : {
+            "id" : {
+              "type" : "keyword"
+            },
+            "name": {
+              "type" : "text",
+              "fields" : {
+                "keyword" : {
+                  "type" : "keyword"
+                }
+              }
+            }
+          }
+        },
         "interactivityType" : {
           "properties" : {
             "id" : {
