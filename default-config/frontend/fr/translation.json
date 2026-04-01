@@ -1,0 +1,43 @@
+{
+    "HEADER": {
+        "TITLE": "OERSI"
+    },
+    "HOME": {
+        "TAGLINE": "Découvrez des ressources éducatives libres issues de l’enseignement supérieur",
+        "KEYWORDS": [],
+        "SEARCH_PLACEHOLDER": "Rechercher des ressources éducatives...",
+        "SEARCH_PLACEHOLDER_WITH_STATS": "Rechercher parmi {{total}} ressources éducatives ...",
+        "FEATURE_3": {
+            "TITLE": "Découvrir les REL",
+            "DESCRIPTION": "Rechercher des REL sur l’ensemble du web",
+            "LINK_1": "Aller à la recherche"
+        },
+        "FEATURE_1": {
+            "TITLE": "Ajouter des REL",
+            "DESCRIPTION": "Rendre les REL découvrables dans OERSI",
+            "LINK_1": "En savoir plus"
+        },
+        "FEATURE_2": {
+            "TITLE": "Intégrer OERSI",
+            "DESCRIPTION": "Utiliser la recherche OERSI dans votre application",
+            "LINK_1": "En savoir plus"
+        },
+        "STAT_PROVIDER_COUNT": "Fournisseurs",
+        "STAT_PROVIDER_COUNT_TOOLTIP": "Nombre de fournisseurs de métadonnées connectés",
+        "STAT_ROR_INSTITUTION_COUNT": "Institutions",
+        "STAT_ROR_INSTITUTION_COUNT_TOOLTIP": "Les institutions disposant d’un identifiant ROR existant sont comptabilisées",
+        "STAT_COUNTRY_COUNT": "Pays",
+        "STAT_COUNTRY_COUNT_TOOLTIP": "Les pays sont comptabilisés à partir des institutions disposant d’un identifiant ROR existant"
+    },
+    "META": {
+        "DESCRIPTION": "L’index de recherche des ressources éducatives libres (OERSI) fournit un point central pour rechercher des ressources éducatives libres dans l’enseignement supérieur en rassemblant les contenus de dépôts OER distribués et d’autres sources de ressources éducatives libres.",
+        "TITLE": "Index de recherche des ressources éducatives libres"
+    },
+    "SEARCH_COMPONENT": {
+        "PLACEHOLDER": "Rechercher des ressources éducatives..."
+    },
+    "FOOTER": {
+        "HEADING": "OERSI - Index de recherche des ressources éducatives libres",
+        "DESCRIPTION": "Un index de recherche pour les ressources éducatives libres dans l’enseignement supérieur"
+    }
+}
