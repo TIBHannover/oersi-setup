@@ -3,18 +3,18 @@
         "TITLE": "OERSI"
     },
     "HOME": {
-        "TAGLINE": "Scopri Risorse Educative Aperte dall'Istruzione Superiore",
+        "TAGLINE": "Scopri le Risorse Educative Aperte (OER) nell'Istruzione Superiore",
         "KEYWORDS": [],
-        "SEARCH_PLACEHOLDER": "Cerca risorse educative...",
-        "SEARCH_PLACEHOLDER_WITH_STATS": "Cerca tra {{total}} Risorse Educative ...",
+        "SEARCH_PLACEHOLDER": "Cerca le Risorse Educative Aperte (OER)...",
+        "SEARCH_PLACEHOLDER_WITH_STATS": "Cerca tra {{total}} le Risorse Educative Aperte (OER)...",
         "FEATURE_3": {
-            "TITLE": "Scopri OER",
-            "DESCRIPTION": "Cerca OER da tutto il web",
+            "TITLE": "Scopri le Risorse Educative Aperte (OER)",
+            "DESCRIPTION": "Cerca le Risorse Educative Aperte (OER)da tutto il web",
             "LINK_1": "Vai alla ricerca"
         },
         "FEATURE_1": {
-            "TITLE": "Aggiungi OER",
-            "DESCRIPTION": "Rendi le OER scopribili in OERSI",
+            "TITLE": "Aggiungi le Risorse Educative Aperte (OER)",
+            "DESCRIPTION": "Rendi le Risorse Educative Aperte (OER)scopribili in OERSI",
             "LINK_1": "Leggi di più"
         },
         "FEATURE_2": {
@@ -30,14 +30,14 @@
         "STAT_COUNTRY_COUNT_TOOLTIP": "I paesi sono conteggiati in base alle istituzioni con un identificatore ROR esistente"
     },
     "META": {
-        "DESCRIPTION": "L'Open Educational Resources Search Index (OERSI) fornisce un punto centrale per la ricerca di risorse educative aperte nell'istruzione superiore, raccogliendo i contenuti di archivi OER distribuiti e altre fonti di risorse educative aperte.",
-        "TITLE": "Indice di ricerca delle Risorse Educative Aperte"
+        "DESCRIPTION": "L'Open Educational Resources Search Index (OERSI) fornisce un punto centrale per la ricerca di risorse educative aperte nell'istruzione superiore raccogliendo i contenuti di archivi OER distribuiti e altre fonti di risorse educative aperte (OER).",
+        "TITLE": "Indice di ricerca delle Risorse Educative Aperte (OER)"
     },
     "SEARCH_COMPONENT": {
-        "PLACEHOLDER": "Cerca Risorse Educative..."
+        "PLACEHOLDER": "Cerca Risorse Educative Aperte (OER)..."
     },
     "FOOTER": {
-        "HEADING": "OERSI - Indice di ricerca delle Risorse Educative Aperte",
-        "DESCRIPTION": "Un indice di ricerca per le Risorse Educative Aperte nell'istruzione superiore"
+        "HEADING": "OERSI - Indice di ricerca delle Risorse Educative Aperte (OER)",
+        "DESCRIPTION": "Un indice di ricerca per le Risorse Educative Aperte (OER)nell'istruzione superiore"
     }
 }
