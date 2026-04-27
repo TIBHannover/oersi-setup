@@ -82,6 +82,8 @@ institution_mapping_pre:
   - regex: ".*(Uni(versität)? Würzburg).*"
     internalName: "Julius-Maximilians-Universität Würzburg"
     defaultId: "https://ror.org/00fbnyb24"
+  - regex: ".*(Universität Rostock).*"
+    defaultId: "https://ror.org/03zdwsf69"
   - regex: ".*(Universität Freiburg).*"
     internalName: "Albert-Ludwigs-Universität Freiburg"
     defaultId: "https://ror.org/0245cg223"
