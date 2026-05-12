@@ -123,7 +123,7 @@ institution_mapping: "{{ (lookup('file', '{{ default_config_files_dir }}/backend
 
 ### FRONTEND ###
 search_index_frontend_features_homepage: "true"
-search_index_frontend_available_languages: ["cs", "de", "en", "nl", "uk"]
+search_index_frontend_available_languages: ["cs", "de", "en", "nl", "uk", "es"]
 # common custom translations for every configured language
 search_index_frontend_default_custom_translations: "{{ search_index_frontend_available_languages | difference(['cs', 'de', 'el', 'es', 'fr', 'it', 'nl', 'sk', 'sv', 'uk']) | map('regex_replace', '^(.*)$', \"language: \\1\") | map('from_yaml') | product([{'path': '{{ default_config_files_dir }}/frontend/common/translation.json'}]) | map('combine') }}"
 search_index_frontend_additional_oersi_translations:
