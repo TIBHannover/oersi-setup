@@ -2,7 +2,7 @@ stages:
   - deploy
 
 .deploy_job:
-  image: willhallonline/ansible:2.16.4-alpine-3.19
+  image: willhallonline/ansible:2.19.2-alpine-3.22
   stage: deploy
   before_script:
     - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
