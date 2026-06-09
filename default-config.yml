@@ -119,13 +119,13 @@ search_index_backend_metadata_field_configuration:
   defaultOptions:
     vocabItemIdentifierField: id
     vocabItemLabelField: prefLabel
-institution_mapping: "{{ (lookup('file', '{{ default_config_files_dir }}/backend/institution-mapping.yml') | from_yaml)['institution_mapping_pre'] | product([{'copyFromPublisher':true}]) | map('combine') }}"
+institution_mapping: "{{ (lookup('file', default_config_files_dir + '/backend/institution-mapping.yml') | from_yaml)['institution_mapping_pre'] | product([{'copyFromPublisher':true}]) | map('combine') }}"
 
 ### FRONTEND ###
 search_index_frontend_features_homepage: "true"
 search_index_frontend_available_languages: ["cs", "de", "el", "en", "es", "it", "nl", "sk", "sv", "uk"]
 # common custom translations for every configured language
-search_index_frontend_default_custom_translations: "{{ search_index_frontend_available_languages | difference(['cs', 'de', 'el', 'es', 'fr', 'it', 'nl', 'sk', 'sv', 'uk']) | map('regex_replace', '^(.*)$', \"language: \\1\") | map('from_yaml') | product([{'path': '{{ default_config_files_dir }}/frontend/common/translation.json'}]) | map('combine') }}"
+search_index_frontend_default_custom_translations: "{{ search_index_frontend_available_languages | difference(['cs', 'de', 'el', 'es', 'fr', 'it', 'nl', 'sk', 'sv', 'uk']) | map('regex_replace', '^(.*)$', \"language: \\1\") | map('from_yaml') | product([{'path': default_config_files_dir + '/frontend/common/translation.json'}]) | map('combine') }}"
 search_index_frontend_additional_oersi_translations:
   - {path: '{{ default_config_files_dir }}/frontend/cs/translation.json', language: 'cs'}
   - {path: '{{ default_config_files_dir }}/frontend/de/translation.json', language: 'de'}
