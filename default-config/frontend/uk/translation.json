@@ -1,10 +1,40 @@
 {
+    "HOME": {
+        "TAGLINE": "Відкрийте для себе відкриті освітні ресурси для вищої освіти",
+        "KEYWORDS": [],
+        "SEARCH_PLACEHOLDER": "Шукати освітні ресурси...",
+        "SEARCH_PLACEHOLDER_WITH_STATS": "Шукати серед {{total}} освітніх ресурсів ...",
+        "FEATURE_3": {
+            "TITLE": "Досліджуйте ВОР",
+            "DESCRIPTION": "Шукайте ВОР по всьому Інтернету",
+            "LINK_1": "Перейти до пошуку"
+        },
+        "FEATURE_1": {
+            "TITLE": "Додати ВОР",
+            "DESCRIPTION": "Зробити ВОР доступними для пошуку в OERSI",
+            "LINK_1": "Дізнатись більше"
+        },
+        "FEATURE_2": {
+            "TITLE": "Інтегруйте OERSI",
+            "DESCRIPTION": "Використовуйте пошук OERSI у своєму застосунку",
+            "LINK_1": "Дізнатись більше"
+        },
+        "STAT_PROVIDER_COUNT": "Постачальники",
+        "STAT_PROVIDER_COUNT_TOOLTIP": "Кількість під’єднаних постачальників метаданих",
+        "STAT_ROR_INSTITUTION_COUNT": "Установи",
+        "STAT_ROR_INSTITUTION_COUNT_TOOLTIP": "Підрахунок охоплює установи, що мають ідентифікатор ROR",
+        "STAT_COUNTRY_COUNT": "Країни",
+        "STAT_COUNTRY_COUNT_TOOLTIP": "Підрахунок країн здійснюється на основі установ, що мають ідентифікатор ROR"
+    },
     "HEADER": {
         "TITLE": "OERSI"
     },
     "META": {
         "DESCRIPTION": "The Open Educational Resources Search Index (OERSI) забезпечує централізоване місце для пошуку відкритих освітніх ресурсів для вищої освіти, об’єднуючи вміст розподілених сховищ OER та інших джерел відкритих освітніх ресурсів.",
         "TITLE": "Open Educational Resources Search Index"
+    },
+    "SEARCH_COMPONENT": {
+        "PLACEHOLDER": "Шукати освітні ресурси..."
     },
     "FOOTER": {
         "HEADING": "OERSI - Open Educational Resources Search Index",
