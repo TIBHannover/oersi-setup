@@ -69,9 +69,9 @@ Scenario: Install _oersi_ on an existing system. Can be controlled via the UI of
 Scenario: To test the index a little bit with minimal effort, you can use a local installation in the local VirtualBox VM via vagrant. This is also suitable for developers to perform "system tests" for their changes. For problems and fixes with the VM, see [here](https://gitlab.com/oersi/oersi-setup/-/wikis/Problems-and-Fixes-with-the-Virtual-Machine).
 
 Prerequisites
-* [Git](https://git-scm.com/downloads) (tested with 2.17.1)
-* [Vagrant](https://www.vagrantup.com/downloads.html) (tested with 2.0.2)
-* [VirtualBox](https://www.virtualbox.org/wiki/Downloads) (tested with 5.2.34_Ubuntu)
+* [Git](https://git-scm.com/downloads) (tested with 2.43.0)
+* [Vagrant](https://www.vagrantup.com/downloads.html) (tested with 2.4.9)
+* [VirtualBox](https://www.virtualbox.org/wiki/Downloads) (tested with 7.2.14)
 * Depending on your setup, you might require a file `/etc/vbox/networks.conf` containing:
 
 ```
