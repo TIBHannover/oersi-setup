@@ -3,9 +3,10 @@ vm_host = "192.168.98.115"
 $set_environment_variables = <<SCRIPT
 tee "/etc/profile.d/myvars.sh" > "/dev/null" <<EOF
 export ANSIBLE_COLLECTIONS_PATH=/vagrant/collections
+EOF
 sudo chsh -s /bin/bash vagrant
 sed -i "s/#alias ll='ls -l'/alias ll='ls -lAh'/g" /home/vagrant/.bashrc
-EOF
+sed -i "s/# alias ll='ls \$LS_OPTIONS -l'/alias ll='ls --color=auto -lAh'/g" /root/.bashrc
 SCRIPT
 
 Vagrant.configure("2") do |config|
