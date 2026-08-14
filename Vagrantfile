@@ -4,12 +4,16 @@ $set_environment_variables = <<SCRIPT
 tee "/etc/profile.d/myvars.sh" > "/dev/null" <<EOF
 export ANSIBLE_COLLECTIONS_PATH=/vagrant/collections
 EOF
+sudo chsh -s /bin/bash vagrant
+sed -i "s/#alias ll='ls -l'/alias ll='ls -lAh'/g" /home/vagrant/.bashrc
+sed -i "s/# alias ll='ls \$LS_OPTIONS -l'/alias ll='ls --color=auto -lAh'/g" /root/.bashrc
 SCRIPT
 
 Vagrant.configure("2") do |config|
 
   config.vm.define "oerindex-vm" do |srv|
-    srv.vm.box = "debian/bookworm64"
+    srv.vm.box = "cloud-image/debian-13"
+    srv.vm.synced_folder ".", "/vagrant"
     srv.ssh.insert_key = false
     srv.vm.hostname = "oerindex.box"
     srv.vm.network :private_network, ip: vm_host
