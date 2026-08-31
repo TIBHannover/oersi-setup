@@ -9,7 +9,8 @@ WORKING_DIR=$5
 ETL_RELEASE_ARTIFACT_URL=$6
 IMPORTSCRIPTS_RELEASE_ARTIFACT_URL=$7
 SCHEMA_RELEASE_ARTIFACT_URL=$8
-SIDRE_SETUP_RELEASE_ARTIFACT_URL=$9
+LOOKUPTABLES_RELEASE_ARTIFACT_URL=$9
+SIDRE_SETUP_RELEASE_ARTIFACT_URL=${10}
 
 echo "Parameters"
 echo "RELEASE_VERSION=$RELEASE_VERSION"
@@ -21,6 +22,7 @@ echo "WORKING_DIR=$WORKING_DIR"
 ETL_SNAPSHOT_ARTIFACT_URL="https://gitlab.com/oersi/oersi-etl/-/jobs/artifacts/master/download?job=deploy"
 IMPORTSCRIPTS_SNAPSHOT_ARTIFACT_URL="https://gitlab.com/oersi/oersi-import-scripts/-/jobs/artifacts/master/download?job=deploy"
 SCHEMA_SNAPSHOT_ARTIFACT_URL="https://gitlab.com/oersi/oersi-schema/-/jobs/artifacts/main/download?job=deploy"
+LOOKUPTABLES_SNAPSHOT_ARTIFACT_URL="https://gitlab.com/oersi/oersi-lookup-tables/-/jobs/artifacts/main/download?job=deploy"
 SIDRE_SETUP_SNAPSHOT_ARTIFACT_URL="https://gitlab.com/oersi/sidre/sidre-setup/-/jobs/artifacts/main/raw/search_index-setup.tar.gz?job=deploy"
 
 echo "---------------"
@@ -37,6 +39,7 @@ git add requirements.yml
 sed -i "s#search_index_etl_artifact_url: .*#search_index_etl_artifact_url: '${ETL_RELEASE_ARTIFACT_URL}'#g" default-config.yml
 sed -i "s#search_index_import_scripts_artifact_url: .*#search_index_import_scripts_artifact_url: '${IMPORTSCRIPTS_RELEASE_ARTIFACT_URL}'#g" default-config.yml
 sed -i "s#search_index_metadata_schema_artifact_url: .*#search_index_metadata_schema_artifact_url: '${SCHEMA_RELEASE_ARTIFACT_URL}'#g" default-config.yml
+sed -i "s#search_index_lookup_tables_artifact_urls: .*#search_index_lookup_tables_artifact_urls: ['${LOOKUPTABLES_RELEASE_ARTIFACT_URL}']#g" default-config.yml
 git add default-config.yml
 git commit -m "release $RELEASE_VERSION (Ref $RELEASE_ISSUE_URL)"
 git tag -a $RELEASE_VERSION -m "release $RELEASE_VERSION (Ref $RELEASE_ISSUE_URL)"
@@ -45,6 +48,7 @@ git add requirements.yml
 sed -i "s#search_index_etl_artifact_url: .*#search_index_etl_artifact_url: '${ETL_SNAPSHOT_ARTIFACT_URL}'#g" default-config.yml
 sed -i "s#search_index_import_scripts_artifact_url: .*#search_index_import_scripts_artifact_url: '${IMPORTSCRIPTS_SNAPSHOT_ARTIFACT_URL}'#g" default-config.yml
 sed -i "s#search_index_metadata_schema_artifact_url: .*#search_index_metadata_schema_artifact_url: '${SCHEMA_SNAPSHOT_ARTIFACT_URL}'#g" default-config.yml
+sed -i "s#search_index_lookup_tables_artifact_urls: .*#search_index_lookup_tables_artifact_urls: ['${LOOKUPTABLES_SNAPSHOT_ARTIFACT_URL}']#g" default-config.yml
 git add default-config.yml
 git commit -m "use next snapshot artifacts (Ref $RELEASE_ISSUE_URL)"
 if [ "$PUSH_TO_ORIGIN" = true ] ; then
