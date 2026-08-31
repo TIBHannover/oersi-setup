@@ -39,7 +39,7 @@ git add requirements.yml
 sed -i "s#search_index_etl_artifact_url: .*#search_index_etl_artifact_url: '${ETL_RELEASE_ARTIFACT_URL}'#g" default-config.yml
 sed -i "s#search_index_import_scripts_artifact_url: .*#search_index_import_scripts_artifact_url: '${IMPORTSCRIPTS_RELEASE_ARTIFACT_URL}'#g" default-config.yml
 sed -i "s#search_index_metadata_schema_artifact_url: .*#search_index_metadata_schema_artifact_url: '${SCHEMA_RELEASE_ARTIFACT_URL}'#g" default-config.yml
-sed -i "s#search_index_lookup_tables_artifact_url: .*#search_index_lookup_tables_artifact_url: '${LOOKUPTABLES_RELEASE_ARTIFACT_URL}'#g" default-config.yml
+sed -i "s#search_index_lookup_tables_artifact_urls: .*#search_index_lookup_tables_artifact_urls: ['${LOOKUPTABLES_RELEASE_ARTIFACT_URL}']#g" default-config.yml
 git add default-config.yml
 git commit -m "release $RELEASE_VERSION (Ref $RELEASE_ISSUE_URL)"
 git tag -a $RELEASE_VERSION -m "release $RELEASE_VERSION (Ref $RELEASE_ISSUE_URL)"
@@ -48,7 +48,7 @@ git add requirements.yml
 sed -i "s#search_index_etl_artifact_url: .*#search_index_etl_artifact_url: '${ETL_SNAPSHOT_ARTIFACT_URL}'#g" default-config.yml
 sed -i "s#search_index_import_scripts_artifact_url: .*#search_index_import_scripts_artifact_url: '${IMPORTSCRIPTS_SNAPSHOT_ARTIFACT_URL}'#g" default-config.yml
 sed -i "s#search_index_metadata_schema_artifact_url: .*#search_index_metadata_schema_artifact_url: '${SCHEMA_SNAPSHOT_ARTIFACT_URL}'#g" default-config.yml
-sed -i "s#search_index_lookup_tables_artifact_url: .*#search_index_lookup_tables_artifact_url: '${LOOKUPTABLES_SNAPSHOT_ARTIFACT_URL}'#g" default-config.yml
+sed -i "s#search_index_lookup_tables_artifact_urls: .*#search_index_lookup_tables_artifact_urls: ['${LOOKUPTABLES_SNAPSHOT_ARTIFACT_URL}']#g" default-config.yml
 git add default-config.yml
 git commit -m "use next snapshot artifacts (Ref $RELEASE_ISSUE_URL)"
 if [ "$PUSH_TO_ORIGIN" = true ] ; then
