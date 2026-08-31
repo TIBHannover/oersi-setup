@@ -7,6 +7,7 @@ elasticsearch_metadata_mapping_file: "{{ default_config_files_dir }}/backend/ela
 search_index_etl_artifact_url: 'https://gitlab.com/oersi/oersi-etl/-/jobs/artifacts/master/download?job=deploy'
 search_index_import_scripts_artifact_url: 'https://gitlab.com/oersi/oersi-import-scripts/-/jobs/artifacts/master/download?job=deploy'
 search_index_metadata_optimization_artifact_url: 'https://gitlab.com/oersi/oersi-metadata-optimization-integration/-/jobs/artifacts/main/download?job=deploy'
+search_index_lookup_tables_artifact_url: 'https://gitlab.com/oersi/oersi-lookup-tables/-/jobs/artifacts/main/download?job=deploy'
 
 search_index_import_scripts_enabled_sources_py:  # list of enabled python imports (will be imported scheduled)
   # - Aoe
