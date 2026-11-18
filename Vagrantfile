@@ -31,7 +31,7 @@ Vagrant.configure("2") do |config|
     ansible.compatibility_mode = "2.0"
     ansible.install_mode = "pip"
     ansible.pip_install_cmd = "sudo apt update && sudo apt install python3-pip -y"
-    ansible.pip_args = "ansible-core==2.19.2 --break-system-packages"
+    ansible.pip_args = "ansible-core==2.21.6 --break-system-packages"
     ansible.playbook = "playbook.yml"
     ansible.galaxy_command = "ansible-galaxy collection install -r %{role_file} -p ./collections --force"
     ansible.galaxy_role_file = "requirements.yml"
